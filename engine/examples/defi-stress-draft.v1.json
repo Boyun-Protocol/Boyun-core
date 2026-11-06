@@ -1,0 +1,205 @@
+{
+  "schema_version": "scenario-draft.v1",
+  "id": "declared-defi-stress",
+  "revision": 0,
+  "event_description": "Explore supplied DeFi stress branches as declared loss and health-indicator shocks. No lending protocol, oracle, collateral, interest, liquidation or chain transaction is implemented.",
+  "fields": [
+    {
+      "id": "stress_bps",
+      "label": "Stress bps",
+      "type": "integer",
+      "unit": "basis_points",
+      "required": true,
+      "value": 2000,
+      "minimum": 0,
+      "maximum": 10000,
+      "choices": [],
+      "target": "/parameters/stress_bps",
+      "why": "Higher makes the assumed stress branch more frequent; lower makes it less frequent. Stress plus calm must equal 10,000 bps.",
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Public illustrative authoring example; not a measured estimate.",
+        "source_refs": []
+      }
+    },
+    {
+      "id": "mild_loss",
+      "label": "Mild loss",
+      "type": "integer",
+      "unit": "declared_USD_payoff",
+      "required": true,
+      "value": 10000,
+      "minimum": 0,
+      "maximum": 1000000,
+      "choices": [],
+      "target": "/parameters/mild_loss",
+      "why": "Higher increases declared loss; lower reduces it. This is a supplied dollar payoff, not a financial transfer.",
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Public illustrative authoring example; not a measured estimate.",
+        "source_refs": []
+      }
+    },
+    {
+      "id": "severe_extra_loss",
+      "label": "Severe extra loss",
+      "type": "integer",
+      "unit": "declared_USD_payoff",
+      "required": true,
+      "value": 30000,
+      "minimum": 0,
+      "maximum": 1000000,
+      "choices": [],
+      "target": "/parameters/severe_extra_loss",
+      "why": "Higher increases declared loss; lower reduces it. This is a supplied dollar payoff, not a financial transfer.",
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Public illustrative authoring example; not a measured estimate.",
+        "source_refs": []
+      }
+    },
+    {
+      "id": "calm_bps",
+      "label": "Calm bps",
+      "type": "integer",
+      "unit": "basis_points",
+      "required": true,
+      "value": 8000,
+      "minimum": 0,
+      "maximum": 10000,
+      "choices": [],
+      "target": "/parameters/calm_bps",
+      "why": "Higher makes the assumed calm branch more frequent; lower makes it less frequent. Calm plus stress must equal 10,000 bps.",
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Public illustrative authoring example; not a measured estimate.",
+        "source_refs": []
+      }
+    }
+  ],
+  "engine_input": {
+    "schema_version": "event-chain.v1",
+    "id": "declared-defi-stress",
+    "event_description": "Explore supplied DeFi stress branches as declared loss and health-indicator shocks. No lending protocol, oracle, collateral, interest, liquidation or chain transaction is implemented.",
+    "parameters": {
+      "stress_bps": 2000,
+      "mild_loss": 10000,
+      "severe_extra_loss": 30000,
+      "calm_bps": 8000
+    },
+    "personas": [
+      {
+        "id": "risk-reviewer",
+        "name": "Risk scenario reviewer",
+        "description": "Applies explicit stress rules and declared payoffs. This actor has no wallet, funding, execution authority or inferred financial strategy.",
+        "role": "stress_evaluator",
+        "allowed_actions": [
+          "adjust_metric"
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "id": "declared_loss",
+        "unit": "declared_USD_payoff",
+        "initial": 0
+      },
+      {
+        "id": "health_indicator",
+        "unit": "declared_health_bps",
+        "initial": 10000
+      }
+    ],
+    "rules": [
+      {
+        "id": "market-stress",
+        "at_tick": 0,
+        "actor_id": "risk-reviewer",
+        "requires": [],
+        "outcomes": [
+          {
+            "id": "stress",
+            "probability_bps": {
+              "parameter": "stress_bps"
+            },
+            "effects": [
+              {
+                "action": "adjust_metric",
+                "metric_id": "declared_loss",
+                "delta": {
+                  "parameter": "mild_loss"
+                }
+              },
+              {
+                "action": "adjust_metric",
+                "metric_id": "health_indicator",
+                "delta": -2500
+              }
+            ]
+          },
+          {
+            "id": "baseline",
+            "probability_bps": {
+              "parameter": "calm_bps"
+            },
+            "effects": []
+          }
+        ],
+        "probability_provenance": {
+          "status": "assumed",
+          "rationale": "Illustrative 20% stress mixture; no calibration, market forecast or source verification is claimed.",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "conditional-severity",
+        "at_tick": 1,
+        "actor_id": "risk-reviewer",
+        "requires": [
+          {
+            "event_id": "market-stress",
+            "outcome_id": "stress"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "severe",
+            "probability_bps": 2500,
+            "effects": [
+              {
+                "action": "adjust_metric",
+                "metric_id": "declared_loss",
+                "delta": {
+                  "parameter": "severe_extra_loss"
+                }
+              },
+              {
+                "action": "adjust_metric",
+                "metric_id": "health_indicator",
+                "delta": -5000
+              }
+            ]
+          },
+          {
+            "id": "contained",
+            "probability_bps": 7500,
+            "effects": []
+          }
+        ],
+        "probability_provenance": {
+          "status": "assumed",
+          "rationale": "Illustrative conditional severity given the supplied stress event; not a liquidation model or empirically estimated risk.",
+          "source_refs": []
+        }
+      }
+    ],
+    "horizon_ticks": 1,
+    "assumptions": [
+      "Declared USD payoff is an illustrative metric, not withdrawable cash or financial settlement.",
+      "The supplied conditional severity draw depends on market-stress eligibility; named draws are independent conditional on declared dependencies.",
+      "Health-indicator basis points are an arbitrary supplied scale and are not a protocol health-factor calculation.",
+      "The declared loss branches are 0, 10000 or 40000 USD payoff units. No transfer or conservation-of-cash claim applies.",
+      "Change both complementary probabilities explicitly when changing the stress mixture; the engine fills no defaults."
+    ]
+  }
+}

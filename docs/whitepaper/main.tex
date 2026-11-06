@@ -1,0 +1,96 @@
+\documentclass[10pt,conference,compsocconf]{IEEEtran}
+\usepackage[T1]{fontenc}
+\font\chinesefont="Songti SC" at 10pt
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,array,tabularx}
+\usepackage{float,algpseudocode}
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}
+\floatname{algorithm}{Algorithm}
+\usepackage{flushend}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xcolor}
+\usepackage{xurl}
+\definecolor{citationblue}{RGB}{0,70,180}
+% Light-red marks text revised in the latest pass; set to black to hide.
+\definecolor{revisedred}{RGB}{0,0,0}
+\newcommand{\rev}[1]{{\color{revisedred}#1}}
+\newenvironment{revised}{\color{revisedred}}{}
+% Light orange marks content waiting for the Laya-only MACRON run.
+\definecolor{pendingorange}{RGB}{0,0,0}
+\newcommand{\pend}[1]{{\color{pendingorange}#1}}
+\newenvironment{pending}{\color{pendingorange}}{}
+\usepackage[colorlinks=true,citecolor=citationblue,linkcolor=black,urlcolor=black]{hyperref}
+\hypersetup{pdftitle={Boyun: Multi-Agent Simulation for Financial and Economic Decisions},pdfauthor={Cherry Q},pdfsubject={Financial and economic simulation with explicit actor incentives}}
+\setlength{\emergencystretch}{1.5em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newtheorem{proposition}{Proposition}
+\renewcommand{\thesection}{\Roman{section}}
+\definecolor{ink}{HTML}{17352F}
+\definecolor{teal}{HTML}{267267}
+\definecolor{wash}{HTML}{EEF5F2}
+\tikzset{box/.style={draw=teal!70,rounded corners=2pt,fill=wash,align=center,font=\small,minimum height=0.95cm,text width=4.3cm,inner sep=5pt},arr/.style={-{Latex[length=2mm]},thick,draw=teal}}
+\title{\textit{Boyun}: Multi-Agent Simulation\\for Financial and Economic Decisions}
+\author{\IEEEauthorblockN{Cherry Q}}
+% Keep IEEE heading spacing; emphasize both labels and titles in the draft.
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}{1.5ex plus 1.5ex minus 0.5ex}%
+{0.7ex plus 1ex minus 0ex}{\normalfont\normalsize\centering\itshape}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}{1.5ex plus 1.5ex minus 0.5ex}%
+{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\itshape}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\parindent}{0ex plus 0.1ex minus 0.1ex}%
+{0ex}{\normalfont\normalsize\itshape}}
+\makeatother
+\begin{document}
+\raggedbottom
+\maketitle
+% Abstract revised in the working draft.
+\begin{abstract}
+Financial and economic decisions are shaped by actors with different goals,
+resources, and information, whose actions influence one another over time.
+Understanding these decisions requires explicit models of strategic choices,
+information exchange, and uncertainty. We present \textit{Boyun}, a
+\rev{self-hosted, locally executed} multi-agent simulation framework for
+exploring such decisions in specified worlds. Its construction draws on
+\textit{game theory} to define \rev{actors, preference weights,} feasible
+actions, and consequences; \textit{directed information graphs} to represent
+who receives \rev{messages}; and \textit{probability and statistics} to examine
+declared uncertainty and evaluate probabilistic claims. \rev{Actors} receive
+restricted observations, and \rev{a local actor decision model}, \textit{Laya},
+returns structured choices and option scores \rev{on the user's own hardware}.
+An execution engine applies the specified rules \rev{across strategic, market,
+and lending ledgers} and records state transitions. The resulting record
+supports inspection of observations, choices, and numerical consequences, and
+allows execution to be replayed from saved decisions without repeating
+inference. A local agent interface supports caller-authored worlds and offline
+experiments, and an optional blockchain commitment supports later verification
+of artifact integrity. Six synthetic experiments reproduce hand-calculated
+game, Bayesian, scoring, and accounting results and isolate individual
+mechanisms. \rev{Running locally with \textit{Laya} at zero API fee, a
+fourteen-day, sixteen-actor token-launch case completes all 24 policy paths
+with settled trades, recorded rejections, matched branch comparisons, and exact
+replay, while} a comparison with the original \textit{MiroFish} on the same
+brief shows that the two systems are complementary: one produces richer social
+discourse, the other settled financial consequences. \rev{In addition, a
+ninety-day collateralized lending case across four worlds separates mechanical
+conclusions fixed by ledger rules from behavioral ones sensitive to uncalibrated
+actor scores.} These results do not establish human behavioral fidelity, market
+forecasting accuracy, or improved decision quality; these claims require
+further empirical and comparative evaluation.
+\end{abstract}
+\begin{IEEEkeywords}
+Game theory, multi-agent simulation, agent-based modeling, social graphs, probability, statistical evaluation, scenario analysis.
+\end{IEEEkeywords}
+\input{draft-introduction}
+\input{draft-related-work}
+\input{draft-world-creation}
+\input{draft-method-system}
+\input{draft-evaluation-design}
+\input{draft-results}
+\input{draft-discussion}
+\input{draft-conclusion}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

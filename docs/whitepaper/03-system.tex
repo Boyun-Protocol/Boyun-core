@@ -1,0 +1,220 @@
+\section{System Architecture}\label{sec:system}
+\subsection{Construction, Execution, and Reporting}
+Figure~\ref{fig:architecture} separates responsibilities that can otherwise
+be conflated in a model-generated report. A browser or command-line interface
+collects the question. An external agent may submit the same structured world.
+A ready world, user specification, or optional author
+produces a proposal. Review fixes the participants, rules, information links,
+selection mode, seeds, and execution budget. The engine then obtains decisions
+and applies Algorithm~\ref{alg:round}. These are logical responsibilities within
+one application, not a requirement for separately deployed services.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[node distance=7mm and 8mm]
+\node[box] (user) {Research question\\Browser, CLI, or agent client};
+\node[box,right=of user] (author) {Ready world or author\\Participants and assumptions};
+\node[box,right=of author] (review) {Review and validation\\Rules, scope, and budget};
+\node[box,below=of review] (engine) {Synchronous engine\\Observe, choose, settle};
+\node[box,left=of engine] (jev) {Typed decision adapter\\Jev or offline utility rule};
+\node[box,left=of jev] (evidence) {Timestamped evidence\\Sources and known gaps};
+\node[box,below=of engine] (record) {Recorded trajectories\\Replay and presentation};
+\node[box,left=of record] (near) {Optional NEAR registry\\Artifact commitment};
+\draw[arr] (user)--(author);\draw[arr] (author)--(review);
+\draw[arr] (review)--(engine);\draw[arr] (engine)--(jev);
+\draw[arr] (jev.north) to[bend left=15] (engine.north);
+\draw[arr,dashed] (evidence)--(author);\draw[arr] (engine)--(record);
+\draw[arr,dashed] (record)--(near);
+\end{tikzpicture}
+\caption{Boyun's execution architecture. Dashed links are optional. Evidence
+informs the reviewed world; it does not automatically determine behavioral
+coefficients. The registry binds a recorded artifact, rather than certifying
+the simulated outcome.}
+\label{fig:architecture}
+\end{figure*}
+
+Approval is associated with the reviewed configuration so that later edits
+require a new review. Requests, responses, completed trajectories, and failures
+are retained separately. Reports replay the recorded decisions before computing
+metric paths, means, medians, and spending summaries. Grouped scenarios summarize
+completed paths rather than adding unexecuted model-generated futures. The
+report includes requested and completed run counts; otherwise failures could
+silently change the denominator behind a chart.
+
+\begin{table}[t]
+\caption{Records retained for interpretation and reproduction.}
+\label{tab:artifacts}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.28\columnwidth}Y@{}}
+\toprule Record & Why it is needed \\
+\midrule
+Evidence snapshot & Fix the source, observation time, network, and coverage available to the analysis. \\
+Reviewed world & Preserve assumed participants, resources, and consequences independently of inference. \\
+Observations and decisions & Preserve what each participant was shown and selected; no internal reasoning trace. \\
+Provider receipt & Record returned model identity, reported token use, and request/response fingerprints. \\
+Trajectory and failures & Recompute settlement and retain incomplete outcomes in reporting. \\
+Presentation & Explain recorded paths and trade-offs without requiring raw-log inspection. \\
+Commitment opening & Allow a later consistency check against an on-chain registration. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Evidence and Persona Grounding}
+The public-data collector accumulates pool observations and available recent
+trades, preserving failures, source cooldowns, and coverage gaps. NEAR and
+Solana observations remain separate because their trading environments need
+not imply the same behavior. Forward collection does not reconstruct an
+unobserved 30-day wallet history.
+
+Grounding proceeds from observable features to reviewed hypotheses: preserve
+a timestamped snapshot, compute features such as trade sizes and frequency,
+record unknowns, then propose participant roles for review. A large trade
+supports a statement about observed size; it does not establish that the
+wallet is a market maker, an insider, or one of several wallets controlled by
+the same person. Likewise, news and social posts require source attribution,
+timestamps, and deduplication. The current archive and wallet analysis do not
+constitute a validated estimator of population preferences or causal effects.
+
+\subsection{Distinct Execution Models}
+The strategic engine uses cash costs, bounded public metrics, joint effects,
+and subscribed publications. A separate financial laboratory represents
+integer cash and token balances, fees, and a synthetic constant-product AMM.
+In such an AMM, trades change the pool reserves and therefore the executable
+price; the marked value of a holding can differ from the cash obtained by
+selling it. Analytical components for finite games, Bayesian updating,
+forecast scoring, and conditional event chains are also available separately.
+
+These distinctions matter for interpretation. Not every strategic run invokes
+every analytical component. In particular, a creator-profit question requires
+sales, inventory, costs, liabilities, and withdrawals. The strategic engine's
+utility and attention metrics do not provide that accounting. Combining the
+strategic and financial models requires explicit economic transitions, rather
+than relabeling a metric as dollars.
+
+\subsection{Typed Inference and Resource Controls}
+The Jev adapter uses TypeSafe AI's direct System One interface
+\cite{typesafeapi}. It transmits the participant's state and typed questions,
+then validates the returned answers and token usage. A versioned model identity
+is recorded because an alias may change over time. Invalid responses cannot
+settle a round. Authentication, billing, rate-limit, and service failures stop
+execution; automatic inference retries and silent provider fallback are disabled.
+A timed-out request can still have consumed remote resources, so an uncertain
+outcome is retained rather than assumed free.
+
+Normally there is one request per participant per round per world, except for
+forced wait actions. This counting rule is needed to review the cost of a run
+before dispatch. TypeSafe lists Jev 1.14 input at \$0.042 per million tokens
+with free output tokens \cite{typesafemodels}. For illustration, 100 participants
+over two rounds in one world require at most 200 actor requests. At an assumed
+2,500 input tokens per request, the input-only estimate is \$0.021. This is a
+planning example; observation length, authoring, hosting, and failed requests
+change the complete operating cost. A durable call allowance limits dispatch
+count, rather than guaranteeing a dollar ceiling.
+
+\subsection{Agent Interoperability}\label{sec:mcp}
+The Model Context Protocol (MCP) is a client--server interface through which
+an AI application discovers tools, reads resources, and obtains reusable
+prompts \cite{mcp2025}. It standardizes access to a system's capabilities;
+it does not define the language model's reasoning policy or validate a
+scientific result. An external agent using MCP is also distinct from a
+simulated participant inside a Boyun world.
+
+Boyun exposes a local standard-input/output server over the existing
+construction and execution interfaces. Resources describe the world contract,
+guidelines, and examples. A construction prompt guides the connected agent's
+chosen model in supplying a world. Tools inspect the game construction and each own-information view, validate
+that world, execute a bounded
+offline run, inspect its status, and retrieve replay-verified results and a
+Markdown report. The agent supplies data rather than code or arbitrary file
+paths. Opaque run identifiers and bounded artifact reads limit the interface
+to its explicit workspace.
+
+The server's participant policy is the local immediate-utility rule, not Jev
+inference. It exposes no credential import, paid inference, wallet signing,
+or chain-submission tool. Its purpose is to let research agents construct
+and inspect reproducible experiments through a common interface. A local
+transport creates no network listener, but retrieved world data can still
+reach a remote model through the connected agent application. MCP support
+therefore does not establish end-to-end confidentiality. Compatibility is
+evaluated with the versioned protocol specified in the integration experiment.
+
+\subsection{Privacy and Artifact Registration}\label{sec:near}
+Bring-your-own-key operation lets a user supply their own provider credential.
+Session-only storage avoids deliberately persisting that credential in the
+application, but both the host and selected provider can process plaintext
+requests. A self-hosted installation still sends requests remotely when it
+uses a remote model. Offline deterministic operation uses a local rule based
+on immediate action utility; it does not run an offline Jev model.
+
+NEAR is a public blockchain supporting smart contracts, programs whose
+transactions and state can be checked through the network
+\cite{nearprotocol,nightshade2024}.
+Boyun's optional testnet registry records an artifact commitment. Testnet is
+the network used to test this integration, rather than evidence of a production
+deployment. A commitment is a cryptographic fingerprint that binds a later
+disclosure to an earlier registration. It is neither encryption nor a proof
+that the artifact's contents are correct.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[node distance=7mm and 8mm]
+\node[box] (private) {Private artifact\\and fresh secret salt};
+\node[box,right=of private] (commit) {Cryptographic commitment\\SHA-256 fingerprint};
+\node[box,right=of commit] (chain) {NEAR testnet registry\\Signer and commitment};
+\node[box,below=of commit] (open) {Later disclosure\\Recompute and compare};
+\draw[arr] (private)--(commit);\draw[arr] (commit)--(chain);
+\draw[arr] (private)--(open);\draw[arr] (chain)--(open);
+\end{tikzpicture}
+\caption{Artifact registration. Original contents and the random salt remain
+off chain until deliberately disclosed. The signer and transaction timing
+remain public.}
+\label{fig:integrity}
+\end{figure*}
+
+Algorithm~\ref{alg:commit} describes registration using SHA-256, a hash function
+that produces a fixed-size fingerprint. The secret salt is fresh random data;
+it prevents a public commitment from being directly compared with hashes of
+guessed scenario contents. A fixed purpose label separates this use of hashing
+from other protocols. Explicit lengths make field boundaries unambiguous.
+Without the salt, predictable private inputs could be tested by guessing;
+without purpose and field boundaries, the commitment format would be less
+clearly specified. These measures do not hide the public signer or timing.
+A registered hash also does not ensure that the off-chain artifact can later
+be retrieved. Nightshade's treatment of data availability distinguishes
+present block-data availability from long-term retention \cite{nightshade2024};
+experiment storage and disclosure remain separate responsibilities here.
+
+\begin{algorithm}[t]
+\caption{Registering and opening an artifact commitment}
+\label{alg:commit}
+\footnotesize
+\begin{algorithmic}[1]
+\Require Exact artifact bytes; fixed commitment-purpose label
+\State Hash the artifact with SHA-256
+\State Draw a fresh secret salt of 32 random bytes
+\State Encode the purpose label and a zero-byte separator
+\State Append the salt length, salt, hash length, and hash
+\Statex \hspace{\algorithmicindent}Encode lengths as 64-bit big-endian integers
+\State Hash the encoded sequence with SHA-256
+\State Register only the resulting commitment on NEAR
+\State Retain the artifact and salt privately
+\State To open, recompute from the disclosed artifact and salt
+\State Check the finalized transaction and registry entry
+\end{algorithmic}
+\end{algorithm}
+
+Verification checks the transaction, its final outcome, expected contract code,
+and matching registry entry through a selected remote procedure call (RPC)
+endpoint. RPC is the interface used to query the network; this check is not
+an independently verified light-client proof. Contract upgrade authority and
+signer metadata remain part of the trust boundary.
+
+NEAR AI Cloud is an optional hosted model service for world authoring
+\cite{nearai}, separate from Jev's participant decisions. Although its
+documentation describes verification facilities, the present adapter does
+not verify a trusted-execution attestation, a cryptographic statement about
+the environment processing a request. DCML describes how an attested connection
+to known service code and model-hash checking can support confidential,
+verifiable inference \cite{dcml}. A normal compatible API request alone
+establishes neither property. Consequently, this integration does not
+establish confidential inference for the full workflow.

@@ -1,0 +1,79 @@
+\section{Comparative Evaluation: Socio-Financial Agent Dynamics}\label{sec:evaluation}
+The preceding section defined the execution loop, budget boundaries, and
+deterministic replay mechanisms that advance a simulation through time. To
+evaluate how those mechanisms perform in practice, this section examines a
+matched empirical benchmark comparing \textit{MiroFish}'s emergent social
+discourse \cite{mirofish} with \textit{Boyun}'s stateful financial clearinghouse
+on a fourteen-day (336-hour) continuous simulation scenario.
+
+To establish a fair experimental baseline from those execution rules, both
+systems were supplied with identical prospective scenario inputs based on the
+\textit{MACRON} case across two macroeconomic regimes: \textit{BULL} and
+\textit{BEAR}. The evaluation tracks 16 modeled persona agents over 336 hourly
+rounds, measuring both qualitative discourse generation and numerical financial
+execution. Table~\ref{tab:comparison-benchmark} reports the audited empirical
+metrics reconciled across both simulation engines.
+
+\begin{table}[tbp]
+\caption{Empirical comparison across 336 simulated hours.}
+\label{tab:comparison-benchmark}
+\centering\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.36\columnwidth}YY@{}}
+\toprule
+Dimension & \textit{MiroFish} (BULL / BEAR) & \textit{Boyun} (Live / Stress) \\
+\midrule
+Simulated horizon & 336h / 336h & 30h--134h / 336h \\
+Active personas & 16 / 16 & 16 / 16 \\
+Recorded actions & 1,905 / 1,591 & 14,381 / 28,800+ \\
+-- Original posts & 537 / 371 & -- \\
+-- Quoted debates & 396 / 206 & -- \\
+-- Passive waits & 819 / 859 & -- \\
+Filled market buys & 0 / 0 & 4,491 / 18,240 \\
+Filled market sells & 0 / 0 & 8,808 / 36,480 \\
+Rejected executions & 0 / 0 & 1,082 / 4,128 \\
+Replay barriers & Uncheckpointed RNG & 20,881 / 41,762 \\
+Dormant hours & 86 / 86 (25.6\%) & Continuous \\
+Matched policy branches & Unmodeled & 12 / 24 branches \\
+Staged exit advantage & Undefined & +\$3,172 to +\$12,625 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Following these reconciled totals, the experimental record reveals two
+fundamentally distinct paradigms of agent simulation. In \textit{MiroFish},
+persona agents produce organic, contextual narrative text: personas actively
+quote opposing market commentators, debate catalyst timing, and express
+collective skepticism or euphoria. Over 336 hourly rounds, this generates
+537 original posts and 396 quotes under the \textit{BULL} regime, compared to
+371 posts and 206 quotes under \textit{BEAR}. However, the environment lacks
+an economic clearing mechanism: orders are not settled, token balances and
+automated market maker (\textit{AMM}) reserves are unmodeled, and automated
+report synthesis timed out during entity-graph memory retrieval.
+
+In contrast to pure discourse generation, \textit{Boyun}'s execution engine
+enforces formal \textit{economic settlement} and conservation of capital. Over
+its 24 live policy paths, the execution engine recorded 13,299 filled trades
+alongside 1,082 rejected executions caused by balance exhaustion or slippage
+thresholds. These constraints reflect real market friction that discourse-only
+models omit. Furthermore, 20,881 state barriers were verified through
+deterministic replay, confirming that identical decision histories produce
+identical financial outcomes without re-invoking model inference.
+
+Beyond individual trade execution, the policy comparison mechanisms introduced
+in Section~\ref{sec:method-system} require evaluating \textit{counterfactual policy branches}.
+\textit{Boyun} evaluated 12 matched policy pairs at identical elapsed
+timestamps, comparing a staged exit policy against an inventory-holding pause
+policy. Staged liquidation realized between \$3,172.94 and \$12,625.14 more
+cash than the pause policy across all twelve matched comparisons. Because pause
+retains token inventory, this does not prove higher total wealth; rather, it
+provides the decision maker with an auditable trade-off between realized
+liquidity and residual inventory risk.
+
+Synthesizing these comparative findings demonstrates that neither qualitative
+social emergence nor isolated financial mechanics alone suffices for complex
+decision analysis. An expressive multi-agent architecture must couple
+\textit{MiroFish}'s emergent narrative discourse with \textit{Boyun}'s
+verifiable financial clearinghouse, ensuring that every published message stems
+from a bounded information state and every simulated trade adheres to strict
+conservation laws.

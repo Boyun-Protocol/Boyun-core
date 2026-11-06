@@ -1,0 +1,208 @@
+{
+  "artifact_kind": "case_world_input",
+  "id": "near-lending-campaign-calendar-split-cohort",
+  "status": "user_selected_2026-11-05",
+  "source": "campaign-and-response-proposal.md; user answers campaign_calendar and team_response_authority",
+  "outside_option_news": "Rhea snapshot: USDC supply 9.88%, borrow 15.29%.",
+  "aware_from_opening": [
+    "partner_a",
+    "partner_b",
+    "partner_c",
+    "partner_d",
+    "liquidator_a",
+    "liquidator_b"
+  ],
+  "follows": {
+    "ind_supplier_retail": [
+      "team_socials",
+      "discord"
+    ],
+    "ind_supplier_mid": [
+      "team_socials",
+      "ecosystem_partner"
+    ],
+    "borrower_mid_1": [
+      "team_socials",
+      "ecosystem_partner"
+    ],
+    "borrower_mid_2": [
+      "team_socials",
+      "ecosystem_partner"
+    ],
+    "ind_supplier_whale_1": [
+      "defi_community",
+      "paid_kol"
+    ],
+    "ind_supplier_whale_2": [
+      "defi_community",
+      "paid_kol"
+    ],
+    "points_looper": [
+      "defi_community",
+      "paid_kol"
+    ],
+    "borrower_large_1": [
+      "ecosystem_partner",
+      "direct_outreach"
+    ],
+    "borrower_large_2": [
+      "ecosystem_partner",
+      "direct_outreach"
+    ],
+    "borrower_small_01": [
+      "team_socials",
+      "discord"
+    ],
+    "borrower_small_02": [
+      "team_socials",
+      "discord"
+    ],
+    "borrower_small_03": [
+      "team_socials",
+      "discord"
+    ],
+    "borrower_small_04": [
+      "team_socials",
+      "discord"
+    ],
+    "borrower_small_05": [
+      "team_socials",
+      "discord"
+    ],
+    "borrower_small_06": [
+      "team_socials",
+      "discord"
+    ],
+    "borrower_small_07": [
+      "team_socials",
+      "discord"
+    ],
+    "borrower_small_08": [
+      "team_socials",
+      "discord"
+    ]
+  },
+  "items": [
+    {
+      "id": "launch_owned",
+      "hour": 0,
+      "kind": "owned",
+      "channels": [
+        "team_socials",
+        "discord"
+      ],
+      "news": "Launch: NEAR-collateral USDC lending live. Suppliers earn points only on USDC actually borrowed. Risk disclosure published; no token promised."
+    },
+    {
+      "id": "amplify_ecosystem",
+      "hour": 36,
+      "kind": "partner",
+      "partner": "amplifier_partner_1",
+      "channels": [
+        "ecosystem_partner"
+      ],
+      "spend": {
+        "category": "partner_support_and_measurement",
+        "usdc": 5000
+      },
+      "news": "NEAR ecosystem partner: new NEAR-backed USDC lending market with supplier points."
+    },
+    {
+      "id": "amplify_defi",
+      "hour": 36,
+      "kind": "partner",
+      "partner": "amplifier_partner_2",
+      "channels": [
+        "defi_community"
+      ],
+      "spend": {
+        "category": "partner_support_and_measurement",
+        "usdc": 5000
+      },
+      "news": "DeFi community: new NEAR lending venue; points on borrowed USDC; compare with Rhea."
+    },
+    {
+      "id": "direct_outreach",
+      "hour": 84,
+      "kind": "owned",
+      "channels": [
+        "direct_outreach"
+      ],
+      "news": "Team outreach: borrow USDC against NEAR at a lower rate than Rhea, without selling NEAR."
+    },
+    {
+      "id": "kol",
+      "hour": 180,
+      "kind": "partner",
+      "partner": "amplifier_kol",
+      "channels": [
+        "paid_kol"
+      ],
+      "spend": {
+        "category": "promotion",
+        "usdc": 10000
+      },
+      "news": "Paid KOL post: early supplier points on a new NEAR lending market."
+    },
+    {
+      "id": "update_14",
+      "hour": 348,
+      "kind": "status_update",
+      "channels": [
+        "team_socials",
+        "discord"
+      ]
+    },
+    {
+      "id": "update_30",
+      "hour": 732,
+      "kind": "status_update",
+      "channels": [
+        "team_socials",
+        "discord"
+      ]
+    },
+    {
+      "id": "update_60",
+      "hour": 1452,
+      "kind": "status_update",
+      "channels": [
+        "team_socials",
+        "discord"
+      ]
+    }
+  ],
+  "distribution_partners": {
+    "amplifier_partner_1": "NEAR ecosystem account with overlapping audience",
+    "amplifier_partner_2": "DeFi yield community",
+    "amplifier_kol": "Paid crypto KOL"
+  },
+  "liquidation": {
+    "exit_market_usdc": "10000000",
+    "liquidators": {
+      "liquidator_a": {
+        "depth_usd_per_hour": 250000,
+        "impact_bps": 50,
+        "min_profit_bps": 100,
+        "cost_usdc": 25
+      },
+      "liquidator_b": {
+        "depth_usd_per_hour": 80000,
+        "impact_bps": 100,
+        "min_profit_bps": 200,
+        "cost_usdc": 25
+      }
+    },
+    "provenance": "Scenario assumptions; not measured NEAR DEX depth."
+  },
+  "cadence": {
+    "daily_decision_hour": 12,
+    "team_weekly_days": 7,
+    "trigger_cooldown_hours": 12,
+    "near_move_trigger": "0.08",
+    "utilization_trigger": "0.9",
+    "health_trigger": "1.1",
+    "partner_delay_hours": 72,
+    "news_window_hours": 72
+  }
+}

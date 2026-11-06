@@ -1,0 +1,52 @@
+{
+  "schema_version": "macron-event-calendar-research.v1",
+  "research_date": "2026-11-02",
+  "simulation_start": "2026-11-02T08:00:00Z",
+  "simulation_end": "2026-11-16T08:00:00Z",
+  "status": "primary_schedule_researched; historical_response_model_and_asof_review_incomplete",
+  "sources": [
+    {"id":"assembly-four-week-agenda","url":"https://www.assemblee-nationale.fr/dyn/static/seance/conference.pdf","document_date":"2026-10-27","pages_reviewed":[3,4,5],"capture_date":"2026-11-02","availability_basis":"Agenda identifies the 27 October conference; PDF metadata records 27-28 October creation/modification. Capture is after launch cutoff, and prelaunch public availability is not independently archived.","use":"Dated schedule assumption for scenario preparation; no political outcomes or token-demand probabilities inferred."},
+    {"id":"assembly-day-agenda","url":"https://www.assemblee-nationale.fr/dyn/seance-publique","capture_date":"2026-11-02","use":"Cross-checks the three 2 November session start times."},
+    {"id":"fec-general-election","url":"https://www.fec.gov/introduction-campaign-finance/election-and-voting-information/","capture_date":"2026-11-02","use":"Confirms 3 November 2026 federal election date. Polling times are state/local; no single national result-release time is established."},
+    {"id":"federal-reserve-calendar","url":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","capture_date":"2026-11-02","use":"2026 calendar lists 27-28 October and 8-9 December meetings, not an ordinary FOMC meeting in the 2-16 November window. Unscheduled announcements are not excluded."},
+    {"id":"bls-november","url":"https://www.bls.gov/schedule/2026/11_sched.htm","capture_date":"2026-11-02","status":"blocked_403","use":"Unverified gap. No payroll/CPI release date or time is inserted from memory."},
+    {"id":"elysee-agenda","url":"https://www.elysee.fr/agenda","capture_date":"2026-11-02","status":"november_heading_visible_but_no_dated_november_appointments_in_captured_text","use":"Incomplete coverage, not evidence that no presidential events occur."},
+    {"id":"ecb-calendar","url":"https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html","capture_date":"2026-11-02","status":"captured_listing_starts_25_november","use":"Incomplete coverage of simulation window; do not infer universal absence of ECB news."}
+  ],
+  "session_timezone": "Europe/Paris",
+  "session_precision": "Scheduled session start, not exact start of every agenda item or a promised actual occurrence.",
+  "sessions": [
+    {"date":"2026-11-02","times":["09:00","15:00","21:30"],"topic":"Continuation of first-part 2027 finance-bill examination","source_page":3},
+    {"date":"2026-11-03","times":["15:00","21:30"],"topic":"Government questions, first-part solemn vote on agenda, then second-part culture/media/audiovisual discussion; exact vote time unknown","source_page":3},
+    {"date":"2026-11-04","times":["14:00","15:00","21:30"],"topic":"14:00 government questions; 15:00 agriculture/rural-development budget discussion, followed by evening continuation","source_page":3},
+    {"date":"2026-11-05","times":["09:00","15:00","21:30"],"topic":"Territorial cohesion, then research/higher-education budget discussion","source_page":3},
+    {"date":"2026-11-06","times":["09:00","15:00","21:30"],"topic":"Public finance, anti-fraud, public service and pensions; economy and state-financing discussion later in day","source_page":4},
+    {"date":"2026-11-09","times":["09:00","15:00","21:30"],"topic":"Overseas budget discussion and continuation","source_page":4},
+    {"date":"2026-11-10","times":["15:00","21:30"],"topic":"Government questions, justice budget discussion and continuation","source_page":4},
+    {"date":"2026-11-12","times":["09:00","15:00","21:30"],"topic":"State control/government/public powers, followed by school-education budget discussion","source_page":5},
+    {"date":"2026-11-13","times":["09:00","15:00","21:30"],"topic":"Sport/youth, then local-authority budget discussion","source_page":5},
+    {"date":"2026-11-14","times":["09:00","15:00","21:30"],"topic":"Work/employment/social-ministry budget discussion and continuation","source_page":5},
+    {"date":"2026-11-16","times":["09:00"],"topic":"Administration, immigration/asylum/integration and security budget discussion; this morning session coincides with the simulation endpoint","source_page":5}
+  ],
+  "date_only_events": [
+    {"id":"us-federal-election","date":"2026-11-03","timezone":"multiple_US_timezones","source_id":"fec-general-election","exact_time":null,"status":"date_confirmed; local_polling_hours_and_result_timing_not_resolved","permitted_use":"Date-level external attention context only; not a timestamped market shock or known result."}
+  ],
+  "excluded_out_of_horizon": [
+    {"date":"2026-11-17","local_time":"15:00","timezone":"Europe/Paris","topic":"Full 2027 finance-bill solemn vote appears on the agenda","reason":"After the 16 November 08:00 UTC endpoint; not to be pulled into the run."}
+  ],
+  "interpretation_rules": [
+    "Convert local times using the named timezone, not a fixed summer offset.",
+    "At launch 12:00 UTC+4 equals 09:00 Paris, not 12:00 Paris.",
+    "A source schedule is not a guarantee of occurrence, content, timing of a particular vote or token demand.",
+    "Do not fill every quiet hour with invented news. Record actor decisions and derived market events throughout.",
+    "Revisions/cancellations must carry separate publication/availability times.",
+    "The schedule cannot be promoted to empirically calibrated response probabilities."
+  ],
+  "remaining_gaps": [
+    "Full launch-asof calendar availability/revision audit.",
+    "Unblocked official payroll/CPI release schedule and other relevant macro releases.",
+    "Dated presidential appointments or other relevant French political events not present in the capture.",
+    "Six-to-twelve-month event-to-attention/arrival/turnover calibration; existing October cohort snapshots are insufficient.",
+    "Outcome-conditioned public news and arrival model; no result or price response has been fabricated."
+  ]
+}

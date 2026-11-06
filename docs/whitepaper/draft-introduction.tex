@@ -1,0 +1,126 @@
+\input{draft-foundations-figure}
+\section{Introduction}\label{sec:introduction}
+Financial and economic decisions depend on how people and organizations
+respond to one another under uncertainty. A protocol designer evaluating an
+incentive must weigh its direct cost, whether partners join, and how other
+actors react, since those reactions alter the choices available later.
+Comparing alternatives therefore requires scenarios that make actors,
+constraints, and assumed events explicit while showing how their interactions
+produce different outcomes.
+
+\rev{To that end,} \textit{agent-based modeling} represents a system through
+individual \rev{actors} and interaction rules, so its conclusions depend on
+both the assumptions and their implementation \cite{grimm2020,galan2009}.
+\rev{However,} although language-model agents can condition choices on context
+\cite{park2023,yang2025}, an expressed choice alone does not specify its
+economic consequences. For example, a disclosure decision still requires rules
+defining who receives the message, when they react, and what resource or state
+changes follow.
+
+\rev{Along another dimension,} social-simulation frameworks examine interactions
+in a shared information environment. \textit{OASIS} (Open Agent Social
+Interaction Simulations) provides one such platform, while \textit{MiroFish}
+uses a social-simulation workflow to explore scenarios \cite{yang2025,mirofish}.
+\rev{While} \textit{MiroFish} inspires \textit{Boyun}'s use of constructed
+worlds, interacting \rev{actors}, and scenario reports, \textit{Boyun} pursues
+specialized financial and economic analysis, combining complementary methods to
+connect strategic incentives, social responses, and numerical consequences.
+
+\rev{Building on that motivation,} we present \textit{Boyun} ({\chinesefont
+拨云}, {\chinesefont bō yún}), a \rev{self-hosted} framework for exploring
+decisions through explicit simulated worlds. Its Chinese name means ``part the
+clouds'' and draws on {\chinesefont 拨云见日}, in which clouds are parted to
+reveal the sun. The name expresses the aim of bringing \rev{actors},
+incentives, assumptions, relationships, and possible consequences into view
+before action, while keeping that view conditional on the evidence and
+assumptions used to construct it. Figure~\ref{fig:foundations} summarizes the
+foundations and their operational roles.
+
+\rev{First, to} give this goal an executable structure, \textit{Boyun} places
+\textit{game theory} at the center of world construction. \rev{Actors} have
+\rev{preference weights}, resources, information, and feasible actions, and the
+world's rules determine how their combined choices affect outcomes
+\cite{polak2,nash1950}. This structure makes incentives, coordination, and
+conflicts of interest explicit without assuming that model-selected actions are
+optimal or form an equilibrium. The distinction matters whenever actors value
+different outcomes: a founder may prioritize participation, whereas a partner
+may prioritize credibility or retained capital. Such differences must alter
+feasible actions and their consequences rather than remain descriptive labels
+in a persona.
+
+\rev{On the other hand, incentives alone do not specify who knows what when.}
+\textit{Boyun} therefore represents communication channels through a
+\textit{directed information graph} specifying which \rev{actors} receive
+another \rev{actor}'s \rev{messages}. Message availability and timing thus
+become explicit parts of the world rather than hidden assumptions. \rev{Even
+so,} these links describe permitted delivery rather than empirically measured
+social influence, allowing an analyst to test how a disclosure, delayed
+message, or restricted channel changes observations without giving every actor
+the author's complete view.
+
+\rev{Apart from strategic incentives and communication,} events and outcomes
+often remain uncertain. \textit{Probability and statistics} provide a third
+foundation: \textit{Bayesian} calculations update supplied beliefs, seeded
+sampling explores declared alternatives, and proper scoring rules evaluate
+probabilistic predictions \cite{pishronik2014,brier1950,gneiting2007}.
+\rev{Nevertheless,} these tools expose uncertainty only under stated
+assumptions; neither repeated simulation nor model confidence establishes
+real-world odds.
+
+\rev{Once those three foundations define a world, the engine must obtain actor
+choices while keeping local inference and recorded execution explicit. Because
+unpublished launch plans, treasury limits, and risk parameters are sensitive,
+\textit{Boyun} focuses on private, self-hosted execution using an open-weight
+\textit{actor decision model} that runs locally on the user's hardware. Each
+actor receives only its permitted observation, and \textit{Laya}
+\cite{layamodel}---the local actor model used in the reported case studies---returns a
+structured choice and normalized \textit{option scores} over the actor's
+\textit{affordable action menu}. Alternative open-weight models are a future
+evaluation direction rather than a capability demonstrated by these runs. Crucially, option} scores express
+model-assigned weights rather than validated real-world probabilities.
+Deterministic \rev{strategic, market, and lending ledgers} then settle the
+chosen actions, enforce conservation, and save every observation and choice so
+runs replay exactly without repeating inference, while leaving the model's
+internal deliberation unobserved.
+
+\rev{Moreover, self-hosted inference addresses a practical budget constraint.}
+Multi-actor worlds evaluated across many decision points and matched policy
+branches require tens or hundreds of thousands of model queries, which quickly
+exhaust small hosted-API budgets \rev{while sending private scenario states off
+the user's machine. Running \textit{Laya} locally eliminates per-call API fees
+and keeps all observations on-device, though operational efficiency and
+behavioral accuracy remain separate evaluation questions.}
+
+Given these capabilities and boundaries, the paper asks: \emph{Can a
+\rev{self-hosted}, explicitly specified multi-agent world constrain
+information, spending, and settlement while making the effects of alternative
+information and interaction rules inspectable?} Applications include capital
+allocation, participation incentives, disclosure policies, and credit stress
+scenarios in decentralized finance. Reports connect financial outcomes with
+coordination, message delivery, and reactions to events so researchers,
+protocol designers, and risk analysts can trace how an outcome arises under
+declared assumptions.
+
+\rev{Accordingly,} we evaluate \textit{Boyun} through six synthetic mechanism
+experiments, \rev{a fourteen-day token-launch case across 24 policy paths and a
+ninety-day collateralized lending case across four worlds---all executed
+locally with \textit{Laya}---}together with a matched-brief comparison against
+the original \textit{MiroFish}. These tests do not establish human behavioral
+fidelity, forecasting accuracy, or improved user decisions. Within that scope,
+the paper makes five contributions:
+\begin{enumerate}\setlength{\itemsep}{1pt}
+\item an explicit specification of worlds and of what each \rev{actor} may
+observe (Section~\ref{sec:world-creation});
+\item an execution procedure \rev{across strategic, market, and lending
+ledgers} that records every decision and replays it exactly
+(Section~\ref{sec:method-system});
+\item reproducible mechanism tests with known answers
+(Sections~\ref{sec:evaluation}--\ref{sec:results});
+\item a matched case comparison with the original \textit{MiroFish}
+(Section~\ref{sec:res-mirofish});
+\item \rev{full-horizon local \textit{Laya} token-launch and lending case
+studies that separate mechanical conclusions fixed by ledger rules from
+behavioral ones sensitive to the actor decision model
+(Sections~\ref{sec:res-macron} and~\ref{sec:res-lending}).}
+\end{enumerate}
+The following section situates these contributions within prior work.

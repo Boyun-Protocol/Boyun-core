@@ -1,0 +1,342 @@
+\begin{figure*}[!t]
+\centering
+\begin{tikzpicture}[
+ stagebox/.style={draw=teal!70,fill=wash,rounded corners=2pt,align=center,text width=4.7cm,minimum height=1.3cm,inner sep=5pt,font=\small},
+ boundarybox/.style={draw=teal!70,fill=white,rounded corners=2pt,align=center,text width=4.7cm,minimum height=1.25cm,inner sep=5pt,font=\small},
+ wide/.style={draw=teal!70,fill=white,rounded corners=2pt,align=center,text width=16.1cm,minimum height=0.8cm,inner sep=5pt,font=\small},
+ connection/.style={-{Latex[length=2mm]},thick,draw=teal}]
+\node[wide] (input) at (5.7,0) {Reviewed world, matched branch parameters, seed, selection rule, and call allowance};
+\node[stagebox] (prep) at (0,-2.05) {Step preparation\\Scheduled events, funded plans,\\and prior-step messages};
+\node[stagebox] (choice) at (5.7,-2.05) {Observation and typed choice\\Menu $A_{i,t} \rightarrow$ \textit{Laya} scores $q_{i,t}(a)$\\$\rightarrow$ selected action $a_{i,t}$};
+\node[stagebox] (settle) at (11.4,-2.05) {Validation and settlement\\Check hashes and balances; apply\\strategic, market, or lending ledger};
+\draw[connection] (input.south -| prep.north)--(prep.north);
+\draw[connection] (prep.east)--(choice.west);
+\draw[connection] (choice.east)--(settle.west);
+\draw[connection,dashed] (settle.east)--++(0.45,0)--++(0,1.15)-|node[pos=0.25,above,font=\footnotesize]{next round or decision point $t$}([xshift=0.85cm]prep.north);
+\node[boundarybox] (ckpt) at (0,-4.25) {Checkpoints and coverage\\Save completed steps; track\\completed and halted paths};
+\node[boundarybox] (replay) at (5.7,-4.25) {Deterministic replay\\Re-apply saved $a_{i,t}$ offline\\to verify state transitions};
+\node[boundarybox] (boundary) at (11.4,-4.25) {Privacy and registry boundary\\On-device \textit{Laya}, no reasoning trace;\\optional salted \textit{NEAR} commitment};
+\coordinate (split) at ([yshift=-0.45cm]settle.south);
+\draw[thick,draw=teal] (settle.south)--(split);
+\draw[connection] (split)-|(ckpt.north);
+\draw[connection] (split)-|(replay.north);
+\draw[connection,dashed] (split)--(boundary.north);
+\end{tikzpicture}
+\caption{\rev{Simulation pipeline and evidence boundaries in \textit{Boyun}.
+At each round or decision point $t$, the engine prepares exogenous updates,
+builds per-actor observations, obtains option scores $q_{i,t}(a)$ locally from
+\textit{Laya} (or an explicit offline baseline), and settles transitions on the
+active ledger.} Option scores $q_{i,t}(a)$, selected actions $a_{i,t}$, and
+settled states remain distinct in the saved record; dashed arrows denote
+continuation up to horizon $T$ and optional on-chain commitment.}
+\label{fig:execution-pipeline}
+\end{figure*}
+
+\section{Simulation Method and System Design}\label{sec:method-system}
+Section~\ref{sec:world-creation} ended with a reviewed world specification;
+this section explains how \textit{Boyun} executes it. Returning to the
+board-game analogy, world creation fixes the rules and opening balances, while
+execution plays the game one step at a time. At each step $t$, the engine
+shows every \rev{actor} $i$ only its permitted observation, queries the local
+\rev{actor decision model} (\textit{Laya}) over the actions that \rev{actor} $i$
+can afford, and settles all selected actions on a deterministic ledger.
+\rev{Consequently,} the model selects moves but can never alter permissions or
+accounting. Figure~\ref{fig:execution-pipeline} summarizes this pipeline. After
+fixing the execution terms (Section~\ref{sec:exec-terms}), we trace observation
+construction, action selection, message and event timing, and settlement across
+the \rev{strategic, market, and lending ledgers}, followed by analytical
+modules, replay, and self-hosted privacy boundaries.
+
+\subsection{Execution Terminology}\label{sec:exec-terms}
+\rev{To keep terminology consistent across all three ledgers,}
+Table~\ref{tab:execution-terms} defines the runtime concepts that complement
+Tables~\ref{tab:definitions}--\ref{tab:decision-definitions}. Discrete
+strategic worlds advance by \textit{rounds}, whereas timestamped market and
+lending worlds advance by scheduled \textit{decision points}; both use an ordered index $t \in \{1,\dots,T\}$. The associated timestamp
+$\tau_t$ records elapsed physical time. Hours and days in the case results
+refer to $\tau_t$, not to the decision index; finer launch steps therefore do
+not count as additional elapsed hours.
+
+\begin{table}[H]
+\caption{\rev{Execution terminology and notation.}}
+\label{tab:execution-terms}
+\centering\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.27\columnwidth}Y@{}}
+\toprule
+Term & Definition \\
+\midrule
+\textit{Affordable action menu} $A_{i,t}$ & Feasible options for actor $i$ at step $t$. In the strategic ledger this filters the reviewed menu by cash $b_{i,t}$; market and lending menus use their own ledger constraints. \\
+\textit{Option scores} $q_{i,t}(a)$ & Normalized weights in $[0,1]$ summing to 1 returned by the actor decision model over $A_{i,t}$; not empirical odds. \\
+\textit{Selection rule} & Pre-declared rule (\textit{argmax} or \textit{sampling}) mapping $q_{i,t}(a)$ to one action $a_{i,t}$. \\
+\textit{Settlement} & Atomic state transition applying chosen actions on the strategic, market, or lending ledger. \\
+\textit{Matched branch} & Counterfactual run sharing initial state, seed, and schedule up to an intervention while varying one policy. \\
+\textit{Checkpoint / replay} & Saved step state and offline re-execution of saved $a_{i,t}$ without calling the model to verify exact state agreement. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\rev{Among these concepts,} deterministic replay is central to verification:
+much like replaying a recorded chess game from algebraic notation, replay
+re-applies saved moves without re-querying the player, so any mismatch isolates
+a rule or accounting defect.
+
+\subsection{Observations and Affordable Actions}
+Executing step $t$ begins by restricting what each \rev{actor} $i$ can see. If
+every \rev{actor} observed rivals' private preference weights and future
+events, choices would reflect the world author's omniscience rather than local
+incentives. For each \rev{actor} $i$, the engine constructs a canonical JSON
+\textit{observation} containing its persona, goal, preference weights, and
+pre-decision cash $b_{i,t}$; visible public state (such as shared metrics
+$x_{k,t}$ indexed by $k$, pool reserves, or oracle prices); delivered
+\rev{messages} and visible events; and receipts from \rev{actor} $i$'s own
+earlier actions, together with a SHA-256 observation hash. \rev{At the same
+time,} withholding private fields enforces an information boundary inside the
+simulation rather than encrypting memory on the host machine.
+
+\rev{Restricting information, however, does not by itself prevent overspending.}
+In the strategic ledger, before querying \textit{Laya}, code filters \rev{actor} $i$'s reviewed menu
+$\operatorname{Menu}_i$ against current cash $b_{i,t}$ to form the
+\textit{affordable action menu}:
+\begin{equation}
+A_{i,t}=\{a\in\operatorname{Menu}_i : c_i(a)\leq b_{i,t}\},
+\label{eq:affordable}
+\end{equation}
+where $c_i(a)$ is the integer cash cost of action $a$. Enforcing
+Eq.~\eqref{eq:affordable} in code guarantees that affordability depends on
+ledger balances rather than on how the model reads narrative text.
+
+\subsection{Action Selection}\label{sec:action-selection}
+\rev{Once $A_{i,t}$ is fixed,} the engine selects exactly one action $a_{i,t}$.
+In the strategic ledger, whenever only \texttt{wait} is affordable ($|A_{i,t}|=1$), no choice exists, so
+the engine records \texttt{wait} without a model query. Otherwise, it passes
+the hashed observation and a typed \texttt{Choice} prompt to \textit{Laya} on
+the local CPU \cite{layamodel}. Other open-weight backends are a future
+evaluation direction, not an inference result established here. In strategic worlds, each option is paired
+with a code-computed unilateral projection of immediate post-action cash,
+clamped metrics, and utility delta holding peer actions fixed, so arithmetic is
+supplied by code rather than delegated to the model.
+
+\rev{Because \textit{Laya} outputs option scores rather than state mutations,}
+the adapter validates every response before selection. Specifically, the
+response must assign a finite score $q_{i,t}(a)\in[0,1]$ to each $a\in A_{i,t}$
+with $\sum_{a\in A_{i,t}} q_{i,t}(a)=1$, identify a top-scoring action, and
+include the model's confidence field; malformed responses halt the step without
+partial settlement (allowing only a $\le 0.001$ rescaling tolerance for
+\textit{Laya}'s four-decimal rounding).
+
+\rev{Given a validated distribution, the pre-declared \textit{selection rule}}
+maps $q_{i,t}(a)$ to $a_{i,t}$ via either \textit{argmax} or seeded
+\textit{sampling}:
+\begin{align}
+\text{argmax:}\quad & a_{i,t}=\arg\max_{a\in A_{i,t}} q_{i,t}(a),\label{eq:selection}\\
+\text{sampling:}\quad & a_{i,t}=a_{(m^\ast)},\ \text{where}\notag\\
+& m^\ast=\min\Big\{m:\textstyle\sum_{\nu=1}^{m} q_{i,t}\big(a_{(\nu)}\big)>\xi_{i,t}\Big\}.\label{eq:sampling}
+\end{align}
+\rev{Here $a_{(1)},a_{(2)},\dots$ order $A_{i,t}$ canonically, $\nu$ indexes the
+cumulative sum, and $\xi_{i,t}\in[0,1)$ is a deterministic pseudorandom draw
+keyed to the run seed and decision identity.} Under Eq.~\eqref{eq:sampling}, an
+action with score $0.30$ is drawn for $30\%$ of $\xi_{i,t}$ values while
+remaining exactly reproducible across replays. \rev{Nevertheless,} neither
+selection rule turns $q_{i,t}(a)$ into an empirically calibrated probability or
+a solved mixed-strategy Nash equilibrium \cite{nash1950,polak15}.
+
+\subsection{Messages, Memory, and Event Timing}\label{sec:messages}
+\rev{Beyond changing balances, $a_{i,t}$ can transmit information to later
+steps.} In the strategic ledger, a preset message attached to $a_{i,t}$ follows
+the \textit{directed information graph} and arrives at subscribed actors at the
+start of round $t+1$; in timestamped ledgers, messages obey declared delivery
+delays and recipient lists. Delaying delivery ensures that within-step
+evaluation order never creates an artificial first-mover leak. Observations
+also retain bounded memory of actor $i$'s own prior actions and public state
+history without exposing peers' private balances, while delivered messages
+remain unverified claims unless backed by executable rules
+\cite{polak15,polak18}.
+
+\rev{On the other side, exogenous events and pre-committed plans} enter on
+explicit schedules separate from actor reactions. Strategic rounds apply
+scheduled events before building round-$t$ observations, whereas timestamped
+ledgers record both occurrence time and availability time to represent
+reporting lag. Furthermore, when a scenario tests a funded launch or marketing
+plan, committed actions execute and deduct payer cash at their scheduled
+decision point before outside actors observe the result and choose $a_{i,t}$.
+
+\subsection{Strategic Ledger Settlement and Accounting}\label{sec:settlement}
+\rev{After all actors choose $a_{i,t}$ from the same frozen state,} the
+strategic ledger applies \textit{synchronous settlement} so actor ordering
+cannot distort bounded metrics. First, the engine re-verifies every observation
+hash and Eq.~\eqref{eq:affordable}; if any check fails, the round aborts
+without mutating state. Otherwise, cash balances and shared metrics update
+atomically:
+\begin{revised}
+\begin{align}
+b^{+}_{i,t}&=b_{i,t}-c_i(a_{i,t}),\label{eq:cash-update}\\
+x^{+}_{k,t}&=\operatorname{clip}_{[L_k,\,H_k]}\Big(x_{k,t}+\sum_{i}e_{k}(a_{i,t})+\sum_{r\in R_t}g_{k,r}\Big),\label{eq:settlement}
+\end{align}
+\end{revised}
+where $e_k(a)$ is action $a$'s effect on metric $k$, $R_t$ is the set of
+joint-action rules triggered at round $t$, $g_{k,r}$ is rule $r$'s effect on
+metric $k$, and $\operatorname{clip}_{[L,H]}(z)=\min(H,\max(L,z))$ enforces
+bounds once after summing all effects. The superscript $+$ denotes the
+post-settlement state of this round; scheduled events for the next round are
+applied afterward to construct its observation state. Algorithm~\ref{alg:round} summarizes the
+strategic-round loop and offline replay. Timestamped ledgers have their own
+execution procedures; this algorithm is not a shared implementation for all
+three ledgers.
+
+\begin{algorithm}[t]
+\caption{\rev{Strategic-round execution, synchronous settlement, and replay}}
+\label{alg:round}
+\footnotesize
+\begin{algorithmic}[1]
+\Require Reviewed strategic world, selection rule, seed, call allowance
+\State Validate cast, balances, bounds, events, and information graph
+\For{each strategic round $t=1,\dots,T$}
+  \State Apply scheduled events and funded commitments; deliver prior messages
+  \State Freeze pre-decision state and build hashed observations
+  \For{each actor $i$}
+    \State Form $A_{i,t}$ by Eq.~\eqref{eq:affordable}
+    \If{$|A_{i,t}|=1$}
+      \State Set $a_{i,t}\gets\texttt{wait}$ without querying \textit{Laya}
+    \Else
+      \State Query local \textit{Laya} (or offline baseline) within call allowance
+      \State Validate $q_{i,t}(a)$; select $a_{i,t}$ via Eq.~\eqref{eq:selection} or~\eqref{eq:sampling}
+    \EndIf
+  \EndFor
+  \If{any observation hash or action $a_{i,t}$ is invalid}
+    \State Reject step $t$ without mutating state; \textbf{stop}
+  \EndIf
+  \State Settle the strategic state; save receipts and checkpoint
+\EndFor
+\State Re-apply saved $a_{i,t}$ offline without \textit{Laya}; verify identical states
+\end{algorithmic}
+\end{algorithm}
+
+\rev{To evaluate settled strategic states across heterogeneous roles,} actor
+$i$'s utility combines retained cash and metrics via its declared preference
+weights:
+\begin{equation}
+U_{i,t} = w_{i,\mathrm{cash}}\, b_{i,t} + \sum_k w_{i,k}\, x_{k,t}.
+\label{eq:utility}
+\end{equation}
+Here $U_{i,t}$ is the strategic ledger's preference measure, not dollar profit.
+Weights carry the units needed to convert cash and metric units into the
+chosen utility scale. This linear formula is not an estimated investor utility
+function and does not define a common utility calculation for the market and
+lending ledgers.
+\rev{In addition,} because Eq.~\eqref{eq:affordable} bounds $c_i(a_{i,t})\le
+b_{i,t}$ and Eq.~\eqref{eq:cash-update} adds each integer deduction to
+cumulative cast spending $S_t^{+}$ through settlement of round $t$, every
+settled round satisfies exact cash conservation:
+\begin{revised}
+\begin{equation}
+b^{+}_{i,t}\geq 0 \quad\text{and}\quad \sum_i b^{+}_{i,t}+S_t^{+}=\sum_i b_{i,0}.
+\label{eq:conservation}
+\end{equation}
+\end{revised}
+
+\subsection{Market Ledger}\label{sec:market}
+\begin{revised}
+Whereas the strategic ledger treats cumulative spending $S_t^{+}$ as effort leaving the cast,
+market scenarios require counterparty fills, reserves, and prices. The market
+ledger tracks integer cash and tokens and settles swaps using a simplified
+constant-product automated market maker (AMM) \cite{angeris2021,xu2023amm}.
+A swap's output depends on reserves, the configured fee, and integer rounding;
+pre-migration phases use specified virtual reserves \cite{pumpdocs}.
+Orders outside slippage or inventory limits are rejected atomically with a
+recorded reason. This execution model is a stated approximation, not a complete
+implementation of a live venue. Reports distinguish realized cash from the
+quoted value of unsold inventory.
+\end{revised}
+
+\subsection{Lending Ledger}\label{sec:lending}
+\rev{Complementing spot trading, protocol credit decisions require tracking
+deposits, collateralized debt, and liquidations on a separate \textit{lending
+ledger}.} \textit{Suppliers} deposit stablecoins into a pool with idle cash
+$C_t$ and lent principal $P_t$, holding claims $c_s$ (withdrawals exceeding
+$C_t$ wait in a first-in, first-out queue ahead of new loans), while
+\textit{borrowers} pledge volatile collateral against loans indexed by $\ell$.
+With pool \textit{utilization} $u_t=P_t/(C_t+P_t)$, the annual borrow rate
+follows the standard kinked rate model \cite{gudgeon2020}:
+\begin{equation}
+\rev{r(u_t)=\begin{cases}
+r_0+(r^\ast-r_0)\,u_t/u^\ast, & u_t\le u^\ast,\\
+r^\ast+(r_1-r^\ast)\,(u_t-u^\ast)/(1-u^\ast), & u_t>u^\ast,
+\end{cases}}
+\label{eq:rate}
+\end{equation}
+\rev{where $r_0$ is the base rate, $u^\ast$ is the kink utilization, $r^\ast$ is
+the rate at $u^\ast$, and $r_1$ is the full-utilization rate.} Over $\Delta t$
+seconds ($Y$ seconds per 365-day year), loan $\ell$ incurs simple interest
+$I_\ell=P_\ell\,r(u_t)\,\Delta t/Y$, accruing to the protocol (share $\varphi$)
+and each supplier $s$:
+\begin{equation}
+\rev{\Delta I^{\mathrm{prot}}_\ell=\big\lfloor \varphi\, I_\ell\big\rfloor_{\epsilon},\qquad
+\Delta I^{s}_\ell=\Big\lfloor (1-\varphi)\, I_\ell\,\frac{c_s}{\sum_{s'}c_{s'}}\Big\rfloor_{\epsilon},}
+\label{eq:accrual}
+\end{equation}
+rounded down to $\epsilon=10^{-12}$ stablecoin units. \rev{Specifically, this
+fixed grid bounds arithmetic precision over repeated hourly accruals while
+keeping interest allocation within the declared rounding rules.}
+
+\rev{Meanwhile, solvency is governed by each loan $\ell$'s \textit{health
+factor} \cite{aaveliquidations}:}
+\begin{equation}
+\rev{h_\ell=\frac{Q_\ell\,p_t\,\theta}{D_\ell\,p^{\mathrm{usd}}_t},}
+\label{eq:health}
+\end{equation}
+where $Q_\ell$ is pledged collateral at oracle price $p_t$, $\theta$ is the
+liquidation threshold, and $D_\ell$ is principal plus accrued interest at
+stablecoin price $p_t^{\mathrm{usd}}$. When $h_\ell<1$, a liquidator repays
+debt (partially, or fully once $h_\ell\le 0.95$) for collateral worth $1+\beta$
+times repayment, executed only if net market proceeds cover repayment and costs;
+residual underwater debt writes off against a capped loss reserve, and stale
+oracle timestamps halt borrowing and liquidations.
+
+\subsection{Analytical Modules}\label{sec:analysis}
+\rev{Apart from time-stepped ledgers,} \textit{Boyun} provides three standalone
+analytical modules that operate strictly on user-supplied inputs. First, for
+small normal-form games ($\le 4$ actors and $\le 256$ profiles) with exact
+payoffs \rev{$U_i(a_i,a_{-i})$} and supplied opponent beliefs $\pi_i(a_{-i})$,
+code computes expected utility, regret, and pure-strategy Nash equilibria
+\cite{nash1950}:
+\begin{align}
+\rev{\mathrm{EU}_i(a_i)}&=\rev{\textstyle\sum_{a_{-i}}\pi_i(a_{-i})\,U_i(a_i,a_{-i}),}\label{eq:eu}\\
+\mathrm{Reg}_i(a_i)&=\textstyle\max_{a'}\mathrm{EU}_i(a')-\mathrm{EU}_i(a_i).\label{eq:regret}
+\end{align}
+Second, for finite hypothesis sets $H$ with supplied priors $P(h)$ and signal
+likelihoods $P(E\mid h)$, \textit{Bayesian updating} computes
+\cite{pishronik2014}
+\begin{equation}
+P(h\mid E)=\frac{P(E\mid h)\,P(h)}{\sum_{h'\in H}P(E\mid h')\,P(h')}.
+\label{eq:bayes}
+\end{equation}
+Third, seeded \textit{Monte Carlo} batches summarize declared branch outcomes
+via nearest-rank quantiles (5th, 50th, and 95th percentiles), describing batch
+dispersion rather than empirical market confidence intervals.
+
+\subsection{Matched Branches, Checkpoints, Replay, and Privacy}\label{sec:boundaries}
+\rev{To isolate policy effects across any ledger,} \textit{matched branches}
+hold opening balances, seeds, and exogenous schedules identical while changing
+one policy rule. Checksummed \textit{checkpoints} persist every settled step
+(and, in the lending runner, an append-only request-keyed decision cache) so
+interrupted local runs resume without repeating completed work. Afterward,
+\textit{replay} re-runs the saved actions $a_{i,t}$ through the hash-pinned
+engine without calling \textit{Laya} to verify bit-identical state trajectories.
+
+\rev{Finally, self-hosted execution defines \textit{Boyun}'s cost, privacy, and
+auditability profile. Running \textit{Laya} locally incurs zero API fees and
+avoids sending actor observations to a hosted inference endpoint. This claim
+remains scoped to the local inference path: external data requests, artifact
+sharing, optional on-chain commitments, and host access are separate privacy
+boundaries. In exchange, \textit{Laya} enforces a 1024-token context ceiling
+(truncating inputs are rejected) and exposes no internal chain of thought
+\cite{layamodel}.} For no-API baselines and external agent workflows, a
+deterministic immediate-utility rule and a local stdio \textit{Model Context
+Protocol} (MCP) server \cite{mcp2025} run completely offline. When tamper
+evidence is needed prior to disclosure, an optional \textit{cryptographic
+commitment} hashes the artifact with a fresh 32-byte salt via SHA-256 and
+records the digest on \textit{NEAR} testnet \cite{nearprotocol,nightshade2024},
+binding timestamped integrity without certifying behavioral realism.
+Section~\ref{sec:evaluation} designs the experiments that test these
+capabilities and boundaries.

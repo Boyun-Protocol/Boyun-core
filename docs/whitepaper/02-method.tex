@@ -1,0 +1,412 @@
+\section{Method}\label{sec:method}
+The method constructs bounded financial and economic decision games with
+explicit actor goals and incentives. It follows the order of execution: construct a world, restrict each
+participant's observation, obtain a permitted action, settle the complete
+round, and preserve the result. We use \emph{participant} for a modeled
+decision maker and \emph{persona} for its descriptive role, motivation, and
+goals. These terms describe economic roles and their decision incentives; they do
+not imply that the participant represents an identified real person. Table~\ref{tab:notation} fixes the notation used below.
+
+\begin{table}[t]
+\caption{Core notation. Each symbol has one role throughout the method.}
+\label{tab:notation}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.23\columnwidth}Y@{}}
+\toprule Symbol & Meaning and reason for retaining it \\
+\midrule
+$i,t,k$ & Participant, round, and metric indices; identify whose decision and which state are being discussed. \\
+$b_{i,t}$ & Participant $i$'s cash before decisions in round $t$; limits feasible spending. \\
+$x_{k,t}$ & Public metric $k$ before decisions in round $t$; records the shared situation. \\
+$A_{i,t},a_{i,t}$ & Affordable menu and selected action; separate permission from choice. \\
+$c_i(a)$ & Cash cost of action $a$; connects a choice to resource use. \\
+$q_{i,t}(a)$ & Model-returned score for an affordable action; used for explicit selection. \\
+$U_i,w_{i,k}$ & Participant utility and its metric weights; state the assumed trade-offs. The cash weight is $w_{i,\mathrm{cash}}$. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Constructing the Game Before the Persona}\label{sec:construction}
+A persona becomes strategically meaningful through its preferences, feasible
+choices, resources, and information. A biography alone does not define a game.
+In a game, a participant's preferred outcome can depend on what others choose;
+players, actions, and payoffs must therefore be specified together
+\cite{polak2,nash1950}. Boyun treats world construction as a research task
+performed by a user or separate authoring model, followed by explicit review.
+Jev selects actions during execution; it does not write the world or invent
+its payoff rules.
+
+Construction begins with the research question, focal participant, horizon,
+and outcome of interest. The author then includes roles because they control
+a consequential resource, know different information, or can change another
+participant's outcome. For example, a reviewer matters if verification changes
+credibility or another actor's incentive to participate. Adding a reviewer
+whose permitted actions affect nothing that anyone values would create
+narrative detail without that strategic mechanism. The construction review
+reports objective-sensitive dependencies, identifying action effects that
+change another participant's declared utility at the initial bounded state.
+These are local diagnostics, not a proof of strategic independence in all
+future states.
+
+Each role is turned into a participant with a motivation, terminal goal,
+resource allocation, information boundary, utility weights, and action menu.
+Motivation explains why the participant values particular outcomes; the goal
+states the intended preference; weights and action effects make the trade-off
+executable. A participant maximizing its own utility need not maximize money:
+a reviewer can value credibility, while a treasury steward values retained
+resources and low execution risk. The author must explain the units and a
+numerical trade-off for each objective. Schema validation cannot establish
+that a stated goal and its supplied weights are semantically aligned; the
+review must examine both.
+
+Different role names need not denote different game-theoretic types. Here,
+variants differ operationally through preferences, resources, available
+actions, private information, or observation links. The specification does
+not supply a probability distribution over private types, so these variants
+do not by themselves constitute a solved Bayesian game. Similarly, a linear
+penalty on an execution-risk metric represents sensitivity to that stipulated
+metric; it does not implement formal risk aversion over uncertain wealth.
+Describing an actor as cautious or speculative cannot supply the missing
+probability and utility model.
+
+The author next fixes timing and conditional consequences. Current actions
+are simultaneous; preset messages arrive in the next round; specified
+joint-action rules express complementarity or conflict. An action is a
+choice at one information state, whereas a strategy is a contingent plan
+across relevant information states \cite{polak15,polak18}. Boyun requests
+successive actions from observations; it does not solve an extensive-form
+game or establish subgame-perfect behavior. Threats, promises, and commitments
+have no enforcement beyond the implemented costs and transition rules.
+Without that distinction, a model could treat persuasive language as a binding
+contract that the engine never enforces.
+
+Every consequential coefficient, motivation, allocation, and link records a
+rationale and provenance status. A news source can motivate a role or event
+without identifying its numeric effect. The construction review exposes
+initial cash allocations, utility units, affordable actions, isolated action
+consequences, and conditional interactions. It warns about zero objectives,
+a single feasible option, tied isolated utilities, absent initial objective
+coupling, or unavailable peer messages. A warning requests interpretation:
+a control participant can reasonably have no message links. Passing these
+checks establishes a sufficiently explicit model to inspect, not a
+psychologically valid population.
+
+\subsection{Cast Size and a Worked Construction}\label{sec:cast}
+Cast size follows the mechanism being investigated. Two participants can
+isolate a coordination problem; a small heterogeneous cast can expose
+conflicting incentives. Ten, twenty, fifty, or one hundred participants are
+useful only when additional variants test a stated information or preference
+hypothesis. The supported range is 2--100 participants, 1--8 rounds, 1--8
+metrics, and 2--8 actions per participant, subject to aggregate size limits.
+These bounds do not establish that one hundred synthetic actors represent a
+market or provide one hundred independent observations.
+
+Table~\ref{tab:cast} specifies an executable eight-participant example: a
+hypothetical NEAR DeFi pilot with two rounds and a total cast budget of
+\$10,000. The shared metrics are readiness, credibility, participation, and
+execution risk, each bounded from zero to one hundred hypothetical points.
+The initial values are 20, 40, 20, and 40 respectively. All allocations,
+preferences, and effects are explicit assumptions, not estimated NEAR market
+behavior. Spending purchases modeled effort; no token, liquidity-provider
+position, asset income, or creator profit is calculated.
+
+\begin{table}[t]
+\caption{Assumed pilot cast. Cash allocations sum to \$10,000. Every participant
+also has a silent, zero-cost wait option. Goals are implemented by reviewed
+utility weights, not inferred from role labels.}
+\label{tab:cast}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.24\columnwidth}rY@{}}
+\toprule Role & Cash (\$) & Objective emphasis and active options \\
+\midrule
+Founder & 3,000 & Readiness and credible participation; fund a pilot or announce broadly. \\
+Treasury steward & 2,000 & Runway and low execution risk; publish a resource disclosure. \\
+Liquidity sponsor & 1,500 & Readiness with manageable risk; contribute integration effort. \\
+Independent reviewer & 200 & Credibility and lower risk; spend effort on review. \\
+Risk-sensitive retail & 700 & Credibility and low risk; join the limited trial. \\
+Participation-oriented retail & 700 & Participation with a weaker risk penalty; join and share. \\
+Large participant & 1,500 & Readiness and participation versus effort and risk; contribute larger trial effort. \\
+Ecosystem partner & 400 & Credible participation versus outreach cost; amplify the trial. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Preferences create inspectably different choices even before strategic
+responses are considered. For the participation-oriented participant, joining
+costs 5,000 cents, adds five participation points, and adds three risk points.
+With one utility point per retained cent, 3,000 per participation point, and
+minus 500 per risk point, its isolated utility change is
+$-5{,}000+3{,}000\times5-500\times3=8{,}500$ points.
+The risk-sensitive participant's join action costs the same, adds three
+participation points and one risk point; its weights of 100 and minus 3,000
+produce $-5{,}000+100\times3-3{,}000=-7{,}700$ points.
+These are partial current-stage comparisons with waiting, not terminal
+strategy values or estimates of what actual retail users will do.
+
+Joint rules give these isolated comparisons strategic context. In this example,
+funding and independent review together add credibility and reduce execution
+risk; sponsor effort combined with the risk-sensitive participant joining
+adds participation and reduces risk; broad announcement combined with
+participation-oriented joining raises both participation and risk. Other
+actors can therefore change which outcomes are attractive. Removing these
+rules, changing preferences, or changing message links defines separate
+experiments rather than cosmetic persona edits.
+
+Increasing persona detail must preserve the intended economics. Splitting one
+role into variants requires explicit reallocation of its budget and review of
+per-action effects and links; copying its full resources into each variant
+would change the game. Equal total cash alone does not preserve aggregate
+influence when each extra actor can apply a full metric effect. The current
+engine does not automatically infer population weights or perform a
+budget-preserving split. Such comparisons require separately reviewed
+specifications, a stable evidence cutoff, and a stated reason for each variant.
+
+\subsection{Information and Communication}
+An observation contains a participant's own motivation, goal, utility weights,
+cash, affordable actions, public metrics, permitted rules, delivered messages,
+and visible events. It excludes other participants' private goals and future
+event text. This projection is necessary to avoid giving every participant
+the author's complete knowledge of the world. The host still possesses that
+knowledge; restricting an observation is not encryption.
+
+The directed information graph specifies subscriptions: an edge identifies
+whose publications a participant receives. An action's preset publication is
+delivered to subscribers in the next round. A message is a claim that may
+influence a decision, not proof of its contents. Delaying delivery makes the
+timing explicit and prevents an early request in a round from influencing a
+later request in that same round. A private event's text can remain restricted
+even when its declared effect changes a public metric.
+
+This is a bounded publication mechanism rather than unrestricted conversation.
+Participants do not independently call tools or negotiate arbitrary new
+contracts. A scenario requiring such behavior would need additional action
+types and settlement rules before execution.
+
+\subsection{Affordable Actions and Typed Selection}
+Feasibility is determined before inference. For a participant's reviewed menu,
+the affordable set is
+\begin{equation}
+A_{i,t}=\{a\in\operatorname{Menu}_i:c_i(a)\leq b_{i,t}\}.
+\label{eq:affordable}
+\end{equation}
+Equation~\eqref{eq:affordable} makes permission depend on current cash rather
+than on the model's interpretation of a budget. Without it, a plausible action
+could spend unavailable funds. The engine validates affordability again at
+settlement to reject stale or altered decisions.
+
+Jev is the primary model for participant action selection because its native
+interface matches a bounded game decision: state plus typed questions produce
+answers and scores rather than an arbitrary prose action
+\cite{typesafeintro,typesafeapi}. World authoring remains a separate language
+model or human task. This separation places contextual action judgment in Jev
+and resource accounting, arithmetic, and enforcement in code. It avoids asking
+a prose response to serve simultaneously as a decision, an executable action,
+and a trustworthy numerical calculation. TypeSafe's architecture and efficiency
+claims are provider descriptions; this design choice is not evidence that Jev
+reproduces people or outperforms other models in strategic reasoning.
+
+The instruction contract tells the model to act as its own participant and
+seek its declared terminal utility, considering the remaining horizon and
+visible interactions. Motivation provides context but cannot override costs,
+weights, or action permissions. The model must not assume access to opponents'
+private preferences, invent event likelihoods, or treat a message as an enforced
+commitment. Code supplies each option's exact isolated current-stage cash,
+bounded metrics, and utility change, holding other actions fixed. This avoids
+outsourcing arithmetic to the model. The projection explicitly excludes peer
+choices, joint effects, and later rounds, so its largest delta is not a
+prescribed strategy. The instruction expresses a decision objective, not a
+guarantee of rational or optimal behavior.
+
+For each non-forced turn, the adapter sends the observation
+and a Choice question over $A_{i,t}$. It requires one finite score
+$q_{i,t}(a)$ between zero and one for every option, a total score of one, the
+maximum-score label, and the response's confidence field. Missing options or
+an invalid distribution reject the decision. If only wait is feasible, no
+model request is needed.
+
+Selection either takes the highest-scored action or samples one action from
+the returned distribution. The chosen mode is fixed before execution. Sampling
+permits different paths under the same stated preferences; highest-score
+selection gives a direct deterministic interpretation of a saved response.
+Local sampling uses a recorded seed and observation identity. Neither method
+makes the scores calibrated frequencies of real behavior. In particular,
+$q_{i,t}(a)$ is not a probability that the studied intervention succeeds and is not a
+mixed-strategy equilibrium. Provider confidence is retained as a response
+field, without assuming an established statistical confidence interpretation.
+
+The request includes full action descriptions once in the observation;
+answer criteria reference action identifiers and the computed projections.
+Removing repeated descriptions reduces duplication for descriptive menus,
+although the additional numeric support can enlarge a short request. One Choice
+question covers one actor's menu; there is no extra explanatory model call.
+Stable menu order, a versioned instruction contract, the exact request identity,
+and the actual returned model identity make prompt changes traceable. Whether
+this structure improves decision quality or cost at equal quality requires a
+controlled comparison; smaller payloads alone do not establish that result.
+
+\subsection{Synchronous Settlement and Replay}\label{sec:settlement}
+All participants decide from the same pre-settlement round state. The engine
+then applies the complete action profile, rather than mutating the world
+after each model request. Otherwise, request order would confer an unintended
+information or execution advantage. Algorithm~\ref{alg:round} gives the
+procedure without depending on implementation-specific function names.
+
+\begin{algorithm}[t]
+\caption{World execution and recorded replay}
+\label{alg:round}
+\footnotesize
+\begin{algorithmic}[1]
+\Require Reviewed world, selection mode, recorded seed
+\State Validate participants, costs, metrics, events, and links
+\For{each round $t$}
+  \State Apply this round's scheduled metric changes
+  \State Aggregate changes before enforcing metric bounds
+  \State Deliver permitted publications from earlier rounds
+  \State Freeze the pre-settlement state
+  \For{each participant $i$}
+    \State Build own observation and $A_{i,t}$
+    \If{only wait is feasible}
+      \State Record wait without inference
+    \Else
+      \State Obtain and validate typed action scores
+      \State Select $a_{i,t}$ using the reviewed mode
+    \EndIf
+  \EndFor
+  \State Validate every decision against its observation
+  \If{any decision is invalid}
+    \State Reject the round without partial settlement
+    \State \textbf{stop}
+  \Else
+    \State Stage subtraction of each cost $c_i(a_{i,t})$
+    \State Sum action effects and matching joint-rule effects
+    \State Enforce metric bounds once on the aggregate
+    \State Commit all staged updates together
+    \State Queue preset publications for the next round
+    \State Save decisions, receipts, and settled state
+  \EndIf
+\EndFor
+\State Replay by replacing score requests with saved decisions
+\State Compare recomputed states with recorded states
+\end{algorithmic}
+\end{algorithm}
+
+An action effect is the metric change declared for one participant's action.
+A joint-action rule adds a declared change when its specified combination of
+actions occurs, allowing complementarity or conflict. For example, funding
+readiness and a partner joining may have a combined effect beyond either
+action alone. Without a joint rule, the model assumes their effects are
+additive. Whether complementarity exists and how large it is remain world
+assumptions, not properties established by the engine.
+
+Metric changes are summed before enforcing their bounds. If readiness is
+bounded by ten, starts at nine, and receives changes of plus four and minus
+four, aggregate settlement returns nine. Applying the upper bound after the
+positive action alone would instead return six after the negative action.
+The aggregate rule avoids that dependence on iteration order. Scheduled events
+are a separate stage before the next observation; a plotted settlement value
+can therefore differ from the following round's opening value.
+
+\begin{proposition}[Resource accounting]
+With nonnegative initial cash, affordable actions preserve nonnegative cash.
+Remaining cash plus cumulative action costs equals initial cash at every
+settled round.
+\end{proposition}
+\begin{IEEEproof}
+Equation~\eqref{eq:affordable} bounds every cost by the participant's available
+cash. Settlement subtracts that same cost from cash and adds it to cumulative
+spending. Each subtraction therefore preserves the stated total, starting
+from the initial balances.
+\end{IEEEproof}
+This invariant detects unexplained resource creation or loss. Action costs
+leave the modeled participants rather than being transferred to an explicit
+counterparty, so the proposition concerns a cost-accounting model, not a
+complete financial system or a solvency guarantee.
+
+Replay reuses recorded actions and recomputes their consequences. It is
+needed because a later model request can return a different action or model
+version. Without replay, a numerical discrepancy could be confused with
+changed inference. Exact agreement establishes consistency with the recorded
+rules and choices, not truth of the rules themselves.
+
+\subsection{What the Decision Record Can Explain}\label{sec:record-scope}
+The record makes the experiment inspectable without revealing the model's
+internal reasoning. It preserves the reviewed world, each supplied observation,
+the typed response, the selected action and selection mode, and the resulting
+numeric transitions. An investigator can check affordability, compare the
+selected action with a supplied payoff table, inspect alternative scores,
+and replay the consequences. These are input/output and rule-execution checks.
+
+Jev returns typed answers and probabilities, not a deliberation transcript
+\cite{typesafeapi}. Its confidence field does not explain a preference, and
+retained motivations describe the modeled actor rather than an observed reason
+for its choice. A code-computed utility comparison can show that an action
+would improve a specified payoff; it cannot establish that Jev used that
+comparison internally. A later prose explanation from a separate model would
+be another generated interpretation, not recovered evidence of Jev's process.
+
+Exact replay recomputes settlement using the saved choices; it does not
+reproduce the hidden inference or guarantee the same answer on a new request.
+A provider response reports its model identity without the present adapter
+verifying a model-execution attestation. A NEAR commitment can bind disclosed
+artifact bytes to a registered fingerprint, but cannot establish why an action
+was chosen or whether its incentives describe real actors. We therefore claim
+explicit assumptions, recorded choices, and replayable numerical execution,
+rather than reasoning transparency or comprehensive auditability.
+
+\subsection{Utility and Game Diagnostics}
+Utility expresses how a participant values outcomes; it prevents ``better''
+from meaning the same thing for every role. The current model uses
+\begin{equation}
+U_i=w_{i,\mathrm{cash}}b_{i,t}+\sum_k w_{i,k}x_{k,t}.
+\label{eq:utility}
+\end{equation}
+The weights convert cash and metrics into a common assumed preference scale.
+For instance, a participant may trade some cash for readiness while another
+values retained cash more strongly. Equation~\eqref{eq:utility} makes that
+trade-off inspectable. Without explicit weights, a reported improvement has
+no defined meaning for the participant. The weights and units must be reviewed;
+they are not inferred psychological traits, and utility points are not profit.
+The same expression is used for settled and terminal states by substituting
+their recorded balances and metrics.
+
+A separate small-game diagnostic enumerates joint action profiles, computes
+their utilities, and checks unilateral deviations. It reports best responses,
+pure-strategy Nash equilibria, and actions that are strictly inferior to another
+pure action. Given supplied beliefs about opponents, it computes expected
+utility as a probability-weighted average; regret is the gap between a chosen
+action and the best available expected utility. Without supplied beliefs it
+does not invent them.
+
+The diagnostic can derive a first-round payoff table from the world for at
+most four participants and 256 profiles. It uses the author's complete utility
+specification, rather than a participant's restricted information. It does
+not solve a 100-participant dynamic or incomplete-information game, and Jev
+is not required to select an equilibrium. A public promise has no binding
+effect unless the reviewed action rules impose one.
+
+\subsection{Belief Updating and Repeated Worlds}\label{sec:probability}
+Bayesian updating is an optional analytical calculation, distinct from action
+scoring. Let $H$ denote an exhaustive set of alternative hypotheses, let $h$
+be one hypothesis, and let $E$ be observed evidence. Then
+\begin{equation}
+P(h\mid E)=\frac{P(E\mid h)P(h)}{\sum_{h'\in H}P(E\mid h')P(h')}.
+\label{eq:bayes}
+\end{equation}
+The prior $P(h)$ represents belief before the signal; the likelihood
+$P(E\mid h)$ states how compatible that signal is with the hypothesis.
+The denominator sums evidence likelihood across the alternatives so that the
+updated beliefs remain normalized. Omitting it would yield unnormalized
+weights rather than probabilities. A prior, likelihoods, and hypothesis set
+must all be supplied; the calculation cannot derive them from a persuasive
+article. Sequential updates assume conditional independence of the supplied
+signals given the hypothesis. Repeated reporting of the same news can violate
+that assumption and would otherwise overcount evidence.
+
+Monte Carlo simulation means repeatedly sampling a specified model to
+describe the distribution of its outcomes. Boyun can sample actions from
+$q_{i,t}(a)$, while a separate event-chain model samples explicitly declared
+conditional event branches. The default strategic world's external events
+are scheduled, not sampled. Its current guided workflow permits only one to
+four worlds; this supports path inspection, not precise frequency estimates.
+Highest-score runs may repeat exactly. Increasing the number of worlds can
+reduce sampling variation under a fixed model, but cannot repair incorrect
+behavioral assumptions or correlated model biases.

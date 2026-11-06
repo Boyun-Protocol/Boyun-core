@@ -1,0 +1,137 @@
+\section{Discussion and Limitations}\label{sec:discussion}
+The results in Section~\ref{sec:results} establish what the system does
+reliably and where its evidence stops. This section interprets them, explains
+the local actor-inference boundary, relates \textit{Boyun} to
+\textit{MiroFish}, and sets out the work needed before any predictive claim
+could be made.
+
+\subsection{What the Results Show}
+\begin{revised}
+Taken together, the mechanism checks answer RQ1 and RQ2 within their stated
+scope: arithmetic, timing, accounting, and saved-decision replay agree with
+specified rules. Changing individual mechanisms changes results in controlled
+ways. In particular, the offline preference test demonstrates that changing
+numeric weights affects its policy, whereas rewriting persona prose alone does
+not. That test does not establish how a learned actor model interprets either.
+
+Extending those checks to a larger setting, local \textit{Laya} inference
+carries all 24 token-launch paths through 336 hours. This verifies the ability
+to record and settle repeated actor decisions without a per-call API fee.
+It does not validate the regime hypotheses or the trading behavior. Realized
+cash favors staged exit in the observed pairs, yet including inventory quotes
+changes that comparison in six pairs. The metric selected therefore affects
+what a reader may conclude.
+
+Apart from trading, the four local lending worlds distinguish a numerical
+constraint from behavior that happens to reach it. A borrower cap limits the
+maximum possible loan, but reaching that cap depends on model choices. Likewise,
+zero observed bad debt is conditional on the tested prices, liquidation rules,
+liquidator resources, and depth. Reports should identify these assumptions
+rather than treating either result as an unconditional property of a launch.
+\end{revised}
+
+\subsection{Self-Hosted Actor Inference}
+\begin{revised}
+The local execution path addresses a practical privacy requirement:
+world observations can be scored on the user's hardware instead of being sent
+to a hosted actor API. This narrows a data-transfer boundary; it is not a proof
+of system-wide confidentiality. External data services, optional commitments,
+artifact sharing, and host access remain separate considerations. Zero API
+fee likewise excludes hardware, electricity, setup, and maintenance costs.
+
+Within that local path, \textit{Laya}'s limitations are consequential.
+Its context is limited to 1024 tokens, observations that would be truncated are
+rejected, and its option scores are uncalibrated \cite{layamodel}. The recorded
+trading distributions show limited regime separation, while lending choices
+frequently select borrowing under both tested rate curves. These patterns
+should motivate validation against actual behavior, not be presented as
+measured investor or borrower demand.
+
+Looking beyond the current experiments, other open-weight typed models, such
+as \textit{Kev}, are candidates for comparison \cite{kevrepo}. They have not
+been evaluated in these case studies, and compatibility alone would not imply
+behavioral quality. Multiple seeds, measured demand, and matched evaluations
+are stronger next steps than claiming predictive value from local inference
+or from agreement between models.
+\end{revised}
+
+\subsection{Relation to \textit{MiroFish}}
+The comparison with \textit{MiroFish} suggests a division of labor rather than
+a contest. \textit{MiroFish} produces rich, persona-specific discourse but no
+financial consequences; \textit{Boyun} produces settled, replayable financial
+consequences but only pre-written messages. A natural next step is to let
+language-model actors write \textit{Boyun}'s messages while the engine keeps
+control of delivery, timing, and settlement, so that what an actor says
+is generated freely but what it can see and spend is still enforced. Doing so
+would raise the cost per decision and introduce new questions about how text
+should influence trading, which would need their own evaluation.
+
+\subsection{Toward Predictive Validation}
+None of the tests in this paper measures forecasting accuracy, and
+Figure~\ref{fig:validation} outlines what such a test would require. A study
+must first fix one measurable outcome, its resolution source, and its
+horizon, and freeze the world-construction procedure, models, and evidence
+cutoff before any forecast is issued. Forecasts must then be dated and kept,
+including failed runs, and scored against resolved outcomes using
+Eqs.~\eqref{eq:brier} and~\eqref{eq:logloss}, alongside simple baselines such
+as a historical base rate and a single-model forecast given the same
+evidence. Cases that share a time period or narrative are not independent and
+must be treated as such when estimating uncertainty. A separate user study
+would be needed to test whether \textit{Boyun}'s reports improve decisions,
+which is a different question from whether its probabilities are accurate.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\scriptsize,
+ vstep/.style={draw=teal!70,fill=wash,rounded corners=2pt,align=center,text width=3.4cm,minimum height=0.85cm,inner sep=3pt},
+ arr/.style={-{Latex[length=1.6mm]},thick,draw=teal}]
+\node[vstep] (a) at (0,0) {Fix outcome, source,\\and horizon};
+\node[vstep] (b) at (4.1,0) {Freeze construction,\\models, and evidence cutoff};
+\node[vstep] (c) at (4.1,-1.35) {Issue and keep dated\\forecasts, incl.\ failures};
+\node[vstep] (d) at (0,-1.35) {Resolve outcomes from\\the declared source};
+\node[vstep] (e) at (0,-2.7) {Score against baselines;\\report coverage and cost};
+\node[vstep] (f) at (4.1,-2.7) {Limit claims to\\the scored evidence};
+\draw[arr] (a)--(b); \draw[arr] (b)--(c); \draw[arr] (c)--(d);
+\draw[arr] (d)--(e); \draw[arr] (e)--(f);
+\end{tikzpicture}
+\caption{Proposed prospective validation protocol. This is future work,
+not an experiment reported in this paper.}
+\label{fig:validation}
+\end{figure}
+
+\subsection{Limitations}
+\begin{revised}
+Several limitations apply to the full evaluation. The case results use one
+seed per plan, synthetic actor balances and preferences, and declared event or
+price schedules. They do not represent independent observations of human
+behavior. In \textit{MACRON}, near-uniform option scores weaken regime
+separation, and upfront spending alone triggers the loss-budget alert in the
+higher-upfront plans. Founder trades are partly policy-driven, so model choice
+cannot explain every cash difference.
+
+On the market side, a simplified constant-product pool omits order books,
+transaction ordering, front-running, outages, and venue-specific execution
+details. On the lending side, assumed liquidator cash and exit depth determine
+which liquidations can settle; historical hourly closes do not test intrahour
+price shocks. The competing venue's rates are fixed at one snapshot and campaign
+reach has no measured conversion. These conditions bound the scope of every
+financial conclusion.
+
+Finally, messages attached to actions are pre-written, giving \textit{Boyun}
+a narrower social layer than open-ended discourse. The \textit{MiroFish}
+comparison matches the brief, but actor models, activation rules, and recovery
+procedures differ. It compares recorded capabilities rather than forecasting
+accuracy or general superiority.
+\end{revised}
+
+\subsection{Responsible Use}
+These limits also shape how \textit{Boyun} should and should not be used.
+Its outputs are conditional explorations of stated assumptions, not
+financial advice or price forecasts. Because the case study concerns paid
+promotion of a speculative token, the same tools could in principle be used to
+rehearse campaigns that mislead buyers; reports therefore state their
+assumptions and limits explicitly, and they should not be presented to
+investors as evidence of likely returns. World files and reports can contain
+private strategy, so authors should share them deliberately. Local actor
+inference avoids sending observations to an actor API; external services and
+publication remain separate disclosure decisions.

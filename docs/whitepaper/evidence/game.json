@@ -1,0 +1,152 @@
+{
+  "schema_version": "finite-game-analysis.v1",
+  "game_sha256": "188dff1495efd4b6b5800525d5d2724b07ad1f2eba94d70af17e133ebff361b2",
+  "engine_sha256": "23b887751a4ee71d67ff45bf7d8a4ef81480ed19fc3e70c60909164f06ec74c5",
+  "game_id": "launch-review-coordination",
+  "utility_unit": "illustrative utility points; not USD, token price or market outcome probability",
+  "profile_count": 4,
+  "advisory_only": true,
+  "strategy_beliefs": {
+    "founder": {
+      "fund-disclosure": 6000,
+      "skip-review": 4000
+    },
+    "liquidity-partner": {
+      "commit-escrow": 4000,
+      "wait": 6000
+    }
+  },
+  "players": {
+    "founder": {
+      "expected_utilities": {
+        "fund-disclosure": {
+          "numerator": 6,
+          "denominator": 5
+        },
+        "skip-review": {
+          "numerator": 4,
+          "denominator": 5
+        }
+      },
+      "best_responses": [
+        "fund-disclosure"
+      ],
+      "deviation_regret": {
+        "fund-disclosure": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "skip-review": {
+          "numerator": 2,
+          "denominator": 5
+        }
+      },
+      "mixed_strategy_expected_utility": {
+        "numerator": 26,
+        "denominator": 25
+      },
+      "mixed_strategy_deviation_regret": {
+        "numerator": 4,
+        "denominator": 25
+      }
+    },
+    "liquidity-partner": {
+      "expected_utilities": {
+        "commit-escrow": {
+          "numerator": 7,
+          "denominator": 5
+        },
+        "wait": {
+          "numerator": 3,
+          "denominator": 5
+        }
+      },
+      "best_responses": [
+        "commit-escrow"
+      ],
+      "deviation_regret": {
+        "commit-escrow": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "wait": {
+          "numerator": 4,
+          "denominator": 5
+        }
+      },
+      "mixed_strategy_expected_utility": {
+        "numerator": 23,
+        "denominator": 25
+      },
+      "mixed_strategy_deviation_regret": {
+        "numerator": 12,
+        "denominator": 25
+      }
+    }
+  },
+  "pure_nash_profiles": [
+    {
+      "founder": "fund-disclosure",
+      "liquidity-partner": "commit-escrow"
+    },
+    {
+      "founder": "skip-review",
+      "liquidity-partner": "wait"
+    }
+  ],
+  "strictly_dominated_actions": [],
+  "payoff_provenance": [
+    {
+      "actions": {
+        "founder": "fund-disclosure",
+        "liquidity-partner": "commit-escrow"
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Both incur coordination costs but value a reviewed scoped pilot; utility scores are illustrative.",
+        "source_refs": []
+      }
+    },
+    {
+      "actions": {
+        "founder": "fund-disclosure",
+        "liquidity-partner": "wait"
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Operator pays review cost without partner participation; partner values preserved flexibility.",
+        "source_refs": []
+      }
+    },
+    {
+      "actions": {
+        "founder": "skip-review",
+        "liquidity-partner": "commit-escrow"
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Unreviewed participation creates assumed partner downside despite short-term operator benefit.",
+        "source_refs": []
+      }
+    },
+    {
+      "actions": {
+        "founder": "skip-review",
+        "liquidity-partner": "wait"
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Neither incurs coordination cost or receives the assumed pilot benefit.",
+        "source_refs": []
+      }
+    }
+  ],
+  "limitations": [
+    "Utilities and strategy beliefs are supplied assumptions or estimates, not measured willingness to pay or real-world outcome probabilities.",
+    "Independent strategy beliefs exclude correlations; no default distribution is invented when beliefs are absent.",
+    "Pure Nash is a no-profitable-unilateral-deviation condition in the supplied static game, not a forecast that people choose that profile.",
+    "No mixed-strategy equilibrium solver, coalition deviation, repeated-game strategy, bargaining solution or iterated elimination is implemented.",
+    "Strict domination considers other pure actions only, over all opponent profiles even when their belief probability is zero.",
+    "Utility points are not cash profit. This advisory calculation neither executes actions nor modifies an agent world or financial ledger."
+  ]
+}

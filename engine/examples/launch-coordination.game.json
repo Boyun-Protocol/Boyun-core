@@ -1,0 +1,108 @@
+{
+  "schema_version": "finite-game.v1",
+  "id": "launch-review-coordination",
+  "description": "Illustrative NEAR project launch coordination: an operator and independent liquidity partner choose review and participation actions. Payoffs encode assumed utility including cost, diligence and flexibility, not measured human motives, dollar returns or market demand. The advisory game cannot launch a token, move funds or identify a real person.",
+  "utility_unit": "illustrative utility points; not USD, token price or market outcome probability",
+  "players": [
+    {
+      "id": "founder",
+      "name": "Hypothetical project operator",
+      "actions": [
+        {
+          "id": "fund-disclosure",
+          "label": "Fund independent disclosure review"
+        },
+        {
+          "id": "skip-review",
+          "label": "Skip independent review"
+        }
+      ]
+    },
+    {
+      "id": "liquidity-partner",
+      "name": "Hypothetical independent liquidity partner",
+      "actions": [
+        {
+          "id": "commit-escrow",
+          "label": "Commit only through disclosed escrow"
+        },
+        {
+          "id": "wait",
+          "label": "Wait without committing"
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "actions": {
+        "founder": "fund-disclosure",
+        "liquidity-partner": "commit-escrow"
+      },
+      "payoffs": {
+        "founder": 6,
+        "liquidity-partner": 5
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Both incur coordination costs but value a reviewed scoped pilot; utility scores are illustrative.",
+        "source_refs": []
+      }
+    },
+    {
+      "actions": {
+        "founder": "fund-disclosure",
+        "liquidity-partner": "wait"
+      },
+      "payoffs": {
+        "founder": -2,
+        "liquidity-partner": 1
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Operator pays review cost without partner participation; partner values preserved flexibility.",
+        "source_refs": []
+      }
+    },
+    {
+      "actions": {
+        "founder": "skip-review",
+        "liquidity-partner": "commit-escrow"
+      },
+      "payoffs": {
+        "founder": 2,
+        "liquidity-partner": -4
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Unreviewed participation creates assumed partner downside despite short-term operator benefit.",
+        "source_refs": []
+      }
+    },
+    {
+      "actions": {
+        "founder": "skip-review",
+        "liquidity-partner": "wait"
+      },
+      "payoffs": {
+        "founder": 0,
+        "liquidity-partner": 0
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Neither incurs coordination cost or receives the assumed pilot benefit.",
+        "source_refs": []
+      }
+    }
+  ],
+  "strategy_beliefs": {
+    "founder": {
+      "fund-disclosure": 6000,
+      "skip-review": 4000
+    },
+    "liquidity-partner": {
+      "commit-escrow": 4000,
+      "wait": 6000
+    }
+  }
+}

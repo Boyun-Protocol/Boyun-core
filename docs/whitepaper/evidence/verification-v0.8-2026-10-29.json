@@ -1,0 +1,51 @@
+{
+  "revision": "v0.8",
+  "date": "2026-10-29",
+  "title": "Boyun: Multi-Agent Simulation for Financial and Economic Decisions",
+  "scope": "Financial/economic actor incentives, observable decision records versus unavailable Jev reasoning, expanded primary economic/game related work",
+  "document_class": "IEEEtran",
+  "compiler": "Tectonic",
+  "pdf_producer": "xdvipdfmx (0.1)",
+  "pdf_pages": 14,
+  "pdf_sha256": "d161d64877496c4af792d63c6f299ce6fc93e240c18d97558250fab0cfb906d7",
+  "bibliography_entries": 33,
+  "unknown_citations": 0,
+  "uncited_bibliography_entries": 0,
+  "unknown_internal_references": 0,
+  "main_sections_roman": 7,
+  "numbered_equations": 5,
+  "pseudocode_algorithms": 2,
+  "vector_figures": 5,
+  "rendered_pages_visually_reviewed": 14,
+  "synthetic_experiments": 6,
+  "synthetic_results": "unchanged; no model or market behavior claim added",
+  "full_scoped_tests_passed": 1756,
+  "subtests_passed": 42,
+  "full_suite_seconds": 89.81,
+  "focused_reports_insights_ui_construction_tour_tests_passed": 52,
+  "installed_public_journey_focused_tests_passed": 34,
+  "installed_public_journey_seconds": 24.91,
+  "new_provider_calls": 0,
+  "new_chain_transactions": 0,
+  "added_framework_dependencies": [],
+  "browser": {
+    "driver": "gstack headless Chromium",
+    "url": "http://127.0.0.1:8783/docs#decision-record",
+    "scope": "read record-scope and economic-research sections",
+    "fresh_console_errors": [],
+    "screenshot": "output/qa/paper-v0.8/decision-record-section.png"
+  },
+  "known_build_warnings": [
+    "underfull spacing",
+    "Tectonic bibliography rerun consistency"
+  ],
+  "manuscript_files_sha256": {
+    "main.tex": "87cb3ce65e349f4c5a6dff0cd6dca424ad2f5381d9051c7307b430b91d5bbc81",
+    "01-framing.tex": "e303abed0551083b59111159ca54d08131d76b3d0277b7c6cc21d661b1eb22e8",
+    "02-method.tex": "405df858eaf950b348dff2ee6111f7b9fa68b558d5d661110b08f465b59d9341",
+    "03-system.tex": "5dd4d357bca76c7dc47879a8f33f79bc08a00953ea5ba187ace6033a544e8ebd",
+    "04-evaluation.tex": "b282f8212c29dd8193ef80052be136fcecd014408d73491602d827ffcddb7188",
+    "05-discussion.tex": "ad30af72a96d3964fda2f7d1a7a2d43192b0d8e365b12c103098e0706ee3169d",
+    "references.bib": "8507328eadfbbf1c8e4cd2967381cdd66b9846a2dd670e29372f8f85b55be5dc"
+  }
+}

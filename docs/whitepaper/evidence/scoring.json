@@ -1,0 +1,147 @@
+{
+  "schema_version": "binary-evaluation-result.v1",
+  "split_at": "2025-02-01T00:00:00Z",
+  "counts": {
+    "total": 4,
+    "train": 2,
+    "holdout": 2,
+    "excluded": 0
+  },
+  "training_base_rate": 0.5,
+  "holdout": {
+    "count": 2,
+    "brier_score": 0.0625,
+    "log_loss": 0.2876820724517809
+  },
+  "baseline": {
+    "method": "training_outcome_base_rate",
+    "probability": 0.5,
+    "count": 2,
+    "brier_score": 0.25,
+    "log_loss": 0.6931471805599453
+  },
+  "calibration_bins": [
+    {
+      "lower": 0.0,
+      "upper": 0.1,
+      "upper_inclusive": false,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    },
+    {
+      "lower": 0.1,
+      "upper": 0.2,
+      "upper_inclusive": false,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    },
+    {
+      "lower": 0.2,
+      "upper": 0.3,
+      "upper_inclusive": false,
+      "count": 1,
+      "mean_probability": 0.25,
+      "outcome_rate": 0.0
+    },
+    {
+      "lower": 0.3,
+      "upper": 0.4,
+      "upper_inclusive": false,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    },
+    {
+      "lower": 0.4,
+      "upper": 0.5,
+      "upper_inclusive": false,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    },
+    {
+      "lower": 0.5,
+      "upper": 0.6,
+      "upper_inclusive": false,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    },
+    {
+      "lower": 0.6,
+      "upper": 0.7,
+      "upper_inclusive": false,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    },
+    {
+      "lower": 0.7,
+      "upper": 0.8,
+      "upper_inclusive": false,
+      "count": 1,
+      "mean_probability": 0.75,
+      "outcome_rate": 1.0
+    },
+    {
+      "lower": 0.8,
+      "upper": 0.9,
+      "upper_inclusive": false,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    },
+    {
+      "lower": 0.9,
+      "upper": 1.0,
+      "upper_inclusive": true,
+      "count": 0,
+      "mean_probability": null,
+      "outcome_rate": null
+    }
+  ],
+  "calibration_method": "ten_fixed_equal_width_bins_no_fitting",
+  "log_loss_epsilon": 1e-15,
+  "log_loss_clipping": "[epsilon,1-epsilon]; Brier uses unmodified probabilities",
+  "train_ids": [
+    "train-0",
+    "train-1"
+  ],
+  "holdout_ids": [
+    "test-0",
+    "test-1"
+  ],
+  "excluded_ids": [],
+  "source_metadata": {
+    "source_mode": "synthetic",
+    "status": "synthetic_fixture_only",
+    "sources": [
+      {
+        "id": "evidence",
+        "url": "https://example.test/input",
+        "observed_at": "2024-12-01T00:00:00Z"
+      },
+      {
+        "id": "train-outcome",
+        "url": "https://example.test/train",
+        "observed_at": "2025-01-15T00:00:00Z"
+      },
+      {
+        "id": "test-outcome",
+        "url": "https://example.test/test",
+        "observed_at": "2025-02-15T00:00:00Z"
+      }
+    ]
+  },
+  "limitations": [
+    "Scores describe supplied records only; relevance and representative historical coverage are not established.",
+    "Source URLs, timestamps and outcomes are caller-reported; source content is not fetched or independently verified.",
+    "Source observed_at is an unverified point-in-time declaration; source revisions and ingestion availability are not proven.",
+    "Synthetic fixtures test scoring mechanics only and do not establish predictive performance.",
+    "Descriptive calibration bins do not fit a calibrator or establish causality; no data is used to fit forecast probabilities.",
+    "Forecasts issued before the cutoff but resolved after it are excluded from train and holdout.",
+    "Training baseline excludes pending outcomes and may have duration or selection bias; it is not a representative population base rate."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-06",
+  "scope": "Official paper promotion and launch cleanup",
+  "official_pages": 16,
+  "draft_pages": 16,
+  "official_word_counts_match_draft_except_title_marker": true,
+  "layout_note": "Removing Draft title shifts a paragraph around the first figure; extracted reading order differs.",
+  "revision_colors_removed": true,
+  "tests": {
+    "passed": 1952,
+    "skipped": 1,
+    "command": "uv run --project engine --extra pdf python -m pytest engine/tests tools/tests -q"
+  },
+  "source_map_check": "65 symbols and 5 public documents current",
+  "model_calls_made_for_this_release": 0,
+  "chain_transactions": 0,
+  "x_posts_sent": 0,
+  "sha256": {
+    "main.tex": "26c996baaec28e24c222dda2da6b44cc136edbbdb6f3f52a7c355cba2f513679",
+    "main.pdf": "9ca157f51278e72319e549f698f96e2a73e5d66f00ac3d4b16cb32196f428c2c",
+    "draft.tex": "0d6590dea78e81722da9c0c9ebb2eff4b38490448b60ad14ab7d94d5ba76e5b9",
+    "draft.pdf": "54ec793a39ff7d972bc09b4e916a71bcd32283319ca50d6fa65fda3d7f56a083"
+  },
+  "post_merge_checks": {
+    "passed": 83,
+    "scope": "tools and local/hosted actor adapter regressions"
+  }
+}

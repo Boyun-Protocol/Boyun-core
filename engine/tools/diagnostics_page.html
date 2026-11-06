@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MACRON · What drives these results</title>
+<style>
+.viz-root{color-scheme:light;--page:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+ --grid:#e1e0d9;--axis:#c3c2b7;--ring:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#eb6834;--pos:#2a78d6;--neg:#e34948;--total:#52514e;
+ --critical:#d03b3b;--serious:#ec835a;--warning:#fab219;--nodata:#f0efec}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .viz-root{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;
+ --ink:#f0efec;--ink2:#c3c2b7;--grid:#2c2c2a;--axis:#383835;--ring:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--pos:#3987e5;--neg:#e66767;--total:#c3c2b7;--nodata:#262624}}
+:root[data-theme="dark"] .viz-root{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--grid:#2c2c2a;--axis:#383835;
+ --ring:rgba(255,255,255,.10);--s1:#3987e5;--s2:#d95926;--pos:#3987e5;--neg:#e66767;--total:#c3c2b7;--nodata:#262624}
+*{box-sizing:border-box}
+body{margin:0}
+.viz-root{background:var(--page);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+main{max-width:980px;margin:auto;padding:20px 16px 48px}
+h1{font-size:clamp(1.5rem,4.5vw,2.2rem);line-height:1.2;margin:.2em 0 .3em}
+h2{font-size:1.15rem;margin:0 0 .2em}
+.lede,.sub{color:var(--ink2)}
+.sub{margin:0 0 12px;font-size:.92rem}
+.eyebrow{color:var(--muted);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin:0}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:18px;margin:16px 0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:14px}
+.tile .v{font-size:1.9rem;font-weight:650;line-height:1.1;margin:4px 0}
+.tile .l{color:var(--ink2);font-size:.88rem}.tile .n{color:var(--muted);font-size:.82rem}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0 4px}
+select{font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--axis);background:var(--surface);color:var(--ink)}
+.warn{display:flex;gap:8px;align-items:flex-start;margin:6px 0;font-size:.92rem}
+.badge{flex:none;font-size:.72rem;font-weight:650;padding:2px 7px;border-radius:99px;color:#0b0b0b;margin-top:2px}
+.badge.critical{background:var(--critical);color:#fff}.badge.serious{background:var(--serious)}.badge.warning{background:var(--warning)}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{fill:var(--ink2);font-size:12px;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--ink2);margin:6px 0}
+.key{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.key.line{height:2px;border-radius:1px}
+.mark{cursor:default;outline:none}.mark:hover,.mark:focus{opacity:.8}
+#tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--ring);border-radius:8px;
+ padding:8px 10px;font-size:.85rem;box-shadow:0 4px 14px rgba(0,0,0,.12);display:none;z-index:9;max-width:260px}
+#tip b{font-size:1rem}#tip .row{display:flex;gap:8px;align-items:center;white-space:nowrap}
+#tip .sw{width:12px;height:2px;display:inline-block}
+details{margin-top:10px;font-size:.88rem}summary{cursor:pointer;color:var(--ink2)}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;min-width:560px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--grid);text-align:right}th:first-child,td:first-child{text-align:left}
+th{color:var(--ink2);font-weight:600}
+.findings li{margin:6px 0}
+.small{font-size:.82rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="viz-root">
+<main>
+<p class="eyebrow">Boyun · MACRON lifecycle matrix · diagnostics</p>
+<h1>What drives these results</h1>
+<p class="lede">This page shows what produced each saved result: which money movements came from fixed engine rules and which
+from model decisions, whether the comparison between policies is fair, and how decisive each actor model is. It is
+computed by replaying saved choices, with no new model calls. All dollar values are simulated.</p>
+
+<section class="tiles" id="tiles" aria-label="Headline checks"></section>
+
+<section class="card">
+<h2>What to take from this</h2>
+<ul class="findings" id="findings"></ul>
+</section>
+
+<div class="filters">
+<label for="world">World</label>
+<select id="world"></select>
+<label for="policy">Policy</label>
+<select id="policy"><option value="pause-and-observe">Pause and observe</option><option value="staged-exit">Staged exit</option></select>
+</div>
+<p class="small">These two controls set the three sections below.</p>
+
+<section class="card">
+<h2>Checks for this world</h2>
+<div id="warnings"></div>
+</section>
+
+<section class="card">
+<h2>Where the founder's money went</h2>
+<p class="sub">From starting capital to the last saved hour. Unsold tokens are valued at the model sale price for the final
+pool state, not an executed sale.</p>
+<div class="legend"><span><span class="key" style="background:var(--neg)"></span>Reduces the founder result</span>
+<span><span class="key" style="background:var(--pos)"></span>Adds to it</span><span><span class="key" style="background:var(--total)"></span>Result</span></div>
+<div id="waterfall"></div>
+<details><summary>Table view</summary><div class="scroll" id="waterfall-table"></div></details>
+</section>
+
+<section class="card">
+<h2>Founder result over time: pause versus staged exit</h2>
+<p class="sub">Cash plus unsold-token value, less starting capital. Both policies share every decision until the exit
+alert, so the gap after it is the policy effect on this seed. The shaded area has no saved data.</p>
+<div class="legend"><span><span class="key line" style="background:var(--s1)"></span>Pause and observe</span>
+<span><span class="key line" style="background:var(--s2)"></span>Staged exit</span></div>
+<div id="lines"></div>
+<details><summary>Table view</summary><div class="scroll" id="lines-table"></div></details>
+</section>
+
+<section class="card">
+<h2>Policy effect in every world</h2>
+<p class="sub">Staged exit minus pause, at the last hour both policies saved. One seed per world, so this shows the
+spread, not a reliable winner.</p>
+<div class="legend"><span><span class="key" style="background:var(--pos)"></span>Staged exit ended higher</span>
+<span><span class="key" style="background:var(--neg)"></span>Pause ended higher</span></div>
+<div id="paired"></div>
+<details><summary>Table view</summary><div class="scroll" id="paired-table"></div></details>
+</section>
+
+<section class="card">
+<h2>How decisive each actor model is</h2>
+<p class="sub">Average normalized entropy of action scores: 1.0 means an even split across every option, so a sampled
+choice is effectively random. Lower means the model clearly prefers some options.</p>
+<div class="legend"><span><span class="key" style="background:var(--s1)"></span>Jev</span>
+<span><span class="key" style="background:var(--s2)"></span>Laya</span></div>
+<div id="entropy"></div>
+<details><summary>Table view</summary><div class="scroll" id="entropy-table"></div></details>
+</section>
+
+<section class="card">
+<h2>All worlds</h2>
+<div class="scroll" id="matrix"></div>
+<p class="small" id="limits"></p>
+</section>
+</main>
+<div id="tip" role="tooltip"></div>
+</div>
+<script id="data" type="application/json">/*__DATA__*/null</script>
+<script>
+(function(){
+'use strict';
+var D=JSON.parse(document.getElementById('data').textContent);
+var NS='http://www.w3.org/2000/svg';
+var POL={'pause-and-observe':'Pause and observe','staged-exit':'Staged exit'};
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function h(tag,text,parent){var e=document.createElement(tag);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e}
+function usd(v){var s=Math.abs(v)>=1000?Math.round(Math.abs(v)).toLocaleString('en-US'):Math.abs(v).toFixed(0);return (v<0?'−$':'$')+s}
+function signed(v){return (v>0?'+':'')+usd(v)}
+function niceStep(range,target){var raw=range/target,p=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/p;return (m<1.5?1:m<3?2:m<7?5:10)*p}
+var tip=document.getElementById('tip');
+function showTip(evt,rows){tip.textContent='';rows.forEach(function(r){var d=h('div',null,tip);d.className='row';
+ if(r.color){var s=h('span',null,d);s.className='sw';s.style.background=r.color}var b=h('b',r.value,d);var t=h('span',r.label,d);t.style.color='var(--ink2)'});
+ tip.style.display='block';var x=evt.clientX,y=evt.clientY;if(x===undefined){var bb=evt.target.getBoundingClientRect();x=bb.left+bb.width/2;y=bb.top}
+ var w=tip.offsetWidth;tip.style.left=Math.max(8,Math.min(window.innerWidth-w-8,x+12))+'px';tip.style.top=(y+14)+'px'}
+function hideTip(){tip.style.display='none'}
+function hover(node,rows){node.setAttribute('tabindex','0');node.setAttribute('class','mark');
+ node.addEventListener('pointermove',function(e){showTip(e,rows())});node.addEventListener('pointerleave',hideTip);
+ node.addEventListener('focus',function(e){showTip(e,rows())});node.addEventListener('blur',hideTip)}
+function table(container,head,rows){container.textContent='';var t=h('table',null,container),tr=h('tr',null,h('thead',null,t));
+ head.forEach(function(x){h('th',x,tr)});var tb=h('tbody',null,t);rows.forEach(function(r){var row=h('tr',null,tb);r.forEach(function(c){h('td',c,row)})})}
+function size(box){var w=Math.max(300,Math.round(box.clientWidth||640));return {W:w,compact:w<520}}
+function css(name){return getComputedStyle(document.querySelector('.viz-root')).getPropertyValue(name).trim()}
+
+/* headline + findings */
+D.headline.forEach(function(t){var d=h('div',null,document.getElementById('tiles'));d.className='tile';
+ h('div',t.label,d).className='l';h('div',t.value,d).className='v';h('div',t.note,d).className='n'});
+(function(){var ul=document.getElementById('findings'),W=D.worlds;
+ var pause=W.map(function(w){return w.paths['pause-and-observe']}).filter(Boolean);
+ var neg=pause.filter(function(p){return p.end.marked<0}).length;
+ var diffs=W.filter(function(w){return w.paired}).map(function(w){return w.paired.difference});
+ var better=diffs.filter(function(v){return v>0}).length;
+ var gain=pause.filter(function(p){return p.end.quote+Object.values(p.flows).reduce(function(a,b){return a+b},0)>0}).length;
+ [ 'Under pause and observe, the founder ends below starting capital in '+neg+' of '+pause.length+' worlds once unsold tokens are valued. The token position gained value in '+gain+' of them, so in those worlds the loss comes from the upfront cost, not from trading.',
+   'No founder trade was chosen by a model. Founder buys and staged-exit sales are fixed engine rules; the founder model only chooses to wait, pause the market maker or ask for a campaign review. These runs therefore test the rules, not founder judgement.',
+   'Staged exit ended higher than pause in '+better+' of '+diffs.length+' worlds, with differences from '+signed(Math.min.apply(null,diffs))+' to '+signed(Math.max.apply(null,diffs))+'. On one seed per world this is spread, not evidence that either policy is better.',
+   'Worlds with a $10,000 upfront cost raise the exit alert at hour 0, so half the matrix compares policies under an alarm caused by the cost itself.',
+   'No path reached the 14-day horizon. Read every result as "by about day 5 or 6", not as a 14-day outcome.'
+ ].forEach(function(s){h('li',s,ul)})})();
+
+/* controls */
+var worldSel=document.getElementById('world'),polSel=document.getElementById('policy');
+D.worlds.forEach(function(w,i){var o=h('option',w.regime+' · $'+(w.position/1000)+'k position · $'+(w.upfront/1000)+'k upfront',worldSel);o.value=i});
+var start=D.worlds.findIndex(function(w){return w.name==='bull-p5000-c5000'});worldSel.value=start<0?0:start;
+
+function drawWarnings(w){var box=document.getElementById('warnings');box.textContent='';
+ var p=w.paths['pause-and-observe'];
+ if(p&&p.alert){var d=h('div',null,box);d.className='warn';var b=h('span','info',d);b.className='badge';b.style.background='var(--grid)';b.style.color='var(--ink)';
+  h('span','Exit alert at hour '+p.alert.hour+': '+p.alert.cause+'. Migration '+(p.migrated_hour==null?'did not happen in saved data':'at hour '+(+p.migrated_hour.toFixed(1)))+'.',d)}
+ w.warnings.forEach(function(x){var d=h('div',null,box);d.className='warn';var b=h('span',x.level,d);b.className='badge '+x.level;
+  h('span',(x.policy==='both'?'':POL[x.policy]+': ')+x.text,d)})}
+
+/* waterfall: horizontal so labels stay readable on a phone */
+var ORDER=['Upfront cost (fixed)','Launch buy (fixed rule)','Post-migration top-up (fixed rule)','Founder model-chosen trades','Staged-exit sales (fixed rule)','Unsold tokens, valued'];
+function drawWaterfall(p){var steps=[],run=0,vals={'Upfront cost (fixed)':-p.upfront,'Unsold tokens, valued':p.end.quote};
+ for(var k in p.flows)vals[k]=p.flows[k];
+ ORDER.forEach(function(k){if(vals[k]===undefined)return;steps.push({label:k,from:run,to:run+vals[k],v:vals[k]});run+=vals[k]});
+ steps.push({label:'Result vs starting capital',from:0,to:run,v:run,total:true});
+ var lo=Math.min(0,Math.min.apply(null,steps.map(function(s){return Math.min(s.from,s.to)}))),hi=Math.max(0,Math.max.apply(null,steps.map(function(s){return Math.max(s.from,s.to)})));
+ var box=document.getElementById('waterfall');box.textContent='';var z=size(box),W=z.W,C=z.compact,L=C?4:200,R=70,row=C?50:34,lab=C?18:0,bh=C?20:22,H=steps.length*row+30;
+ var svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Founder money waterfall'},box);
+ var x=function(v){return L+(v-lo)/(hi-lo||1)*(W-L-R)},step=niceStep(hi-lo,4);
+ for(var t=Math.ceil(lo/step)*step;t<=hi+1e-9;t+=step){el('line',{x1:x(t),x2:x(t),y1:0,y2:H-24,stroke:t===0?css('--axis'):css('--grid'),'stroke-width':1},svg);
+  el('text',{x:x(t),y:H-8,'text-anchor':'middle'},svg).textContent=usd(t)}
+ steps.forEach(function(s,i){var y=i*row+6+lab,a=x(Math.min(s.from,s.to)),b=x(Math.max(s.from,s.to));
+  el('text',C?{x:L,y:y-4,'text-anchor':'start'}:{x:L-10,y:y+15,'text-anchor':'end'},svg).textContent=s.label;
+  var g=el('g',{},svg);el('rect',{x:L,y:y-2,width:W-L-R,height:row-4,fill:'transparent'},g);
+  el('rect',{x:a,y:y,width:Math.max(2,b-a),height:bh,rx:4,fill:s.total?css('--total'):s.v<0?css('--neg'):css('--pos')},g);
+  el('text',{x:b+6,y:y+15,'text-anchor':'start'},svg).textContent=signed(s.v);
+  if(i<steps.length-1&&!s.total)el('line',{x1:x(s.to),x2:x(s.to),y1:y+bh,y2:y+row,stroke:css('--axis'),'stroke-width':1},svg);
+  hover(g,function(){return [{value:signed(s.v),label:s.label},{value:usd(s.to),label:'running result'}]})});
+ table(document.getElementById('waterfall-table'),['Step','Change','Running result'],steps.map(function(s){return [s.label,signed(s.v),usd(s.to)]}))}
+
+/* line chart with crosshair; fixed 0..336 domain so missing hours stay visible */
+function drawLines(w){var box=document.getElementById('lines');box.textContent='';
+ var A=(w.paths['pause-and-observe']||{series:[]}).series,B=(w.paths['staged-exit']||{series:[]}).series;
+ var all=A.concat(B).map(function(r){return r.marked}),lo=Math.min(0,Math.min.apply(null,all)),hi=Math.max(0,Math.max.apply(null,all));
+ var W=size(box).W,H=260,L=64,R=14,T=12,Bm=30,svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Founder result over time'},box);
+ var x=function(hr){return L+hr/336*(W-L-R)},y=function(v){return T+(hi-v)/(hi-lo||1)*(H-T-Bm)};
+ var last=Math.max(A.length?A[A.length-1].hour:0,B.length?B[B.length-1].hour:0);
+ el('rect',{x:x(last),y:T,width:x(336)-x(last),height:H-T-Bm,fill:css('--nodata')},svg);
+ el('text',{x:(x(last)+x(336))/2,y:T+16,'text-anchor':'middle'},svg).textContent='no saved data';
+ var step=niceStep(hi-lo,4);for(var t=Math.ceil(lo/step)*step;t<=hi+1e-9;t+=step){el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:t===0?css('--axis'):css('--grid')},svg);
+  el('text',{x:L-8,y:y(t)+4,'text-anchor':'end'},svg).textContent=usd(t)}
+ (W<520?[0,96,192,288]:[0,48,96,144,192,240,288,336]).forEach(function(hr){el('text',{x:x(hr),y:H-10,'text-anchor':'middle'},svg).textContent=hr===0?'hour 0':'day '+hr/24});
+ var alert=w.paths['pause-and-observe']&&w.paths['pause-and-observe'].alert;
+ if(alert){el('line',{x1:x(alert.hour),x2:x(alert.hour),y1:T,y2:H-Bm,stroke:css('--ink2'),'stroke-width':1},svg);
+  el('text',{x:x(alert.hour)+4,y:H-Bm-6,'text-anchor':'start'},svg).textContent='exit alert'}
+ [[A,'--s1'],[B,'--s2']].forEach(function(s){if(!s[0].length)return;el('polyline',{points:s[0].map(function(r){return x(r.hour)+','+y(r.marked)}).join(' '),
+  fill:'none',stroke:css(s[1]),'stroke-width':2,'stroke-linejoin':'round'},svg);var e=s[0][s[0].length-1];
+  el('circle',{cx:x(e.hour),cy:y(e.marked),r:4,fill:css(s[1]),stroke:css('--surface'),'stroke-width':2},svg)});
+ var cross=el('line',{y1:T,y2:H-Bm,stroke:css('--muted'),'stroke-width':1,visibility:'hidden'},svg);
+ var hit=el('rect',{x:L,y:T,width:x(last)-L,height:H-T-Bm,fill:'transparent'},svg);
+ var byA={},byB={};A.forEach(function(r){byA[r.hour]=r});B.forEach(function(r){byB[r.hour]=r});
+ function at(evt){var bb=svg.getBoundingClientRect(),px=(evt.clientX-bb.left)/bb.width*W,hr=Math.max(0,Math.min(last,Math.round((px-L)/(W-L-R)*336)));
+  cross.setAttribute('x1',x(hr));cross.setAttribute('x2',x(hr));cross.setAttribute('visibility','visible');var rows=[{value:'Hour '+hr,label:'day '+(hr/24).toFixed(1)}];
+  if(byA[hr])rows.push({value:usd(byA[hr].marked),label:'Pause and observe',color:css('--s1')});
+  if(byB[hr])rows.push({value:usd(byB[hr].marked),label:'Staged exit',color:css('--s2')});showTip(evt,rows)}
+ hit.addEventListener('pointermove',at);hit.addEventListener('pointerleave',function(){cross.setAttribute('visibility','hidden');hideTip()});
+ var hours=Object.keys(byA).map(Number).filter(function(hr){return hr%24===0||hr===last});
+ table(document.getElementById('lines-table'),['Hour','Pause: cash','Pause: tokens','Pause: result','Staged: cash','Staged: tokens','Staged: result'],
+  hours.map(function(hr){var a=byA[hr],b=byB[hr]||{};return [hr,usd(a.cash),usd(a.quote),usd(a.marked),b.cash==null?'—':usd(b.cash),b.quote==null?'—':usd(b.quote),b.marked==null?'—':usd(b.marked)]}))}
+
+/* diverging bars: one row per world */
+function drawPaired(){var rows=D.worlds.filter(function(w){return w.paired});var box=document.getElementById('paired');box.textContent='';
+ var m=Math.max.apply(null,rows.map(function(w){return Math.abs(w.paired.difference)})),z=size(box),W=z.W,C=z.compact,L=C?4:190,R=C?4:70,row=C?44:28,lab=C?16:0,bh=C?18:16,H=rows.length*row+28;
+ var svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Policy effect per world'},box);
+ var mid=L+(W-L-R)/2,x=function(v){return mid+v/m*(W-L-R)/2};
+ el('line',{x1:mid,x2:mid,y1:0,y2:H-22,stroke:css('--axis')},svg);
+ [-m,0,m].forEach(function(t){el('text',{x:x(t),y:H-6,'text-anchor':t<0?'start':t>0?'end':'middle'},svg).textContent=signed(Math.round(t))});
+ rows.forEach(function(w,i){var y=i*row+4+lab,v=w.paired.difference,a=Math.min(x(0),x(v)),b=Math.max(x(0),x(v));
+  el('text',C?{x:L,y:y-2,'text-anchor':'start'}:{x:L-10,y:y+14,'text-anchor':'end'},svg).textContent=w.regime+' · $'+w.position/1000+'k · $'+w.upfront/1000+'k';
+  var g=el('g',{},svg);el('rect',{x:L,y:y-3,width:W-L-R,height:row-2,fill:'transparent'},g);
+  el('rect',{x:a,y:y+2,width:Math.max(2,b-a),height:bh,rx:4,fill:v>=0?css('--pos'):css('--neg')},g);
+  var label=signed(v),inside=(v<0&&a-6-label.length*7<L)||(v>0&&b+6+label.length*7>W-R);
+  var t=el('text',{x:inside?(v<0?a+6:b-6):v>=0?b+6:a-6,y:y+14,'text-anchor':inside?(v<0?'start':'end'):v>=0?'start':'end'},svg);t.textContent=label;
+  if(inside)t.style.fill='#ffffff';
+  hover(g,function(){return [{value:signed(v),label:'staged minus pause'},{value:'hour '+w.paired.hour,label:'compared at'},
+   {value:w.paired.diverged_hour==null?'—':'hour '+w.paired.diverged_hour,label:'paths split at'}]})});
+ table(document.getElementById('paired-table'),['World','Split at hour','Compared at hour','Pause result','Staged result','Difference'],
+  rows.map(function(w){var p=w.paired;return [w.name,p.diverged_hour,p.hour,usd(p.pause_marked),usd(p.staged_marked),signed(p.difference)]}))}
+
+/* grouped bars, fixed 0..1 scale */
+function drawEntropy(){var rows=D.decisiveness,box=document.getElementById('entropy');box.textContent='';
+ var z=size(box),W=z.W,C=z.compact,L=C?4:110,R=50,row=C?54:40,lab=C?16:0,H=rows.length*row+26,svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Score entropy by role'},box);
+ var x=function(v){return L+v*(W-L-R)};[0,.25,.5,.75,1].forEach(function(t){el('line',{x1:x(t),x2:x(t),y1:0,y2:H-22,stroke:t===1?css('--axis'):css('--grid')},svg);
+  el('text',{x:x(t),y:H-6,'text-anchor':t===1?'end':'middle'},svg).textContent=t===1?'1.0 even':t.toFixed(2)});
+ rows.forEach(function(r,i){var y=i*row+4+lab;el('text',C?{x:L,y:y-4,'text-anchor':'start'}:{x:L-10,y:y+18,'text-anchor':'end'},svg).textContent=r.role.replace('_',' ');
+  [['jev','--s1','Jev',r.jev_n],['laya','--s2','Laya',r.laya_n]].forEach(function(s,j){var v=r[s[0]];if(v==null)return;var g=el('g',{},svg);
+   el('rect',{x:L,y:y+j*16-1,width:W-L-R,height:16,fill:'transparent'},g);
+   el('rect',{x:L,y:y+j*16,width:Math.max(2,x(v)-L),height:14,rx:4,fill:css(s[1])},g);
+   el('text',{x:x(v)+6,y:y+j*16+11,'text-anchor':'start'},svg).textContent=v.toFixed(2);
+   hover(g,function(){return [{value:v.toFixed(2),label:s[2]+' · '+r.role.replace('_',' '),color:css(s[1])},{value:String(s[3]),label:'scored decisions'}]})})});
+ table(document.getElementById('entropy-table'),['Role','Jev','Jev decisions','Laya','Laya decisions'],
+  rows.map(function(r){return [r.role,r.jev.toFixed(3),r.jev_n,r.laya==null?'—':r.laya.toFixed(3),r.laya_n]}))}
+
+function drawMatrix(){table(document.getElementById('matrix'),['World','Exit alert (hour)','Migration (hour)','Last hour (pause / staged)','Pause result','Staged result'],
+ D.worlds.map(function(w){var p=w.paths['pause-and-observe']||{},s=w.paths['staged-exit']||{};
+  return [w.regime+' · $'+w.position/1000+'k position · $'+w.upfront/1000+'k upfront',p.alert?p.alert.hour:'—',p.migrated_hour==null?'—':+p.migrated_hour.toFixed(1),
+   (p.last_hour||0)+' / '+(s.last_hour||0),p.end?usd(p.end.marked):'—',s.end?usd(s.end.marked):'—']}));
+ document.getElementById('limits').textContent=D.limitations}
+
+function render(){var w=D.worlds[+worldSel.value],p=w.paths[polSel.value]||w.paths['pause-and-observe'];drawWarnings(w);drawWaterfall(p);drawLines(w)}
+worldSel.addEventListener('change',render);polSel.addEventListener('change',render);
+function all(){render();drawPaired();drawEntropy();drawMatrix()}
+all();
+var lastW=window.innerWidth;window.addEventListener('resize',function(){if(Math.abs(window.innerWidth-lastW)>40){lastW=window.innerWidth;all()}});
+if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
+})();
+</script>
+</body>
+</html>

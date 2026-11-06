@@ -1,0 +1,34 @@
+name: Core checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: Boyun-core
+      - uses: actions/checkout@v4
+        with:
+          repository: Boyun-Protocol/Boyun-interface
+          path: Boyun-interface
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pip install uv==0.9.26
+      - run: uv run --project engine --extra pdf --with-editable ../Boyun-interface python -m pytest engine/tests tools/tests -q
+        working-directory: Boyun-core
+      - run: python3 tools/build_evidence_docs.py --check
+        working-directory: Boyun-core
+      - run: uv build engine
+        working-directory: Boyun-core
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup toolchain install stable --profile minimal
+      - run: cargo +stable test --locked --manifest-path contracts/commitment-registry/Cargo.toml

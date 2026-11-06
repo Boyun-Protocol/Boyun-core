@@ -1,0 +1,65 @@
+[project]
+name = "decision-lab-engine"
+version = "0.1.0"
+description = "Reproducible, explicitly synthetic crypto scenario engine"
+requires-python = ">=3.11"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE"]
+dependencies = []
+
+[project.scripts]
+decision-lab = "decision_lab.cli:main"
+
+[project.optional-dependencies]
+laya = ["laya==0.4.22"]
+mcp = [
+    "mcp>=1.26,<2",
+]
+pdf = [
+    "reportlab>=4.4,<5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/decision_lab"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/decision_lab/data/personas.json" = "decision_lab/data/personas.json"
+"src/decision_lab/data/evaluation.synthetic.json" = "decision_lab/data/evaluation.synthetic.json"
+"src/decision_lab/data/scenario-authoring-guidelines.md" = "decision_lab/data/scenario-authoring-guidelines.md"
+"src/decision_lab/data/strategic_examples.json" = "decision_lab/data/strategic_examples.json"
+"examples/ticker-evaluation.v1.json" = "decision_lab/data/scenario_examples/ticker-evaluation.v1.json"
+"examples/ticker-evaluation-draft.v1.json" = "decision_lab/data/scenario_examples/ticker-evaluation-draft.v1.json"
+"examples/defi-stress.v1.json" = "decision_lab/data/scenario_examples/defi-stress.v1.json"
+"examples/defi-stress-draft.v1.json" = "decision_lab/data/scenario_examples/defi-stress-draft.v1.json"
+"examples/launch-explicit.v1.json" = "decision_lab/data/scenario_examples/launch-explicit.v1.json"
+"examples/agent-world-brief.public.json" = "decision_lab/data/agent_examples/agent-world-brief.public.json"
+"examples/agent-world-trade-probe.public.json" = "decision_lab/data/agent_examples/agent-world-trade-probe.public.json"
+"examples/choice-world.v1.json" = "decision_lab/data/scenario_examples/choice-world.v1.json"
+"examples/choice-world-draft.v1.json" = "decision_lab/data/scenario_examples/choice-world-draft.v1.json"
+"examples/scenario-draft.empty.v1.json" = "decision_lab/data/scenario_examples/scenario-draft.empty.v1.json"
+
+"examples/jev-actor-world.public.json" = "decision_lab/data/mechanics_examples/jev-actor-world.public.json"
+"examples/launch-coordination.game.json" = "decision_lab/data/mechanics_examples/launch-coordination.game.json"
+"examples/event-belief-update.json" = "decision_lab/data/mechanics_examples/event-belief-update.json"
+"examples/social-information-experiment.json" = "decision_lab/data/mechanics_examples/social-information-experiment.json"
+
+[tool.hatch.build.targets.sdist]
+include = ["src/decision_lab", "tests", "examples", "README.md", "LICENSE", "pyproject.toml", "uv.lock"]
+exclude = ["output", ".venv", "**/__pycache__", "**/*.pyc"]
+
+[tool.hatch.build.targets.sdist.force-include]
+"src/decision_lab/data/personas.json" = "src/decision_lab/data/personas.json"
+"src/decision_lab/data/evaluation.synthetic.json" = "src/decision_lab/data/evaluation.synthetic.json"
+"src/decision_lab/data/scenario-authoring-guidelines.md" = "src/decision_lab/data/scenario-authoring-guidelines.md"
+"src/decision_lab/data/strategic_examples.json" = "src/decision_lab/data/strategic_examples.json"

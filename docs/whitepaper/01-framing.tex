@@ -1,0 +1,275 @@
+\section{Introduction}\label{sec:introduction}
+Financial and economic decisions depend on how people and organizations
+respond to one another under uncertainty. A protocol designer considering an
+incentive, for example, may need to understand not only its direct cost but
+also whether partners participate, how other participants react, and how
+those reactions affect later decisions. Comparing such choices requires
+scenarios that make actors, constraints, and assumed events explicit while
+showing how their interactions produce different outcomes.
+
+Agent-based modeling studies a system through individual participants and
+their interaction rules; its conclusions depend on both the model assumptions
+and their implementation \cite{grimm2020,galan2009}. Language-model agents can
+condition choices on context \cite{park2023,yang2025}, but an expressed choice
+alone does not determine its economic consequences. If an actor discloses
+information, the model must still specify who receives it, when they may react,
+and what changes in resources or state follow. These distinctions are needed
+to interpret why a simulated path occurred and what assumptions support it.
+
+We present Boyun, a framework for exploring financial and economic decisions
+through explicit simulated worlds. A world specifies participants, their
+resources and information, available actions, and rules governing action
+consequences. Participants receive restricted observations and a decision
+model selects from feasible actions; an execution engine applies the specified
+rules and records the resulting transitions. This separation lets an analyst
+inspect the supplied information, selected actions, and computed outcomes,
+and replay execution using recorded choices. It does not expose the decision
+model's internal deliberation or establish that its choices represent real
+people.
+
+The paper asks: \emph{Can an explicitly specified multi-agent world constrain
+information, spending, and settlement while making the effects of alternative
+information and interaction rules inspectable?} Our initial scope includes
+capital allocation, participation incentives, information policies, and stress
+assumptions in crypto and decentralized finance. The intended audience is
+researchers, protocol designers, and risk analysts comparing conditional
+outcomes under declared assumptions.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[node distance=7mm and 8mm]
+\node[box] (build) {Alice builds in round one\\Declared cost: 20 cents};
+\node[box,right=of build] (message) {A subscribed message\\reaches Bob in round two};
+\node[box,right=of message] (join) {Bob joins after delivery\\Declared cost: 30 cents};
+\draw[arr] (build)--(message);\draw[arr] (message)--(join);
+\end{tikzpicture}
+\caption{A controlled example of mechanism attribution. With the same
+programmed participant policies, readiness is 6 points with message delivery
+and a joint-action rule, 3 with delivery alone, and 1 without delivery.
+Section~\ref{sec:ablation} defines the units and all four conditions. The
+responses are imposed test policies, not observations of people.}
+\label{fig:teaser}
+\end{figure*}
+
+We investigate this question through six synthetic experiments, including a
+controlled example in Fig.~\ref{fig:teaser} that separates the effects of
+message delivery and an interaction rule. The experiments check calculations
+and execution under specified participant policies; they do not establish
+human behavioral fidelity, market forecasting accuracy, or improved user
+decisions. Those stronger claims require separate empirical evaluation against
+appropriate baselines.
+
+The paper contributes (1) a world and observation specification connecting
+participant goals, information, feasible actions, and explicit consequences;
+(2) a synchronous execution procedure with recorded decisions and exact replay;
+and (3) synthetic experiments that test the specified arithmetic and
+interaction mechanisms. An optional NEAR integration supports artifact
+registration; it does not validate the behavior represented by the simulation.
+
+\section{Related Work}\label{sec:related}
+\subsection{Agent-Based Modeling and Model Description}
+The Overview, Design concepts, and Details (ODD) protocol is a structured
+method for describing simulation models \cite{grimm2020}. It asks authors to
+state their entities, initialization, schedules, input data, and submodels so
+that others can understand and reproduce them. Boyun follows this principle
+by requiring an explicit world specification before execution. Gal\'an
+et al. distinguish modeling errors and implementation artifacts in agent-based
+systems \cite{galan2009}; this motivates separate checks of numerical behavior
+and the realism of the assumptions that behavior implements.
+
+\subsection{Economic Environments and Heterogeneous Decisions}
+Economic simulation connects decisions to an explicit allocation mechanism,
+not merely to a conversation between roles. The AI Economist combines an
+economic environment with two levels of reinforcement learning: individual
+agents adapt their economic behavior while a social planner learns tax policy
+\cite{zheng2020}. Its Foundation framework separates agents, environment
+components, and scenarios. The relevant principle is that an individual's
+utility and the policy designer's objective are different objects. Boyun
+similarly declares each participant's preferences separately from the user's
+research question, but does not train policies or optimize tax schedules.
+The AI Economist's experimental results do not transfer to Boyun.
+
+EconAgent uses language-model agents to make work and consumption decisions
+inside a macroeconomic environment with taxation, goods, wages, savings, and
+interest-rate rules \cite{li2024econagent}. Perception and memory condition
+heterogeneous decisions on personal and economic context. Its environment
+then computes economic consequences. This is a close precedent for separating
+an agent decision mechanism from an economic transition model. Boyun instead
+uses reviewed finite action menus, explicit utility weights, and native typed
+Jev answers for bounded financial and economic questions. It does not implement
+EconAgent's labor/consumption economy or inherit its reported stylized facts.
+EconAgent itself distinguishes reproducing such regularities from accurate
+forecasting; that distinction also applies here.
+
+Market microstructure requires a more specific execution environment. ABIDES,
+the Agent-Based Interactive Discrete Event Simulation framework, represents
+trading agents, an exchange, protocol messages, and configurable network
+latency \cite{byrd2019}. It illustrates what must be specified to study order
+execution or market impact. Boyun's strategic interface does not contain that
+exchange mechanism. Analysis of Uniswap describes automated market makers
+(AMMs), whose reserve rules determine exchange prices \cite{angeris2021};
+this informs the separate financial laboratory, not every strategic world.
+A hypothetical participation score is neither a transaction nor a return.
+
+\begin{table*}[t]
+\caption{Relevant research systems and their relationship to Boyun. These are
+method comparisons, not measured rankings. None of these additional projects
+is a dependency of Boyun's active strategic engine. MiroFish remains the direct
+software provenance described separately.}
+\label{tab:economic-related}
+\centering\footnotesize
+\begin{tabularx}{\textwidth}{@{}p{0.15\textwidth}p{0.28\textwidth}YY@{}}
+\toprule System & Explicit mechanism & Relevant design or evaluation principle & Boundary in Boyun \\
+\midrule
+AI Economist / Foundation \cite{zheng2020} & Economic environment with individual agents and a policy-setting planner & Separate actor utility from a designer's aggregate objective & No learned planner or two-level policy training \\
+EconAgent \cite{li2024econagent} & Work/consumption choices within numeric macroeconomic rules & Heterogeneity needs economic context and an environment that settles choices & No integrated macroeconomy or inherited validation \\
+ABIDES \cite{byrd2019} & Message-based exchange simulation and latency & Execution rules are necessary for price, fill, and impact claims & No limit-order-book exchange in the strategic interface \\
+OpenSpiel \cite{lanctot2019} & Explicit game states, legal actions, information and returns & Evaluate policy behavior using known games and compatible solution metrics & No imported solvers or large dynamic-game solution \\
+Repeated-game experiments \cite{akata2025} & Language models choose in controlled payoff games & Test coordination and response to opponent information; do not assume rationality & Results for other models do not establish Jev behavior \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Game Structure and Behavioral Evaluation}
+A finite game specifies participants, available strategies, and payoffs.
+A Nash equilibrium is a strategy profile in which no participant benefits
+from changing its own strategy alone \cite{nash1950}. Polak's lectures explain
+best responses, the removal of strictly inferior strategies, and coordination
+failures using small games \cite{polak3,polak5}. Boyun uses these concepts to
+inspect supplied incentives; it does not assume that a model's selected
+action is an equilibrium.
+
+OpenSpiel provides game environments and algorithms for reinforcement
+learning, search, and planning, with legal actions, information states,
+transitions, and returns \cite{lanctot2019}. Its treatment of simultaneous,
+sequential, and imperfect-information games is relevant to specifying exactly
+which game a policy is being tested on. Boyun implements a narrower world
+contract and small finite-game diagnostics rather than wrapping OpenSpiel's
+algorithms. Evaluating Jev on small, known-payoff games before expanding the
+cast would make violations and coordination failures measurable; this is a
+proposed comparison, not an experiment completed here.
+
+Akata et al. study language models in finitely repeated games and report
+different behavior in self-interested and coordination settings
+\cite{akata2025}. Their experiments also examine sensitivity to opponent
+information. Such findings motivate testing a persona policy's behavior
+instead of treating an instruction to maximize utility as proof that it does
+so. Boyun's Jev interface supplies action scores without a reasoning trace;
+it does not reproduce conversational reasoning interventions from that study.
+Observed choices, payoff comparisons, and controlled interventions are the
+available evaluation objects.
+
+Bayesian updating revises a prior belief using the likelihood of new evidence
+under each hypothesis \cite{pishronik2014}. It provides a disciplined way to
+update declared assumptions, but cannot supply missing likelihoods. Proper
+scoring rules evaluate issued probabilities against resolved outcomes: the
+Brier score measures squared probability error, while logarithmic loss
+penalizes confident errors more strongly \cite{brier1950,gneiting2007}.
+These concepts support evaluation, rather than turning model confidence into
+an established forecast probability.
+
+\subsection{Contextual Agents and the Social-Simulation Precedent}
+The Transformer introduced by Vaswani et al. uses attention to combine token
+representations according to contextual compatibility \cite{vaswani2017}.
+Co-authored by Illia Polosukhin, this work is a foundation for many modern
+language models; it is not a study of agent-based forecasting. Neural
+attention operates inside a model. Boyun's information graph instead controls
+which messages are supplied to a participant before inference. Keeping these
+levels distinct prevents a token-weighting mechanism from being mistaken
+for an empirically identified model of social influence. Boyun treats its
+model backend as replaceable and does not assume undocumented Jev internals.
+
+Generative Agents combines memory, reflection, and planning to produce
+context-sensitive behavior in a 25-agent social sandbox \cite{park2023}.
+It provides an architectural precedent for conditioning decisions on personal
+experience. Boyun uses bounded history and delivered messages, without
+implementing that work's full memory and reflection architecture.
+
+Open Agent Social Interaction Simulations (OASIS) provides simulated social
+platforms with participant actions, recommendation mechanisms, and evolving
+interactions \cite{yang2025}. Its large-scale experiments illustrate why the
+environment and information-delivery process matter, rather than only the
+language model. CAMEL, Communicative Agents for ``Mind'' Exploration of Large
+Language Model Society, studies role-based cooperation between conversational
+agents \cite{camel2023}. Its role-playing framework and associated software
+support agent coordination; neither CAMEL nor OASIS establishes the validity
+of Boyun's financial assumptions. Boyun does not execute these frameworks in
+its active simulation engine.
+
+Self-report-grounded agent research constructs agents from interviews and
+survey responses and compares them with held-out responses from 1,052
+participants \cite{park2026}. Its relevance is the combination of grounding
+data and a defined validation target. Boyun currently lacks comparable data
+for crypto participants. A detailed fictional persona, or an observed wallet
+trade, does not by itself reveal a person's motivation.
+
+\subsection{MiroFish and Software Provenance}\label{sec:mirofish}
+MiroFish is the direct software and product precedent for Boyun
+\cite{mirofish}. Its workflow transforms seed materials into a graph of
+entities and relationships, generates participant profiles, executes a social
+simulation, and assembles a report. Zep is the memory and knowledge-graph
+service used for the graph stage. OASIS supplies the social environment and
+CAMEL-related software supplies agent infrastructure. The OASIS software is
+explicitly credited by MiroFish \cite{oasiscode}.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[node distance=6mm and 8mm]
+\node[box] (seed) {MiroFish seed material\\Documents and question};
+\node[box,right=of seed] (graph) {Zep graph\\Entities and relationships};
+\node[box,right=of graph] (cast) {Generated participants\\and environment settings};
+\node[box,below=of cast] (social) {OASIS social environment\\with agent actions};
+\node[box,left=of social] (history) {Interaction history\\and memory updates};
+\node[box,left=of history] (report) {Report agent\\Analysis and interviews};
+\draw[arr] (seed)--(graph);\draw[arr] (graph)--(cast);
+\draw[arr] (cast)--(social);\draw[arr] (social)--(history);\draw[arr] (history)--(report);
+\end{tikzpicture}
+\caption{MiroFish's construction, social execution, and reporting workflow,
+reconstructed from its published software \cite{mirofish}. This figure describes
+the upstream system; Fig.~\ref{fig:architecture} describes Boyun.}
+\label{fig:mirofish}
+\end{figure*}
+
+Boyun is developed in an AGPL-3.0 MiroFish fork and retains the upstream
+license and attribution. The inherited browser frontend, backend, and
+graph/social integrations are distinct from the active Boyun engine and, as of
+the 2026-10-31 release package, are no longer distributed with it; they remain
+readable in the pinned upstream commit. The
+design takes the construction--participants--environment--report workflow
+as a starting point, then makes action menus, numeric consequences, and replay
+explicit. It does not import OASIS recommendation algorithms, Zep graph memory,
+or their reported experimental results into the active execution path.
+
+\begin{table}[t]
+\caption{Execution boundaries; this is not a performance benchmark.}
+\label{tab:comparison}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.18\columnwidth}YY@{}}
+\toprule & MiroFish & Boyun \\
+\midrule
+Construction & Seed materials, graph, profiles & Reviewed participants and rules \\
+Environment & Social-platform simulation & Synchronous numeric state \\
+Decision & Platform actions & Typed affordable choices \\
+Analysis & Report agent and interviews & Recorded paths, costs, replay \\
+Memory & Graph integration & Bounded history and subscriptions \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Decentralized Execution and Service Guarantees}
+NEAR's Nightshade design partitions blockchain state and execution among
+shards while organizing their work in one logical chain \cite{nightshade2024}.
+Its distinction between state validity and data availability is relevant to
+an experiment registry: registering an artifact fingerprint does not make
+the underlying experiment available or correct. Boyun uses NEAR as a registry,
+without implementing Nightshade's consensus or sharding in its off-chain engine.
+
+Decentralized Confidential Machine Learning (DCML) describes a NEAR AI design
+for inference using trusted execution environments, attested connections,
+and model-identity checks \cite{dcml}. Proof of Response addresses a different
+property: obtaining a response, evidence of a broken communication edge, or
+delay compensation within its protocol assumptions \cite{proofresponse2025}.
+These designs distinguish confidentiality, identity, availability, and content
+validity. They inform Boyun's trust-boundary analysis and future deployment
+requirements; their guarantees are not established by a normal model API call
+or a local timeout.

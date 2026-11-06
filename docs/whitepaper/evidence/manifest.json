@@ -1,0 +1,259 @@
+{
+  "schema": "whitepaper-evidence.v1",
+  "implementation_baseline": "8318244515bf4b85ef831060e6f3a2878055bbb8",
+  "evidence_revision": "v0.8: economic decision scope and explicit record limits; six synthetic fixtures unchanged",
+  "evidence_builder_sha256": "0a9eb5686b14bbb4767a0d6d2ab6b909805d23de11b1040547cf5eea4a162baa",
+  "scope": "Synthetic arithmetic and engine scheduling; no empirical forecast validation.",
+  "network_allowed": false,
+  "model_calls": 0,
+  "chain_transactions": 0,
+  "inputs": {
+    "game": "f7959465d04d8ce2596f61f969b7168c06aed4c7c2d52c2d6aca73d819c5bd83",
+    "bayes": "79a83f9a4ac9ad6bdb1146f6469507aa16af28449074f6a1374497cfd01ac91a",
+    "scoring": "3ebdde0b39953d9ee643f90a959d02fff8a4422cba102b2539901fb121a563ee",
+    "personas": "f39843abef99deff6040392bd6b81be88f6e187066684cda402e09bdf7fe45d8",
+    "mechanisms": "88b8e60963e28ca53e4590378ed1dda80a241aa0f103307090cbfc5c8a29c4c1"
+  },
+  "sources": [
+    {
+      "id": "world_validate",
+      "file": "engine/src/decision_lab/strategic_worlds.py",
+      "line": 85,
+      "symbol": "validate_strategic_world",
+      "layer": "Strategic product",
+      "sha256": "9864426f2490e4b3a98e379b32dc69a5613cb97a8b1a185576c22d2e703cda68"
+    },
+    {
+      "id": "world_observe",
+      "file": "engine/src/decision_lab/strategic_worlds.py",
+      "line": 255,
+      "symbol": "StrategicWorld.observations",
+      "layer": "Strategic product",
+      "sha256": "9864426f2490e4b3a98e379b32dc69a5613cb97a8b1a185576c22d2e703cda68"
+    },
+    {
+      "id": "world_advance",
+      "file": "engine/src/decision_lab/strategic_worlds.py",
+      "line": 287,
+      "symbol": "StrategicWorld.advance",
+      "layer": "Strategic product",
+      "sha256": "9864426f2490e4b3a98e379b32dc69a5613cb97a8b1a185576c22d2e703cda68"
+    },
+    {
+      "id": "world_utility",
+      "file": "engine/src/decision_lab/strategic_worlds.py",
+      "line": 251,
+      "symbol": "StrategicWorld._utility",
+      "layer": "Strategic product",
+      "sha256": "9864426f2490e4b3a98e379b32dc69a5613cb97a8b1a185576c22d2e703cda68"
+    },
+    {
+      "id": "world_replay",
+      "file": "engine/src/decision_lab/strategic_worlds.py",
+      "line": 339,
+      "symbol": "replay_strategic_world",
+      "layer": "Strategic product",
+      "sha256": "9864426f2490e4b3a98e379b32dc69a5613cb97a8b1a185576c22d2e703cda68"
+    },
+    {
+      "id": "world_game",
+      "file": "engine/src/decision_lab/strategic_worlds.py",
+      "line": 360,
+      "symbol": "strategic_game",
+      "layer": "Strategic product",
+      "sha256": "9864426f2490e4b3a98e379b32dc69a5613cb97a8b1a185576c22d2e703cda68"
+    },
+    {
+      "id": "construction_audit",
+      "file": "engine/src/decision_lab/game_construction.py",
+      "line": 182,
+      "symbol": "game_construction_audit",
+      "layer": "Strategic product",
+      "sha256": "bd4f367abf6d6341d21e4e71eb187a00baf4a9ea6ba344de12db88caac29a518"
+    },
+    {
+      "id": "construction_summary",
+      "file": "engine/src/decision_lab/game_construction.py",
+      "line": 277,
+      "symbol": "game_construction_summary",
+      "layer": "Strategic product",
+      "sha256": "bd4f367abf6d6341d21e4e71eb187a00baf4a9ea6ba344de12db88caac29a518"
+    },
+    {
+      "id": "actor_support",
+      "file": "engine/src/decision_lab/game_construction.py",
+      "line": 110,
+      "symbol": "actor_game_support",
+      "layer": "Strategic product",
+      "sha256": "bd4f367abf6d6341d21e4e71eb187a00baf4a9ea6ba344de12db88caac29a518"
+    },
+    {
+      "id": "decision_request",
+      "file": "engine/src/decision_lab/strategic_models.py",
+      "line": 75,
+      "symbol": "decision_request",
+      "layer": "Strategic product",
+      "sha256": "2bc29e2d76bce300b999cea1613afc0388f830dfb41c66046ea1083fef08251b"
+    },
+    {
+      "id": "decide",
+      "file": "engine/src/decision_lab/strategic_models.py",
+      "line": 105,
+      "symbol": "decide",
+      "layer": "Strategic product",
+      "sha256": "2bc29e2d76bce300b999cea1613afc0388f830dfb41c66046ea1083fef08251b"
+    },
+    {
+      "id": "author_prompt",
+      "file": "engine/src/decision_lab/strategic_models.py",
+      "line": 206,
+      "symbol": "authoring_messages",
+      "layer": "Strategic product",
+      "sha256": "2bc29e2d76bce300b999cea1613afc0388f830dfb41c66046ea1083fef08251b"
+    },
+    {
+      "id": "persona",
+      "file": "engine/src/decision_lab/persona_controls.py",
+      "line": 15,
+      "symbol": "adapt_personas",
+      "layer": "Strategic product",
+      "sha256": "3603497346378e51ae63c8c8697f5192d4c8860b6e8fcc14aba0f4ef40156224"
+    },
+    {
+      "id": "batch",
+      "file": "engine/src/decision_lab/batch_authoring.py",
+      "line": 208,
+      "symbol": "merge_proposal",
+      "layer": "Strategic product",
+      "sha256": "7a68cc6873a733fa4eb9f20a841eea53d21a2eb7f7b0852825a4fd2835c654a7"
+    },
+    {
+      "id": "review",
+      "file": "engine/src/decision_lab/product_api.py",
+      "line": 585,
+      "symbol": "ProductManager.review",
+      "layer": "Orchestration",
+      "sha256": "c24b58631235c3c1052822c2a0894c8b9a815e5a7699501c2063a74651eb1665"
+    },
+    {
+      "id": "execute",
+      "file": "engine/src/decision_lab/product_api.py",
+      "line": 658,
+      "symbol": "ProductManager._execute",
+      "layer": "Orchestration",
+      "sha256": "c24b58631235c3c1052822c2a0894c8b9a815e5a7699501c2063a74651eb1665"
+    },
+    {
+      "id": "jev",
+      "file": "engine/src/decision_lab/jev.py",
+      "line": 209,
+      "symbol": "TypeSafeClient.evaluate",
+      "layer": "Providers",
+      "sha256": "b7432eb6c4de8322523fc98a347528bbc909d6e146ad4cdd4d730843b97d72af"
+    },
+    {
+      "id": "cloud",
+      "file": "engine/src/decision_lab/near_ai.py",
+      "line": 168,
+      "symbol": "NearAITextModel",
+      "layer": "Providers",
+      "sha256": "8a5fee6a3a627dba9b818909aa9c66afceefe7722c31ad26f02530573a94455b"
+    },
+    {
+      "id": "game",
+      "file": "engine/src/decision_lab/strategic_games.py",
+      "line": 126,
+      "symbol": "analyze_game",
+      "layer": "Analytical kernels",
+      "sha256": "23b887751a4ee71d67ff45bf7d8a4ef81480ed19fc3e70c60909164f06ec74c5"
+    },
+    {
+      "id": "bayes",
+      "file": "engine/src/decision_lab/probability_updates.py",
+      "line": 103,
+      "symbol": "update_beliefs",
+      "layer": "Analytical kernels",
+      "sha256": "5bc17c64fbad686ea381e34ac8ceb874908f9335530b00404eaf3c0124b4c1b9"
+    },
+    {
+      "id": "evaluation",
+      "file": "engine/src/decision_lab/evaluation.py",
+      "line": 146,
+      "symbol": "evaluate_forecasts",
+      "layer": "Analytical kernels",
+      "sha256": "6a6faee93eeabd55ffc9f55b3ac9b560f2219596c48cc61d9a3dc687457cb993"
+    },
+    {
+      "id": "amm",
+      "file": "engine/src/decision_lab/finance.py",
+      "line": 182,
+      "symbol": "ConstantProductMarket._trade",
+      "layer": "Financial / separate modules",
+      "sha256": "0a2c586d161308e56be21def985a81b89ada50d0663638c7fff85d860ef6266a"
+    },
+    {
+      "id": "social_run",
+      "file": "engine/src/decision_lab/social_experiments.py",
+      "line": 176,
+      "symbol": "run_social_experiment",
+      "layer": "Financial / separate modules",
+      "sha256": "96fccac0265b2077df07a9074b98f360a2f1030487e4685ac9d50d14f6f8b3aa"
+    },
+    {
+      "id": "wallet_data",
+      "file": "engine/src/decision_lab/wallet_evidence.py",
+      "line": 119,
+      "symbol": "analyze_wallets",
+      "layer": "Evidence",
+      "sha256": "3dbcf408e57bf0480073cca624b6dd943edceae4d244052b2211d4f6ffeff509"
+    },
+    {
+      "id": "presentation",
+      "file": "engine/src/decision_lab/scenario_presentation.py",
+      "line": 191,
+      "symbol": "build_presentation",
+      "layer": "Delivery / integrity",
+      "sha256": "7b99130d85c4387dda92d251e7943d3bf2a78d0fd979f97a850aad8d46e6756d"
+    },
+    {
+      "id": "commitment",
+      "file": "engine/src/decision_lab/integrity.py",
+      "line": 44,
+      "symbol": "create_commitment",
+      "layer": "Delivery / integrity",
+      "sha256": "260827e17a9d64c54a90dba2cec316a55f318293c0587f9f2314bb3b248e14c5"
+    },
+    {
+      "id": "verify",
+      "file": "engine/src/decision_lab/near_registry.py",
+      "line": 147,
+      "symbol": "NearRegistryClient.verify_transaction",
+      "layer": "Delivery / integrity",
+      "sha256": "fc097dac4f5d2cb59e456198a9e6acac737db04a2393943544133e3c5649a645"
+    },
+    {
+      "id": "wallet",
+      "file": "engine/src/decision_lab/product_near.py",
+      "line": 69,
+      "symbol": "ProductNear.wallet_prepare",
+      "layer": "Delivery / integrity",
+      "sha256": "9b8588fa3726cfee558dc1957b05c6584a05242dea0b99407c49e73155c3b00d"
+    },
+    {
+      "id": "allowance",
+      "file": "engine/src/decision_lab/preview_budget.py",
+      "line": 81,
+      "symbol": "PreviewJevClient.evaluate",
+      "layer": "Delivery / integrity",
+      "sha256": "c9053475747a2b6b77578f67e7544c61140942a73327f68103d6cd939dcd2350"
+    },
+    {
+      "id": "contract",
+      "file": "contracts/commitment-registry/src/lib.rs",
+      "line": 42,
+      "symbol": "pub fn register_commitment",
+      "layer": "Delivery / integrity",
+      "sha256": "d5edce86f0f69f43e9634a94fe4cc3d4c35df0767502d6428ae5b380cbbc20e1"
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "schema_version": "choice-world.v1",
+  "id": "product-release-planning",
+  "event_description": "Explore supplied product-release decisions using planning budget and risk points. These illustrative odds do not forecast adoption, revenue or financial settlement.",
+  "parameters": {
+    "pilot_cost": -3,
+    "release_cost": -2
+  },
+  "personas": [
+    {
+      "id": "release-lead",
+      "name": "Product release lead",
+      "description": "An authored decision-maker slot. The description supplies context; only declared choices, policy and metric effects execute.",
+      "role": "planning_decision_maker",
+      "allowed_actions": [
+        "adjust_metric"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "planning_budget",
+      "unit": "planning_points",
+      "initial": 10,
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "id": "risk",
+      "unit": "risk_points",
+      "initial": 2,
+      "minimum": 0,
+      "maximum": 10
+    }
+  ],
+  "scenes": [
+    {
+      "id": "plan",
+      "title": "Choose the release preparation",
+      "description": "Spend planning points on a pilot, a broader test, or pause. Every possible outcome must fit metric bounds before a choice is eligible.",
+      "choices": [
+        {
+          "id": "pilot",
+          "label": "Run a small pilot",
+          "explanation": "Spend the authored pilot budget change; pilot feedback changes declared risk points.",
+          "actor_id": "release-lead",
+          "requirements": [],
+          "immediate_effects": [
+            {
+              "action": "adjust_metric",
+              "metric_id": "planning_budget",
+              "delta": {
+                "parameter": "pilot_cost"
+              }
+            }
+          ],
+          "outcomes": [
+            {
+              "id": "clear-feedback",
+              "label": "Clear pilot feedback",
+              "probability_bps": 7500,
+              "effects": [
+                {
+                  "action": "adjust_metric",
+                  "metric_id": "risk",
+                  "delta": -1
+                }
+              ],
+              "next_scene_id": "release"
+            },
+            {
+              "id": "issues-found",
+              "label": "Pilot issues found",
+              "probability_bps": 2500,
+              "effects": [
+                {
+                  "action": "adjust_metric",
+                  "metric_id": "risk",
+                  "delta": 2
+                }
+              ],
+              "next_scene_id": "release"
+            }
+          ],
+          "probability_provenance": {
+            "status": "assumed",
+            "rationale": "Illustrative planning assumptions supplied for this demo; no empirical calibration or market forecast.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "broad-test",
+          "label": "Run a broad test",
+          "explanation": "Spend six planning points on a broader test with separately assumed odds.",
+          "actor_id": "release-lead",
+          "requirements": [
+            {
+              "metric_id": "planning_budget",
+              "minimum": 6,
+              "maximum": 10
+            }
+          ],
+          "immediate_effects": [
+            {
+              "action": "adjust_metric",
+              "metric_id": "planning_budget",
+              "delta": -6
+            }
+          ],
+          "outcomes": [
+            {
+              "id": "clear-feedback",
+              "label": "Clear broad-test feedback",
+              "probability_bps": 8500,
+              "effects": [
+                {
+                  "action": "adjust_metric",
+                  "metric_id": "risk",
+                  "delta": -2
+                }
+              ],
+              "next_scene_id": "release"
+            },
+            {
+              "id": "issues-found",
+              "label": "Broad-test issues found",
+              "probability_bps": 1500,
+              "effects": [
+                {
+                  "action": "adjust_metric",
+                  "metric_id": "risk",
+                  "delta": 3
+                }
+              ],
+              "next_scene_id": "release"
+            }
+          ],
+          "probability_provenance": {
+            "status": "assumed",
+            "rationale": "Illustrative planning assumptions supplied for this demo; no empirical calibration or market forecast.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "pause",
+          "label": "Pause preparation",
+          "explanation": "Keep current planning budget and stop this world.",
+          "actor_id": "release-lead",
+          "requirements": [],
+          "immediate_effects": [],
+          "outcomes": [
+            {
+              "id": "paused",
+              "label": "Preparation paused",
+              "probability_bps": 10000,
+              "effects": [],
+              "next_scene_id": null
+            }
+          ],
+          "probability_provenance": {
+            "status": "assumed",
+            "rationale": "Illustrative planning assumptions supplied for this demo; no empirical calibration or market forecast.",
+            "source_refs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "release",
+      "title": "Choose the release scope",
+      "description": "Use the resulting budget and risk points to release with support or defer.",
+      "choices": [
+        {
+          "id": "supported-release",
+          "label": "Release with support",
+          "explanation": "Spend the authored release budget change. Outcomes are supplied risk adjustments, not simulated customer behavior.",
+          "actor_id": "release-lead",
+          "requirements": [],
+          "immediate_effects": [
+            {
+              "action": "adjust_metric",
+              "metric_id": "planning_budget",
+              "delta": {
+                "parameter": "release_cost"
+              }
+            }
+          ],
+          "outcomes": [
+            {
+              "id": "steady",
+              "label": "Steady release scenario",
+              "probability_bps": 7000,
+              "effects": [
+                {
+                  "action": "adjust_metric",
+                  "metric_id": "risk",
+                  "delta": -1
+                }
+              ],
+              "next_scene_id": null
+            },
+            {
+              "id": "support-load",
+              "label": "Support load scenario",
+              "probability_bps": 3000,
+              "effects": [
+                {
+                  "action": "adjust_metric",
+                  "metric_id": "risk",
+                  "delta": 2
+                }
+              ],
+              "next_scene_id": null
+            }
+          ],
+          "probability_provenance": {
+            "status": "assumed",
+            "rationale": "Illustrative planning assumptions supplied for this demo; no empirical calibration or market forecast.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "defer",
+          "label": "Defer release",
+          "explanation": "Keep the remaining budget and risk points while stopping the decision sequence.",
+          "actor_id": "release-lead",
+          "requirements": [],
+          "immediate_effects": [],
+          "outcomes": [
+            {
+              "id": "deferred",
+              "label": "Release deferred",
+              "probability_bps": 10000,
+              "effects": [],
+              "next_scene_id": null
+            }
+          ],
+          "probability_provenance": {
+            "status": "assumed",
+            "rationale": "Illustrative planning assumptions supplied for this demo; no empirical calibration or market forecast.",
+            "source_refs": []
+          }
+        }
+      ]
+    }
+  ],
+  "initial_scene_id": "plan",
+  "policy": {
+    "plan": [
+      "pilot",
+      "broad-test",
+      "pause"
+    ],
+    "release": [
+      "supported-release",
+      "defer"
+    ]
+  },
+  "assumptions": [
+    "All probabilities are supplied illustrative assumptions, not calibrated forecasts.",
+    "Planning budget points and risk points are declared scenario metrics, not money or financial balances.",
+    "Persona text causes no autonomous behavior; the batch follows the explicit ordered policy.",
+    "Changing action IDs or fork names does not reroll a scene.",
+    "Lending, liquidation, financial settlement and live model inference require separate integrations."
+  ]
+}

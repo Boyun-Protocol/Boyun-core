@@ -1,0 +1,127 @@
+{
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "results": [
+    {
+      "path": "bear-p10000-c10000-pause",
+      "returncode": 0,
+      "output": "bear-p10000-c10000-pause OK steps 362 laya calls verified 5621"
+    },
+    {
+      "path": "bear-p10000-c10000-staged-exit",
+      "returncode": 0,
+      "output": "bear-p10000-c10000-staged-exit OK steps 365 laya calls verified 5716"
+    },
+    {
+      "path": "bear-p10000-c5000-pause",
+      "returncode": 0,
+      "output": "bear-p10000-c5000-pause OK steps 363 laya calls verified 5666"
+    },
+    {
+      "path": "bear-p10000-c5000-staged-exit",
+      "returncode": 0,
+      "output": "bear-p10000-c5000-staged-exit OK steps 369 laya calls verified 5804"
+    },
+    {
+      "path": "bear-p15000-c10000-pause",
+      "returncode": 0,
+      "output": "bear-p15000-c10000-pause OK steps 362 laya calls verified 5631"
+    },
+    {
+      "path": "bear-p15000-c10000-staged-exit",
+      "returncode": 0,
+      "output": "bear-p15000-c10000-staged-exit OK steps 365 laya calls verified 5720"
+    },
+    {
+      "path": "bear-p15000-c5000-pause",
+      "returncode": 0,
+      "output": "bear-p15000-c5000-pause OK steps 363 laya calls verified 5659"
+    },
+    {
+      "path": "bear-p15000-c5000-staged-exit",
+      "returncode": 0,
+      "output": "bear-p15000-c5000-staged-exit OK steps 367 laya calls verified 5773"
+    },
+    {
+      "path": "bear-p5000-c10000-pause",
+      "returncode": 0,
+      "output": "bear-p5000-c10000-pause OK steps 362 laya calls verified 5614"
+    },
+    {
+      "path": "bear-p5000-c10000-staged-exit",
+      "returncode": 0,
+      "output": "bear-p5000-c10000-staged-exit OK steps 365 laya calls verified 5717"
+    },
+    {
+      "path": "bear-p5000-c5000-pause",
+      "returncode": 0,
+      "output": "bear-p5000-c5000-pause OK steps 363 laya calls verified 5648"
+    },
+    {
+      "path": "bear-p5000-c5000-staged-exit",
+      "returncode": 0,
+      "output": "bear-p5000-c5000-staged-exit OK steps 367 laya calls verified 5764"
+    },
+    {
+      "path": "bull-p10000-c10000-pause",
+      "returncode": 0,
+      "output": "bull-p10000-c10000-pause OK steps 362 laya calls verified 5636"
+    },
+    {
+      "path": "bull-p10000-c10000-staged-exit",
+      "returncode": 0,
+      "output": "bull-p10000-c10000-staged-exit OK steps 365 laya calls verified 5730"
+    },
+    {
+      "path": "bull-p10000-c5000-pause",
+      "returncode": 0,
+      "output": "bull-p10000-c5000-pause OK steps 363 laya calls verified 5649"
+    },
+    {
+      "path": "bull-p10000-c5000-staged-exit",
+      "returncode": 0,
+      "output": "bull-p10000-c5000-staged-exit OK steps 368 laya calls verified 5780"
+    },
+    {
+      "path": "bull-p15000-c10000-pause",
+      "returncode": 0,
+      "output": "bull-p15000-c10000-pause OK steps 362 laya calls verified 5626"
+    },
+    {
+      "path": "bull-p15000-c10000-staged-exit",
+      "returncode": 0,
+      "output": "bull-p15000-c10000-staged-exit OK steps 365 laya calls verified 5720"
+    },
+    {
+      "path": "bull-p15000-c5000-pause",
+      "returncode": 0,
+      "output": "bull-p15000-c5000-pause OK steps 363 laya calls verified 5665"
+    },
+    {
+      "path": "bull-p15000-c5000-staged-exit",
+      "returncode": 0,
+      "output": "bull-p15000-c5000-staged-exit OK steps 369 laya calls verified 5806"
+    },
+    {
+      "path": "bull-p5000-c10000-pause",
+      "returncode": 0,
+      "output": "bull-p5000-c10000-pause OK steps 362 laya calls verified 5625"
+    },
+    {
+      "path": "bull-p5000-c10000-staged-exit",
+      "returncode": 0,
+      "output": "bull-p5000-c10000-staged-exit OK steps 365 laya calls verified 5730"
+    },
+    {
+      "path": "bull-p5000-c5000-pause",
+      "returncode": 0,
+      "output": "bull-p5000-c5000-pause OK steps 363 laya calls verified 5662"
+    },
+    {
+      "path": "bull-p5000-c5000-staged-exit",
+      "returncode": 0,
+      "output": "bull-p5000-c5000-staged-exit OK steps 374 laya calls verified 5879"
+    }
+  ]
+}

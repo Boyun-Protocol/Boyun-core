@@ -1,0 +1,42 @@
+{
+  "schema_version": "finite-belief.v1",
+  "id": "attention-regime-illustration",
+  "description": "Illustrative two-hypothesis reasoning worksheet: within a deliberately simplified reviewed horizon, theme attention either persists or fades. This finite partition omits real-world nuance; all priors and likelihoods below are teaching assumptions. Nothing is inferred from current social posts, traders or Jev output. The two distinct signals must be separately checked for conditional dependence before use.",
+  "hypotheses": [
+    {
+      "id": "attention-persists",
+      "prior_bps": 4000
+    },
+    {
+      "id": "attention-fades",
+      "prior_bps": 6000
+    }
+  ],
+  "evidence": [
+    {
+      "id": "followup-reporting",
+      "likelihood_bps": {
+        "attention-persists": 7500,
+        "attention-fades": 2500
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Illustrative chance of distinct follow-up reporting if the regime were known, not measured news data.",
+        "source_refs": []
+      }
+    },
+    {
+      "id": "independent-community-return",
+      "likelihood_bps": {
+        "attention-persists": 6000,
+        "attention-fades": 3000
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Illustrative community-return signal; assumed independent of reporting conditional on regime, which may be false for real overlapping social audiences.",
+        "source_refs": []
+      }
+    }
+  ],
+  "likelihood_assumption": "conditionally_independent_given_hypothesis"
+}

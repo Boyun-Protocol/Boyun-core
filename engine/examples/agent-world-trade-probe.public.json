@@ -1,0 +1,49 @@
+{
+  "schema_version": "agent-world.v1",
+  "id": "near-execution-probe",
+  "event_description": "Public synthetic technical probe: test an explicitly mandated small paper trade through the actual ledger; not a forecast or live NEAR action.",
+  "network": "near",
+  "rounds": 1,
+  "market": {
+    "project_capital_cents": 1000000,
+    "launch_cost_cents": 100000,
+    "lp_cash_cents": 400000,
+    "project_token_units": 3000000,
+    "lp_token_units": 1000000,
+    "fee_bps": 30,
+    "max_slippage_bps": 500
+  },
+  "agents": [
+    {
+      "id": "explorer",
+      "name": "Exploratory paper trader",
+      "role": "Bounded execution-test trader",
+      "description": "Public synthetic role with a user-supplied technical execution mandate. Funds and market are simulated. No actual person or wallet is represented.",
+      "goal": "For this technical paper-trading test, propose exactly one 1000-cent exploratory buy if your delivered event confirms the simulated pool is open and your own funds and position limit allow it. Otherwise hold. Cite the delivered event, state that no future profit is established, and publish a brief note.",
+      "initial_cash_cents": 50000,
+      "position_limit_cents": 10000,
+      "allowed_actions": [
+        "hold",
+        "buy",
+        "sell",
+        "publish"
+      ],
+      "attention_capacity": 2,
+      "subscriptions": [
+        "news"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "pool-open",
+      "round": 1,
+      "text": "The synthetic pool has been funded with its declared cash/token reserves and is open inside this engine. This is an execution probe only; no actual on-chain launch, market demand, audit or profit is asserted.",
+      "provenance": "Public synthetic execution-test input."
+    }
+  ],
+  "assumptions": [
+    "An explicit paper-trade mandate tests the model-to-ledger integration; it is not a return recommendation or autonomous discovery of demand.",
+    "All balances are synthetic integer cents/token units and all NEAR references are labels."
+  ]
+}

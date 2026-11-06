@@ -1,0 +1,15 @@
+{
+  "schema_version": "event-chain.v1",
+  "id": "ticker-rubric-nova-moss",
+  "event_description": "Compare NOVA and MOSS using explicitly supplied English-language ticker criteria scores. This evaluates a rubric, not adoption odds, trademark availability or future profit.",
+  "parameters": {"nova_readability": 30, "nova_recall": 28, "nova_fit": 24, "moss_readability": 28, "moss_recall": 25, "moss_fit": 21},
+  "personas": [{"id": "rubric-reviewer", "name": "English-language rubric reviewer", "description": "A supplied evaluator slot applying a user-approved rubric. This biography adds no inferred preferences or population weight.", "role": "criteria_evaluator", "allowed_actions": ["adjust_metric"]}],
+  "metrics": [{"id": "nova_score", "unit": "declared_rubric_points", "initial": 0}, {"id": "moss_score", "unit": "declared_rubric_points", "initial": 0}],
+  "rules": [
+    {"id": "readability", "at_tick": 0, "actor_id": "rubric-reviewer", "requires": [], "outcomes": [{"id": "supplied_scores", "probability_bps": 10000, "effects": [{"action": "adjust_metric", "metric_id": "nova_score", "delta": {"parameter": "nova_readability"}}, {"action": "adjust_metric", "metric_id": "moss_score", "delta": {"parameter": "moss_readability"}}]}], "probability_provenance": {"status": "assumed", "rationale": "Deterministic application of supplied readability points out of 35; 10000bps means apply this rubric, not real-world success certainty.", "source_refs": []}},
+    {"id": "recall", "at_tick": 0, "actor_id": "rubric-reviewer", "requires": [], "outcomes": [{"id": "supplied_scores", "probability_bps": 10000, "effects": [{"action": "adjust_metric", "metric_id": "nova_score", "delta": {"parameter": "nova_recall"}}, {"action": "adjust_metric", "metric_id": "moss_score", "delta": {"parameter": "moss_recall"}}]}], "probability_provenance": {"status": "assumed", "rationale": "Supplied recall points out of 35 are illustrative assessments, not measured audience behavior.", "source_refs": []}},
+    {"id": "audience-fit", "at_tick": 0, "actor_id": "rubric-reviewer", "requires": [], "outcomes": [{"id": "supplied_scores", "probability_bps": 10000, "effects": [{"action": "adjust_metric", "metric_id": "nova_score", "delta": {"parameter": "nova_fit"}}, {"action": "adjust_metric", "metric_id": "moss_score", "delta": {"parameter": "moss_fit"}}]}], "probability_provenance": {"status": "assumed", "rationale": "Supplied audience-fit points out of 30; no user research or audience preference inference occurred.", "source_refs": []}}
+  ],
+  "horizon_ticks": 0,
+  "assumptions": ["The declared rubric adds readability (35 possible points), recall (35) and audience fit (30).", "Scores and candidate strings are supplied examples, with no empirical ranking or naming clearance claim.", "One evaluator is one slot. Detailed descriptions do not add audience population or capital.", "All events are deterministic rubric application; repeated worlds provide no new evidence."]
+}

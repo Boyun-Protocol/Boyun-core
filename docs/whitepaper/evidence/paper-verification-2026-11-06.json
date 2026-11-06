@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-06",
+  "scope": "local-inference manuscript revision",
+  "tests": {
+    "passed": 1904,
+    "skipped": 2,
+    "elapsed_seconds": 119.66,
+    "command": "uv run --project engine python -m pytest engine/tests -q"
+  },
+  "source_sha256": {
+    "draft-comparative-evaluation.tex": "132a183bbf7530be4344519524844cd2a12e31788d812c793086734d47668070",
+    "draft-conclusion.tex": "52590e20976dcd9cccf5210367ae3b027c99eab0613da03c1330350b0e0afe3c",
+    "draft-discussion.tex": "e06ba3392c69337f3eb60cb813cfb8c06e41c88959622574ba73f412429815b4",
+    "draft-evaluation-design.tex": "d71c4ef664bfca2d08d2305e96a501270d6248137c3d35c707bbcfcd00d1e2d3",
+    "draft-foundations-figure.tex": "517c7471ba35d329ab8edbe238244489967f56b0c57d2c21099f6757c8365f40",
+    "draft-introduction.tex": "22a1a50d1b67431fcf7710bf4802b71b4f4607589bfd579527ac2ce312e661a1",
+    "draft-method-system.tex": "c1b1fcc7f32c8fa0834b22b8eccafe620804efdff34a0580a912051d94ec9dc5",
+    "draft-related-work.tex": "af5f2f4c15330275a1246720ecb8ca66094052a0f7d4ec959d5976162829f676",
+    "draft-results-mirofish.tex": "e7b0ca5bc2ae625abbbe525c6c1a03eff59bd63bc9940fdc48cf78d1ecf1b9b1",
+    "draft-results.tex": "855d9cdd4a13f5aedd52e626c5136066d05be25cee0b8374729be152912a1cc3",
+    "draft-world-creation.tex": "e63a71b9419de1c12c23c38b0cf59a79916131cdf97f2d5031798c59f7aeb9a3",
+    "draft.tex": "0d6590dea78e81722da9c0c9ebb2eff4b38490448b60ad14ab7d94d5ba76e5b9"
+  },
+  "undefined_references": [],
+  "undefined_citations": [],
+  "model_calls_made_for_this_revision": 0
+}

@@ -1,0 +1,12 @@
+{
+  "revision": "v0.3.1",
+  "date": "2026-10-28",
+  "scope": "Editorial attribution cleanup; no engine or experiment changes",
+  "pdf_pages": 23,
+  "bibliography_entries": 20,
+  "unknown_citations": 0,
+  "unrelated_editorial_references_absent": true,
+  "pdf_sha256": "fee5444d298bd5d62304ad0282fd4d2fccf739e3ce8d7780dca78ca1fa7a3def",
+  "model_calls": 0,
+  "new_chain_transactions": 0
+}

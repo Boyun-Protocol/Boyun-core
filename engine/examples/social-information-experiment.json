@@ -1,0 +1,108 @@
+{
+  "schema_version": "social-experiment.v1",
+  "id": "analyst-information-link",
+  "baseline_world": {
+    "schema_version": "agent-world.v1",
+    "id": "near-public-agent-pilot",
+    "event_description": "A fictional NEAR memecoin launch tied to a hypothetical Paris political story. Test how an analyst's cautions and a large holder's messages reach retail. No real event, person, token or future profit is asserted.",
+    "network": "near",
+    "rounds": 2,
+    "market": {
+      "project_capital_cents": 1000000,
+      "launch_cost_cents": 100000,
+      "lp_cash_cents": 400000,
+      "project_token_units": 3000000,
+      "lp_token_units": 1000000,
+      "fee_bps": 30,
+      "max_slippage_bps": 500
+    },
+    "agents": [
+      {
+        "id": "analyst",
+        "role": "Evidence-focused community analyst",
+        "initial_cash_cents": 0,
+        "position_limit_cents": 0,
+        "allowed_actions": [
+          "hold",
+          "publish"
+        ],
+        "attention_capacity": 8,
+        "name": "Analyst",
+        "description": "Evidence-focused community analyst. This is an illustrative role, not an identified real trader.",
+        "goal": "Evidence-focused community analyst. Choose within supplied actions using personally delivered observations; publish uncertainties when useful.",
+        "subscriptions": [
+          "news",
+          "whale",
+          "retail"
+        ]
+      },
+      {
+        "id": "retail",
+        "role": "Small retail trader who waits for an analyst's actual message before considering a small entry",
+        "initial_cash_cents": 50000,
+        "position_limit_cents": 10000,
+        "allowed_actions": [
+          "hold",
+          "buy",
+          "sell",
+          "publish"
+        ],
+        "attention_capacity": 8,
+        "name": "Retail",
+        "description": "Small retail trader who waits for an analyst's actual message before considering a small entry. This is an illustrative role, not an identified real trader.",
+        "goal": "Small retail trader who waits for an analyst's actual message before considering a small entry. Choose within supplied actions using personally delivered observations; publish uncertainties when useful.",
+        "subscriptions": [
+          "analyst"
+        ]
+      },
+      {
+        "id": "whale",
+        "role": "Large holder evaluating a small exploratory buy when personally observed launch information and liquidity justify it; never exceed position limit",
+        "initial_cash_cents": 200000,
+        "position_limit_cents": 30000,
+        "allowed_actions": [
+          "hold",
+          "buy",
+          "sell",
+          "publish"
+        ],
+        "attention_capacity": 8,
+        "name": "Whale",
+        "description": "Large holder evaluating a small exploratory buy when personally observed launch information and liquidity justify it; never exceed position limit. This is an illustrative role, not an identified real trader.",
+        "goal": "Large holder evaluating a small exploratory buy when personally observed launch information and liquidity justify it; never exceed position limit. Choose within supplied actions using personally delivered observations; publish uncertainties when useful.",
+        "subscriptions": [
+          "news",
+          "analyst",
+          "retail"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": "launch-update",
+        "round": 1,
+        "text": "In this fictional world the synthetic pool is open with the stated reserves. A proposed Paris political theme is unverified. No audience demand, real contract audit, KOL endorsement or resale profit is established.",
+        "provenance": "User-supplied public synthetic pilot event; not live news or an on-chain attestation."
+      }
+    ],
+    "assumptions": [
+      "All participant endowments, liquidity, fees and external events are illustrative assumptions.",
+      "NEAR is the scenario network label; this run sends no chain transaction.",
+      "There are three independent role contexts served by the chosen model, not three independently authenticated people.",
+      "A posted claim becomes available next round through subscriptions; text is never treated as authenticated external truth.",
+      "Persona goals are hand-authored public experimental assumptions, not fitted human behavior."
+    ]
+  },
+  "treatment": {
+    "remove_subscriptions": [
+      {
+        "listener": "retail",
+        "source": "analyst"
+      }
+    ]
+  },
+  "seeds": [
+    42,
+    43
+  ]
+}
