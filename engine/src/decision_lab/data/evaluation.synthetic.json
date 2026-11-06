@@ -1,0 +1,84 @@
+{
+  "schema_version": "binary-evaluation.v1",
+  "source_mode": "synthetic",
+  "split_at": "2025-02-01T00:00:00Z",
+  "sources": [
+    {
+      "id": "evidence",
+      "url": "https://example.test/input",
+      "observed_at": "2024-12-01T00:00:00Z"
+    },
+    {
+      "id": "train-outcome",
+      "url": "https://example.test/train",
+      "observed_at": "2025-01-15T00:00:00Z"
+    },
+    {
+      "id": "test-outcome",
+      "url": "https://example.test/test",
+      "observed_at": "2025-02-15T00:00:00Z"
+    }
+  ],
+  "forecasts": [
+    {
+      "id": "train-0",
+      "question": "Fictional training A?",
+      "issued_at": "2025-01-01T00:00:00Z",
+      "resolves_at": "2025-01-15T00:00:00Z",
+      "resolved_at": "2025-01-16T00:00:00Z",
+      "probability": 0.4,
+      "outcome": 0,
+      "source_ids": [
+        "evidence"
+      ],
+      "outcome_source_ids": [
+        "train-outcome"
+      ]
+    },
+    {
+      "id": "train-1",
+      "question": "Fictional training B?",
+      "issued_at": "2025-01-01T00:00:00Z",
+      "resolves_at": "2025-01-15T00:00:00Z",
+      "resolved_at": "2025-01-16T00:00:00Z",
+      "probability": 0.6,
+      "outcome": 1,
+      "source_ids": [
+        "evidence"
+      ],
+      "outcome_source_ids": [
+        "train-outcome"
+      ]
+    },
+    {
+      "id": "test-0",
+      "question": "Fictional holdout A?",
+      "issued_at": "2025-02-01T00:00:00Z",
+      "resolves_at": "2025-02-15T00:00:00Z",
+      "resolved_at": "2025-02-16T00:00:00Z",
+      "probability": 0.25,
+      "outcome": 0,
+      "source_ids": [
+        "evidence"
+      ],
+      "outcome_source_ids": [
+        "test-outcome"
+      ]
+    },
+    {
+      "id": "test-1",
+      "question": "Fictional holdout B?",
+      "issued_at": "2025-02-02T00:00:00Z",
+      "resolves_at": "2025-02-15T00:00:00Z",
+      "resolved_at": "2025-02-16T00:00:00Z",
+      "probability": 0.75,
+      "outcome": 1,
+      "source_ids": [
+        "evidence"
+      ],
+      "outcome_source_ids": [
+        "test-outcome"
+      ]
+    }
+  ]
+}

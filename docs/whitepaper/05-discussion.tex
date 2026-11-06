@@ -1,0 +1,137 @@
+\section{Discussion}\label{sec:discussion}
+\subsection{Evaluation Required for Predictive Claims}\label{sec:future}
+The next empirical task is to define one measurable outcome, resolution source,
+and horizon before issuing forecasts. For example, a creator-cash task must
+specify withdrawals, expenses, token inventory, and liabilities. Until those
+quantities are joined to the strategic model and observed outcomes, a claimed
+probability of creator profit is not a supported output.
+
+A prospective study records predictions before outcomes are known. It must
+freeze the construction procedure, evidence cutoff, rules, model version, and
+selection mode for each evaluation release. Training, development, and holdout
+sets must follow time order, and overlapping market events need separation to
+avoid leaking outcome information. A holdout set is data reserved for the final
+assessment rather than prompt or parameter tuning. Failed runs and abstentions
+must remain in the issued-prediction record.
+
+Comparisons should include a training-period base rate, a simple numeric rule,
+and a single-model forecast given the same available evidence. Controlled economic-game tasks should first compare choice behavior with known
+payoffs and supplied information, following the motivation of OpenSpiel and
+repeated-game studies \cite{lanctot2019,akata2025}. A matched-budget
+comparison tests whether interacting participants add value beyond spending
+more inference resources. Ablations should remove peer messages, replace
+heterogeneous goals with identical roles, and compare Jev with a local utility
+rule and a larger-model policy. Additional participants are not independent
+observations when they share assumptions or correlated model errors. Prompt
+experiments should compare a minimal typed contract with numeric-support
+criteria, vary menu order, and test whether selected actions respond to
+controlled payoff and information changes. Tuning must use development cases,
+not future resolved outcomes or the final holdout set. Quality and latency
+must be measured alongside actual billed input use; neither fluent motives
+nor lower per-call prices establish useful strategic behavior.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[node distance=6mm and 8mm]
+\node[box] (task) {Define outcome and horizon\\Fix evidence cutoff};
+\node[box,right=of task] (freeze) {Freeze evaluation protocol\\Rules, models, baselines};
+\node[box,right=of freeze] (issue) {Issue dated forecasts\\Preserve abstentions};
+\node[box,below=of issue] (resolve) {Resolve observed outcomes\\Use the declared source};
+\node[box,left=of resolve] (score) {Compare held-out scores\\Cost, coverage, uncertainty};
+\node[box,left=of score] (publish) {Report results and failures\\Limit claims to evidence};
+\draw[arr] (task)--(freeze);\draw[arr] (freeze)--(issue);
+\draw[arr] (issue)--(resolve);\draw[arr] (resolve)--(score);\draw[arr] (score)--(publish);
+\end{tikzpicture}
+\caption{Proposed prospective evaluation. This is a research protocol for
+future validation, not an experiment completed in this paper.}
+\label{fig:evaluation}
+\end{figure*}
+
+Evaluation should report Brier score, log loss, calibration, completion rate,
+latency, and actual token usage. Calibration asks whether events assigned a
+given probability occur at approximately that frequency across sufficiently
+many resolved cases. Cases sharing a narrative or time period must be treated
+as dependent when estimating uncertainty. Repeated samples from one assumed
+world do not substitute for independent real outcomes.
+
+Decision usefulness requires a separate user study. Invited teams could be
+asked to formulate a hypothesis, identify a consequential assumption,
+distinguish utility from cash,
+and explain whether the report changes their decision. Completion time and
+consented feedback can assess practical value. This study tests deliberation,
+while resolved-outcome scoring tests prediction; one result cannot establish
+the other.
+
+\subsection{Research Applications and Operating Cost}\label{sec:business}
+The initial users are researchers, protocol designers, and risk analysts
+studying financial and economic decisions, initially bounded crypto and DeFi
+questions. Each included actor must have an explicit goal, feasible options,
+resources and incentives that matter to the mechanism being studied. Typical tasks compare an
+incentive mechanism, change an information policy, or test a stress assumption
+while holding the rest of an experiment fixed. The value hypothesis is a
+shorter path from a research question to an inspectable experiment, supported
+by versioned assumptions, sensitivity comparisons, and reusable results.
+Spreadsheets, scripted agent-based models, and single-model analysis are useful
+baselines. Demand and willingness to pay remain questions for the user study.
+
+Typed small-model inference offers an economical way to evaluate bounded
+choices, but the cost example in Section~\ref{sec:system} covers only actor
+input tokens. World authoring, hosting, storage, failed requests, and support
+must be measured separately. No matched-task comparison currently supports a
+claim of lower cost at equal quality than MiroFish or a frontier model.
+The relevant operating measures are cost per completed, replayable experiment
+and cost per evaluated research hypothesis. Low per-call prices alone do not
+establish a useful research tool. Provider interface documentation also does
+not establish commercial resale rights or a particular privacy guarantee.
+
+\subsection{Remote Agent Services}
+The local MCP interface enables an external agent to construct a world with
+its own model and invoke a bounded engine. Distributing those services would
+require additional identity, authorization, and reliability mechanisms.
+Proof of Response proposes responses, fault evidence, or delay compensation
+across a network of service dependencies \cite{proofresponse2025}. Boyun's
+recorded timeout and cooldown handling does not implement that protocol.
+Similarly, a response delivered on time can still contain an invalid decision
+or a poor prediction. Service responsiveness and scientific validity require
+separate evaluation.
+
+\subsection{Limitations}\label{sec:limits}
+\emph{Behavioral assumptions.} Motivations, utility weights, action effects,
+and population composition are predominantly reviewed hypotheses. Wallet
+observations are incomplete and cannot identify private intent or account
+ownership. Detailed personas can share the same model bias. Their number
+does not establish a representative market population.
+
+\emph{Strategic simplification.} Linear utility, additive metric effects,
+scheduled events, and preset publications omit many nonlinearities and
+adaptive behaviors. Repeated rounds do not imply repeated-game equilibrium,
+and public claims are not enforceable commitments. The strategic engine does
+not model a full exchange, credit, leverage, or liquidation process.
+
+\emph{Information and privacy.} Typed responses prevent malformed action
+execution but do not eliminate mistaken reasoning or prompt injection, where
+untrusted text attempts to redirect the model. Restricted observations can
+still reveal information through public consequences. The host can read the
+world and remote providers receive their selected requests. Artifact
+commitments establish consistency, not anonymity or confidential computation.
+
+\emph{External validity.} The synthetic experiments verify specified
+calculations and scheduling. The live request verifies one interface path.
+Neither establishes human fidelity, prospective forecast accuracy, or an
+improvement in real decisions. Those claims require the comparative and
+prospective studies described above.
+
+\section{Conclusion}\label{sec:conclusion}
+Boyun separates authored assumptions, typed participant choices, and numeric
+consequences in a replayable simulation workflow for financial and economic decisions. Its world specification
+makes individual goals, incentives, information boundaries, resource costs, and simultaneous
+interaction rules explicit. Six synthetic experiments verify arithmetic,
+timing, and mechanism attribution under declared test policies. Optional NEAR
+registration supports later artifact-integrity checking while keeping the
+artifact contents off chain.
+
+The remaining research question is whether this structure improves predictions
+or decisions relative to simpler alternatives. A frozen prospective evaluation
+with baselines and ablations, together with a separate user study, is needed
+to answer it. Those results should determine which assumptions and interaction
+mechanisms are useful enough to retain.

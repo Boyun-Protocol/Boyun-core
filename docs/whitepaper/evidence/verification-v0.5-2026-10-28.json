@@ -1,0 +1,47 @@
+{
+  "revision": "v0.5",
+  "date": "2026-10-28",
+  "scope": "Academic structure and method exposition; unchanged engine semantics and five synthetic fixtures",
+  "document_class": "IEEEtran",
+  "class_options": [
+    "10pt",
+    "conference",
+    "compsocconf"
+  ],
+  "bibliography_style": "IEEEtran",
+  "compiler": "Tectonic",
+  "pdf_producer": "xdvipdfmx (0.1)",
+  "pdf_pages": 10,
+  "pdf_sha256": "2cc66dba371d75cf2908ff03ca58854eea7932913e4cb729db092406b8c5aa9f",
+  "bibliography_entries": 20,
+  "unknown_citations": 0,
+  "uncited_bibliography_entries": 0,
+  "unknown_internal_references": 0,
+  "main_sections_roman": 7,
+  "numbered_equations": 5,
+  "pseudocode_algorithms": 2,
+  "vector_figures": 5,
+  "own_code_citations_in_pdf": false,
+  "rendered_pages_visually_reviewed": 10,
+  "synthetic_evidence_freshness": "passed; all five outputs unchanged",
+  "companion_source_map_freshness": "passed; 31 locators excluded from PDF",
+  "regression_tests_passed": 1,
+  "regression_test_scope": "tools/tests/test_whitepaper_mechanisms.py",
+  "full_engine_suite_rerun": false,
+  "new_model_calls_during_editorial_revision": 0,
+  "new_chain_transactions": 0,
+  "reported_live_check": "Previous user-authorized soft check only: one request, jev-1.14.0, 409 input / 31 output tokens",
+  "known_build_warnings": [
+    "underfull spacing",
+    "Tectonic bibliography rerun consistency"
+  ],
+  "manuscript_files_sha256": {
+    "main.tex": "4abd1f980dc8b47e53c6887de05222fe7f89d9de915c86c6585ed09162d7b132",
+    "01-framing.tex": "7b994a966796f9464052eef88b47b68787609ddae82f26614a120dcc8455aef0",
+    "02-method.tex": "c69cdc97bc2304cfd1db27bcf87cd4ee061bbc73157741315346bdff18a67d6d",
+    "03-system.tex": "0b5a4ad6563b67632daf80079ef339321bfcf70a3617bd3c27e46630dd3df3b0",
+    "04-evaluation.tex": "9ba0e91bf4d39d011cc6df478dd26d7e8457c2d5f56c8f9cf4d8d0f4e82629c1",
+    "05-discussion.tex": "2bb7e2fd1d3aa41632a79b7732cb78b3a13524a3f5397c0e24e6b78dc04c88db",
+    "references.bib": "2acb4ebe53e4d4d62db371cb0f8f60f889b701149e3a6143c65e2a6c91d2ecf9"
+  }
+}

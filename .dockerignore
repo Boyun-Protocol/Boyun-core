@@ -1,0 +1,9 @@
+.git
+**/.venv
+**/dist
+**/target
+**/output
+**/__pycache__
+.env
+.env.*
+*.private.*

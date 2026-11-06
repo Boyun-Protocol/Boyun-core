@@ -1,0 +1,63 @@
+{
+  "revision": "v0.7",
+  "date": "2026-10-29",
+  "scope": "Explicit game construction, primary Jev rationale, eight-role cast, preference sensitivity and eleven-tool local MCP interface",
+  "document_class": "IEEEtran",
+  "compiler": "Tectonic",
+  "pdf_producer": "xdvipdfmx (0.1)",
+  "pdf_pages": 13,
+  "pdf_sha256": "7a65f57aaba8bdf2a5fa83ec0c39f5c521894f17ad9a4b9f7e45e576cecfc304",
+  "bibliography_entries": 29,
+  "unknown_citations": 0,
+  "uncited_bibliography_entries": 0,
+  "unknown_internal_references": 0,
+  "main_sections_roman": 7,
+  "numbered_equations": 5,
+  "pseudocode_algorithms": 2,
+  "vector_figures": 5,
+  "rendered_pages_visually_reviewed": 13,
+  "synthetic_experiments": 6,
+  "original_five_fixtures": "unchanged outputs; sixth fixture tests local-rule preference sensitivity",
+  "engine_tests_passed": 1641,
+  "engine_tests_seconds": 83.45,
+  "tooling_root_tests_passed": 115,
+  "tooling_root_subtests_passed": 42,
+  "tooling_root_tests_seconds": 1.19,
+  "final_ui_tests_passed": 5,
+  "construction_model_scale_evidence_focused_tests_passed": 38,
+  "installed_mcp_client_acceptance": "docs/decision-lab/evidence/mcp-persona-acceptance-v0.7-2026-10-29.json",
+  "packaged_public_offline_journey_focused_tests_passed": 34,
+  "new_provider_calls": 0,
+  "new_chain_transactions": 0,
+  "new_instruction_live_validation": "not performed",
+  "known_build_warnings": [
+    "underfull spacing",
+    "Tectonic bibliography rerun consistency"
+  ],
+  "manuscript_files_sha256": {
+    "main.tex": "fca29f3b714aefeede150b16e979c72a433a80d41eedf4e644db9e3a6c9fda13",
+    "01-framing.tex": "1c4c64220e6f45d7b362233b787db06920cb4281ff7dece6ee038231958f7957",
+    "02-method.tex": "71ced2a73c406655ba9e0909ad90f902aea7fff8b0df3b1559939d4324f0fd06",
+    "03-system.tex": "cfa3559147943b348b94e962d5aaffae28e755fceb00361f935367440de79a0d",
+    "04-evaluation.tex": "b282f8212c29dd8193ef80052be136fcecd014408d73491602d827ffcddb7188",
+    "05-discussion.tex": "35bd83ecd94d9deefd06878fd84317c678b49bc5d3527c5208e515e488a3d37e",
+    "references.bib": "18c90e61ba4eabcfa865c3e4e9d93932f20d8b6289af6cb1c41c02b7123abd26"
+  },
+  "final_landing_ui_http_tests_passed": 9,
+  "packaged_public_journey_seconds": 27.08,
+  "final_wheel_assets_match": true,
+  "browser": {
+    "driver": "gstack headless Chromium",
+    "url": "http://127.0.0.1:8782/",
+    "journey": "Build a DeFi product \u2192 ready world \u2192 eight incentives \u2192 construction review \u2192 offline execution \u2192 scenario slides",
+    "actors": 8,
+    "rounds": 2,
+    "completed_worlds": 1,
+    "provider_calls": 0,
+    "console_errors": [],
+    "screenshots": [
+      "output/qa/persona-v7/game-review.png",
+      "output/qa/persona-v7/pilot-results.png"
+    ]
+  }
+}

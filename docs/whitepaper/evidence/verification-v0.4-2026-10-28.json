@@ -1,0 +1,21 @@
+{
+  "revision": "v0.4",
+  "date": "2026-10-28",
+  "scope": "Direct TypeSafe provider migration; engine settlement unchanged",
+  "test_command": "PYTHONPATH=\"$PWD/engine/src:$PWD\" uv run --locked --project engine --extra pdf python -m pytest engine/tests tests tools/tests -q",
+  "scoped_python_tests_passed": 1716,
+  "subtests_passed": 42,
+  "test_seconds": 82.87,
+  "javascript_regression_scripts_passed": 15,
+  "installed_verifier_focused_tests_passed": 34,
+  "synthetic_experiments": 5,
+  "source_anchors": 31,
+  "bibliography_entries": 20,
+  "unknown_citations": 0,
+  "pdf_pages": 23,
+  "pdf_sha256": "ecfe418e1d3e24fe5939c814fecbe9c06720678be384fd2081f3d742b0559e1c",
+  "native_live_inference_verified": false,
+  "valid_native_key_configured": false,
+  "model_calls": 0,
+  "new_chain_transactions": 0
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "policy-bundle.v1",
+  "bundle_id": "synthetic-reviewed-example-v1",
+  "source": {
+    "kind": "manual",
+    "model": null,
+    "prompt_sha256": null
+  },
+  "fallback": "baseline",
+  "policies": [
+    {
+      "template_id": "retail-01",
+      "entry_signal": "confirmed",
+      "entry_fraction_bps": 500,
+      "exit_on_contradiction": true,
+      "rationale": "Illustrative cautious sizing for a first-cycle buyer; not a measured behavior.",
+      "assumptions": [
+        "Five percent of available cash is an arbitrary fixture assumption, capped by the recipe.",
+        "Confirmation requires delivered project evidence; unsent or future news is unavailable."
+      ]
+    },
+    {
+      "template_id": "retail-02",
+      "entry_signal": "rumor_or_confirmed",
+      "entry_fraction_bps": 750,
+      "exit_on_contradiction": true,
+      "rationale": "Illustrative meme-collector response to observed rumors; not fitted to market participants.",
+      "assumptions": [
+        "Seven and a half percent is a synthetic entry fraction, capped by the recipe.",
+        "A contradiction of the previously used claim triggers an exit proposal; fills are not guaranteed."
+      ]
+    },
+    {
+      "template_id": "large_holders-01",
+      "entry_signal": "confirmed",
+      "entry_fraction_bps": 250,
+      "exit_on_contradiction": true,
+      "rationale": "Illustrative slower capital deployment by a larger funded participant.",
+      "assumptions": [
+        "Two and a half percent is a synthetic fraction, not inferred from wallet history.",
+        "The actor still cannot exceed its position limit or executable liquidity."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "schema_version": "explicit-launch.v1",
+  "id": "six-person-launch",
+  "event_description": "A fictional launch with two alternative strategies for one large-holder slot; no extra funding or real market odds.",
+  "scenario": {
+    "schema_version": "synthetic-scenario.v1",
+    "mode": "synthetic",
+    "name": "Public fictional launch with an explicitly authored six-person cast",
+    "horizon_hours": 120,
+    "capital_cents": 1000000,
+    "launch_cost_cents": 100000,
+    "lp_cash_cents": 400000,
+    "lp_tokens": 1000000,
+    "founder_tokens": 3000000,
+    "fee_bps": 30,
+    "founder_vested_at_hour": 24,
+    "lp_unlock_at_hour": 121,
+    "founder_sales": [
+      {
+        "at_hour": 72,
+        "token_units": 300000
+      },
+      {
+        "at_hour": 168,
+        "token_units": 300000
+      }
+    ],
+    "campaigns": [
+      {
+        "at_hour": 5,
+        "fee_cents": 50000
+      },
+      {
+        "at_hour": 9,
+        "fee_cents": 50000
+      },
+      {
+        "at_hour": 17,
+        "fee_cents": 50000
+      },
+      {
+        "at_hour": 33,
+        "fee_cents": 50000
+      }
+    ],
+    "campaign_budget_cents": 200000,
+    "news_enabled": true,
+    "catalyst_probability_bps": 6500,
+    "followup_positive_probability_bps": 4500,
+    "competitor_messages": [
+      {
+        "at_hour": 5
+      },
+      {
+        "at_hour": 9
+      },
+      {
+        "at_hour": 17
+      },
+      {
+        "at_hour": 33
+      },
+      {
+        "at_hour": 49
+      },
+      {
+        "at_hour": 73
+      }
+    ],
+    "observation_window_hours": 48,
+    "visit_interval_hours": 6,
+    "max_slippage_bps": 500,
+    "cast_recipe": {
+      "founder_initial_cash_cents": 1000000
+    },
+    "assumptions": [
+      {
+        "id": "fixture-population-and-capital",
+        "status": "assumed",
+        "rationale": "Explicit synthetic participant composition and cash ranges; not measured NEAR demand."
+      },
+      {
+        "id": "fixture-news-probabilities",
+        "status": "assumed",
+        "rationale": "65% catalyst and 45% favorable follow-up are demonstration inputs, not estimates of a real event."
+      },
+      {
+        "id": "fixture-feed-and-campaign",
+        "status": "assumed",
+        "rationale": "Funded posts, uniform finite-capacity subscription feeds, six-hour visits and a 48-hour attention window; not a real platform algorithm."
+      },
+      {
+        "id": "fixture-venue",
+        "status": "assumed",
+        "rationale": "Integer-cent constant-product market with 30bps fee; not verified launchpad mechanics."
+      }
+    ]
+  },
+  "cast": {
+    "schema_version": "explicit-cast.v1",
+    "actors": [
+      {
+        "id": "retail-001",
+        "template_id": "retail-07",
+        "category": "retail",
+        "owner_id": "retail-001",
+        "initial_cash_cents": 60080,
+        "allowed_actions": [
+          "abstain",
+          "buy",
+          "sell"
+        ],
+        "subscriptions": [
+          "news",
+          "creator",
+          "competitor"
+        ],
+        "position_limit_cents": 50000,
+        "entry_fraction_bps": 1000,
+        "attention_capacity": 2,
+        "strategy": "momentum",
+        "provenance": {
+          "status": "assumed",
+          "name": "Late-arriving social buyer",
+          "description": "Sees widely shared posts after early traders have acted; estimates popularity from delayed public signals and has limited awareness of earlier entries.",
+          "rationale": "Supplied descriptive snapshot and numeric assumptions; authored outside execution, not fitted to observed wallets."
+        }
+      },
+      {
+        "id": "retail-002",
+        "template_id": "retail-09",
+        "category": "retail",
+        "owner_id": "retail-002",
+        "initial_cash_cents": 51258,
+        "allowed_actions": [
+          "abstain",
+          "buy",
+          "sell"
+        ],
+        "subscriptions": [
+          "news",
+          "creator"
+        ],
+        "position_limit_cents": 50000,
+        "entry_fraction_bps": 1000,
+        "attention_capacity": 2,
+        "strategy": "momentum",
+        "provenance": {
+          "status": "assumed",
+          "name": "Drawdown-sensitive holder",
+          "description": "Checks losses more often than gains and prioritizes a cash buffer; selling pressure can rise after several disappointing observations even without fresh news.",
+          "rationale": "Supplied descriptive snapshot and numeric assumptions; authored outside execution, not fitted to observed wallets."
+        }
+      },
+      {
+        "id": "large_holders-001",
+        "template_id": "large_holders-04",
+        "category": "large_holders",
+        "owner_id": "large_holders-001",
+        "initial_cash_cents": 721791,
+        "allowed_actions": [
+          "abstain",
+          "buy",
+          "sell"
+        ],
+        "subscriptions": [
+          "news",
+          "creator",
+          "competitor"
+        ],
+        "position_limit_cents": 2000000,
+        "entry_fraction_bps": 1000,
+        "attention_capacity": 2,
+        "strategy": "cautious",
+        "provenance": {
+          "status": "assumed",
+          "name": "Fast risk-off allocator",
+          "description": "Reprices exposure quickly when broad crypto conditions deteriorate; common market shocks can make its sales coincide with those of unrelated actors.",
+          "rationale": "Supplied descriptive snapshot and numeric assumptions; authored outside execution, not fitted to observed wallets."
+        }
+      },
+      {
+        "id": "project-lp",
+        "template_id": "liquidity-01",
+        "category": "liquidity",
+        "owner_id": "project",
+        "initial_cash_cents": 0,
+        "allowed_actions": [
+          "abstain",
+          "add_liquidity",
+          "remove_liquidity"
+        ],
+        "subscriptions": [
+          "news",
+          "creator"
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy": "observe",
+        "provenance": {
+          "status": "assumed",
+          "name": "Founder liquidity operator",
+          "description": "Manages the project's explicitly allocated LP capital as a separate counterparty role; cannot independently spend or duplicate the founder's reserve.",
+          "rationale": "Supplied descriptive snapshot and numeric assumptions; authored outside execution, not fitted to observed wallets."
+        }
+      },
+      {
+        "id": "creators_marketing-001",
+        "template_id": "creators_marketing-06",
+        "category": "creators_marketing",
+        "owner_id": "creators_marketing-001",
+        "initial_cash_cents": 0,
+        "allowed_actions": [
+          "abstain",
+          "observe"
+        ],
+        "subscriptions": [
+          "news",
+          "creator"
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy": "observe",
+        "provenance": {
+          "status": "assumed",
+          "name": "Small community host",
+          "description": "Has a smaller engaged group and finite time to moderate discussion; reliable participation can matter more than nominal follower counts.",
+          "rationale": "Supplied descriptive snapshot and numeric assumptions; authored outside execution, not fitted to observed wallets."
+        }
+      },
+      {
+        "id": "project-founder",
+        "template_id": "launch_teams-01",
+        "category": "launch_teams",
+        "owner_id": "project",
+        "initial_cash_cents": 1000000,
+        "allowed_actions": [
+          "abstain",
+          "sell"
+        ],
+        "subscriptions": [
+          "news",
+          "creator",
+          "competitor"
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy": "scheduled_exit",
+        "provenance": {
+          "status": "assumed",
+          "name": "Project founder",
+          "description": "Represents the user's one project and owns its explicit spending choices; private inputs inform this actor without becoming public information for everyone else.",
+          "rationale": "Supplied descriptive snapshot and numeric assumptions; authored outside execution, not fitted to observed wallets."
+        }
+      }
+    ],
+    "excluded": [],
+    "alternatives": [
+      {
+        "actor_id": "large_holders-001",
+        "variants": [
+          {
+            "id": "confirmation_first",
+            "weight_bps": 5000,
+            "overrides": {
+              "strategy": "cautious",
+              "entry_fraction_bps": 500
+            }
+          },
+          {
+            "id": "rumor_responsive",
+            "weight_bps": 5000,
+            "overrides": {
+              "strategy": "momentum",
+              "entry_fraction_bps": 1000
+            }
+          }
+        ]
+      }
+    ],
+    "mixture_assumption": "independent_per_actor_per_world"
+  }
+}

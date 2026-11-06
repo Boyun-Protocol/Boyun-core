@@ -1,0 +1,14 @@
+{
+  "schema_version": "event-chain.v1",
+  "id": "declared-defi-stress",
+  "event_description": "Explore supplied DeFi stress branches as declared loss and health-indicator shocks. No lending protocol, oracle, collateral, interest, liquidation or chain transaction is implemented.",
+  "parameters": {"stress_bps": 2000, "mild_loss": 10000, "severe_extra_loss": 30000},
+  "personas": [{"id": "risk-reviewer", "name": "Risk scenario reviewer", "description": "Applies explicit stress rules and declared payoffs. This actor has no wallet, funding, execution authority or inferred financial strategy.", "role": "stress_evaluator", "allowed_actions": ["adjust_metric"]}],
+  "metrics": [{"id": "declared_loss", "unit": "declared_USD_payoff", "initial": 0}, {"id": "health_indicator", "unit": "declared_health_bps", "initial": 10000}],
+  "rules": [
+    {"id": "market-stress", "at_tick": 0, "actor_id": "risk-reviewer", "requires": [], "outcomes": [{"id": "stress", "probability_bps": {"parameter": "stress_bps"}, "effects": [{"action": "adjust_metric", "metric_id": "declared_loss", "delta": {"parameter": "mild_loss"}}, {"action": "adjust_metric", "metric_id": "health_indicator", "delta": -2500}]}, {"id": "baseline", "probability_bps": 8000, "effects": []}], "probability_provenance": {"status": "assumed", "rationale": "Illustrative 20% stress mixture; no calibration, market forecast or source verification is claimed.", "source_refs": []}},
+    {"id": "conditional-severity", "at_tick": 1, "actor_id": "risk-reviewer", "requires": [{"event_id": "market-stress", "outcome_id": "stress"}], "outcomes": [{"id": "severe", "probability_bps": 2500, "effects": [{"action": "adjust_metric", "metric_id": "declared_loss", "delta": {"parameter": "severe_extra_loss"}}, {"action": "adjust_metric", "metric_id": "health_indicator", "delta": -5000}]}, {"id": "contained", "probability_bps": 7500, "effects": []}], "probability_provenance": {"status": "assumed", "rationale": "Illustrative conditional severity given the supplied stress event; not a liquidation model or empirically estimated risk.", "source_refs": []}}
+  ],
+  "horizon_ticks": 1,
+  "assumptions": ["Declared USD payoff is an illustrative metric, not withdrawable cash or financial settlement.", "The supplied conditional severity draw depends on market-stress eligibility; named draws are independent conditional on declared dependencies.", "Health-indicator basis points are an arbitrary supplied scale and are not a protocol health-factor calculation.", "The declared loss branches are 0, 10000 or 40000 USD payoff units. No transfer or conservation-of-cash claim applies.", "Change both complementary probabilities explicitly when changing the stress mixture; the engine fills no defaults."]
+}

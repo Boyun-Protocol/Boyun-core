@@ -1,0 +1,226 @@
+\section{Experimental Evaluation}\label{sec:results}
+\subsection{Objectives and Setup}
+The experiments test whether the specified mechanics produce their expected
+results. All six use synthetic inputs and fixed decision policies where
+actions are required. They do not fit participant preferences or measure
+real-market forecasting performance. The calculations and policies are small
+enough to reconstruct from the descriptions below, and no model inference is
+used in these six experiments.
+
+Verification concerns whether the program executes the intended rules;
+behavioral validation concerns whether those rules and decisions represent
+real participants. This distinction determines the interpretation of every
+result. We evaluate exact arithmetic, round timing, resource accounting,
+replay, and a controlled removal of interaction mechanisms. We report a
+separate small live API check only as integration evidence.
+
+\subsection{Experiment 1: Incentives in a Coordination Game}
+A hypothetical founder chooses whether to fund a review. A liquidity partner
+chooses whether to commit resources to disclosed escrow or wait. Escrow means
+resources are held under stated release conditions; it is part of the
+fictional game's interpretation, not a deployed escrow service.
+Table~\ref{tab:game} supplies both participants' utilities. Every number is an
+assumed preference value, not cash or an estimated market payoff.
+
+\begin{table}[t]
+\caption{Synthetic utilities: (founder, partner).}
+\label{tab:game}
+\centering\footnotesize
+\begin{tabular}{@{}lcc@{}}
+\toprule & Partner commits & Partner waits \\
+\midrule
+Founder funds review & $(6,5)$ & $(-2,1)$ \\
+Founder skips review & $(2,-4)$ & $(0,0)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Enumeration finds two pure Nash profiles: review/commit and skip/wait.
+In the first, either unilateral change lowers the deviator's utility; the
+same is true in the second. The example therefore captures coordination
+rather than a universally preferred individual action.
+
+Given an assumed partner commitment probability of 0.4, the founder's
+expected utility is $0.4\times6+0.6\times(-2)=1.2$ for review and
+$0.4\times2+0.6\times0=0.8$ for skipping. These weighted averages are needed
+to compare choices under the supplied uncertainty. Ignoring the probabilities
+would compare isolated payoffs rather than the stated decision problem.
+Skipping has regret 0.4 utility points. The result verifies the calculation,
+not that 40\% of real partners would commit.
+
+\subsection{Experiment 2: Updating Explicit Beliefs}
+The two hypotheses are that attention persists or fades, with prior
+probabilities 0.4 and 0.6. A first signal has likelihood 0.75 under persistence
+and 0.25 under fading. Equation~\eqref{eq:bayes} gives a persistence posterior
+of $2/3$. A second signal has corresponding likelihoods 0.6 and 0.3; assuming
+conditional independence, the posterior becomes $4/5$.
+
+The second update multiplies each hypothesis's prior by both signal
+likelihoods and normalizes over the two hypotheses. Conditional independence
+is what permits that multiplication. Without it, a joint likelihood would
+be needed to avoid double-counting correlated signals. The resulting 0.8
+checks sequential updating and normalization under supplied assumptions;
+it is not a probability estimated from current news.
+
+\subsection{Experiment 3: Timing, Accounting, and Replay}
+Two builders each start with 100 cents. A hypothetical readiness metric
+starts at one point and is bounded between zero and ten. Before round-one
+observations, a scheduled event adds one point. Both builders then take a
+60-cent action contributing six points each. Aggregate settlement reaches
+14 and enforces the upper bound of ten. A round-two event subtracts one
+before the next observation. The remaining 40 cents make building again
+unaffordable, so both participants wait.
+
+\begin{table}[t]
+\caption{State timing in the synthetic two-builder world. Cash is in cents.}
+\label{tab:timing}
+\centering\footnotesize
+\begin{tabular}{@{}lrrrr@{}}
+\toprule Stage & Readiness & Alice & Bob & Spent \\
+\midrule
+Initialization & 1 & 100 & 100 & 0 \\
+Round-one observation & 2 & 100 & 100 & 0 \\
+Round-one settlement & 10 & 40 & 40 & 120 \\
+Round-two observation & 9 & 40 & 40 & 120 \\
+Terminal state & 9 & 40 & 40 & 120 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:timing} distinguishes settlement from the next round's opening
+state. Build publications become visible to subscribers in round two.
+Remaining cash plus spending is $40+40+120=200$, satisfying the accounting
+proposition. With assumed cash weight one and readiness weight ten, each
+participant's terminal utility is $40+10\times9=130$, compared with
+$100+10\times1=110$ at declared initialization. This change includes the
+scheduled events as well as actions. Replay reproduces the complete report
+exactly. The build-then-wait policy is imposed, so the experiment tests
+execution rather than Jev's ability to select useful actions.
+
+\subsection{Experiment 4: Scoring Probabilistic Forecasts}
+A forecast needs comparison with a resolved outcome; a high confidence field
+alone cannot establish accuracy. For binary cases, let $p_j$ be the forecast
+probability of a positive outcome, $y_j$ the resolved outcome (zero or one),
+and $n$ the number of cases. These symbols are used only for forecast
+evaluation, distinct from the participant action scores $q_{i,t}(a)$.
+The implemented scores are
+\begin{align}
+\operatorname{Brier}&=\frac{1}{n}\sum_{j=1}^{n}(p_j-y_j)^2,
+\label{eq:brier}\\
+\operatorname{LogLoss}&=-\frac{1}{n}\sum_{j=1}^{n}
+\big[y_j\log p_j+(1-y_j)\log(1-p_j)\big].
+\label{eq:logloss}
+\end{align}
+Both scores are minimized by accurate probabilities in expectation
+\cite{brier1950,gneiting2007}. Equation~\eqref{eq:brier} measures the average
+squared gap between probability and outcome. Equation~\eqref{eq:logloss}
+assigns a much larger penalty to confidently wrong forecasts. Division by
+$n$ makes the scores averages rather than totals that grow with case count.
+Without outcome-based scoring, one could rank forecasts by their confidence
+or narrative appeal without testing whether they were right.
+
+Two synthetic training outcomes imply a baseline positive rate of 0.5.
+Two later synthetic cases have outcomes $(0,1)$ and supplied forecasts
+$(0.25,0.75)$. Brier score is 0.0625 and log loss is 0.287682, compared with
+0.25 and 0.693147 for the constant 0.5 baseline. Log loss bounds its numeric
+inputs between $10^{-15}$ and $1-10^{-15}$ to avoid taking the logarithm of
+zero. This numerical safeguard is not evidence of calibration. Two invented
+cases verify the formulas, not forecasting skill. Chronology checks prevent
+declared training records from following the evaluation cases, but cannot
+authenticate the underlying data timestamps.
+
+\subsection{Experiment 5: Communication and Joint Effects}\label{sec:ablation}
+An ablation removes a mechanism while keeping the remaining experiment fixed.
+Here, two binary interventions separate information delivery from a joint-action
+effect. Alice and Bob each start with 100 cents, and readiness starts at zero.
+Alice builds in round one, spends 20 cents, adds one readiness point, and
+publishes a message. In round two Alice waits. Bob joins only after receiving
+Alice's message, spending 30 cents and adding two points; otherwise he waits.
+A declared joint rule adds three points when Alice waits and Bob joins.
+Both participants follow these programmed policies in every condition.
+
+\begin{table}[t]
+\caption{Factorial ablation. Readiness is a hypothetical metric; cost and
+remaining cash are cents. Initial total cash is 200 in every condition.}
+\label{tab:ablation}
+\centering\footnotesize
+\begin{tabular}{@{}llrrr@{}}
+\toprule Delivery & Joint rule & Readiness & Cost & Cash left \\
+\midrule
+On & On & 6 & 50 & 150 \\
+On & Off & 3 & 50 & 150 \\
+Off & On & 1 & 20 & 180 \\
+Off & Off & 1 & 20 & 180 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+With delivery enabled, Bob joins. Removing only the joint rule leaves that
+choice unchanged and reduces readiness from six to three. Removing delivery
+makes Bob wait, so the joint rule cannot activate and readiness remains one.
+Thus the mechanism that changes the selected action is distinguishable from
+the mechanism that changes its numerical consequence. All four trajectories
+replay exactly and reconcile their resources. These results describe effects
+inside one stipulated program; they do not identify how real people respond
+to information or establish that communication improves welfare.
+
+\subsection{Experiment 6: Preferences Versus Persona Prose}
+The eight-participant pilot in Section~\ref{sec:cast} tests whether declared
+numeric preferences have executable consequences. Every condition uses a
+local deterministic policy selecting the greatest immediate own-action utility
+change, with stable menu-order tie breaking. This policy deliberately ignores
+narrative motivations, opponent responses, and future effects. It establishes
+a baseline whose limits are known, rather than attributing strategic reasoning
+to an untested model.
+
+Under the declared preferences, the participation-oriented participant joins
+and the risk-sensitive participant waits. Changing only the former's risk
+weight from minus 500 to minus 5,000 reverses its isolated join value from
+8,500 to minus 5,000 utility points, and it waits instead. Across two rounds,
+terminal participation changes from 44 to 34, risk from 24 to 18, and total
+spending from 120,000 to 110,000 cents. Readiness remains 44 and credibility
+98 in both conditions. Remaining cash plus spending equals 1,000,000 cents.
+All trajectories replay exactly.
+
+A third condition changes every motivation and goal to emphasize caution,
+while holding numeric preferences and rules fixed. The local policy's actions
+and numerical results remain identical to the original condition. Thus prose
+alone does not implement a preference in this baseline, while changing the
+implemented incentive changes both choices and outcomes. These are synthetic
+mechanism checks, not results for Jev or observations of real participants.
+Testing whether Jev follows, deviates from, or strategically improves on this
+baseline requires separately recorded model experiments.
+
+\subsection{Scale and Live Integration Checks}
+Synthetic execution checks cover 10, 20, and 100 participants. An orchestration
+check executes 100 participants over two rounds with 200 injected typed
+responses, verifying message timing, resource constraints, and replay. Injected
+responses are controlled test data, so this result does not measure live
+100-participant latency, token usage, or behavioral quality.
+
+A separate authenticated TypeSafe check requested one Choice decision using
+synthetic state. A cautious participant was instructed to preserve capital
+until verification was complete; verification was incomplete and the options
+were wait or commit. The returned model was Jev 1.14.0 and the selected action
+was wait, with scores one for wait and zero for commit. The response reported
+409 input tokens and 31 output tokens; client-observed inference time was
+0.314 seconds. At the cited list price the input estimate is \$0.000017178.
+This single, deliberately simple request verifies connectivity and typed
+response handling, not a full live simulation or calibrated certainty.
+
+Agent interoperability was checked with the official Python MCP SDK 1.30.0
+against the actual server subprocess, negotiating protocol version 2025-11-25
+\cite{mcp2025}. The client discovered eleven tools, three resources, and one
+construction prompt. It supplied a modified world, validated and executed it
+with the offline policy, retrieved results, verified replay, and exported
+Markdown. An installed-package check repeated the journey outside the source
+checkout with zero provider calls. These tests establish a working protocol
+path, rather than the quality of an agent's authored world or support for
+every host application's configuration. The newer 2026 protocol is not claimed.
+
+An operator-signed NEAR testnet registration has also been completed.
+Its role is to exercise artifact registration, independently of model inference.
+It does not establish external-user wallet acceptance, decentralized inference,
+or the validity of a forecast. The optional NEAR AI Cloud author route has
+not completed a funded generation. These operational checks are separate
+from the six synthetic experiments.

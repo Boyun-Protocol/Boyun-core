@@ -1,0 +1,96 @@
+{
+  "schema_version": "finite-belief-update.v1",
+  "input_sha256": "373d8fbd1c7905336663642e4c6e944e6248736aa047201403323c36102c5f2f",
+  "engine_sha256": "5bc17c64fbad686ea381e34ac8ceb874908f9335530b00404eaf3c0124b4c1b9",
+  "belief_id": "attention-regime-illustration",
+  "advisory_only": true,
+  "likelihood_assumption": "conditionally_independent_given_hypothesis",
+  "prior": {
+    "attention-persists": {
+      "numerator": 2,
+      "denominator": 5
+    },
+    "attention-fades": {
+      "numerator": 3,
+      "denominator": 5
+    }
+  },
+  "steps": [
+    {
+      "evidence_id": "followup-reporting",
+      "conditional_evidence_likelihood": {
+        "numerator": 9,
+        "denominator": 20
+      },
+      "joint_evidence_likelihood": {
+        "numerator": 9,
+        "denominator": 20
+      },
+      "posterior": {
+        "attention-persists": {
+          "numerator": 2,
+          "denominator": 3
+        },
+        "attention-fades": {
+          "numerator": 1,
+          "denominator": 3
+        }
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Illustrative chance of distinct follow-up reporting if the regime were known, not measured news data.",
+        "source_refs": []
+      }
+    },
+    {
+      "evidence_id": "independent-community-return",
+      "conditional_evidence_likelihood": {
+        "numerator": 1,
+        "denominator": 2
+      },
+      "joint_evidence_likelihood": {
+        "numerator": 9,
+        "denominator": 40
+      },
+      "posterior": {
+        "attention-persists": {
+          "numerator": 4,
+          "denominator": 5
+        },
+        "attention-fades": {
+          "numerator": 1,
+          "denominator": 5
+        }
+      },
+      "provenance": {
+        "status": "assumed",
+        "rationale": "Illustrative community-return signal; assumed independent of reporting conditional on regime, which may be false for real overlapping social audiences.",
+        "source_refs": []
+      }
+    }
+  ],
+  "posterior": {
+    "attention-persists": {
+      "numerator": 4,
+      "denominator": 5
+    },
+    "attention-fades": {
+      "numerator": 1,
+      "denominator": 5
+    }
+  },
+  "joint_evidence_likelihood": {
+    "numerator": 9,
+    "denominator": 40
+  },
+  "limitations": [
+    "The caller declares hypotheses mutually exclusive and exhaustive. Arithmetic cannot establish that this list covers the real world.",
+    "Prior weights and likelihoods are explicit supplied assumptions/estimates, not learned or validated real-world event chances.",
+    "Conditionally independent signals are assumed given hypothesis; dependent, copied or overlapping signals can double-count evidence and exaggerate certainty.",
+    "Distinct evidence IDs and provenance references do not verify independence, truth, completeness or causal relevance.",
+    "Likelihoods are P(evidence|hypothesis), not P(hypothesis|evidence). They need not sum to one across hypotheses.",
+    "No Jev confidence, model score, news sentiment or simulation frequency is automatically converted into a likelihood or calibrated posterior.",
+    "Posteriors are conditional on this finite supplied model. They are not authenticated real-world odds or a guarantee of outcomes.",
+    "No model inference, ledger mutation, market action, evidence collection or automatic decision is performed."
+  ]
+}

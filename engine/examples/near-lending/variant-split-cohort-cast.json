@@ -1,0 +1,241 @@
+{
+  "artifact_kind": "planning_only_not_engine_input",
+  "id": "near-lending-funded-cast-split-cohort",
+  "status": "variant_user_selected_2026-11-05_split_cohort",
+  "provenance": "All balances, sizes and counts are synthetic scenario assumptions sized against the user's $1M/$100K/50K-follower premises and the 2026-11-05 Rhea snapshot (evidence/rhea-live-lending.txt). They are not observed wallets or demand estimates.",
+  "market_anchor": {
+    "source": "evidence/rhea-live-lending.txt (captured 2026-11-05)",
+    "rhea_native_usdc": {
+      "supplied_usd": 13090000,
+      "borrowed_usd": 11100000,
+      "utilization": 0.848,
+      "supply_apy": 0.0988,
+      "borrow_apy": 0.1529
+    },
+    "near_price_usd": 4.0375,
+    "baseline_supplier_yield_at_80pct_util": 0.068,
+    "baseline_borrow_apr_at_80pct_util": 0.1,
+    "implication": "Baseline borrowers pay less than at Rhea; suppliers earn less (~6.8% vs 9.88%) until utilization passes the kink. Points and relationships must carry supplier retention."
+  },
+  "opening_condition": {
+    "friendly_supply_usdc_at_opening": 1000000,
+    "label": "hypothetical_user_selected_starting_condition_not_committed_partnership"
+  },
+  "actors": [
+    {
+      "id": "team",
+      "role": "team_treasury",
+      "usdc": 100000,
+      "split": {
+        "compensation_reserve": 10000,
+        "operations": 30000,
+        "partner_support_measurement": 10000,
+        "promotion": 20000,
+        "uncommitted": 30000
+      },
+      "optional_later": 100000
+    },
+    {
+      "id": "partner_a",
+      "role": "friendly_supplier",
+      "deposited_usdc": 400000,
+      "outside_usdc": 100000,
+      "incentive": "relationship + points; leaves if loss risk or yield gap persists"
+    },
+    {
+      "id": "partner_b",
+      "role": "friendly_supplier",
+      "deposited_usdc": 300000,
+      "outside_usdc": 50000,
+      "incentive": "treasury yield mandate; compares to Rhea weekly"
+    },
+    {
+      "id": "partner_c",
+      "role": "friendly_supplier",
+      "deposited_usdc": 200000,
+      "outside_usdc": 0,
+      "incentive": "ecosystem support; low yield sensitivity, high loss sensitivity"
+    },
+    {
+      "id": "partner_d",
+      "role": "friendly_supplier",
+      "deposited_usdc": 100000,
+      "outside_usdc": 25000,
+      "incentive": "points-first; may withdraw if points look worthless"
+    },
+    {
+      "id": "ind_supplier_whale_1",
+      "role": "independent_supplier",
+      "usdc": 250000,
+      "incentive": "yield vs Rhea; risk-averse to new protocol"
+    },
+    {
+      "id": "ind_supplier_whale_2",
+      "role": "independent_supplier",
+      "usdc": 200000,
+      "incentive": "points speculation with yield floor"
+    },
+    {
+      "id": "ind_supplier_mid",
+      "role": "independent_supplier_cohort",
+      "usdc": 150000,
+      "members_represented": 30,
+      "incentive": "follows social signals"
+    },
+    {
+      "id": "ind_supplier_retail",
+      "role": "independent_supplier_cohort",
+      "usdc": 100000,
+      "members_represented": 200,
+      "incentive": "follows community/Discord; small positions"
+    },
+    {
+      "id": "borrower_large_1",
+      "role": "near_borrower",
+      "near": 120000,
+      "usdc": 5000,
+      "need": "working capital without selling NEAR"
+    },
+    {
+      "id": "borrower_large_2",
+      "role": "near_borrower",
+      "near": 80000,
+      "usdc": 10000,
+      "need": "leveraged NEAR exposure"
+    },
+    {
+      "id": "borrower_mid_1",
+      "role": "near_borrower",
+      "near": 30000,
+      "usdc": 3000,
+      "need": "cheaper refinance from Rhea"
+    },
+    {
+      "id": "borrower_mid_2",
+      "role": "near_borrower",
+      "near": 25000,
+      "usdc": 2000,
+      "need": "yield loop on stablecoins elsewhere"
+    },
+    {
+      "id": "borrower_small_01",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "borrower_small_02",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "borrower_small_03",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "borrower_small_04",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "borrower_small_05",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "borrower_small_06",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "borrower_small_07",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "borrower_small_08",
+      "role": "near_borrower",
+      "near": 7500,
+      "usdc": 750,
+      "members_represented": 10,
+      "need": "small credit lines"
+    },
+    {
+      "id": "points_looper",
+      "role": "points_seeker",
+      "near": 40000,
+      "usdc": 60000,
+      "incentive": "supply + borrow own liquidity to farm borrowed-supply points"
+    },
+    {
+      "id": "liquidator_a",
+      "role": "liquidator",
+      "usdc": 150000,
+      "near_exit_depth_usd_per_hour": 250000,
+      "min_profit_bps": 100
+    },
+    {
+      "id": "liquidator_b",
+      "role": "liquidator",
+      "usdc": 50000,
+      "near_exit_depth_usd_per_hour": 80000,
+      "min_profit_bps": 200
+    },
+    {
+      "id": "amplifier_partner_1",
+      "role": "distribution_partner",
+      "audience_hint": "overlapping_NEAR_ecosystem"
+    },
+    {
+      "id": "amplifier_partner_2",
+      "role": "distribution_partner",
+      "audience_hint": "DeFi_yield_community"
+    },
+    {
+      "id": "amplifier_kol",
+      "role": "distribution_partner",
+      "audience_hint": "paid_crypto_KOL_from_promotion_budget"
+    }
+  ],
+  "totals": {
+    "friendly_supply_usdc": 1000000,
+    "independent_supply_capacity_usdc": 700000,
+    "borrower_near_collateral": 355000,
+    "borrower_max_usdc_at_50pct_ltv_and_4.0375": 716656,
+    "liquidator_usdc": 200000
+  },
+  "decision_cadence": {
+    "routine": "daily per actor",
+    "triggered": "on price move >=8% in 24h, utilization >=90%, queued withdrawal, liquidation-eligible position, or published team update",
+    "settlement": "hourly deterministic ledger"
+  },
+  "estimated_laya_calls": {
+    "routine": 1710,
+    "triggered_estimate_range": [
+      300,
+      1200
+    ],
+    "cost": "local Laya, no remote inference fee"
+  }
+}

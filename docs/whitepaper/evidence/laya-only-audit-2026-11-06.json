@@ -1,0 +1,1167 @@
+{
+  "source_run": "engine/output/macron-laya-from-start-2026-11-04",
+  "date": "2026-11-06",
+  "provenance": "Aggregate of 24 path manifest.json identities and summary fields; paths are Laya-only from step 0; source_steps=0; model calls from manifest per path. No Jev decisions included.",
+  "paths": [
+    {
+      "id": "bear-p10000-c10000-pause",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 362,
+      "calls": 5621,
+      "fills": 2110,
+      "turnover_cents": 70429871,
+      "founder_net_cash_cents": -1500000,
+      "inventory_quote_cents": 679563,
+      "final_hash": "9d55cf11308fb9e247f7569c5aec31e2bb165af33137ef3784977c44c07f0ebf",
+      "rejections_by_status": {
+        "rejected_slippage": 378
+      },
+      "step_file_count_checked": 362,
+      "position_budget_usd": 10000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5621
+        },
+        "transport_calls": {
+          "laya-native-local": 5621
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5621,
+        "mean_top_option_score": 0.4275116180486007,
+        "summed_receipt_elapsed_seconds": 6676.588
+      },
+      "fills_by_side": {
+        "buy": 1140,
+        "sell": 970
+      },
+      "replay_receipt_count_target": 5621
+    },
+    {
+      "id": "bear-p10000-c10000-staged-exit",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 365,
+      "calls": 5716,
+      "fills": 2019,
+      "turnover_cents": 66760009,
+      "founder_net_cash_cents": -736167,
+      "inventory_quote_cents": 0,
+      "final_hash": "c18e2e27b00869d6ed96650c624def767d1e36c9a16791a41bfde1e0467d1c86",
+      "rejections_by_status": {
+        "rejected_slippage": 521
+      },
+      "step_file_count_checked": 365,
+      "position_budget_usd": 10000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5716
+        },
+        "transport_calls": {
+          "laya-native-local": 5716
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5716,
+        "mean_top_option_score": 0.42645579120119803,
+        "summed_receipt_elapsed_seconds": 6223.197
+      },
+      "fills_by_side": {
+        "buy": 1090,
+        "sell": 929
+      },
+      "replay_receipt_count_target": 5716
+    },
+    {
+      "id": "bear-p10000-c5000-pause",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 363,
+      "calls": 5666,
+      "fills": 2159,
+      "turnover_cents": 71035504,
+      "founder_net_cash_cents": -1200000,
+      "inventory_quote_cents": 771540,
+      "final_hash": "6c27cb26927c3f8daaeefe220fdc200326aaef5400a0f08611e66fa361c3bce1",
+      "rejections_by_status": {
+        "rejected_slippage": 369
+      },
+      "step_file_count_checked": 363,
+      "position_budget_usd": 10000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5666
+        },
+        "transport_calls": {
+          "laya-native-local": 5666
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5666,
+        "mean_top_option_score": 0.42673925139179575,
+        "summed_receipt_elapsed_seconds": 6706.482
+      },
+      "fills_by_side": {
+        "buy": 1165,
+        "sell": 994
+      },
+      "replay_receipt_count_target": 5666
+    },
+    {
+      "id": "bear-p10000-c5000-staged-exit",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 369,
+      "calls": 5804,
+      "fills": 2017,
+      "turnover_cents": 68771733,
+      "founder_net_cash_cents": -590774,
+      "inventory_quote_cents": 0,
+      "final_hash": "29a95d38fad3dde6b1fe43cec33184947d3a0df09e58fb9757e0347cd71b8b97",
+      "rejections_by_status": {
+        "rejected_slippage": 555
+      },
+      "step_file_count_checked": 369,
+      "position_budget_usd": 10000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5804
+        },
+        "transport_calls": {
+          "laya-native-local": 5804
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5804,
+        "mean_top_option_score": 0.42666748850774355,
+        "summed_receipt_elapsed_seconds": 6285.947
+      },
+      "fills_by_side": {
+        "buy": 1088,
+        "sell": 929
+      },
+      "replay_receipt_count_target": 5804
+    },
+    {
+      "id": "bear-p15000-c10000-pause",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 362,
+      "calls": 5631,
+      "fills": 2191,
+      "turnover_cents": 71781044,
+      "founder_net_cash_cents": -1750000,
+      "inventory_quote_cents": 917867,
+      "final_hash": "6471158729daa43457b778c620cb657620b97fa5dda6d398b08d53925a82933b",
+      "rejections_by_status": {
+        "rejected_slippage": 307
+      },
+      "step_file_count_checked": 362,
+      "position_budget_usd": 15000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5631
+        },
+        "transport_calls": {
+          "laya-native-local": 5631
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5631,
+        "mean_top_option_score": 0.4284628547756538,
+        "summed_receipt_elapsed_seconds": 6673.795
+      },
+      "fills_by_side": {
+        "buy": 1186,
+        "sell": 1005
+      },
+      "replay_receipt_count_target": 5631
+    },
+    {
+      "id": "bear-p15000-c10000-staged-exit",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 365,
+      "calls": 5720,
+      "fills": 2002,
+      "turnover_cents": 67294624,
+      "founder_net_cash_cents": -806501,
+      "inventory_quote_cents": 0,
+      "final_hash": "ea8f998aff7f6a8455057a480ecd60739d4343a0ad1648b14ffdad33c32d05b0",
+      "rejections_by_status": {
+        "rejected_slippage": 546
+      },
+      "step_file_count_checked": 365,
+      "position_budget_usd": 15000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5720
+        },
+        "transport_calls": {
+          "laya-native-local": 5720
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5720,
+        "mean_top_option_score": 0.42665906905958007,
+        "summed_receipt_elapsed_seconds": 4796.197
+      },
+      "fills_by_side": {
+        "buy": 1085,
+        "sell": 917
+      },
+      "replay_receipt_count_target": 5720
+    },
+    {
+      "id": "bear-p15000-c5000-pause",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 363,
+      "calls": 5659,
+      "fills": 2274,
+      "turnover_cents": 74594403,
+      "founder_net_cash_cents": -1550000,
+      "inventory_quote_cents": 1158733,
+      "final_hash": "037f48d7d944965d6fb9acb23383f3d334a7928a41c6089f2bd195724157938d",
+      "rejections_by_status": {
+        "rejected_slippage": 256
+      },
+      "step_file_count_checked": 363,
+      "position_budget_usd": 15000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5659
+        },
+        "transport_calls": {
+          "laya-native-local": 5659
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5659,
+        "mean_top_option_score": 0.4283029727855578,
+        "summed_receipt_elapsed_seconds": 6672.756
+      },
+      "fills_by_side": {
+        "buy": 1232,
+        "sell": 1042
+      },
+      "replay_receipt_count_target": 5659
+    },
+    {
+      "id": "bear-p15000-c5000-staged-exit",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 367,
+      "calls": 5773,
+      "fills": 2058,
+      "turnover_cents": 68936539,
+      "founder_net_cash_cents": -687459,
+      "inventory_quote_cents": 0,
+      "final_hash": "568cb97c98117cd651c2fec7b1e62d5b50e77108e62bda46c5ed1d6352ac8268",
+      "rejections_by_status": {
+        "rejected_slippage": 532
+      },
+      "step_file_count_checked": 367,
+      "position_budget_usd": 15000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5773
+        },
+        "transport_calls": {
+          "laya-native-local": 5773
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5773,
+        "mean_top_option_score": 0.4251905244576038,
+        "summed_receipt_elapsed_seconds": 6545.417
+      },
+      "fills_by_side": {
+        "buy": 1107,
+        "sell": 951
+      },
+      "replay_receipt_count_target": 5773
+    },
+    {
+      "id": "bear-p5000-c10000-pause",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 362,
+      "calls": 5614,
+      "fills": 2000,
+      "turnover_cents": 66021193,
+      "founder_net_cash_cents": -1250000,
+      "inventory_quote_cents": 452058,
+      "final_hash": "ca6f8b4ca95a0a6b1c3183f27c6b646aae81d732d375811ce2691719222b52d0",
+      "rejections_by_status": {
+        "rejected_slippage": 458
+      },
+      "step_file_count_checked": 362,
+      "position_budget_usd": 5000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5614
+        },
+        "transport_calls": {
+          "laya-native-local": 5614
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5614,
+        "mean_top_option_score": 0.43022894610454865,
+        "summed_receipt_elapsed_seconds": 5841.725
+      },
+      "fills_by_side": {
+        "buy": 1086,
+        "sell": 914
+      },
+      "replay_receipt_count_target": 5614
+    },
+    {
+      "id": "bear-p5000-c10000-staged-exit",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 365,
+      "calls": 5717,
+      "fills": 1984,
+      "turnover_cents": 66815701,
+      "founder_net_cash_cents": -770730,
+      "inventory_quote_cents": 0,
+      "final_hash": "6271b17d9b29a1f7e913d5e6480a360511654a67e143b65aa6ba241fed0cec42",
+      "rejections_by_status": {
+        "rejected_slippage": 550
+      },
+      "step_file_count_checked": 365,
+      "position_budget_usd": 5000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5717
+        },
+        "transport_calls": {
+          "laya-native-local": 5717
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5717,
+        "mean_top_option_score": 0.4286696691271899,
+        "summed_receipt_elapsed_seconds": 4646.886
+      },
+      "fills_by_side": {
+        "buy": 1067,
+        "sell": 917
+      },
+      "replay_receipt_count_target": 5717
+    },
+    {
+      "id": "bear-p5000-c5000-pause",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 363,
+      "calls": 5648,
+      "fills": 2054,
+      "turnover_cents": 68116252,
+      "founder_net_cash_cents": -750000,
+      "inventory_quote_cents": 427798,
+      "final_hash": "389f9613d7ddb4542831f28b69250f82f004daf86af6b3415e0ba363a0f888d8",
+      "rejections_by_status": {
+        "rejected_slippage": 441
+      },
+      "step_file_count_checked": 363,
+      "position_budget_usd": 5000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5648
+        },
+        "transport_calls": {
+          "laya-native-local": 5648
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5648,
+        "mean_top_option_score": 0.42979153750371374,
+        "summed_receipt_elapsed_seconds": 6970.184
+      },
+      "fills_by_side": {
+        "buy": 1105,
+        "sell": 949
+      },
+      "replay_receipt_count_target": 5648
+    },
+    {
+      "id": "bear-p5000-c5000-staged-exit",
+      "status": "completed",
+      "regime": "BEAR",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 367,
+      "calls": 5764,
+      "fills": 2011,
+      "turnover_cents": 67727392,
+      "founder_net_cash_cents": -368568,
+      "inventory_quote_cents": 0,
+      "final_hash": "0759cb3381531bc33ff498925467ed7e01e4d22f02202046b66661d4ef17c9d9",
+      "rejections_by_status": {
+        "rejected_slippage": 543
+      },
+      "step_file_count_checked": 367,
+      "position_budget_usd": 5000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5764
+        },
+        "transport_calls": {
+          "laya-native-local": 5764
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5764,
+        "mean_top_option_score": 0.4271004565796045,
+        "summed_receipt_elapsed_seconds": 7116.707
+      },
+      "fills_by_side": {
+        "buy": 1082,
+        "sell": 929
+      },
+      "replay_receipt_count_target": 5764
+    },
+    {
+      "id": "bull-p10000-c10000-pause",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 362,
+      "calls": 5636,
+      "fills": 2135,
+      "turnover_cents": 71884360,
+      "founder_net_cash_cents": -1500000,
+      "inventory_quote_cents": 688233,
+      "final_hash": "1fe26a5f8f4f839ba9edf76af96dcf48a24570ef37b38970a2a2f41c113cfa98",
+      "rejections_by_status": {
+        "rejected_slippage": 427
+      },
+      "step_file_count_checked": 362,
+      "position_budget_usd": 10000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5636
+        },
+        "transport_calls": {
+          "laya-native-local": 5636
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5636,
+        "mean_top_option_score": 0.42120603433346815,
+        "summed_receipt_elapsed_seconds": 5887.222
+      },
+      "fills_by_side": {
+        "buy": 1178,
+        "sell": 957
+      },
+      "replay_receipt_count_target": 5636
+    },
+    {
+      "id": "bull-p10000-c10000-staged-exit",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 365,
+      "calls": 5730,
+      "fills": 2042,
+      "turnover_cents": 71208647,
+      "founder_net_cash_cents": -739348,
+      "inventory_quote_cents": 0,
+      "final_hash": "22de6d620b52519f9540b9dd9858599187d93ea4230827c967a05613a62a2d67",
+      "rejections_by_status": {
+        "rejected_slippage": 570
+      },
+      "step_file_count_checked": 365,
+      "position_budget_usd": 10000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5730
+        },
+        "transport_calls": {
+          "laya-native-local": 5730
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5730,
+        "mean_top_option_score": 0.41952750926665683,
+        "summed_receipt_elapsed_seconds": 6504.674
+      },
+      "fills_by_side": {
+        "buy": 1118,
+        "sell": 924
+      },
+      "replay_receipt_count_target": 5730
+    },
+    {
+      "id": "bull-p10000-c5000-pause",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 363,
+      "calls": 5649,
+      "fills": 2134,
+      "turnover_cents": 71752705,
+      "founder_net_cash_cents": -1000000,
+      "inventory_quote_cents": 686230,
+      "final_hash": "24587539d50c7f0d0bf5c13754c5bc6ecf9abee452f87c6c0b325f79c8ff2508",
+      "rejections_by_status": {
+        "rejected_slippage": 440
+      },
+      "step_file_count_checked": 363,
+      "position_budget_usd": 10000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5649
+        },
+        "transport_calls": {
+          "laya-native-local": 5649
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5649,
+        "mean_top_option_score": 0.4205822395863492,
+        "summed_receipt_elapsed_seconds": 5909.708
+      },
+      "fills_by_side": {
+        "buy": 1181,
+        "sell": 953
+      },
+      "replay_receipt_count_target": 5649
+    },
+    {
+      "id": "bull-p10000-c5000-staged-exit",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 368,
+      "calls": 5780,
+      "fills": 2024,
+      "turnover_cents": 68244239,
+      "founder_net_cash_cents": -516104,
+      "inventory_quote_cents": 0,
+      "final_hash": "7dfa216494339fef8b927ffe199036630d208ff781b8aee251c6de73b47089b3",
+      "rejections_by_status": {
+        "rejected_slippage": 591
+      },
+      "step_file_count_checked": 368,
+      "position_budget_usd": 10000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5780
+        },
+        "transport_calls": {
+          "laya-native-local": 5780
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5780,
+        "mean_top_option_score": 0.41813092914646866,
+        "summed_receipt_elapsed_seconds": 6488.24
+      },
+      "fills_by_side": {
+        "buy": 1104,
+        "sell": 920
+      },
+      "replay_receipt_count_target": 5780
+    },
+    {
+      "id": "bull-p15000-c10000-pause",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 362,
+      "calls": 5626,
+      "fills": 2223,
+      "turnover_cents": 73892617,
+      "founder_net_cash_cents": -1750000,
+      "inventory_quote_cents": 907078,
+      "final_hash": "5ef38e00a4117533d809face9ab64df48e6a7978f2e171cb882837c272cff4b4",
+      "rejections_by_status": {
+        "rejected_slippage": 340
+      },
+      "step_file_count_checked": 362,
+      "position_budget_usd": 15000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5626
+        },
+        "transport_calls": {
+          "laya-native-local": 5626
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5626,
+        "mean_top_option_score": 0.4214104438714711,
+        "summed_receipt_elapsed_seconds": 5902.139
+      },
+      "fills_by_side": {
+        "buy": 1229,
+        "sell": 994
+      },
+      "replay_receipt_count_target": 5626
+    },
+    {
+      "id": "bull-p15000-c10000-staged-exit",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 365,
+      "calls": 5720,
+      "fills": 2031,
+      "turnover_cents": 67463616,
+      "founder_net_cash_cents": -807974,
+      "inventory_quote_cents": 0,
+      "final_hash": "1768eac35992446df329a1879ec04890fac3d6be3adc0f2cc76884d846bbe6b1",
+      "rejections_by_status": {
+        "rejected_slippage": 578
+      },
+      "step_file_count_checked": 365,
+      "position_budget_usd": 15000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5720
+        },
+        "transport_calls": {
+          "laya-native-local": 5720
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5720,
+        "mean_top_option_score": 0.419135677572788,
+        "summed_receipt_elapsed_seconds": 6438.363
+      },
+      "fills_by_side": {
+        "buy": 1122,
+        "sell": 909
+      },
+      "replay_receipt_count_target": 5720
+    },
+    {
+      "id": "bull-p15000-c5000-pause",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 363,
+      "calls": 5665,
+      "fills": 2316,
+      "turnover_cents": 76535931,
+      "founder_net_cash_cents": -1550000,
+      "inventory_quote_cents": 1180458,
+      "final_hash": "bd73eb13d621be0a09c0d6b2b2e65fc93f3f4730b9c1f889544d70a899b0dfde",
+      "rejections_by_status": {
+        "rejected_slippage": 285
+      },
+      "step_file_count_checked": 363,
+      "position_budget_usd": 15000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5665
+        },
+        "transport_calls": {
+          "laya-native-local": 5665
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5665,
+        "mean_top_option_score": 0.4203327212011642,
+        "summed_receipt_elapsed_seconds": 6188.167
+      },
+      "fills_by_side": {
+        "buy": 1270,
+        "sell": 1046
+      },
+      "replay_receipt_count_target": 5665
+    },
+    {
+      "id": "bull-p15000-c5000-staged-exit",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 369,
+      "calls": 5806,
+      "fills": 2092,
+      "turnover_cents": 69024339,
+      "founder_net_cash_cents": -695531,
+      "inventory_quote_cents": 0,
+      "final_hash": "c1e3cf8274843b9fce64421f22828ccf730d814ece2048e3b37b0dc2e8ea4262",
+      "rejections_by_status": {
+        "rejected_slippage": 560
+      },
+      "step_file_count_checked": 369,
+      "position_budget_usd": 15000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5806
+        },
+        "transport_calls": {
+          "laya-native-local": 5806
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5806,
+        "mean_top_option_score": 0.4185355583255834,
+        "summed_receipt_elapsed_seconds": 4141.936
+      },
+      "fills_by_side": {
+        "buy": 1137,
+        "sell": 955
+      },
+      "replay_receipt_count_target": 5806
+    },
+    {
+      "id": "bull-p5000-c10000-pause",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 362,
+      "calls": 5625,
+      "fills": 2080,
+      "turnover_cents": 70218468,
+      "founder_net_cash_cents": -1250000,
+      "inventory_quote_cents": 453015,
+      "final_hash": "294fe4838bb95ff663ff1f26560a930239e732b689806332838392b2496b30bb",
+      "rejections_by_status": {
+        "rejected_slippage": 493
+      },
+      "step_file_count_checked": 362,
+      "position_budget_usd": 5000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5625
+        },
+        "transport_calls": {
+          "laya-native-local": 5625
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5625,
+        "mean_top_option_score": 0.42198194941767175,
+        "summed_receipt_elapsed_seconds": 6117.842
+      },
+      "fills_by_side": {
+        "buy": 1140,
+        "sell": 940
+      },
+      "replay_receipt_count_target": 5625
+    },
+    {
+      "id": "bull-p5000-c10000-staged-exit",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 365,
+      "calls": 5730,
+      "fills": 2057,
+      "turnover_cents": 67246696,
+      "founder_net_cash_cents": -750999,
+      "inventory_quote_cents": 0,
+      "final_hash": "814a71dac9713ef9c3082dc9e40ccc5003770a63dd10ec942cdf9b80415e842b",
+      "rejections_by_status": {
+        "rejected_slippage": 570
+      },
+      "step_file_count_checked": 365,
+      "position_budget_usd": 5000,
+      "upfront_usd": 10000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5730
+        },
+        "transport_calls": {
+          "laya-native-local": 5730
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5730,
+        "mean_top_option_score": 0.4196220863846447,
+        "summed_receipt_elapsed_seconds": 3888.748
+      },
+      "fills_by_side": {
+        "buy": 1121,
+        "sell": 936
+      },
+      "replay_receipt_count_target": 5730
+    },
+    {
+      "id": "bull-p5000-c5000-pause",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "pause",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 363,
+      "calls": 5662,
+      "fills": 2098,
+      "turnover_cents": 70616845,
+      "founder_net_cash_cents": -850000,
+      "inventory_quote_cents": 467791,
+      "final_hash": "0eefd92aad79f0575bb9675ab538ec4867ba3f0a110279e46a581054e3e95e03",
+      "rejections_by_status": {
+        "rejected_slippage": 482
+      },
+      "step_file_count_checked": 363,
+      "position_budget_usd": 5000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5662
+        },
+        "transport_calls": {
+          "laya-native-local": 5662
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5662,
+        "mean_top_option_score": 0.4209745896625684,
+        "summed_receipt_elapsed_seconds": 7000.493
+      },
+      "fills_by_side": {
+        "buy": 1143,
+        "sell": 955
+      },
+      "replay_receipt_count_target": 5662
+    },
+    {
+      "id": "bull-p5000-c5000-staged-exit",
+      "status": "completed",
+      "regime": "BULL",
+      "policy": "exit",
+      "hour": 336,
+      "source_steps": 0,
+      "model": "convaiinnovations/laya-typed-decisions",
+      "engine_sha256": "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6",
+      "new_steps": 374,
+      "calls": 5879,
+      "fills": 2140,
+      "turnover_cents": 71289348,
+      "founder_net_cash_cents": -576363,
+      "inventory_quote_cents": 0,
+      "final_hash": "36a7eeacaeb0f95cc8b151ecffa5c042a245307ffa4a3bc98a985251722a398c",
+      "settlement_status_counts": null,
+      "rejections_by_status": {
+        "rejected_slippage": 558
+      },
+      "step_file_count_checked": 374,
+      "position_budget_usd": 5000,
+      "upfront_usd": 5000,
+      "receipt_provenance": {
+        "model_declared_calls": {
+          "convaiinnovations/laya-typed-decisions": 5879
+        },
+        "transport_calls": {
+          "laya-native-local": 5879
+        },
+        "api_fee_usd": 0.0,
+        "decision_receipts": 5879,
+        "mean_top_option_score": 0.41881628456964987,
+        "summed_receipt_elapsed_seconds": 7250.256
+      },
+      "fills_by_side": {
+        "buy": 1170,
+        "sell": 970
+      },
+      "replay_receipt_count_target": 5879
+    }
+  ],
+  "totals": {
+    "paths": 24,
+    "completed_to_336h": 24,
+    "path_hours": 8064,
+    "planned_path_hours": 8064,
+    "steps": 8754,
+    "model_calls": 136841,
+    "trades": 50251,
+    "turnover_cents": 1677662076,
+    "net_cash_cents": -23946518,
+    "unique_models": [
+      "convaiinnovations/laya-typed-decisions"
+    ],
+    "unique_engine_hashes": [
+      "5dceab269b2ed0af837417a1b479ad5cb85b3b26a45ad6145230cb0f922537a6"
+    ],
+    "source_steps_values": [
+      0
+    ],
+    "rejections": 11350,
+    "rejection_counts_by_status": {
+      "rejected_slippage": 11350
+    },
+    "fills": 50251,
+    "buys": 27346,
+    "sells": 22905
+  },
+  "by_regime": {
+    "BULL": {
+      "hour": 4032,
+      "new_steps": 4381,
+      "calls": 68508,
+      "fills": 25372,
+      "turnover_cents": 849377811,
+      "rejections": 5894,
+      "rejection_counts_by_status": {
+        "rejected_slippage": 5894
+      },
+      "buys": 13913,
+      "sells": 11459,
+      "mean_top_option_score": 0.4200071716264418,
+      "receipt_elapsed_seconds_sum": 71717.78799999999,
+      "receipt_call_count": 68508
+    },
+    "BEAR": {
+      "hour": 4032,
+      "new_steps": 4373,
+      "calls": 68333,
+      "fills": 24879,
+      "turnover_cents": 828284265,
+      "rejections": 5456,
+      "rejection_counts_by_status": {
+        "rejected_slippage": 5456
+      },
+      "buys": 13433,
+      "sells": 11446,
+      "mean_top_option_score": 0.42763791839329035,
+      "receipt_elapsed_seconds_sum": 75155.88099999998,
+      "receipt_call_count": 68333
+    }
+  },
+  "pairs": [
+    {
+      "regime": "BEAR",
+      "position_usd": 10000,
+      "upfront_usd": 10000,
+      "pause_cash_cents": -1500000,
+      "exit_cash_cents": -736167,
+      "D_p_cents": 763833,
+      "D_p_usd": 7638.33
+    },
+    {
+      "regime": "BEAR",
+      "position_usd": 10000,
+      "upfront_usd": 5000,
+      "pause_cash_cents": -1200000,
+      "exit_cash_cents": -590774,
+      "D_p_cents": 609226,
+      "D_p_usd": 6092.26
+    },
+    {
+      "regime": "BEAR",
+      "position_usd": 15000,
+      "upfront_usd": 10000,
+      "pause_cash_cents": -1750000,
+      "exit_cash_cents": -806501,
+      "D_p_cents": 943499,
+      "D_p_usd": 9434.99
+    },
+    {
+      "regime": "BEAR",
+      "position_usd": 15000,
+      "upfront_usd": 5000,
+      "pause_cash_cents": -1550000,
+      "exit_cash_cents": -687459,
+      "D_p_cents": 862541,
+      "D_p_usd": 8625.41
+    },
+    {
+      "regime": "BEAR",
+      "position_usd": 5000,
+      "upfront_usd": 10000,
+      "pause_cash_cents": -1250000,
+      "exit_cash_cents": -770730,
+      "D_p_cents": 479270,
+      "D_p_usd": 4792.7
+    },
+    {
+      "regime": "BEAR",
+      "position_usd": 5000,
+      "upfront_usd": 5000,
+      "pause_cash_cents": -750000,
+      "exit_cash_cents": -368568,
+      "D_p_cents": 381432,
+      "D_p_usd": 3814.32
+    },
+    {
+      "regime": "BULL",
+      "position_usd": 10000,
+      "upfront_usd": 10000,
+      "pause_cash_cents": -1500000,
+      "exit_cash_cents": -739348,
+      "D_p_cents": 760652,
+      "D_p_usd": 7606.52
+    },
+    {
+      "regime": "BULL",
+      "position_usd": 10000,
+      "upfront_usd": 5000,
+      "pause_cash_cents": -1000000,
+      "exit_cash_cents": -516104,
+      "D_p_cents": 483896,
+      "D_p_usd": 4838.96
+    },
+    {
+      "regime": "BULL",
+      "position_usd": 15000,
+      "upfront_usd": 10000,
+      "pause_cash_cents": -1750000,
+      "exit_cash_cents": -807974,
+      "D_p_cents": 942026,
+      "D_p_usd": 9420.26
+    },
+    {
+      "regime": "BULL",
+      "position_usd": 15000,
+      "upfront_usd": 5000,
+      "pause_cash_cents": -1550000,
+      "exit_cash_cents": -695531,
+      "D_p_cents": 854469,
+      "D_p_usd": 8544.69
+    },
+    {
+      "regime": "BULL",
+      "position_usd": 5000,
+      "upfront_usd": 10000,
+      "pause_cash_cents": -1250000,
+      "exit_cash_cents": -750999,
+      "D_p_cents": 499001,
+      "D_p_usd": 4990.01
+    },
+    {
+      "regime": "BULL",
+      "position_usd": 5000,
+      "upfront_usd": 5000,
+      "pause_cash_cents": -850000,
+      "exit_cash_cents": -576363,
+      "D_p_cents": 273637,
+      "D_p_usd": 2736.37
+    }
+  ],
+  "settlement_audit": {
+    "step_files_scanned": 8754,
+    "status_counts": {
+      "executed": 50251,
+      "rejected_slippage": 11350
+    },
+    "rejections_by_regime": {
+      "BEAR": {
+        "rejected_slippage": 5456
+      },
+      "BULL": {
+        "rejected_slippage": 5894
+      }
+    }
+  },
+  "receipt_aggregation": {
+    "decision_receipts_scanned": 136841,
+    "model_declared_calls": {
+      "convaiinnovations/laya-typed-decisions": 136841
+    },
+    "transport_counts": {
+      "laya-native-local": 136841
+    },
+    "api_fee_usd": 0.0,
+    "mean_top_option_score": 0.4238176656948794,
+    "sum_of_receipt_elapsed_seconds": 146873.66899999997,
+    "caveat": "Summed per-call receipt elapsed is inference latency sum, not end-to-end active CPU runtime."
+  }
+}

@@ -1,0 +1,23 @@
+[package]
+name = "decision-lab-commitment-registry"
+version = "0.1.0"
+edition = "2021"
+publish = false
+license = "AGPL-3.0-only"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { version = "=5.29.1", features = ["legacy"] }
+
+[dev-dependencies]
+near-sdk = { version = "=5.29.1", features = ["unit-testing", "legacy"] }
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+panic = "abort"
+overflow-checks = true
+strip = "symbols"

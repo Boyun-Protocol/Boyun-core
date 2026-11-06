@@ -1,0 +1,49 @@
+{
+  "revision": "v0.6",
+  "date": "2026-10-29",
+  "scope": "Research audience, primary NEAR/founder sources and working local offline MCP interface; unchanged synthetic fixtures",
+  "document_class": "IEEEtran",
+  "class_options": [
+    "10pt",
+    "conference",
+    "compsocconf"
+  ],
+  "bibliography_style": "IEEEtran",
+  "compiler": "Tectonic",
+  "pdf_producer": "xdvipdfmx (0.1)",
+  "pdf_pages": 11,
+  "pdf_sha256": "196d3a55bb6430b639c55bce2d5e937b27be9ff16230186568b6dbaf5efe1085",
+  "bibliography_entries": 25,
+  "unknown_citations": 0,
+  "uncited_bibliography_entries": 0,
+  "unknown_internal_references": 0,
+  "main_sections_roman": 7,
+  "numbered_equations": 5,
+  "pseudocode_algorithms": 2,
+  "vector_figures": 5,
+  "rendered_pages_visually_reviewed": 11,
+  "synthetic_evidence_freshness": "passed; five fixtures unchanged",
+  "companion_source_map_freshness": "passed; excluded from PDF",
+  "full_scoped_tests_passed": 1735,
+  "subtests_passed": 42,
+  "full_suite_seconds": 86.95,
+  "targeted_mcp_tests_passed": 19,
+  "installed_mcp_client_acceptance": "docs/decision-lab/evidence/mcp-acceptance-2026-10-29.json",
+  "installed_public_journey_focused_tests_passed": 34,
+  "installed_public_journey_seconds": 28.12,
+  "new_provider_calls": 0,
+  "new_chain_transactions": 0,
+  "known_build_warnings": [
+    "underfull spacing",
+    "Tectonic bibliography rerun consistency"
+  ],
+  "manuscript_files_sha256": {
+    "main.tex": "f332b05277a88e86a1369077a84cd0661c1ee90fd20c53cddf78869d78c1acdb",
+    "01-framing.tex": "426e9b4ead4e4c3606f0b34fe4642753be3cb7b7e9ba95e6ab96983ba26a7e11",
+    "02-method.tex": "637d2a430391edab6b5d562f5393dee0157347bc615b1bc56f08331884ccbd91",
+    "03-system.tex": "71b1f0dddbe4d315da6576523dd5ba4a9f309d1f233266da8c0ac428a37b22ba",
+    "04-evaluation.tex": "fe3dc996a64e0a53f928c21c35cb52a16ddd112897fe616ee46542844f6dfc97",
+    "05-discussion.tex": "64cc7b32a1b65b7a71c1cb71f01857faf7c59559894d3270e43e5a22d14b0992",
+    "references.bib": "721e58ce1d41c53f33f2b2f583a80a6da05a247749bf75ad828c10f161128af9"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": "scenario-draft.v1",
+  "id": "new-decision",
+  "revision": 0,
+  "event_description": "Explore a new crypto decision. An authoring agent must define the relevant fields and supported mechanics.",
+  "fields": [],
+  "engine_input": null
+}

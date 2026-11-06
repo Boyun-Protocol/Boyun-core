@@ -1,0 +1,1507 @@
+[
+  {
+    "id": "near-launch-coordination",
+    "title": "NEAR launch coordination",
+    "question": "I have $10,000 for a NEAR project. Should I run a transparent pilot or a broad launch announcement? Focus on the creator and an independent community reviewer.",
+    "world": {
+      "schema_version": "strategic-world.v1",
+      "id": "near-launch-coordination",
+      "title": "Launch now or earn trust first?",
+      "description": "A hypothetical NEAR creator has $10,000 and must coordinate with an independent community reviewer. Compare a small transparent pilot with a broad announcement. The reviewer decides independently whether to spend time on verification. This is a decision game, not a token-price model.",
+      "rounds": 2,
+      "metrics": [
+        {
+          "id": "trust",
+          "label": "Credibility",
+          "unit": "hypothetical points",
+          "initial": 40,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "attention",
+          "label": "Qualified attention",
+          "unit": "hypothetical points",
+          "initial": 20,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "risk",
+          "label": "Execution risk",
+          "unit": "hypothetical points",
+          "initial": 30,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "actors": [
+        {
+          "id": "creator",
+          "name": "NEAR creator",
+          "role": "Project founder",
+          "motivation": "Build durable demand while protecting runway. Publicity and credibility are different goals.",
+          "goal": "Prefer a useful pilot; do not spend all capital on visibility.",
+          "information": "The pilot can be funded without outside buyers. Team capacity is limited; the later event is not known.",
+          "initial_cash_cents": 1000000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "trust": 3000,
+            "attention": 2000,
+            "risk": -4000
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait",
+              "description": "Keep resources; make no public statement.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "pilot",
+              "label": "Run a small pilot",
+              "description": "Pay $500 for a bounded public test. Builds modest attention; independent review may unlock a coordination benefit.",
+              "cost_cents": 50000,
+              "effects": {
+                "attention": 5,
+                "risk": -5
+              },
+              "message": "We funded a limited pilot; review is welcome. This is not a return promise.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "announce",
+              "label": "Broad announcement",
+              "description": "Pay $1,500 for distribution. Attention rises but unverified expectations raise risk.",
+              "cost_cents": 150000,
+              "effects": {
+                "attention": 25,
+                "risk": 15
+              },
+              "message": "We are announcing the project. Claims still require verification.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            }
+          ],
+          "subscriptions": [
+            "reviewer"
+          ],
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "reviewer",
+          "name": "Community reviewer",
+          "role": "Independent analyst",
+          "motivation": "Protect audience trust and avoid amplifying unverified claims. No sponsorship is assumed.",
+          "goal": "Choose whether the information is worth a limited review budget.",
+          "information": "An assessment costs time represented by $100. There is no guarantee that any finding is favorable.",
+          "initial_cash_cents": 50000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "trust": 2000,
+            "attention": 100,
+            "risk": -1500
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait",
+              "description": "Keep resources; make no public statement.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "review",
+              "label": "Publish a review",
+              "description": "Spend $100 on an observable review effort. The rule models review effort, not a factual certification.",
+              "cost_cents": 10000,
+              "effects": {
+                "trust": 3
+              },
+              "message": "A limited review was performed; it is not an endorsement or an audit.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "caution",
+              "label": "Publish caution",
+              "description": "Spend $20 explaining uncertainty; may reduce attention while improving caution.",
+              "cost_cents": 2000,
+              "effects": {
+                "attention": -5,
+                "risk": -3
+              },
+              "message": "Evidence is incomplete. Wait for verifiable details.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            }
+          ],
+          "subscriptions": [
+            "creator"
+          ],
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "interactions": [
+        {
+          "id": "verified-pilot",
+          "when": {
+            "creator": "pilot",
+            "reviewer": "review"
+          },
+          "effects": {
+            "trust": 20,
+            "attention": 8,
+            "risk": -8
+          },
+          "description": "Assumed complementarity: an observable pilot plus independent review improves credibility beyond either action alone.",
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "unsupported-hype",
+          "when": {
+            "creator": "announce",
+            "reviewer": "caution"
+          },
+          "effects": {
+            "trust": -12,
+            "risk": 10
+          },
+          "description": "Assumed tension: broad promotion while a reviewer publicly flags uncertainty worsens perceived credibility.",
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": "public-checklist",
+          "round": 1,
+          "text": "No buyer, endorsement, market-maker relationship or KOL identity is verified. Both parties receive the same public checklist.",
+          "effects": {},
+          "visible_to": [
+            "creator",
+            "reviewer"
+          ],
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "Two role hypotheses stand in for decision makers, not the NEAR population.",
+        "Cash weights and metric effects are illustrative utility assumptions; no buyer demand is inferred.",
+        "Repeated actions pay their cost again. A message is an unverified claim, not an enforceable commitment."
+      ],
+      "limitations": [
+        "No AMM, token ownership, sales, returns, legal outcome or real-world success probability is calculated here. Use the separate launch ledger for cash settlement.",
+        "No live news or on-chain calibration is attached to this authored example."
+      ]
+    }
+  },
+  {
+    "id": "defi-incentive-coordination",
+    "title": "DeFi incentive decision",
+    "question": "Our DeFi team has $10,000. Should we prioritize reliability work or temporary incentives? Focus on the team and an independent liquidity allocator.",
+    "world": {
+      "schema_version": "strategic-world.v1",
+      "id": "defi-incentive-coordination",
+      "title": "Subsidize liquidity or improve reliability?",
+      "description": "A hypothetical DeFi team and a liquidity allocator choose between incentives and reliability work. Resource costs and joint effects are explicit assumptions. This is a coordination stress game; it does not implement lending, yield, AMM settlement or liquidation.",
+      "rounds": 2,
+      "metrics": [
+        {
+          "id": "trust",
+          "label": "Protocol confidence",
+          "unit": "hypothetical points",
+          "initial": 40,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "attention",
+          "label": "Liquidity participation",
+          "unit": "hypothetical points",
+          "initial": 20,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "risk",
+          "label": "Operational risk",
+          "unit": "hypothetical points",
+          "initial": 35,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "actors": [
+        {
+          "id": "team",
+          "name": "Protocol team",
+          "role": "DeFi builder",
+          "motivation": "Preserve runway and reduce operational exposure while attracting durable participation.",
+          "goal": "Avoid spending the whole runway on temporary incentives.",
+          "information": "A safety review is not completed. No APY or security guarantee is available.",
+          "initial_cash_cents": 1000000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "trust": 3000,
+            "attention": 1500,
+            "risk": -5000
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait",
+              "description": "Keep resources; make no public statement.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "reliability",
+              "label": "Fund reliability work",
+              "description": "Spend $500 on bounded reliability work; do not claim this removes all technical risk.",
+              "cost_cents": 50000,
+              "effects": {
+                "risk": -6,
+                "trust": 4
+              },
+              "message": "Reliability work is funded. It is not a security guarantee.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "incentives",
+              "label": "Fund temporary incentives",
+              "description": "Spend $1,000 to attract short-term attention. Durable participation is not guaranteed.",
+              "cost_cents": 100000,
+              "effects": {
+                "attention": 20,
+                "risk": 4
+              },
+              "message": "A temporary incentive budget is available; future yields are unknown.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            }
+          ],
+          "subscriptions": [
+            "allocator"
+          ],
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "allocator",
+          "name": "Liquidity allocator",
+          "role": "Independent capital allocator",
+          "motivation": "Seek credible operations without committing resources to unsupported yield claims.",
+          "goal": "Spend a small diligence budget before participating.",
+          "information": "Own funds are $2,000. Funding an assessment is separate from depositing funds in a protocol.",
+          "initial_cash_cents": 200000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "trust": 1000,
+            "attention": 1000,
+            "risk": -3000
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait",
+              "description": "Keep resources; make no public statement.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "assess",
+              "label": "Fund an assessment",
+              "description": "Spend $100 on independent assessment effort; no actual deposit occurs.",
+              "cost_cents": 10000,
+              "effects": {
+                "trust": 3
+              },
+              "message": "We funded an assessment. No liquidity deposit has been executed.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            },
+            {
+              "id": "monitor",
+              "label": "Monitor public reports",
+              "description": "Spend $20 monitoring updates; keep the remaining capital uncommitted.",
+              "cost_cents": 2000,
+              "effects": {
+                "risk": -2
+              },
+              "message": "We are monitoring; no allocation commitment is made.",
+              "provenance": {
+                "status": "model_proposal",
+                "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-5"
+                ]
+              }
+            }
+          ],
+          "subscriptions": [
+            "team"
+          ],
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "interactions": [
+        {
+          "id": "reliability-with-diligence",
+          "when": {
+            "team": "reliability",
+            "allocator": "assess"
+          },
+          "effects": {
+            "trust": 18,
+            "attention": 10,
+            "risk": -10
+          },
+          "description": "Hypothetical coordination benefit of reliability work plus independent assessment.",
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        },
+        {
+          "id": "incentive-with-monitoring",
+          "when": {
+            "team": "incentives",
+            "allocator": "monitor"
+          },
+          "effects": {
+            "attention": -12,
+            "risk": 5
+          },
+          "description": "Temporary incentives underperform when the allocator remains unconvinced.",
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": "public-checklist",
+          "round": 1,
+          "text": "No audited security, APY, collateral quality or external liquidity is verified.",
+          "effects": {},
+          "visible_to": [
+            "team",
+            "allocator"
+          ],
+          "provenance": {
+            "status": "model_proposal",
+            "rationale": "Codex-authored illustrative role and rule, 2026-10-25; not fitted to observed behavior.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-5"
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "Two role hypotheses stand in for decision makers, not the NEAR population.",
+        "Cash weights and metric effects are illustrative utility assumptions; no buyer demand is inferred.",
+        "Repeated actions pay their cost again. A message is an unverified claim, not an enforceable commitment."
+      ],
+      "limitations": [
+        "No deposits, lending, interest accrual, liquidations or enforceable contracts are executed. Metric changes are utility hypotheses.",
+        "No observed DeFi cohort or financial return calibration is attached."
+      ]
+    }
+  },
+  {
+    "id": "ticker-choice-coordination",
+    "title": "Ticker name decision",
+    "question": "Compare PARIS, PARS and RIVE for a hypothetical Paris-themed NEAR community token. Consider recognition, distinctness and confusion without predicting returns.",
+    "world": {
+      "schema_version": "strategic-world.v1",
+      "id": "ticker-choice-coordination",
+      "title": "Which name fits the community?",
+      "description": "Compare PARIS, PARS and RIVE in a fictional two-person naming conversation. Scores are explicit illustrative preferences, not empirical audience proportions, name availability or token returns.",
+      "rounds": 2,
+      "metrics": [
+        {
+          "id": "recognition",
+          "label": "Name recognition",
+          "unit": "hypothetical points",
+          "initial": 25,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "distinctness",
+          "label": "Distinctness",
+          "unit": "hypothetical points",
+          "initial": 30,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "confusion",
+          "label": "Naming confusion",
+          "unit": "hypothetical points",
+          "initial": 20,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+            "source_refs": []
+          }
+        }
+      ],
+      "actors": [
+        {
+          "id": "creator",
+          "name": "Naming lead",
+          "role": "Community project naming lead",
+          "motivation": "Choose a recognizable name while avoiding mistaken associations. No launch or returns are promised.",
+          "goal": "Compare recognizable PARIS with shorter PARS and place-themed RIVE.",
+          "information": "The proposed names are fictional candidates. No trademark, availability or audience study has been performed.",
+          "initial_cash_cents": 0,
+          "utility_weights": {
+            "cash_cents": 0,
+            "recognition": 3,
+            "distinctness": 2,
+            "confusion": -4
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Keep exploring",
+              "description": "Keep exploring. An illustrative naming action, not a trade or legal clearance.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+                "source_refs": []
+              }
+            },
+            {
+              "id": "paris",
+              "label": "Propose PARIS",
+              "description": "Propose PARIS. An illustrative naming action, not a trade or legal clearance.",
+              "cost_cents": 0,
+              "effects": {
+                "recognition": 12,
+                "confusion": 8
+              },
+              "message": "PARIS is a recognizable place name, not an endorsement.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+                "source_refs": []
+              }
+            },
+            {
+              "id": "pars",
+              "label": "Propose PARS",
+              "description": "Propose PARS. An illustrative naming action, not a trade or legal clearance.",
+              "cost_cents": 0,
+              "effects": {
+                "recognition": 6,
+                "distinctness": 7,
+                "confusion": 4
+              },
+              "message": "PARS is a shorter hypothetical candidate.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+                "source_refs": []
+              }
+            },
+            {
+              "id": "rive",
+              "label": "Propose RIVE",
+              "description": "Propose RIVE. An illustrative naming action, not a trade or legal clearance.",
+              "cost_cents": 0,
+              "effects": {
+                "recognition": 3,
+                "distinctness": 12
+              },
+              "message": "RIVE evokes a riverbank; its relevance needs explanation.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+                "source_refs": []
+              }
+            }
+          ],
+          "subscriptions": [
+            "reader"
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "reader",
+          "name": "Independent community reader",
+          "role": "Potential community participant",
+          "motivation": "Understand what the name represents without misleading associations.",
+          "goal": "Decide whether clarity or distinctness deserves attention.",
+          "information": "Only the public naming brief and prior subscribed messages are visible. There is no private market intelligence.",
+          "initial_cash_cents": 0,
+          "utility_weights": {
+            "cash_cents": 0,
+            "recognition": 1,
+            "distinctness": 1,
+            "confusion": -5
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Withhold judgment",
+              "description": "Withhold judgment. An illustrative naming action, not a trade or legal clearance.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+                "source_refs": []
+              }
+            },
+            {
+              "id": "clarity",
+              "label": "Request a clearer explanation",
+              "description": "Request a clearer explanation. An illustrative naming action, not a trade or legal clearance.",
+              "cost_cents": 0,
+              "effects": {
+                "confusion": -5
+              },
+              "message": "Please explain the name and clarify that it implies no endorsement.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+                "source_refs": []
+              }
+            },
+            {
+              "id": "distinct",
+              "label": "Favor a distinctive identity",
+              "description": "Favor a distinctive identity. An illustrative naming action, not a trade or legal clearance.",
+              "cost_cents": 0,
+              "effects": {
+                "distinctness": 4,
+                "recognition": -2
+              },
+              "message": "A distinct identity matters more to this fictional reader than immediate recognition.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+                "source_refs": []
+              }
+            }
+          ],
+          "subscriptions": [
+            "creator"
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+            "source_refs": []
+          }
+        }
+      ],
+      "interactions": [
+        {
+          "id": "explained-rive",
+          "when": {
+            "creator": "rive",
+            "reader": "clarity"
+          },
+          "effects": {
+            "recognition": 4,
+            "confusion": -3
+          },
+          "description": "Assumed complementarity: an explanation helps a less obvious name become understandable.",
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Codex-authored fictional naming game, 25 October 2026. All scores and preferences are illustrative, not measured audience responses.",
+            "source_refs": []
+          }
+        }
+      ],
+      "events": [],
+      "assumptions": [
+        "Every score is an illustrative assumption awaiting audience evidence.",
+        "Two personas are contrasting perspectives, not samples of the NEAR population.",
+        "No name search, trademark review, launch, trade or profit calculation is performed."
+      ],
+      "limitations": [
+        "Model choice scores and run frequencies are not measured naming success probabilities.",
+        "This is a naming coordination game with zero modeled cash costs."
+      ]
+    }
+  },
+  {
+    "id": "near-pilot-eight-roles",
+    "title": "NEAR pilot · eight distinct incentives",
+    "question": "Compare a transparent NEAR DeFi pilot with broad publicity. Allocate a total $10,000 across eight explicit roles and examine how disclosure, risk sensitivity and coordination affect participation.",
+    "world": {
+      "schema_version": "strategic-world.v2",
+      "id": "near-pilot-eight-roles",
+      "title": "Who participates in a transparent NEAR pilot?",
+      "description": "An eight-role hypothetical NEAR DeFi pilot compares resource deployment, disclosure and participation. One fixed $10,000 cast budget is allocated across independent actors. Costs purchase modeled effort, not tokens, LP positions or investments. All effects and preferences are illustrative assumptions. This construction tests incentive and information mechanics, not prices or real-world success odds.",
+      "rounds": 2,
+      "metrics": [
+        {
+          "id": "readiness",
+          "label": "Pilot readiness",
+          "unit": "hypothetical points",
+          "initial": 20,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Provides an explicit shared objective dimension and bounded unit. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "credibility",
+          "label": "Credibility",
+          "unit": "hypothetical points",
+          "initial": 40,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Provides an explicit shared objective dimension and bounded unit. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "participation",
+          "label": "Participation",
+          "unit": "hypothetical points",
+          "initial": 20,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Provides an explicit shared objective dimension and bounded unit. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "risk",
+          "label": "Execution risk",
+          "unit": "hypothetical points",
+          "initial": 40,
+          "min": 0,
+          "max": 100,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Provides an explicit shared objective dimension and bounded unit. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        }
+      ],
+      "actors": [
+        {
+          "id": "founder",
+          "name": "Founder",
+          "role": "Founder",
+          "motivation": "Favor pilot readiness with credible participation while penalizing execution risk.",
+          "goal": "Favor pilot readiness with credible participation while penalizing execution risk. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 300000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "readiness": 4000,
+            "credibility": 1000,
+            "participation": 1000,
+            "risk": -2500
+          },
+          "subscriptions": [
+            "reviewer",
+            "treasurer",
+            "partner"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "fund-pilot",
+              "label": "Fund a limited pilot",
+              "description": "Fund a limited pilot under the declared bounded pilot rules.",
+              "cost_cents": 25000,
+              "effects": {
+                "readiness": 8,
+                "risk": -2
+              },
+              "message": "Pilot effort funded; no profitability claim.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "announce",
+              "label": "Announce the pilot broadly",
+              "description": "Announce the pilot broadly under the declared bounded pilot rules.",
+              "cost_cents": 10000,
+              "effects": {
+                "participation": 6,
+                "risk": 5
+              },
+              "message": "Pilot announced; independent verification remains incomplete.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "treasurer",
+          "name": "Treasury steward",
+          "role": "Treasury steward",
+          "motivation": "Protect runway and reduce execution risk rather than maximize publicity.",
+          "goal": "Protect runway and reduce execution risk rather than maximize publicity. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 200000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "readiness": 1000,
+            "credibility": 1000,
+            "risk": -3000
+          },
+          "subscriptions": [
+            "founder",
+            "reviewer"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "disclose",
+              "label": "Publish a resource disclosure",
+              "description": "Publish a resource disclosure under the declared bounded pilot rules.",
+              "cost_cents": 5000,
+              "effects": {
+                "credibility": 5,
+                "risk": -2
+              },
+              "message": "Resource disclosure published; it is not an enforced escrow.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "sponsor",
+          "name": "Liquidity sponsor",
+          "role": "Liquidity sponsor",
+          "motivation": "Value readiness and participation but penalize operational risk.",
+          "goal": "Value readiness and participation but penalize operational risk. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 150000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "readiness": 3000,
+            "credibility": 500,
+            "participation": 1000,
+            "risk": -2000
+          },
+          "subscriptions": [
+            "founder",
+            "reviewer",
+            "cautious"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "contribute",
+              "label": "Contribute integration effort",
+              "description": "Contribute integration effort under the declared bounded pilot rules.",
+              "cost_cents": 15000,
+              "effects": {
+                "readiness": 4,
+                "participation": 3,
+                "risk": -1
+              },
+              "message": "Integration effort contributed; no token or LP position is created.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "reviewer",
+          "name": "Independent reviewer",
+          "role": "Independent reviewer",
+          "motivation": "Value credible evidence and lower execution risk over reach.",
+          "goal": "Value credible evidence and lower execution risk over reach. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 20000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "credibility": 2000,
+            "risk": -1000,
+            "readiness": 100
+          },
+          "subscriptions": [
+            "founder",
+            "treasurer"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "review",
+              "label": "Spend effort reviewing the pilot",
+              "description": "Spend effort reviewing the pilot under the declared bounded pilot rules.",
+              "cost_cents": 5000,
+              "effects": {
+                "credibility": 6,
+                "risk": -3
+              },
+              "message": "Review effort completed under these illustrative rules, not an external audit.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "cautious",
+          "name": "Risk-sensitive retail",
+          "role": "Risk-sensitive retail",
+          "motivation": "Prefer lower execution risk and credible information; participation alone is a weak incentive.",
+          "goal": "Prefer lower execution risk and credible information; participation alone is a weak incentive. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 70000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "credibility": 2000,
+            "risk": -3000,
+            "participation": 100,
+            "readiness": 500
+          },
+          "subscriptions": [
+            "reviewer",
+            "sponsor"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "join",
+              "label": "Join the limited trial",
+              "description": "Join the limited trial under the declared bounded pilot rules.",
+              "cost_cents": 5000,
+              "effects": {
+                "participation": 3,
+                "risk": 1
+              },
+              "message": "Joined a limited trial; no financial return is promised.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "momentum",
+          "name": "Participation-oriented retail",
+          "role": "Participation-oriented retail",
+          "motivation": "Value participation more strongly than the declared risk metric; this is not a fitted degen psychology.",
+          "goal": "Value participation more strongly than the declared risk metric; this is not a fitted degen psychology. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 70000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "participation": 3000,
+            "risk": -500
+          },
+          "subscriptions": [
+            "founder",
+            "partner"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "join",
+              "label": "Join and share the trial",
+              "description": "Join and share the trial under the declared bounded pilot rules.",
+              "cost_cents": 5000,
+              "effects": {
+                "participation": 5,
+                "risk": 3
+              },
+              "message": "Trial participation shared as an unverified personal claim.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "large-participant",
+          "name": "Large participant",
+          "role": "Large participant",
+          "motivation": "Weigh readiness and participation against effort costs and execution risk.",
+          "goal": "Weigh readiness and participation against effort costs and execution risk. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 150000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "readiness": 2000,
+            "participation": 1500,
+            "risk": -2500
+          },
+          "subscriptions": [
+            "founder",
+            "reviewer",
+            "sponsor"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "contribute",
+              "label": "Contribute a larger trial effort",
+              "description": "Contribute a larger trial effort under the declared bounded pilot rules.",
+              "cost_cents": 15000,
+              "effects": {
+                "readiness": 3,
+                "participation": 5,
+                "risk": 2
+              },
+              "message": "Larger trial effort contributed; no whale trade is modeled.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "partner",
+          "name": "Ecosystem partner",
+          "role": "Ecosystem partner",
+          "motivation": "Seek credible ecosystem participation while preserving its small outreach budget.",
+          "goal": "Seek credible ecosystem participation while preserving its small outreach budget. Maximize the declared weighted terminal utility, retaining cash subject to those tradeoffs.",
+          "information": "Own effort budget and preferences only. Peer preferences and future responses are unknown. No hidden market intelligence is assumed.",
+          "initial_cash_cents": 40000,
+          "utility_weights": {
+            "cash_cents": 1,
+            "credibility": 1000,
+            "participation": 1500,
+            "risk": -1000
+          },
+          "subscriptions": [
+            "founder",
+            "reviewer",
+            "momentum"
+          ],
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait and preserve own cash",
+              "description": "Wait and preserve own cash under the declared bounded pilot rules.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            },
+            {
+              "id": "amplify",
+              "label": "Amplify the disclosed trial",
+              "description": "Amplify the disclosed trial under the declared bounded pilot rules.",
+              "cost_cents": 5000,
+              "effects": {
+                "credibility": 3,
+                "participation": 4,
+                "risk": 2
+              },
+              "message": "Partner shared the trial; reach is not a measured audience size.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Makes this resource tradeoff executable; cash costs enter a sink, not another wallet. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+                "source_refs": [
+                  "https://oyc.yale.edu/economics/econ-159/lecture-2",
+                  "https://oyc.yale.edu/economics/econ-159/lecture-18"
+                ]
+              }
+            }
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Included to represent a distinct resource, information or payoff dependency. The allocation is part of one fixed $10,000 cast budget. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        }
+      ],
+      "events": [],
+      "interactions": [
+        {
+          "id": "reviewed-pilot",
+          "when": {
+            "founder": "fund-pilot",
+            "reviewer": "review"
+          },
+          "effects": {
+            "credibility": 15,
+            "risk": -5
+          },
+          "description": "Review and funding in the same round have a stipulated complementary effect.",
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Makes review/funding complementarity explicit instead of hoping a narrative creates it. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "supported-trial",
+          "when": {
+            "cautious": "join",
+            "sponsor": "contribute"
+          },
+          "effects": {
+            "participation": 8,
+            "risk": -3
+          },
+          "description": "A supported trial changes participation and risk beyond the separate action effects.",
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Creates a conditional reason for a risk-sensitive participant to coordinate; it is not a measured effect. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        },
+        {
+          "id": "attention-surge",
+          "when": {
+            "founder": "announce",
+            "momentum": "join"
+          },
+          "effects": {
+            "participation": 10,
+            "risk": 10
+          },
+          "description": "Broad attention and momentum participation can jointly raise both engagement and execution risk.",
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Makes an adverse strategic externality visible, not an assumed universally good marketing effect. Fictional teaching coefficients, not fitted to observed people or NEAR activity.",
+            "source_refs": [
+              "https://oyc.yale.edu/economics/econ-159/lecture-2",
+              "https://oyc.yale.edu/economics/econ-159/lecture-18"
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "The eight declared roles are a research cast, not a sample or population estimate.",
+        "Total initial cast cash is exactly 1,000,000 cents; no actor receives a copy of that total.",
+        "Each cash weight is one utility point per cent; other weights convert hypothetical metric points into utility.",
+        "All coefficients, motives, allocations and links are assumed; Yale references motivate the game construction only.",
+        "Risk sensitivity is a linear penalty on a scenario metric, not formal risk aversion over stochastic wealth.",
+        "Only same-round joint rules are enforced; messages arrive next round and are unverified claims."
+      ],
+      "limitations": [
+        "No trades, token valuation, income, escrow, live execution or return distribution is modeled.",
+        "No beliefs, resolved forecast dataset, Bayesian equilibrium or optimal multi-round strategies are inferred.",
+        "Adding persona variants requires explicit reallocation and renewed review of links and action effects."
+      ]
+    }
+  }
+]

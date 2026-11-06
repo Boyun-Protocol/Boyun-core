@@ -1,0 +1,31 @@
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+ foundation/.style={draw=teal!70,fill=wash,rounded corners=2pt,align=center,text width=4.8cm,minimum height=1.25cm,inner sep=5pt,font=\small},
+ layer/.style={draw=teal!70,fill=white,rounded corners=2pt,align=center,text width=16.2cm,minimum height=0.85cm,inner sep=5pt,font=\small},
+ component/.style={draw=teal!70,fill=wash,rounded corners=2pt,align=center,text width=6.8cm,minimum height=1.1cm,inner sep=5pt,font=\small},
+ connection/.style={-{Latex[length=2mm]},draw=teal,thick}]
+\node[foundation] (game) at (0,0) {\textit{Game Theory}\\Actors, preference weights, actions\\and interdependent outcomes};
+\node[foundation] (graph) at (5.7,0) {\textit{Social Graphs}\\Directed information graph, access\\and message timing};
+\node[foundation] (prob) at (11.4,0) {\textit{Probability and Statistics}\\Declared uncertainty, sampling\\and outcome-based evaluation};
+\node[layer] (world) at (5.7,-2) {\textit{Boyun}: reviewed world specification\\Actors, resources, observations, events and settlement rules};
+\draw[connection] (game.south)--(game.south |- world.north);
+\draw[connection] (graph.south)--(world.north);
+\draw[connection] (prob.south)--(prob.south |- world.north);
+\node[component] (laya) at (1.4,-3.9) {Local actor decision model: \textit{Laya}\\Permitted observations $\rightarrow$ option scores and actions};
+\node[component] (engine) at (10,-3.9) {Execution ledgers\\Selected actions $\rightarrow$ resource and state changes};
+\draw[connection] (world.south -| laya.north)--(laya.north);
+\draw[connection] (world.south -| engine.north)--(engine.north);
+\draw[connection] (laya.east)--(engine.west);
+\node[layer] (record) at (5.7,-5.7) {Recorded trajectories and scenario analysis\\Inspect choices and consequences; replay execution; compare branches};
+\draw[connection] (engine.south)--(engine.south |- record.north);
+\end{tikzpicture}
+\caption{\rev{Foundations of \textit{Boyun}. The upper row identifies conceptual
+foundations; the lower layers show their operational roles. Self-hosted
+\textit{Laya} supplies live actor decisions locally; deterministic ledgers
+apply the specified rules.} Probability and statistical tools are separate
+analytical components, not automatic calibration of the actor decision model.
+Probability calculations use declared inputs; neither the diagram nor replay
+implies calibrated predictions or empirically validated social influence.}
+\label{fig:foundations}
+\end{figure*}

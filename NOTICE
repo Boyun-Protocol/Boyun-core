@@ -1,0 +1,21 @@
+Boyun Protocol
+Copyright (C) 2026 Boyun contributors
+
+Boyun was started as a fork of MiroFish (https://github.com/666ghj/MiroFish),
+pinned at upstream commit 7657031ac01184afe2cb220f5ee3545573b5e843. MiroFish is
+licensed under the GNU Affero General Public License, version 3, and its
+workflow and architecture precedent informed this product.
+
+The upstream application source that fork carried (the Flask backend, the Vue
+frontend and their OASIS/CAMEL and Zep integrations) is not part of this
+distribution: it was removed on 2026-10-31 because Boyun never imported or
+launched it. What ships here is the Boyun engine, web product, documentation,
+whitepaper, tests and NEAR commitment contract, all written in this repository
+and released under AGPL-3.0-only.
+
+The full reuse ledger, including which upstream files were studied and what
+Boyun does differently, is in https://github.com/Boyun-Protocol/Boyun-core/blob/main/docs/decision-lab/UPSTREAM_REUSE.md. Third-party
+assets keep their own notices, including the bundled Manrope font licence and
+Boyun-interface/src/boyun_interface/assets/wallet-sdk.js.LEGAL.txt.
+
+This repository contains the Boyun-core component of the split Boyun distribution.

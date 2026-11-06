@@ -1,0 +1,79 @@
+{
+  "artifact_kind": "offline_arithmetic_review_not_simulation",
+  "proposal_sha256": "02ef8faf3264ac029049b3a512d9622f05fb65f2a82ce2006c76cabe8447e86f",
+  "rates": [
+    {
+      "utilization": "0",
+      "borrow_simple_apr": "0.02",
+      "indicative_supplier_simple_apr": "0.0000"
+    },
+    {
+      "utilization": "0.25",
+      "borrow_simple_apr": "0.045",
+      "indicative_supplier_simple_apr": "0.0095625"
+    },
+    {
+      "utilization": "0.5",
+      "borrow_simple_apr": "0.07",
+      "indicative_supplier_simple_apr": "0.02975"
+    },
+    {
+      "utilization": "0.8",
+      "borrow_simple_apr": "0.10",
+      "indicative_supplier_simple_apr": "0.06800"
+    },
+    {
+      "utilization": "0.95",
+      "borrow_simple_apr": "0.40",
+      "indicative_supplier_simple_apr": "0.323000"
+    },
+    {
+      "utilization": "1",
+      "borrow_simple_apr": "0.5",
+      "indicative_supplier_simple_apr": "0.425"
+    }
+  ],
+  "collateral_example": {
+    "initial_collateral_usd": "1000",
+    "initial_debt_usdc": "500.0",
+    "liquidation_boundary_collateral_usd": "769.2307692307692307692307692",
+    "price_drop_to_boundary_pct": "23.07692307692307692307692308",
+    "ordinary_repayment_usdc": "250.0",
+    "seized_collateral_oracle_value_usd": "262.500",
+    "health_factor_after_half_repayment_at_boundary": "1.317500000000000000000000",
+    "execution_assumption": "USDC at $1, zero interest, fresh price, full funding and no slippage/fees; real rule requires HF below 1",
+    "zero_cost_full_repayment_feasibility_max_ltv": "0.9523809523809523809523809524"
+  },
+  "points_example": {
+    "performing_principal_usdc": "100",
+    "supplier_principal_usdc": [
+      "250",
+      "750"
+    ],
+    "allocated_used_balances_usdc": [
+      "25",
+      "75"
+    ],
+    "points_after_one_day_if_both_eligible": [
+      "25",
+      "75"
+    ],
+    "points_if_first_supplier_queued": [
+      "0",
+      "75"
+    ],
+    "cash_created_by_points": 0
+  },
+  "initial_treasury_usd": {
+    "compensation_reserve": 10000,
+    "other_cash": 90000,
+    "total": 100000,
+    "optional_extra_included": false
+  },
+  "limitations": [
+    "No actors, prices, liquidations or campaigns were simulated.",
+    "Checks establish internal arithmetic only, not safety or economic calibration.",
+    "Rate examples assume all interest is collected, no defaults and no other costs.",
+    "No engine or Laya integration has been validated by this review."
+  ]
+}

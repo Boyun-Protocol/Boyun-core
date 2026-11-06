@@ -1,0 +1,881 @@
+{
+  "world": {
+    "schema_version": "strategic-world.v1",
+    "id": "paper-scheduling-fixture",
+    "title": "Synthetic scheduling fixture",
+    "description": "Not empirical personas or a forecast.",
+    "rounds": 2,
+    "metrics": [
+      {
+        "id": "readiness",
+        "label": "Readiness",
+        "unit": "points",
+        "initial": 1,
+        "min": 0,
+        "max": 10,
+        "provenance": {
+          "status": "assumed",
+          "rationale": "Synthetic whitepaper scheduling fixture.",
+          "source_refs": []
+        }
+      }
+    ],
+    "actors": [
+      {
+        "id": "alice",
+        "name": "Alice",
+        "role": "Builder",
+        "motivation": "Explore a shared prototype.",
+        "goal": "Compare spending and readiness.",
+        "information": "Fictional own information.",
+        "initial_cash_cents": 100,
+        "utility_weights": {
+          "readiness": 10,
+          "cash_cents": 1
+        },
+        "actions": [
+          {
+            "id": "wait",
+            "label": "Wait",
+            "description": "Keep resources.",
+            "cost_cents": 0,
+            "effects": {},
+            "message": "",
+            "provenance": {
+              "status": "assumed",
+              "rationale": "Synthetic whitepaper scheduling fixture.",
+              "source_refs": []
+            }
+          },
+          {
+            "id": "build",
+            "label": "Build",
+            "description": "Fund a prototype step.",
+            "cost_cents": 60,
+            "effects": {
+              "readiness": 6
+            },
+            "message": "I supported the prototype.",
+            "provenance": {
+              "status": "assumed",
+              "rationale": "Synthetic whitepaper scheduling fixture.",
+              "source_refs": []
+            }
+          }
+        ],
+        "subscriptions": [
+          "bob"
+        ],
+        "provenance": {
+          "status": "assumed",
+          "rationale": "Synthetic whitepaper scheduling fixture.",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "bob",
+        "name": "Bob",
+        "role": "Builder",
+        "motivation": "Explore a shared prototype.",
+        "goal": "Compare spending and readiness.",
+        "information": "Fictional own information.",
+        "initial_cash_cents": 100,
+        "utility_weights": {
+          "readiness": 10,
+          "cash_cents": 1
+        },
+        "actions": [
+          {
+            "id": "wait",
+            "label": "Wait",
+            "description": "Keep resources.",
+            "cost_cents": 0,
+            "effects": {},
+            "message": "",
+            "provenance": {
+              "status": "assumed",
+              "rationale": "Synthetic whitepaper scheduling fixture.",
+              "source_refs": []
+            }
+          },
+          {
+            "id": "build",
+            "label": "Build",
+            "description": "Fund a prototype step.",
+            "cost_cents": 60,
+            "effects": {
+              "readiness": 6
+            },
+            "message": "I supported the prototype.",
+            "provenance": {
+              "status": "assumed",
+              "rationale": "Synthetic whitepaper scheduling fixture.",
+              "source_refs": []
+            }
+          }
+        ],
+        "subscriptions": [
+          "alice"
+        ],
+        "provenance": {
+          "status": "assumed",
+          "rationale": "Synthetic whitepaper scheduling fixture.",
+          "source_refs": []
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": "first",
+        "round": 1,
+        "text": "Fictional early signal.",
+        "effects": {
+          "readiness": 1
+        },
+        "visible_to": [
+          "alice"
+        ],
+        "provenance": {
+          "status": "assumed",
+          "rationale": "Synthetic whitepaper scheduling fixture.",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "next",
+        "round": 2,
+        "text": "Fictional later signal.",
+        "effects": {
+          "readiness": -1
+        },
+        "visible_to": [
+          "bob"
+        ],
+        "provenance": {
+          "status": "assumed",
+          "rationale": "Synthetic whitepaper scheduling fixture.",
+          "source_refs": []
+        }
+      }
+    ],
+    "interactions": [],
+    "assumptions": [
+      "All values are teaching assumptions."
+    ],
+    "limitations": [
+      "No market forecast, inference or cash profit."
+    ]
+  },
+  "observed_before_round": [
+    {
+      "round": 1,
+      "metrics": {
+        "readiness": 2
+      },
+      "alice_actions": [
+        "wait",
+        "build"
+      ],
+      "alice_messages": []
+    },
+    {
+      "round": 2,
+      "metrics": {
+        "readiness": 9
+      },
+      "alice_actions": [
+        "wait"
+      ],
+      "alice_messages": [
+        "bob"
+      ]
+    }
+  ],
+  "report": {
+    "schema_version": "strategic-world-result.v1",
+    "world": {
+      "schema_version": "strategic-world.v1",
+      "id": "paper-scheduling-fixture",
+      "title": "Synthetic scheduling fixture",
+      "description": "Not empirical personas or a forecast.",
+      "rounds": 2,
+      "metrics": [
+        {
+          "id": "readiness",
+          "label": "Readiness",
+          "unit": "points",
+          "initial": 1,
+          "min": 0,
+          "max": 10,
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Synthetic whitepaper scheduling fixture.",
+            "source_refs": []
+          }
+        }
+      ],
+      "actors": [
+        {
+          "id": "alice",
+          "name": "Alice",
+          "role": "Builder",
+          "motivation": "Explore a shared prototype.",
+          "goal": "Compare spending and readiness.",
+          "information": "Fictional own information.",
+          "initial_cash_cents": 100,
+          "utility_weights": {
+            "readiness": 10,
+            "cash_cents": 1
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait",
+              "description": "Keep resources.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Synthetic whitepaper scheduling fixture.",
+                "source_refs": []
+              }
+            },
+            {
+              "id": "build",
+              "label": "Build",
+              "description": "Fund a prototype step.",
+              "cost_cents": 60,
+              "effects": {
+                "readiness": 6
+              },
+              "message": "I supported the prototype.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Synthetic whitepaper scheduling fixture.",
+                "source_refs": []
+              }
+            }
+          ],
+          "subscriptions": [
+            "bob"
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Synthetic whitepaper scheduling fixture.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "bob",
+          "name": "Bob",
+          "role": "Builder",
+          "motivation": "Explore a shared prototype.",
+          "goal": "Compare spending and readiness.",
+          "information": "Fictional own information.",
+          "initial_cash_cents": 100,
+          "utility_weights": {
+            "readiness": 10,
+            "cash_cents": 1
+          },
+          "actions": [
+            {
+              "id": "wait",
+              "label": "Wait",
+              "description": "Keep resources.",
+              "cost_cents": 0,
+              "effects": {},
+              "message": "",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Synthetic whitepaper scheduling fixture.",
+                "source_refs": []
+              }
+            },
+            {
+              "id": "build",
+              "label": "Build",
+              "description": "Fund a prototype step.",
+              "cost_cents": 60,
+              "effects": {
+                "readiness": 6
+              },
+              "message": "I supported the prototype.",
+              "provenance": {
+                "status": "assumed",
+                "rationale": "Synthetic whitepaper scheduling fixture.",
+                "source_refs": []
+              }
+            }
+          ],
+          "subscriptions": [
+            "alice"
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Synthetic whitepaper scheduling fixture.",
+            "source_refs": []
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": "first",
+          "round": 1,
+          "text": "Fictional early signal.",
+          "effects": {
+            "readiness": 1
+          },
+          "visible_to": [
+            "alice"
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Synthetic whitepaper scheduling fixture.",
+            "source_refs": []
+          }
+        },
+        {
+          "id": "next",
+          "round": 2,
+          "text": "Fictional later signal.",
+          "effects": {
+            "readiness": -1
+          },
+          "visible_to": [
+            "bob"
+          ],
+          "provenance": {
+            "status": "assumed",
+            "rationale": "Synthetic whitepaper scheduling fixture.",
+            "source_refs": []
+          }
+        }
+      ],
+      "interactions": [],
+      "assumptions": [
+        "All values are teaching assumptions."
+      ],
+      "limitations": [
+        "No market forecast, inference or cash profit."
+      ]
+    },
+    "world_sha256": "7dfba8ddec5d6282c3b1107c930455741385d726384bd13985d6370ff3416c3b",
+    "engine_sha256": "9864426f2490e4b3a98e379b32dc69a5613cb97a8b1a185576c22d2e703cda68",
+    "seed": 42,
+    "status": "completed",
+    "completed_rounds": 2,
+    "rounds": [
+      {
+        "round": 1,
+        "decisions": {
+          "alice": {
+            "action_id": "build",
+            "observation_sha256": "cc6df4ac2b8dda07879a8bf7db95d2a6520a06c17baf15779a07491f4aa063a5"
+          },
+          "bob": {
+            "action_id": "build",
+            "observation_sha256": "98a458ef485d909bfbb414be393658f4dbd269d62b7dbe9ec39115396be79a1c"
+          }
+        },
+        "observations": {
+          "alice": {
+            "schema_version": "strategic-observation.v1",
+            "world_id": "paper-scheduling-fixture",
+            "actor_id": "alice",
+            "round": 1,
+            "world": {
+              "title": "Synthetic scheduling fixture",
+              "description": "Not empirical personas or a forecast.",
+              "rounds": 2,
+              "metric_definitions": [
+                {
+                  "id": "readiness",
+                  "label": "Readiness",
+                  "unit": "points",
+                  "min": 0,
+                  "max": 10
+                }
+              ]
+            },
+            "own_history": [],
+            "actor": {
+              "id": "alice",
+              "name": "Alice",
+              "role": "Builder",
+              "motivation": "Explore a shared prototype.",
+              "goal": "Compare spending and readiness.",
+              "information": "Fictional own information.",
+              "utility_weights": {
+                "readiness": 10,
+                "cash_cents": 1
+              }
+            },
+            "cash_cents": 100,
+            "metrics": {
+              "readiness": 2
+            },
+            "actions": [
+              {
+                "id": "wait",
+                "label": "Wait",
+                "description": "Keep resources.",
+                "cost_cents": 0,
+                "effects": {},
+                "message": "",
+                "provenance": {
+                  "status": "assumed",
+                  "rationale": "Synthetic whitepaper scheduling fixture.",
+                  "source_refs": []
+                }
+              },
+              {
+                "id": "build",
+                "label": "Build",
+                "description": "Fund a prototype step.",
+                "cost_cents": 60,
+                "effects": {
+                  "readiness": 6
+                },
+                "message": "I supported the prototype.",
+                "provenance": {
+                  "status": "assumed",
+                  "rationale": "Synthetic whitepaper scheduling fixture.",
+                  "source_refs": []
+                }
+              }
+            ],
+            "opponents": [
+              {
+                "id": "bob",
+                "name": "Bob",
+                "role": "Builder",
+                "publicactionlabels": [
+                  {
+                    "id": "wait",
+                    "label": "Wait"
+                  },
+                  {
+                    "id": "build",
+                    "label": "Build"
+                  }
+                ]
+              }
+            ],
+            "interactions": [],
+            "events": [
+              {
+                "id": "first",
+                "text": "Fictional early signal.",
+                "round": 1
+              }
+            ],
+            "messages": [],
+            "limitations": [
+              "Metrics, utilities, motivations, costs and behaviors are supplied hypothetical assumptions; no real-world event odds are inferred.",
+              "Utility equals remaining own cash times its declared cash weight plus shared metric values times declared weights. Utility points are not cash profit."
+            ],
+            "observation_sha256": "cc6df4ac2b8dda07879a8bf7db95d2a6520a06c17baf15779a07491f4aa063a5"
+          },
+          "bob": {
+            "schema_version": "strategic-observation.v1",
+            "world_id": "paper-scheduling-fixture",
+            "actor_id": "bob",
+            "round": 1,
+            "world": {
+              "title": "Synthetic scheduling fixture",
+              "description": "Not empirical personas or a forecast.",
+              "rounds": 2,
+              "metric_definitions": [
+                {
+                  "id": "readiness",
+                  "label": "Readiness",
+                  "unit": "points",
+                  "min": 0,
+                  "max": 10
+                }
+              ]
+            },
+            "own_history": [],
+            "actor": {
+              "id": "bob",
+              "name": "Bob",
+              "role": "Builder",
+              "motivation": "Explore a shared prototype.",
+              "goal": "Compare spending and readiness.",
+              "information": "Fictional own information.",
+              "utility_weights": {
+                "readiness": 10,
+                "cash_cents": 1
+              }
+            },
+            "cash_cents": 100,
+            "metrics": {
+              "readiness": 2
+            },
+            "actions": [
+              {
+                "id": "wait",
+                "label": "Wait",
+                "description": "Keep resources.",
+                "cost_cents": 0,
+                "effects": {},
+                "message": "",
+                "provenance": {
+                  "status": "assumed",
+                  "rationale": "Synthetic whitepaper scheduling fixture.",
+                  "source_refs": []
+                }
+              },
+              {
+                "id": "build",
+                "label": "Build",
+                "description": "Fund a prototype step.",
+                "cost_cents": 60,
+                "effects": {
+                  "readiness": 6
+                },
+                "message": "I supported the prototype.",
+                "provenance": {
+                  "status": "assumed",
+                  "rationale": "Synthetic whitepaper scheduling fixture.",
+                  "source_refs": []
+                }
+              }
+            ],
+            "opponents": [
+              {
+                "id": "alice",
+                "name": "Alice",
+                "role": "Builder",
+                "publicactionlabels": [
+                  {
+                    "id": "wait",
+                    "label": "Wait"
+                  },
+                  {
+                    "id": "build",
+                    "label": "Build"
+                  }
+                ]
+              }
+            ],
+            "interactions": [],
+            "events": [],
+            "messages": [],
+            "limitations": [
+              "Metrics, utilities, motivations, costs and behaviors are supplied hypothetical assumptions; no real-world event odds are inferred.",
+              "Utility equals remaining own cash times its declared cash weight plus shared metric values times declared weights. Utility points are not cash profit."
+            ],
+            "observation_sha256": "98a458ef485d909bfbb414be393658f4dbd269d62b7dbe9ec39115396be79a1c"
+          }
+        },
+        "metrics_before": {
+          "readiness": 2
+        },
+        "metrics_after": {
+          "readiness": 10
+        },
+        "receipts": {
+          "alice": {
+            "action_id": "build",
+            "cost_cents": 60,
+            "cash_after_cents": 40,
+            "effects": {
+              "readiness": 6
+            }
+          },
+          "bob": {
+            "action_id": "build",
+            "cost_cents": 60,
+            "cash_after_cents": 40,
+            "effects": {
+              "readiness": 6
+            }
+          }
+        },
+        "published_messages": [
+          {
+            "id": "round-1-alice",
+            "source": "alice",
+            "round": 1,
+            "text": "I supported the prototype."
+          },
+          {
+            "id": "round-1-bob",
+            "source": "bob",
+            "round": 1,
+            "text": "I supported the prototype."
+          }
+        ],
+        "matched_interaction_ids": []
+      },
+      {
+        "round": 2,
+        "decisions": {
+          "alice": {
+            "action_id": "wait",
+            "observation_sha256": "23cb65f334c684fb385f6d6def6d48be0004a124ca8b6c43273c2eda967db59b"
+          },
+          "bob": {
+            "action_id": "wait",
+            "observation_sha256": "f25c35a2ab914fa729113e8de22470434ef48adbe8b0e393b0a012b454239d84"
+          }
+        },
+        "observations": {
+          "alice": {
+            "schema_version": "strategic-observation.v1",
+            "world_id": "paper-scheduling-fixture",
+            "actor_id": "alice",
+            "round": 2,
+            "world": {
+              "title": "Synthetic scheduling fixture",
+              "description": "Not empirical personas or a forecast.",
+              "rounds": 2,
+              "metric_definitions": [
+                {
+                  "id": "readiness",
+                  "label": "Readiness",
+                  "unit": "points",
+                  "min": 0,
+                  "max": 10
+                }
+              ]
+            },
+            "own_history": [
+              {
+                "round": 1,
+                "action_id": "build",
+                "cost_cents": 60,
+                "metrics_after": {
+                  "readiness": 10
+                }
+              }
+            ],
+            "actor": {
+              "id": "alice",
+              "name": "Alice",
+              "role": "Builder",
+              "motivation": "Explore a shared prototype.",
+              "goal": "Compare spending and readiness.",
+              "information": "Fictional own information.",
+              "utility_weights": {
+                "readiness": 10,
+                "cash_cents": 1
+              }
+            },
+            "cash_cents": 40,
+            "metrics": {
+              "readiness": 9
+            },
+            "actions": [
+              {
+                "id": "wait",
+                "label": "Wait",
+                "description": "Keep resources.",
+                "cost_cents": 0,
+                "effects": {},
+                "message": "",
+                "provenance": {
+                  "status": "assumed",
+                  "rationale": "Synthetic whitepaper scheduling fixture.",
+                  "source_refs": []
+                }
+              }
+            ],
+            "opponents": [
+              {
+                "id": "bob",
+                "name": "Bob",
+                "role": "Builder",
+                "publicactionlabels": [
+                  {
+                    "id": "wait",
+                    "label": "Wait"
+                  },
+                  {
+                    "id": "build",
+                    "label": "Build"
+                  }
+                ]
+              }
+            ],
+            "interactions": [],
+            "events": [
+              {
+                "id": "first",
+                "text": "Fictional early signal.",
+                "round": 1
+              }
+            ],
+            "messages": [
+              {
+                "id": "round-1-bob",
+                "source": "bob",
+                "round": 1,
+                "text": "I supported the prototype."
+              }
+            ],
+            "limitations": [
+              "Metrics, utilities, motivations, costs and behaviors are supplied hypothetical assumptions; no real-world event odds are inferred.",
+              "Utility equals remaining own cash times its declared cash weight plus shared metric values times declared weights. Utility points are not cash profit."
+            ],
+            "observation_sha256": "23cb65f334c684fb385f6d6def6d48be0004a124ca8b6c43273c2eda967db59b"
+          },
+          "bob": {
+            "schema_version": "strategic-observation.v1",
+            "world_id": "paper-scheduling-fixture",
+            "actor_id": "bob",
+            "round": 2,
+            "world": {
+              "title": "Synthetic scheduling fixture",
+              "description": "Not empirical personas or a forecast.",
+              "rounds": 2,
+              "metric_definitions": [
+                {
+                  "id": "readiness",
+                  "label": "Readiness",
+                  "unit": "points",
+                  "min": 0,
+                  "max": 10
+                }
+              ]
+            },
+            "own_history": [
+              {
+                "round": 1,
+                "action_id": "build",
+                "cost_cents": 60,
+                "metrics_after": {
+                  "readiness": 10
+                }
+              }
+            ],
+            "actor": {
+              "id": "bob",
+              "name": "Bob",
+              "role": "Builder",
+              "motivation": "Explore a shared prototype.",
+              "goal": "Compare spending and readiness.",
+              "information": "Fictional own information.",
+              "utility_weights": {
+                "readiness": 10,
+                "cash_cents": 1
+              }
+            },
+            "cash_cents": 40,
+            "metrics": {
+              "readiness": 9
+            },
+            "actions": [
+              {
+                "id": "wait",
+                "label": "Wait",
+                "description": "Keep resources.",
+                "cost_cents": 0,
+                "effects": {},
+                "message": "",
+                "provenance": {
+                  "status": "assumed",
+                  "rationale": "Synthetic whitepaper scheduling fixture.",
+                  "source_refs": []
+                }
+              }
+            ],
+            "opponents": [
+              {
+                "id": "alice",
+                "name": "Alice",
+                "role": "Builder",
+                "publicactionlabels": [
+                  {
+                    "id": "wait",
+                    "label": "Wait"
+                  },
+                  {
+                    "id": "build",
+                    "label": "Build"
+                  }
+                ]
+              }
+            ],
+            "interactions": [],
+            "events": [
+              {
+                "id": "next",
+                "text": "Fictional later signal.",
+                "round": 2
+              }
+            ],
+            "messages": [
+              {
+                "id": "round-1-alice",
+                "source": "alice",
+                "round": 1,
+                "text": "I supported the prototype."
+              }
+            ],
+            "limitations": [
+              "Metrics, utilities, motivations, costs and behaviors are supplied hypothetical assumptions; no real-world event odds are inferred.",
+              "Utility equals remaining own cash times its declared cash weight plus shared metric values times declared weights. Utility points are not cash profit."
+            ],
+            "observation_sha256": "f25c35a2ab914fa729113e8de22470434ef48adbe8b0e393b0a012b454239d84"
+          }
+        },
+        "metrics_before": {
+          "readiness": 9
+        },
+        "metrics_after": {
+          "readiness": 9
+        },
+        "receipts": {
+          "alice": {
+            "action_id": "wait",
+            "cost_cents": 0,
+            "cash_after_cents": 40,
+            "effects": {}
+          },
+          "bob": {
+            "action_id": "wait",
+            "cost_cents": 0,
+            "cash_after_cents": 40,
+            "effects": {}
+          }
+        },
+        "published_messages": [],
+        "matched_interaction_ids": []
+      }
+    ],
+    "final_metrics": {
+      "readiness": 9
+    },
+    "actor_results": {
+      "alice": {
+        "initial_cash_cents": 100,
+        "cash_cents": 40,
+        "cost_cents": 60,
+        "utility": 130,
+        "initial_utility": 110,
+        "utility_delta": 20
+      },
+      "bob": {
+        "initial_cash_cents": 100,
+        "cash_cents": 40,
+        "cost_cents": 60,
+        "utility": 130,
+        "initial_utility": 110,
+        "utility_delta": 20
+      }
+    },
+    "total_cost_cents": 120,
+    "limitations": [
+      "Metrics, utilities, motivations, costs and behaviors are supplied hypothetical assumptions; no real-world event odds are inferred.",
+      "Utility equals remaining own cash times its declared cash weight plus shared metric values times declared weights. Utility points are not cash profit.",
+      "Action costs leave actor cash and accumulate in a cost sink; no transfers, AMM, borrowing, execution venue or asset valuation is modeled.",
+      "Actions are simultaneous. Effects sum before metric bounds clamp; next-round scheduled effects form a separate aggregate stage.",
+      "Actors receive own private information, public metrics and personally visible event/peer text. Author reports contain the complete private scenario and must stay private.",
+      "Replay checks recorded rules and arithmetic, not evidence truth, actor realism, authenticated provider identity or predictive validity."
+    ]
+  },
+  "exact_replay": true
+}

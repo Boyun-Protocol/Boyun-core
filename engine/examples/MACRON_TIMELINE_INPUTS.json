@@ -1,0 +1,56 @@
+{
+  "schema_version": "macron-timeline-planning-inputs.v1",
+  "status": "user_declared_plan_not_observed_launch",
+  "required_horizon": {
+    "days": 14,
+    "elapsed_hours": 336,
+    "end_local_time": "2026-11-16T12:00:00+04:00",
+    "end_utc_time": "2026-11-16T08:00:00Z",
+    "cadence": "at_least_hourly_eligible_actor_decisions_plus_finer_launch_and_material_event_decisions",
+    "delivery_status": "not_met_by_existing_48_hour_experiments",
+    "acceptance_contract": "MACRON_ACCEPTANCE_CONTRACT.md"
+  },
+  "launch": {
+    "local_time": "2026-11-02T12:00:00+04:00",
+    "utc_time": "2026-11-02T08:00:00Z",
+    "root_kind": "planned_launch",
+    "expected_bonding_curve_minutes": [10, 15],
+    "curve_duration_basis": "user_expectation_not_calibrated_probability",
+    "sniper_bots": "excluded_from_requested_scenario_scope",
+    "question_timestamp": null
+  },
+  "objective": {
+    "primary": "maximize_founder_net_cash",
+    "secondary": "minimize_loss",
+    "acceptable_loss_usd": 10000,
+    "protected_cash_reserve_usd": 10000,
+    "risk_tradeoff": "compare_reviewed_options_no_single_pick; acceptable_loss_is_not_a_guaranteed_stop_fill"
+  },
+  "restored_interview_decisions": {
+    "founder_capital_usd": 50000,
+    "founder_position_budgets_usd": [5000, 10000, 15000],
+    "upfront_cost_budgets_usd": [5000, 10000],
+    "actor_count": 16,
+    "kol_partnership_cash_usd": 3000,
+    "kol_partnership_supply_bps": 300,
+    "early_exit_allowed": true,
+    "volume_peak_reference_hours": 48,
+    "volume_signal": "total_executed_cash_turnover_over_trailing_six_hours",
+    "volume_window_seconds": 21600,
+    "crash_response": "compare_matched_response_branches_no_single_pick",
+    "exit_threshold_fraction_of_peak": 0.25,
+    "funding_threshold_fraction_of_peak": 0.6,
+    "exit_tranche_offsets_minutes": [0, 15, 30, 45],
+    "defer_requires": "volume_recovered_above_exit_level_and_nonnegative_one_hour_price_return",
+    "action_policy": "sample_jev_action_probabilities_not_argmax_with_confidence_gate",
+    "venue_scope": "disclosed_estimation_and_jev_loop; no_full_pumpfun_execution_adapter",
+    "source": "case inputs/012,014,018-024; see MACRON_ACCEPTANCE_CONTRACT.md"
+  },
+  "partner_categories": ["Market Makers", "Marketing Partners", "Meme / Foundation Ecosystem"],
+  "partner_information": {
+    "private_contract_terms": "unknown",
+    "execution_authority": "team_directed_MM_actions_subject_to_actual_resources_and_latency",
+    "disclosure_timing": "unknown"
+  },
+  "evidence_boundary": "These inputs do not rerun the October MACRON estimate or establish migration time, executable fills, market outcomes, or branch odds."
+}

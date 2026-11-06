@@ -1,0 +1,124 @@
+{
+  "artifact_kind": "planning_only_not_engine_input",
+  "id": "near-lending-example-settings-cap100k-steep",
+  "status": "variant_user_selected_2026-11-05_steeper_rate_curve",
+  "parameter_provenance": "All numerical policy values below are explicit synthetic assumptions. Sources support mechanism forms, not these NEAR-specific values or safety.",
+  "market": {
+    "collateral": "NEAR_value_with_contract_representation_to_be_resolved",
+    "debt_asset": "native_USDC_on_NEAR",
+    "max_origination_ltv_bps": 5000,
+    "liquidation_ltv_bps": 6500,
+    "liquidation_bonus_bps": 500,
+    "ordinary_close_factor_bps": 5000,
+    "full_close_when_health_factor_at_or_below": "0.95",
+    "initial_per_borrower_principal_cap_usdc": 100000,
+    "initial_aggregate_principal_cap_usdc": 500000,
+    "origination_fee_bps": 0
+  },
+  "interest": {
+    "base_borrow_apr_bps": 800,
+    "kink_utilization_bps": 5000,
+    "borrow_apr_at_kink_bps": 1500,
+    "borrow_apr_at_full_utilization_bps": 6000,
+    "protocol_share_of_collected_interest_bps": 1500,
+    "curve": "piecewise_linear_in_utilization",
+    "utilization": "performing_principal / (lendable_pool_cash + performing_principal)",
+    "zero_denominator_utilization": "0",
+    "accrual": "simple_interest_on_performing_principal_actual_elapsed_seconds_over_365_days_no_interest_on_interest",
+    "repayment_allocation": "accrued_interest_then_principal",
+    "uncollected_interest": "receivable_not_cash_protocol_and_supplier_shares_recorded_separately",
+    "default_interest": "stop_on_written_off_debt"
+  },
+  "supplier_points": {
+    "selected_basis": "liquidity_actually_borrowed",
+    "allocation": "performing_principal_times_supplier_eligible_unqueued_principal_claim_over_total_supplier_principal_claims_including_queued_claims",
+    "eligible_base": "funded_supplier_principal_claims_after_realized_writeoffs_excluding_collateral_reserves_uncollected_interest_and_points",
+    "proposed_rate_points_per_allocated_usdc_day": "1",
+    "cash_redemption_value": null,
+    "future_token_entitlement": null,
+    "idle_supply_points": false,
+    "snapshot_date": null,
+    "related_party_activity": "log_known_relationships_and_recycled_capital_separately_no_perfect_identity_detection_assumed"
+  },
+  "withdrawal": {
+    "policy": "pay_from_available_lendable_cash_only_queue_unpaid_claims_fifo",
+    "cash_priority": "service_queued_withdrawals_before_new_loans",
+    "queued_balance_interest": "remains_a_supplier_claim_until_paid_subject_to_pool_interest_and_losses",
+    "queued_balance_points": "no_new_points_while_queued_remaining_eligible_suppliers_share_only_their_fraction_of_pool_principal",
+    "funding_lockup": "none_assumed_until_negotiated_scenario_terms_supplied"
+  },
+  "loss_and_compensation": {
+    "reserve_usd_user_selected": 10000,
+    "source": "ring_fenced_within_team_initial_100000_usd_not_supplier_pool",
+    "team_other_initial_cash_usd": 90000,
+    "additional_capital": "100000_usd_optional_later_decision_not_initial_cash",
+    "bad_debt": "recognized_unrecoverable_residual_after_feasible_collateral_recovery_not_merely_unavailable_withdrawal_cash",
+    "pool_loss_allocation": "pro_rata_to_supplier_claims_at_loss_recognition",
+    "compensation": "pro_rata_to_that_incident_recognized_supplier_losses_from_remaining_reserve_capped_at_actual_loss",
+    "repeat_claims": "no_duplicate_compensation_for_same_loss",
+    "reserve_exhaustion": "uncovered_losses_remain_visible_no_automatic_team_top_up"
+  },
+  "oracle_and_execution": {
+    "max_price_age_seconds": 60,
+    "stale_price_policy": "block_new_borrow_collateral_removal_and_liquidations_allow_repay_and_collateral_addition_no_last_price_execution_guarantee",
+    "price_inputs": "timestamped_NEAR_and_USDC_prices_plus_declared_confidence_rules_to_be_specified",
+    "liquidation": "finite_liquidator_USDC_funding_actual_executable_collateral_sale_depth_costs_and_delay_no_guaranteed_fill",
+    "routine_decision_interval_seconds": 3600,
+    "risk_timing": "explicit_event_time_observations_and_execution_delays_no_interpolation_of_unobserved_intrahour_paths"
+  },
+  "sensitivity": {
+    "ltv_threshold_pairs_bps": [
+      [
+        4000,
+        5500
+      ],
+      [
+        5000,
+        6500
+      ],
+      [
+        6000,
+        7500
+      ]
+    ],
+    "aggregate_principal_caps_usdc": [
+      250000,
+      500000,
+      750000
+    ],
+    "per_borrower_principal_caps_usdc": [
+      25000,
+      50000,
+      100000
+    ],
+    "borrow_apr_at_kink_bps": [
+      800,
+      1000,
+      1500
+    ],
+    "protocol_interest_share_bps": [
+      1000,
+      1500,
+      2000
+    ],
+    "liquidation_bonus_bps": [
+      300,
+      500,
+      800
+    ],
+    "hypothetical_liquidation_delay_seconds": [
+      0,
+      300,
+      1800
+    ],
+    "scope": "proposed_focused_sensitivity_not_authorization_or_claim_of_full_cartesian_matrix_execution"
+  },
+  "unresolved_before_execution": [
+    "Borrower and supplier initial resources, commitments, entry timing and independently funded cast.",
+    "Timestamped price paths, volatility coverage, real liquidation depth/costs, observation availability and oracle confidence rules.",
+    "Detailed campaign costs/delivery, audience overlap and evidence or causal hypotheses for attention and conversion.",
+    "Scenario event calendar, liquidator funding and failed-execution rules.",
+    "Lending ledger implementation, feasible-action Laya integration, replay and meaningful validation.",
+    "Actual model call plan and compute limits remain to be specified."
+  ]
+}

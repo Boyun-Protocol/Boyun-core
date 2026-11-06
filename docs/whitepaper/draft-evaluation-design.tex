@@ -1,0 +1,217 @@
+\section{Evaluation Design}\label{sec:evaluation}
+Section~\ref{sec:method-system} specified how \textit{Boyun} executes a world;
+this section specifies how we test whether that execution does what it claims
+and what it adds in practice. Two kinds of test are needed, and they answer
+different questions. \textit{Verification} asks whether the program carries
+out the stated rules correctly. \textit{Validation} asks whether those rules
+and the model's choices resemble real actors and markets. The tests
+below are mainly verification and capability tests; none of them validates
+\textit{Boyun} as a forecaster, and the results in Section~\ref{sec:results}
+are interpreted accordingly.
+
+\subsection{Research Questions}
+Given that boundary, the evaluation addresses six research questions (RQs),
+ordered from the most controlled test to the most open comparison:
+\begin{enumerate}\setlength{\itemsep}{1pt}
+\item[\textit{RQ1}] Do the implemented calculations, timing, accounting, and
+replay match their specifications in Section~\ref{sec:method-system}?
+\item[\textit{RQ2}] Do information delivery, joint rules, and numeric
+preferences have separate and inspectable effects on choices and outcomes?
+\item[\textit{RQ3}] Can a fourteen-day financial case with sixteen actors run
+with settled trades, recorded rejections, matched policy branches, replay,
+and a bounded budget, and what does it record?
+\item[\textit{RQ4}] Given the same brief, what does \textit{Boyun} record that
+the original \textit{MiroFish} does not, and what does \textit{MiroFish}
+provide that \textit{Boyun} lacks?
+\item[\textit{RQ5}] What do the local model's score distributions and
+regime responses reveal about the limits of its simulated behavior?
+\item[\textit{RQ6}] In a ninety-day lending launch, which observations follow
+from explicit rules and which depend on unvalidated actor choices?
+\end{enumerate}
+
+\subsection{Synthetic Mechanism Experiments}\label{sec:eval-synthetic}
+The first two questions require tests whose correct answers are known in
+advance. Six small synthetic experiments provide them
+(Table~\ref{tab:experiments}). Each uses invented inputs, and wherever an
+action is needed it uses a fixed policy rather than a model, so any
+discrepancy must come from the engine. No model is called and network access
+is disabled while they run. Experiments~1, 2, and~4 test the analytical tools
+and scoring formulas against hand calculations; Experiment~3 tests timing,
+accounting, and replay; Experiments~5 and~6 address RQ2 by switching single
+mechanisms on and off. These experiments are complemented by the engine's
+automated test suite.
+
+\begin{table}[H]
+\caption{Synthetic mechanism experiments.}
+\label{tab:experiments}
+\centering\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.07\columnwidth}>{\raggedright\arraybackslash}p{0.27\columnwidth}Y@{}}
+\toprule
+Exp. & Mechanism & Known answer checked \\
+\midrule
+1 & Game analysis & Expected utility, regret, and pure Nash profiles, Eqs.~\eqref{eq:eu}--\eqref{eq:regret} \\
+2 & Bayesian updating & Two sequential posteriors, Eq.~\eqref{eq:bayes} \\
+3 & Timing and accounting & Event order, clipping, conservation, replay, Eqs.~\eqref{eq:cash-update}--\eqref{eq:conservation} \\
+4 & Forecast scoring & Brier and log scores against a baseline, Eqs.~\eqref{eq:brier}--\eqref{eq:logloss} \\
+5 & Communication ablation & Delivery and a joint rule switched on and off \\
+6 & Preferences vs.\ prose & Changing a weight versus changing persona text \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{MACRON Case Study}\label{sec:eval-macron}
+Synthetic checks cannot show whether the engine copes with a realistic case,
+so RQ3 uses \textit{MACRON}, a prospective fourteen-day launch of a
+hypothetical political memecoin on a \textit{Solana} launch venue, beginning
+2 November 2026. A founder with \$50{,}000 of capital, of which \$10{,}000 is a
+protected reserve, launches the token on a bonding curve that later migrates
+to a pool (Section~\ref{sec:market}). Sixteen actors take part: the founder, a
+market maker, four retail traders with different strategies, a large buyer, an
+attention trader, four promoters, a meme curator, an organic supporter, a
+campaign operator, and a foundation. Each receives its own state, the public
+market history, and only the private instructions it is permitted to see.
+Real dated events, such as scheduled parliamentary sessions, enter as
+exogenous events, without assuming their outcomes.
+
+The case compares founder plans in a full factorial design. The founder's
+initial position is \$5{,}000, \$10{,}000, or \$15{,}000; upfront marketing and
+operating costs are \$5{,}000 or \$10{,}000; the market regime is
+\textit{BULL} or \textit{BEAR}; and the response to an exit alert is either
+\textit{pause-and-observe}, which stops discretionary spending and keeps the
+tokens, or \textit{staged exit}, which sells in tranches. The regimes are
+hypotheses about risk appetite, not observed market states. The resulting
+$3\times2\times2\times2=24$ paths run hourly for up to 336 hours, with finer
+steps around the launch. Each path uses one seed, so the design compares plans
+under common conditions rather than sampling a population of outcomes. \begin{revised}
+All 24 paths use local \textit{Laya} inference from hour 0 to hour 336.
+No hosted-model decisions or mixed-model continuations enter these case results.
+The packages, seeds, response policies, and evidence registers are fixed before
+execution. Offline reference paths remain engineering checks rather than
+substitutes for these model-driven paths.
+\end{revised}
+
+\subsection{Comparison with \textit{MiroFish}}\label{sec:eval-mirofish}
+Because \textit{Boyun} was inspired by \textit{MiroFish}, RQ4 compares the two
+on the same case. The original \textit{MiroFish} (source revision
+\texttt{7657031}) \cite{mirofish} received the same frozen \textit{MACRON}
+brief and event calendar, generated its sixteen personas with its own native
+prompts, and ran its social simulation on the \textit{OASIS} platform
+\cite{yang2025} for 336 hourly rounds in each regime, followed by its own
+report generation. It used \textit{Gemini} 3.5 Flash-Lite on free quotas.
+Interruptions caused by quota limits required restoring the saved actor
+memories and databases; the original random state could not be recovered and
+was reseeded, so the run is a declared recovery-adapted version rather than
+an uninterrupted stock run.
+
+The comparison is therefore matched in its inputs but not in everything else.
+The two systems use different actor models, budgets, and actor activation
+rules, and they are designed to produce different kinds of output, social
+posts in one case and settled trades in the other. We therefore compare what
+each system records and reports, rather than ranking them on a single score,
+and we make no claim that either forecasts the real launch.
+
+\subsection{Local Actor Behavior}\label{sec:eval-laya}
+\begin{revised}
+Beyond completion, RQ5 examines how local actor scores translate into
+observed behavior. We report score concentration, filled and rejected trades,
+and differences between the declared \textit{BULL} and \textit{BEAR} regimes.
+The lifecycle engine samples actions from the saved score distributions;
+therefore a weak preference between options can produce substantial turnover.
+These are descriptive diagnostics of this model and selection rule, not a
+calibration study or a measure of real investor behavior.
+\end{revised}
+
+\subsection{NEAR Lending Case Study}\label{sec:eval-lending}
+Apart from token trading, RQ6 changes the financial mechanism to collateralized
+lending, retaining local \textit{Laya} inference. Its case
+is a prospective launch of a lending market on \textit{NEAR} that accepts
+native NEAR as collateral and lends Circle's native USDC, evaluated over its
+first 90 days. The world was built with the user through 41 recorded answers.
+Because no partner terms had been negotiated, the user chose to assume that
+\$1{,}000{,}000 of USDC from friendly partners is already deposited at
+opening. The team holds \$100{,}000, of which \$10{,}000 is a capped loss
+reserve, and suppliers earn points only on USDC that is actually borrowed.
+Twenty decision-makers take part: the team, four friendly partners, two large
+independent suppliers and two supplier groups, four borrowers and one
+borrower group, an actor who both supplies and borrows to earn points,
+two liquidators, and three distribution partners. Their balances are
+synthetic, sized against the user's premises and a dated snapshot of
+\textit{RHEA}, the main existing NEAR lending venue, which paid 9.88\% a year to
+native-USDC suppliers and charged borrowers 15.29\% \cite{rhealending}. Every
+actor sees these rates as a fixed outside option.
+
+Within that cast, the rules of Section~\ref{sec:lending} apply with a 50\%
+maximum loan-to-value, liquidation at 65\%, a 5\% liquidation bonus, a
+\$500{,}000 aggregate borrowing cap, and, in the baseline, a \$50{,}000 cap per
+borrower. Outsiders can act only after a channel they follow delivers a
+campaign item; paid partners may accept, delay, or decline, and cash is spent
+only on delivery, so no conversion rate is assumed. The ledger settles hourly,
+and actors who are aware of the launch decide daily and whenever a trigger
+fires, such as a NEAR price move of 8\% within 24 hours. Prices are real
+hourly closes from Binance \cite{binanceklines}, rescaled so that each window
+opens at the snapshot price: a choppy window beginning 12 August 2025, which
+contains the market-wide fall of 10 October 2025, and a bear window beginning
+9 November 2025.
+
+\begin{revised}
+These inputs define four local \textit{Laya} worlds
+(Table~\ref{tab:lending-design}). Codes identify the price path (C for choppy,
+B for bear), per-borrower cap in thousands of dollars, rate curve, and local
+model. Each world has one seed and there is no no-launch arm; real-world odds
+are unknown. Raising the cap also splits a borrower cohort, so that comparison
+changes two design factors and does not isolate the cap alone.
+\end{revised}
+
+\begin{table}[t]
+\caption{\rev{Local \textit{Laya} lending worlds.} R2: 2\% base rate, 10\% at 80\% utilization,
+50\% at full use. R8: 8\% base, 15\% at 50\%, 60\% at full use. Worlds with a
+\$100K cap also split the 80-person borrower group into eight accounts.}
+\label{tab:lending-design}
+\centering\footnotesize\color{revisedred}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+World & Path & Cap & Curve & Model \\
+\midrule
+C-P50-R2-L & Choppy & \$50K & R2 & \textit{Laya} \\
+C-P100-R2-L & Choppy & \$100K & R2 & \textit{Laya} \\
+C-P100-R8-L & Choppy & \$100K & R8 & \textit{Laya} \\
+B-P100-R8-L & Bear & \$100K & R8 & \textit{Laya} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Metrics and Reporting}\label{sec:eval-metrics}
+The metrics follow from the questions and are reported with their units and
+coverage. Mechanism tests report exact values against hand calculations.
+Case runs report fills, rejections, traded cash, local model calls, recorded
+run time, and API fees separately from hardware and electricity costs. Because live paths may stop at different hours, coverage is
+reported as completed path-hours out of the planned $24\times336$, and every
+path is labeled completed, budget-limited, or interrupted. Policies are
+compared only at a common time. For each plan pair $p$, let $\tau_p$ be the
+latest hour saved in both of its branches, and let $C_p(\tau_p)$ be the
+founder's realized net-cash position relative to initial capital at that hour. The matched difference is
+\begin{equation}
+D_p=C^{\mathrm{exit}}_p(\tau_p)-C^{\mathrm{pause}}_p(\tau_p).
+\label{eq:matched}
+\end{equation}
+A positive $D_p$ means staged exit held more cash than pausing at the same
+moment. It counts only realized cash; unsold tokens are reported separately,
+so $D_p$ is not a comparison of total wealth.
+
+Where probabilities can be compared with outcomes, \textit{Boyun} uses the
+Brier and logarithmic scores \cite{brier1950,gneiting2007}. For $n$ binary
+cases with forecast probability $p_j$ and outcome $y_j\in\{0,1\}$,
+\begin{align}
+\operatorname{Brier}&=\frac{1}{n}\sum_{j=1}^{n}(p_j-y_j)^2,\label{eq:brier}\\
+\operatorname{LogLoss}&=-\frac{1}{n}\sum_{j=1}^{n}\big[y_j\log p_j+(1-y_j)\log(1-p_j)\big].\label{eq:logloss}
+\end{align}
+Both are averages, lower is better, and both are minimized in expectation by
+reporting the true probability; the logarithmic score penalizes confident
+errors much more heavily. To avoid $\log 0$, probabilities are bounded to
+$[10^{-15},1-10^{-15}]$. Each case path has one seed, so we report observed
+ranges rather than confidence intervals.
+For the lending case, the measures are borrowed principal, utilization,
+liquidations, bad debt, the protocol's share of interest against campaign
+spending, and how often \textit{Laya} borrowers chose to borrow when offered the option.

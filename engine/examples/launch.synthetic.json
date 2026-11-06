@@ -1,0 +1,321 @@
+{
+  "schema_version": "synthetic-scenario.v1",
+  "mode": "synthetic",
+  "name": "Fictional Paris event launch \u2014 not a forecast",
+  "horizon_hours": 720,
+  "capital_cents": 1000000,
+  "launch_cost_cents": 100000,
+  "lp_cash_cents": 400000,
+  "lp_tokens": 1000000,
+  "founder_tokens": 3000000,
+  "fee_bps": 30,
+  "founder_vested_at_hour": 24,
+  "lp_unlock_at_hour": 721,
+  "founder_sales": [
+    {
+      "at_hour": 72,
+      "token_units": 300000
+    },
+    {
+      "at_hour": 168,
+      "token_units": 300000
+    }
+  ],
+  "campaigns": [
+    {
+      "at_hour": 5,
+      "fee_cents": 50000
+    },
+    {
+      "at_hour": 9,
+      "fee_cents": 50000
+    },
+    {
+      "at_hour": 17,
+      "fee_cents": 50000
+    },
+    {
+      "at_hour": 33,
+      "fee_cents": 50000
+    }
+  ],
+  "campaign_budget_cents": 200000,
+  "news_enabled": true,
+  "catalyst_probability_bps": 6500,
+  "followup_positive_probability_bps": 4500,
+  "competitor_messages": [
+    {
+      "at_hour": 5
+    },
+    {
+      "at_hour": 9
+    },
+    {
+      "at_hour": 17
+    },
+    {
+      "at_hour": 33
+    },
+    {
+      "at_hour": 49
+    },
+    {
+      "at_hour": 73
+    }
+  ],
+  "observation_window_hours": 48,
+  "visit_interval_hours": 6,
+  "max_slippage_bps": 500,
+  "cast_recipe": {
+    "founder_count": 1,
+    "founder_initial_cash_cents": 1000000,
+    "two_executable_markets": false,
+    "role_templates": {
+      "project-founder": "launch_teams-01",
+      "project-lp": "liquidity-01"
+    },
+    "groups": {
+      "retail": {
+        "count": 48,
+        "cash_range_cents": [
+          5000,
+          150000
+        ],
+        "position_limit_cents": 50000,
+        "entry_fraction_bps": 1000,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "cautious",
+          "momentum"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      },
+      "event_traders": {
+        "count": 12,
+        "cash_range_cents": [
+          20000,
+          500000
+        ],
+        "position_limit_cents": 200000,
+        "entry_fraction_bps": 1000,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "cautious",
+          "momentum"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      },
+      "large_holders": {
+        "count": 4,
+        "cash_range_cents": [
+          500000,
+          10000000
+        ],
+        "position_limit_cents": 2000000,
+        "entry_fraction_bps": 1000,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "cautious",
+          "momentum"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      },
+      "liquidity": {
+        "count": 3,
+        "cash_range_cents": [
+          0,
+          0
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "observe"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      },
+      "arbitrage": {
+        "count": 2,
+        "cash_range_cents": [
+          0,
+          0
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "observe"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      },
+      "creators_marketing": {
+        "count": 4,
+        "cash_range_cents": [
+          0,
+          0
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "observe"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      },
+      "launch_teams": {
+        "count": 3,
+        "cash_range_cents": [
+          0,
+          0
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "observe"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      },
+      "analysts_community": {
+        "count": 4,
+        "cash_range_cents": [
+          0,
+          0
+        ],
+        "position_limit_cents": 0,
+        "entry_fraction_bps": 0,
+        "attention_capacity": 2,
+        "strategy_choices": [
+          "observe"
+        ],
+        "subscription_choices": [
+          [
+            "news"
+          ],
+          [
+            "news",
+            "creator"
+          ],
+          [
+            "news",
+            "creator",
+            "competitor"
+          ]
+        ]
+      }
+    }
+  },
+  "assumptions": [
+    {
+      "id": "fixture-population-and-capital",
+      "status": "assumed",
+      "rationale": "Explicit synthetic participant composition and cash ranges; not measured NEAR demand."
+    },
+    {
+      "id": "fixture-news-probabilities",
+      "status": "assumed",
+      "rationale": "65% catalyst and 45% favorable follow-up are demonstration inputs, not estimates of a real event."
+    },
+    {
+      "id": "fixture-feed-and-campaign",
+      "status": "assumed",
+      "rationale": "Funded posts, uniform finite-capacity subscription feeds, six-hour visits and a 48-hour attention window; not a real platform algorithm."
+    },
+    {
+      "id": "fixture-venue",
+      "status": "assumed",
+      "rationale": "Integer-cent constant-product market with 30bps fee; not verified launchpad mechanics."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "timeline-world.v1",
+  "start_time": "2026-11-02T12:00:00+04:00",
+  "decision_seconds": [0, 900, 3600, 7200],
+  "world": {
+    "schema_version": "agent-world.v1",
+    "id": "macron-timeline-pilot",
+    "event_description": "MACRON technical evolving-state pilot. Planned launch clock only. Synthetic existing constant-product pool, NOT pump.fun curve or migration. Actor decisions respond to simulated current state and explicitly assumed catalyst messages. No real announcement, measured demand, price forecast, creator agreement or transaction is claimed.",
+    "network": "synthetic-solana-label",
+    "rounds": 4,
+    "market": {
+      "project_capital_cents": 800000,
+      "launch_cost_cents": 300000,
+      "lp_cash_cents": 500000,
+      "project_token_units": 1000000000,
+      "lp_token_units": 700000000,
+      "fee_bps": 100,
+      "max_slippage_bps": 500
+    },
+    "agents": [
+      {
+        "id": "founder-sleeve",
+        "name": "Founder discretionary cash sleeve",
+        "role": "founder cash decision pilot",
+        "description": "Hypothetical discretionary cash sleeve. The project's LP and project token inventory are NOT accessible to this actor. No actual partner agreements. Do not infer a real catalyst schedule from assumed news.",
+        "goal": "Compare keeping cash, a small affordable buy and selling an acquired position to maximize own net cash and minimize losses. Preserve cash when speculative demand is unsupported. Cash balance alone excludes unsold inventory and project LP. No unique risk weighting is supplied.",
+        "initial_cash_cents": 4200000,
+        "position_limit_cents": 200000,
+        "allowed_actions": ["hold", "buy", "sell"],
+        "attention_capacity": 1,
+        "subscriptions": ["news"]
+      },
+      {
+        "id": "retail-momentum",
+        "name": "Retail momentum participant",
+        "role": "hypothetical retail trader",
+        "description": "Hypothetical retail trader considering a small speculative position. Observes only public state and own history. No knowledge of founder or partner plans, future event draws or other balances.",
+        "goal": "Consider a small exploratory buy if delivered public information and current liquidity justify the risk; sell an owned position or wait if attention weakens. Never buy just to create activity. Optimize own outcome, not the founder's.",
+        "initial_cash_cents": 30000,
+        "position_limit_cents": 15000,
+        "allowed_actions": ["hold", "buy", "sell"],
+        "attention_capacity": 1,
+        "subscriptions": ["news"]
+      },
+      {
+        "id": "market-maker",
+        "name": "Market Maker category pilot",
+        "role": "bounded inventory trader, not an LP adapter",
+        "description": "General Market Maker category with assumed independent funds. Only buy/sell/wait is implemented; no privileged quotes, LP operations, partner mandate or guaranteed liquidity support.",
+        "goal": "Manage own inventory and preserve capital under current pool depth and fees. Compare a small inventory acquisition with waiting; sell inventory when a feasible exit serves own objective. Do not assume a subsidy or an obligation to support the founder.",
+        "initial_cash_cents": 100000,
+        "position_limit_cents": 30000,
+        "allowed_actions": ["hold", "buy", "sell"],
+        "attention_capacity": 1,
+        "subscriptions": ["news"]
+      }
+    ],
+    "events": [],
+    "assumptions": [
+      "Technical pilot only, not the original MACRON launch estimate. The engine starts in a synthetic pool; 10-15 minute bonding-curve expectation is not executed.",
+      "Founder modeled cash total: $42,000 actor sleeve plus $8,000 project, of which $3,000 services and $5,000 synthetic LP. Founder cannot sell the project's retained token inventory or redeem LP in this pilot.",
+      "Retail $300 and inventory trader $1,000 are separate hypothetical resources, not empirical capital or real partners.",
+      "No sniper bots. Marketing Partners and Meme / Foundation Ecosystem remain unmodeled categories, not forced traders or invented private agreements.",
+      "No historical six-month or yearly calibration, live calendar verification, measured token attention or final founder profit claim.",
+      "Three actors at four barriers, at most twelve native Jev calls with no retry or fallback. One path cannot estimate branch or threshold odds."
+    ]
+  },
+  "events": [
+    {
+      "id": "opening",
+      "event_second": 0,
+      "available_second": 0,
+      "text": "ASSUMED PILOT STATE: synthetic pool is open at the planned clock. A speculative political theme may attract attention, but actual token demand has not been measured. All trades here are simulated.",
+      "source_ref": "Explicit technical pilot assumption; no real announcement",
+      "evidence_status": "assumed_stress",
+      "occurrence_bps": 10000,
+      "audience": ["public"]
+    },
+    {
+      "id": "attention-update",
+      "event_second": 3600,
+      "available_second": 3600,
+      "text": "ASSUMED STRESS BRANCH: public attention to the political theme weakens. This is a hypothetical attention signal, not measured volume or a real dated announcement. Use actual simulated pool and own holdings when choosing whether to wait or trade.",
+      "source_ref": "Explicit assumed stress arm; occurrence chance not calibrated",
+      "evidence_status": "assumed_stress",
+      "occurrence_bps": 6500,
+      "audience": ["public"]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "near": [
+    {
+      "address": "refv2-batcat.batmansister.near:wrap.near:100",
+      "name": "BATCAT / wNEAR",
+      "base_token_address": "batcat.batmansister.near",
+      "quote_token_address": "wrap.near"
+    },
+    {
+      "address": "refv1-6518",
+      "name": "JAMBO / wNEAR",
+      "base_token_address": "jambo-1679.meme-cooking.near",
+      "quote_token_address": "wrap.near"
+    },
+    {
+      "address": "refv1-8681",
+      "name": "PATATA / JAMBO",
+      "base_token_address": "patata.gaypad.j1-racing.near",
+      "quote_token_address": "jambo-1679.meme-cooking.near"
+    }
+  ],
+  "solana": [
+    {
+      "address": "3C5YE97HADPDxZehYq9Cis8AXr9aNyrUsczKzE1nDbW9",
+      "name": "TRUMP / USDC",
+      "base_token_address": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+      "quote_token_address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "artifact_kind": "planning_only",
+  "id": "near-lending-launch",
+  "started_on": "2026-11-05",
+  "question": "What will happen if I launch a lending protocol on NEAR?",
+  "status": "simulation_complete_results_drafted",
+  "main_model": {
+    "requested": "Laya",
+    "source": "user_instruction",
+    "runtime_configured": true,
+    "inference_executed": true,
+    "preflight_inference_executed": true,
+    "case_inference_executed": true
+  },
+  "answers": [
+    {
+      "question_id": "familiarity",
+      "question": "How familiar are you with lending protocols and the NEAR ecosystem?",
+      "answer_as_received": "I know DeFi lending",
+      "status": "confirmed",
+      "meaning": "User knows DeFi lending; NEAR-specific familiarity remains unknown."
+    },
+    {
+      "question_id": "lending_design",
+      "question": "What kind of lending protocol are you imagining? It is fine if you have not decided.",
+      "answer_as_received": "Borrow against crypto collateral",
+      "status": "confirmed",
+      "meaning": "Collateral-backed lending; specific assets and mechanics remain unknown."
+    },
+    {
+      "question_id": "decision_goal",
+      "question": "What should this case primarily help you decide?",
+      "answer_as_received": "Whether it is worth launching",
+      "status": "confirmed",
+      "meaning": "Evaluate launch viability against alternatives, including no launch."
+    },
+    {
+      "question_id": "why_near",
+      "answer_as_received": "I want to explore the opportunity",
+      "status": "confirmed",
+      "meaning": "NEAR is exploratory; no existing ecosystem thesis is established."
+    },
+    {
+      "question_id": "borrower_need",
+      "answer_as_received": "Not sure; help me investigate",
+      "status": "confirmed",
+      "meaning": "Research potential borrower segments before choosing a target."
+    },
+    {
+      "question_id": "worthwhile_definition",
+      "answer_as_received": "Help me define this",
+      "status": "confirmed",
+      "meaning": "Propose success criteria for user review; no commercial target or horizon confirmed."
+    },
+    {
+      "question_id": "product_scope",
+      "question": "When you say 'on NEAR', which scope should we investigate?",
+      "answer_as_received": "Native NEAR assets first",
+      "status": "confirmed",
+      "meaning": "Initial scope is assets on NEAR; cross-chain expansion is outside the first launch comparison."
+    },
+    {
+      "question_id": "evaluation_horizon",
+      "question": "Which time frame best matches the launch decision you want to test?",
+      "answer_as_received": "First 90 days after launch",
+      "status": "confirmed",
+      "meaning": "Assess days 0\u201390 after launch, not development time. Do not claim this establishes long-term sustainability."
+    },
+    {
+      "question_id": "starting_resources",
+      "question": "What would you actually start with: team or technical experience, approximate money you could commit, and any existing users, code or partners?",
+      "answer_as_received": "Team is 5 years experience in DeFi, built DEXes, Aggregators, Trading Bots. About $100K in Development and $1M at boostrap liquidity total, code considered done just care about launch, let's say I can connect to other NEAR protocols in the ecosystem.",
+      "status": "confirmed",
+      "meaning": "Scenario assumes completed code, five years of team DeFi experience, DEX/aggregator/trading-bot experience, approximately $100K associated with development and $1M total bootstrap liquidity. Development sunk-versus-unspent status, separate launch budget, liquidity ownership/composition/availability and partner commitments remain unresolved. Ecosystem access does not establish signed integrations or funded deposits."
+    },
+    {
+      "question_id": "development_and_launch_budget",
+      "question": "Is the roughly $100K development cost already spent, or still available? How much additional cash could you spend during the 90-day launch on operations, incentives, marketing and any remaining security work, separately from the $1M liquidity?",
+      "answer_as_received": "100K Still available, can push another 100K",
+      "status": "confirmed",
+      "meaning": "Approximately $100K is available and a further $100K could be added. Proposed planning treatment: $100K base and $100K optional expansion, not automatic spending authorization. Exact historical development expenditure remains unspecified."
+    },
+    {
+      "question_id": "bootstrap_funding",
+      "question": "Who supplies the $1M bootstrap liquidity, and what withdrawal or repayment obligations would apply?",
+      "answer_as_received": "Mostly external suppliers",
+      "status": "confirmed",
+      "meaning": "Most bootstrap liquidity is supplier capital, not founder-owned cash; commitments, asset composition, owner split, lockups and promised returns remain unknown."
+    },
+    {
+      "question_id": "initial_borrowing_market",
+      "question": "Which borrowing use case should we investigate first?",
+      "answer_as_received": "Borrow stablecoins against NEAR",
+      "status": "confirmed",
+      "meaning": "First product is NEAR collateral with stablecoin borrowing; stablecoin, custody/deployment variant, caps, pricing and liquidation design still need definition."
+    },
+    {
+      "question_id": "supplier_commitment_terms",
+      "question": "How firm is the $1M supplier funding, and what terms do suppliers expect?",
+      "answer_as_received": "Not negotiated yet, consider them as very friendly partners",
+      "status": "confirmed",
+      "meaning": "Treat friendly partners as a scenario relationship assumption, not committed funding, waived withdrawals, free capital or guaranteed follow-on support. Funding amount, arrival, assets, return and exit terms remain unnegotiated; propose comparison cases instead of asking these same unknowns again."
+    },
+    {
+      "question_id": "launch_advantage",
+      "question": "Do you already have a reason borrowers would choose your protocol over existing NEAR lending options?",
+      "answer_as_received": "Rates or rewards",
+      "status": "confirmed",
+      "meaning": "Explore price- and incentive-led acquisition. Borrower versus supplier incentives, funding asset, rate policy and retention mechanisms remain open."
+    },
+    {
+      "question_id": "launch_security_readiness",
+      "question": "For this scenario, what does 'code done' include beyond implementation?",
+      "answer_as_received": "Audited and operationally ready",
+      "status": "confirmed",
+      "meaning": "Assume contracts audited and operations ready in the scenario, including price feeds, liquidators, monitoring and incident controls. This is a user-declared premise, not an independent verification of actual deployment or completion of the Boyun lending simulator."
+    },
+    {
+      "question_id": "incentive_target",
+      "question": "Which launch incentive strategies should we compare?",
+      "answer_as_received": "Prioritize supplier rewards",
+      "status": "confirmed",
+      "meaning": "Supplier rewards are the priority; do not assume borrower subsidies are selected. Borrower acquisition and paid loan demand still require an explicit mechanism."
+    },
+    {
+      "question_id": "reward_funding_asset",
+      "question": "How would launch rewards be funded?",
+      "answer_as_received": "A protocol token",
+      "status": "superseded",
+      "meaning": "Original protocol-token selection superseded by points for future snapshots; no token appears in this stage.",
+      "superseded_by": "token_launch_status"
+    },
+    {
+      "question_id": "launch_distribution",
+      "question": "Which channels could you realistically use at launch?",
+      "answer_as_received": "Twitter and Discord, Social Medias of all kinds, we have the network",
+      "status": "confirmed",
+      "meaning": "Assume access to a Twitter/Discord and broader social distribution network. Audience sizes, overlap, committed partner delivery, reach and conversion remain unspecified; do not infer funded users from network access."
+    },
+    {
+      "question_id": "token_launch_status",
+      "question": "What is the protocol token\u2019s status at the lending launch?",
+      "answer_as_received": "Okay the UX is terrible, we should tell the user how is the progress and on what step, remember this. Like 50%, Clarify Request -> building world fundamentals -> Specify the actors, incentives and actions ...\n\nToken will not appear for now, what we can deliver is points in this stage for future snapshots",
+      "status": "confirmed",
+      "meaning": "User corrects reward design to points for future snapshots, with no token at this stage. They also require visible journey progress and stage orientation."
+    },
+    {
+      "question_id": "token_economic_constraints",
+      "question": "What token economics are already decided\u2014especially total supply, the 90-day supplier-reward allocation, vesting, token utility, and who funds trading liquidity?",
+      "answer_as_received": "Not yet, and not important",
+      "status": "confirmed",
+      "meaning": "Token economics are not decided and are outside this stage. Do not continue tokenomics questions or invent token price, trading or reward APY."
+    },
+    {
+      "question_id": "distribution_scale",
+      "question": "Roughly how large is the audience you can actually reach through your network: Twitter reach, active Discord members, and partner channels willing to promote?",
+      "answer_as_received": "Let's say 50K followers total",
+      "status": "confirmed",
+      "meaning": "Scenario input: 50,000 aggregate followers. Deduplicated people, engagement, eligible asset holders, depositors and independently funded actors are not established."
+    },
+    {
+      "question_id": "points_accrual_comparison",
+      "question": "For the supplier-points design, which approach should the case use? This completes the main incentive choice in the actor draft.",
+      "answer_as_received": "Write the progress on top of the questions as well.\nLiquidity actually borrowed",
+      "status": "confirmed",
+      "meaning": "Select points linked to supplied stablecoins actually borrowed. Idle deposits do not earn these points. Show setup progress and stage at the top of the question surface itself, not only commentary."
+    },
+    {
+      "question_id": "additional_capital_policy",
+      "question": "How should we treat the optional additional $100K?",
+      "answer_as_received": "Keep it available for later",
+      "status": "confirmed",
+      "meaning": "Start with $100K; additional $100K is a later decision, not day-one cash or guaranteed automatic rescue."
+    },
+    {
+      "question_id": "supplier_loss_backstop",
+      "question": "If liquidation proceeds fail to repay loans fully, may the team use its cash to compensate suppliers?",
+      "answer_as_received": "Only a capped reserve",
+      "status": "confirmed",
+      "meaning": "Ring-fence a defined portion of the existing budget for supplier compensation; reserve size and claims/payment rules remain to be specified. No unlimited guarantee."
+    },
+    {
+      "question_id": "compensation_reserve_size",
+      "question": "How much of the initial $100K should be ring-fenced for the supplier compensation reserve?",
+      "answer_as_received": "Set aside $10K",
+      "status": "confirmed",
+      "meaning": "Ring-fence $10K of the initial $100K for supplier compensation; $90K remains for other launch uses. Claims eligibility and payment priority still require a declared rule."
+    },
+    {
+      "question_id": "launch_campaign_approach",
+      "question": "How should we launch to your 50K-follower social network?",
+      "answer_as_received": "Broad public launch",
+      "status": "confirmed",
+      "meaning": "Coordinate public announcements, Discord and partner amplification from the start. Model actual delivery, costs and independent reactions; network access does not guarantee participation or conversion."
+    },
+    {
+      "question_id": "first_stablecoin",
+      "question": "Should this case launch with native USDC as its first borrowing asset?",
+      "answer_as_received": "Native USDC first",
+      "status": "confirmed",
+      "meaning": "Use Circle-issued native USDC on NEAR as first debt asset; keep bridged USDC and other stablecoin identities separate."
+    },
+    {
+      "question_id": "launch_budget_envelope",
+      "question": "Which proposed simulation budget should we use?",
+      "answer_as_received": "Keep more cash uncommitted",
+      "status": "confirmed",
+      "meaning": "Select $10K compensation reserve, $30K operations, $10K partner support/measurement, $20K promotion, $30K uncommitted cash; ceilings for simulation, not validated cost estimates or external spending authorization."
+    },
+    {
+      "question_id": "lending_parameters_source",
+      "question": "Since the protocol is considered ready, should we use existing lending settings or develop explicit settings for this example?",
+      "answer_as_received": "Propose settings for this example",
+      "status": "confirmed",
+      "meaning": "Agent should research comparable mechanics and propose a consistent synthetic lending specification with sensitivity. This is not evidence of deployed protocol settings and does not select a separate conservative/flexible comparison."
+    },
+    {
+      "question_id": "proposed_settings_review",
+      "question": "Which version should the world use for the proposed lending baseline?",
+      "answer_as_received": "Use this proposed baseline",
+      "status": "confirmed",
+      "meaning": "Select the proposed-settings.json baseline, including caps, interest, points, queue eligibility and capped loss compensation, as explicit example assumptions; not validated safe limits."
+    },
+    {
+      "question_id": "bootstrap_funding_condition",
+      "question": "Your friendly partners have not negotiated funding terms. How should the case handle the $1M bootstrap target?",
+      "answer_as_received": "Assume $1M deposited at opening",
+      "status": "confirmed",
+      "meaning": "Main case is conditional on $1M of friendly-partner USDC supply already deposited at opening, labeled a hypothetical starting condition, not a committed partnership. Partners still decide later withdrawals; no funded/fundraising comparison arm."
+    },
+    {
+      "question_id": "funded_cast",
+      "question": "Which cast should the 90-day run use?",
+      "answer_as_received": "Use this cast (Recommended)",
+      "status": "confirmed",
+      "meaning": "Use funded-cast-proposal.json as drafted: 20 synthetic decision-makers; balances are scenario assumptions, not observed wallets."
+    },
+    {
+      "question_id": "decision_cadence",
+      "question": "How often should actors make decisions over the 90 days?",
+      "answer_as_received": "Daily + event triggers (Recommended)",
+      "status": "confirmed",
+      "meaning": "Hourly deterministic settlement; daily actor decisions plus triggers (NEAR \u00b18%/24h, utilization \u226590%, queued withdrawal, liquidatable position, team update). ~2,000\u20132,900 local Laya calls."
+    },
+    {
+      "question_id": "market_paths",
+      "question": "Which real NEAR windows should the run replay?",
+      "answer_as_received": [
+        "Choppy: Aug 2025 (Recommended)"
+      ],
+      "status": "confirmed",
+      "meaning": "Single 90-day run replaying real Binance NEARUSDT hourly prices from 2025-08-12, scaled to open at $4.0375. Bear, bull and crash-day windows not selected. Hourly data: +18.2% net, -40.4% max drawdown on lows at hour 1437 (2025-10-10 crash), worst 24h -24.1%. The question's '-34% / flat' description came from daily closes; hourly figures supersede it."
+    },
+    {
+      "question_id": "usdc_depeg_overlay",
+      "question": "Should the bear run also include a stablecoin depeg?",
+      "answer_as_received": "No depeg overlay (Recommended)",
+      "status": "confirmed",
+      "meaning": "Use real USDCUSDT hourly closes (0.9956-1.0006 in window); no synthetic or stacked depeg."
+    },
+    {
+      "question_id": "campaign_calendar",
+      "question": "Use the proposed launch calendar?",
+      "answer_as_received": "Use this calendar (Recommended)",
+      "status": "confirmed",
+      "meaning": "Execute campaign-and-response-proposal.md calendar in-world; channel-based awareness; no assumed conversion rates; partners may decline/delay amplification."
+    },
+    {
+      "question_id": "team_response_authority",
+      "question": "What may the team do during the 90 days?",
+      "answer_as_received": "Communicate and spend only (Recommended)",
+      "status": "confirmed",
+      "meaning": "Team (Laya, weekly + triggers): status update, one extra KOL from held $10K, private partner retention message, or no action. No rate/LTV/cap changes, pauses or optional $100K; such requests logged as out-of-scope."
+    },
+    {
+      "question_id": "follow_up_run_1",
+      "question": "Which follow-up should I run next?",
+      "answer_as_received": [
+        "Lift the borrow cap (Recommended)"
+      ],
+      "status": "confirmed",
+      "meaning": "Per-borrower cap $100K; 80-person cohort split into 8 accounts; aggregate $500K cap unchanged. Executed 2026-11-05."
+    },
+    {
+      "question_id": "follow_up_run_2",
+      "question": "What next?",
+      "answer_as_received": [
+        "Steeper rate curve (Recommended)"
+      ],
+      "status": "confirmed",
+      "meaning": "Lifted-cap world with steeper curve chosen by agent: base 8%, kink 50% at 15%, 60% at full utilization. At 25% utilization borrow 11.5% vs Rhea 15.29%."
+    },
+    {
+      "question_id": "follow_up_run_3",
+      "question": "What next?",
+      "answer_as_received": [
+        "Cross-check with a stronger model (Recommended)",
+        "Bear window replay"
+      ],
+      "status": "confirmed",
+      "meaning": "Jev cross-check on steeper-curve world (choppy path, $0.25 hard cap) and Laya bear-window replay (2025-11-09) on steeper-curve world. Both executed 2026-11-05."
+    },
+    {
+      "question_id": "follow_up_run_4",
+      "question": "What next?",
+      "answer_as_received": [
+        "Jev at low rates (Recommended)",
+        "Only have 1$ left for Jev"
+      ],
+      "status": "confirmed",
+      "meaning": "Jev on original cheap curve (lifted-cap world) with $0.15 hard cap; user has ~$1 Jev credit. Executed 2026-11-05, est. $0.059."
+    }
+  ],
+  "readiness": {
+    "research_complete": true,
+    "world_construction_ready": true,
+    "execution_ready": true,
+    "paper_results_ready": false,
+    "blocking_reasons": [
+      "Single path; Laya behavior weakly discriminating (mean top prob 0.556). Mechanical findings only are decision-grade; behavioral findings need cross-check before paper claims."
+    ]
+  },
+  "launch_scope": {
+    "assets": "native_near_first",
+    "horizon_days_after_launch": 90,
+    "code_complete": "user_declared_scenario_assumption",
+    "team_experience_years": 5,
+    "development_amount_usd_approx": 100000,
+    "development_amount_status": "100K_confirmed_still_available_not_sunk",
+    "bootstrap_liquidity_usd_approx": 1000000,
+    "liquidity_ownership_composition_and_terms": "needs_clarification",
+    "ecosystem_connections": "user_declared_possible_access_not_committed_partnerships",
+    "launch_date": null,
+    "launch_operating_budget_usd": 100000,
+    "additional_possible_budget_usd": 100000,
+    "budget_staging_status": "proposed_base_plus_optional_expansion_not_spend_authorization",
+    "bootstrap_source": "mostly_external_suppliers",
+    "initial_market": {
+      "collateral": "NEAR",
+      "borrow_asset": "native_USDC_on_NEAR",
+      "borrow_asset_contract": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1"
+    },
+    "historical_development_expenditure_usd": null,
+    "supplier_relationship": "very_friendly_partners_user_scenario_assumption",
+    "supplier_terms_status": "not_negotiated",
+    "bootstrap_commitment_status": "not_committed_by_supplied_evidence",
+    "launch_advantage": "rates_or_rewards",
+    "protocol_readiness": "audited_and_operationally_ready_user_scenario_assumption",
+    "incentive_priority": "supplier_rewards",
+    "reward_asset": "points_for_future_snapshots",
+    "distribution_channels": [
+      "Twitter",
+      "Discord",
+      "other_social_media"
+    ],
+    "distribution_access": "network_available_user_declared",
+    "borrower_incentives_selected": false,
+    "token_launch_in_scope": false,
+    "token_economics_in_scope": false,
+    "aggregate_followers": 50000,
+    "audience_count_status": "user_scenario_input_not_deduplicated_or_converted",
+    "points_cash_value": null,
+    "future_token_entitlement": "not_promised_or_specified",
+    "points_accrual_basis": "supplied_stablecoins_actually_borrowed",
+    "idle_deposit_points": false,
+    "points_rule_implementation_status": "selected_basis_allocation_and_accrual_details_proposed_not_executed",
+    "additional_capital_policy": "available_for_later_decision_not_day_one",
+    "supplier_compensation_policy": "capped_reserve_within_existing_budget",
+    "supplier_compensation_reserve_usd": 10000,
+    "nonreserve_launch_budget_usd": 90000,
+    "launch_campaign_approach": "broad_public_launch",
+    "budget_envelope_usd": {
+      "supplier_compensation_reserve": 10000,
+      "operations": 30000,
+      "partner_support_and_measurement": 10000,
+      "promotion": 20000,
+      "uncommitted_cash": 30000
+    },
+    "budget_envelope_status": "user_selected_simulation_ceilings_not_verified_costs",
+    "lending_parameters_source": "agent_proposed_example_settings_with_sensitivity",
+    "proposed_settings_artifact": "proposed-settings.json",
+    "proposed_settings_status": "user_selected_example_baseline",
+    "bootstrap_funding_condition": "hypothetical_1M_deposited_at_opening",
+    "price_path": "price-path-choppy-2025-08.json"
+  },
+  "journey": {
+    "current_stage": "results_and_paper_review",
+    "setup_progress_estimate_pct": 100,
+    "progress_basis": "Qualitative setup milestone estimate, not elapsed time, model calls or execution completion.",
+    "simulation_executed": false,
+    "stages": [
+      {
+        "id": "clarify_request",
+        "status": "complete"
+      },
+      {
+        "id": "world_fundamentals",
+        "status": "complete"
+      },
+      {
+        "id": "actors_incentives_and_actions",
+        "status": "complete"
+      },
+      {
+        "id": "research_and_validate",
+        "status": "complete"
+      },
+      {
+        "id": "simulate",
+        "status": "complete"
+      },
+      {
+        "id": "results_and_paper_review",
+        "status": "in_progress"
+      }
+    ],
+    "question_surface_progress_required": true,
+    "validation_status": "isolated_lending_kernel_and_compact_actor_adapter_tested_one_real_local_laya_preflight",
+    "case_simulation_executed": false,
+    "synthetic_model_preflight_calls": 1
+  },
+  "results": {
+    "report": "RESULTS.md",
+    "output_dir": "engine/output/near-lending-case-2026-11-05",
+    "model_calls": 1604,
+    "replay_passed": true,
+    "variants": [
+      {
+        "id": "cap100k_split_cohort",
+        "output_dir": "engine/output/near-lending-case-cap100k-2026-11-05",
+        "model_calls": {
+          "new": 762,
+          "cached": 1685
+        },
+        "replay_passed": true
+      },
+      {
+        "id": "cap100k_split_cohort_steep_curve",
+        "output_dir": "engine/output/near-lending-case-cap100k-steep-2026-11-05",
+        "model_calls": {
+          "new": 2443,
+          "cached": 0
+        },
+        "replay_passed": true
+      },
+      {
+        "id": "steep_curve_bear_window",
+        "output_dir": "engine/output/near-lending-case-steep-bear-2026-11-05",
+        "model_calls": {
+          "new": 2522,
+          "cached": 0
+        },
+        "replay_passed": true
+      },
+      {
+        "id": "steep_curve_jev_cross_check",
+        "output_dir": "engine/output/near-lending-case-steep-jev-2026-11-05",
+        "model": "jev-latest",
+        "model_calls": {
+          "new": 2117,
+          "cached": 0
+        },
+        "estimated_cost_usd": 0.058988,
+        "replay_passed": true
+      },
+      {
+        "id": "cap100k_jev_low_rate",
+        "output_dir": "engine/output/near-lending-case-cap100k-jev-2026-11-05",
+        "model": "jev-latest",
+        "model_calls": {
+          "new": 2117,
+          "cached": 0
+        },
+        "estimated_cost_usd": 0.058987,
+        "replay_passed": true
+      }
+    ],
+    "baseline_current_engine": "engine/output/near-lending-case-v2-2026-11-05",
+    "jev_estimated_spend_usd_total": 0.1184
+  }
+}
