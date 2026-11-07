@@ -42,6 +42,10 @@ Inspired by **[MiroFish](https://github.com/666ghj/MiroFish)**, **Boyun** (拨�
 
 Boyun integrates deeply across the NEAR protocol, wallet, and AI stack (spanning deployed contracts, runtime adapters, and architectural specs in [NEAR Tech Guide](docs/decision-lab/NEAR_TECH_GUIDE.md) & [NEAR MVP](docs/decision-lab/NEAR_MVP.md)):
 
+<div align="center">
+<img src="./docs/readme-assets/near-stack.png" alt="Boyun x NEAR Protocol Integration Stack" width="95%"/>
+</div>
+
 | NEAR Layer | Integration in Boyun | Status |
 | :--- | :--- | :--- |
 | **NEAR Smart Contract Registry** | Rust (`near-sdk 5.29.1`) contract on `csl-registry-2e4069fc870d.testnet` anchoring salted SHA-256 simulation digests with code-hash pinning and RPC finality checks ([lib.rs:42](contracts/commitment-registry/src/lib.rs#L42)<!-- code:contract -->, [near_registry.py:147](engine/src/decision_lab/near_registry.py#L147)<!-- code:verify -->) | **Deployed & Verified** |
@@ -59,6 +63,10 @@ Boyun integrates deeply across the NEAR protocol, wallet, and AI stack (spanning
 
 <div align="center">
 <img src="./docs/readme-assets/architecture.png" alt="How Boyun Works — End-to-End Architecture" width="95%"/>
+</div>
+
+<div align="center">
+<img src="./docs/readme-assets/execution-pipeline.png" alt="Formal Step-t Execution & Evidence Pipeline" width="95%"/>
 </div>
 
 <div align="center">
