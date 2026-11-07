@@ -11,95 +11,98 @@ To make interacting actors a reproducible object of study, agent-based research
 requires an explicit description of the environment and its rules. In
 particular, the Overview, Design concepts, and Details (\textit{ODD}) protocol
 standardizes descriptions of entities, initialization, schedules, inputs, and
-submodels \cite{grimm2020}. \rev{Complementing specification standards,}
+submodels \cite{grimm2020}. Complementing specification standards,
 Gal\'an et al.\ distinguish conceptual modeling assumptions from artifacts
 introduced by software implementation \cite{galan2009}. Together, these works
 motivate separating verification---whether code executes stated rules
 accurately---from validation of whether those rules represent real markets.
 
-\rev{Building on that distinction,} \textit{Boyun} specifies \rev{actors},
+Building on that distinction, \textit{Boyun} specifies actors,
 resources, observation boundaries, actions, and settlement rules before a run
 begins. Preserving these inputs opens assumptions to review and enables exact
-replay checks. \rev{However,} an explicit specification alone cannot show that
+replay checks. However, an explicit specification alone cannot show that
 assumed incentives or actor choices are realistic, which requires examining
 both the economic environment and the behavioral model.
 
 \subsection{Game-Theoretic and Economic Environments}
-On the strategic side, \textit{game theory} links \rev{actors'} choices to
+On the strategic side, \textit{game theory} links actors' choices to
 outcomes that depend on what others do. \textit{Nash equilibrium} provides a
-classic benchmark in which no \rev{actor} gains from a unilateral deviation
+classic benchmark in which no actor gains from a unilateral deviation
 \cite{nash1950}, and \textit{OpenSpiel} operationalizes finite games through
 explicit states, legal actions, observations, transitions, and returns
 \cite{lanctot2019}. \textit{Boyun} adopts explicit game specification to
-construct decision worlds; \rev{by contrast,} it neither incorporates
+construct decision worlds; by contrast, it neither incorporates
 \textit{OpenSpiel}'s equilibrium solvers nor assumes that its actor decision
 model plays an equilibrium.
 
-\rev{Beyond abstract games,} economic simulation environments enforce
+Beyond abstract games, economic simulation environments enforce
 incentives through allocation and accounting rules. For instance, the
 \textit{AI Economist} couples economic agents with a tax-policy planner,
 separating individual utility from a designer's objective \cite{zheng2020},
 while \textit{EconAgent} places language-model agents inside numerical
 macroeconomic rules for labor and consumption \cite{li2024econagent}.
-\rev{Similarly,} \textit{Boyun} separates \rev{actor preference weights},
+Similarly, \textit{Boyun} separates actor preference weights,
 action selection, and engine-computed consequences, though it targets bounded
 financial and protocol decisions rather than macroeconomic policy learning.
 
-\rev{When questions turn specifically to trading and decentralized credit,}
+When questions turn specifically to trading and decentralized credit,
 settlement rules must reflect venue mechanics. \textit{ABIDES} (Agent-Based
 Interactive Discrete Event Simulation) models trading agents communicating with
 an order-book exchange over configurable network latency \cite{byrd2019}.
-\rev{On the other hand, decentralized exchanges commonly replace order books
+On the other hand, decentralized exchanges commonly replace order books
 with \textit{automated market makers} (AMMs), whose reserve formulas govern
 pricing, fees, and slippage \cite{angeris2021,xu2023amm}, while decentralized
 lending pools price credit through utilization-based interest curves and
-collateral liquidations \cite{gudgeon2020}.} These precedents show why a
+collateral liquidations \cite{gudgeon2020}. These precedents show why a
 narrative choice or participation score cannot substitute for a settled swap,
 loan, or cash balance; \textit{Boyun} therefore pairs its ledgers with an
 explicit social-information layer.
 
-\subsection{Social Graphs and Language-Model Simulation}
-\rev{Turning to that social layer,} language-model simulations study how
-agents observe and react to peers. \textit{Generative Agents} combines memory,
+\subsection{Social Graphs and \rev{Agent-Swarm} Simulation}
+Turning to that social layer, language-model simulations study how
+\rev{an \textit{agent swarm} observes and reacts to connected peers across a
+\textit{social graph}}. \textit{Generative Agents} combines memory,
 reflection, and planning to produce contextual behavior \cite{park2023},
 whereas \textit{OASIS} provides large-scale social-platform environments with
 posting actions and recommendation feeds \cite{yang2025}. Both frameworks
 motivate treating observation access and interaction history as explicit parts
-of the world rather than assuming shared global knowledge.
+of the world rather than assuming shared global knowledge \rev{across the swarm}.
 
-\rev{In addition,} \textit{MiroFish} inspires \textit{Boyun}'s end-to-end
-workflow from world construction to cast simulation and structured reporting
-\cite{mirofish}. \rev{However, whereas \textit{MiroFish} runs open-ended social
-discourse on \textit{OASIS},} \textit{Boyun} executes bounded actions over
-\rev{its own directed information graph and deterministic strategic, market,
-and lending ledgers.} Section~\ref{sec:res-mirofish} compares the two systems
-on the same launch brief, documenting their complementary outputs rather than
-claiming a performance ranking.
+\rev{Directly inspiring \textit{Boyun},} \textit{MiroFish} \rev{pioneered an}
+end-to-end workflow from world construction to \rev{agent-swarm} simulation and
+structured reporting \cite{mirofish}. However, whereas \textit{MiroFish} runs
+open-ended social discourse on \textit{OASIS}, \textit{Boyun} \rev{models actors
+as a \textit{swarm of agents} communicating over an explicit \textit{social
+graph} (implemented as a directed information graph) while executing} bounded
+actions over deterministic strategic, market, and lending ledgers.
+Section~\ref{sec:res-mirofish} compares the two systems on the same launch
+brief, documenting their complementary outputs rather than claiming a
+performance ranking.
 
-\rev{Even when social and financial rules are explicit,} plausible prose or
+Even when social and financial rules are explicit, plausible prose or
 contextual responsiveness does not guarantee incentive-consistent choices.
 Controlled repeated-game studies with language models test how models respond
-to explicit payoffs and opponent histories \cite{akata2025}. \rev{Accordingly,}
+to explicit payoffs and opponent histories \cite{akata2025}. Accordingly,
 evaluating \textit{Boyun} requires separating rule-enforced consequences from
 model-selected behavior and distinguishing option scores from outcome
 probabilities.
 
 \subsection{Probabilistic Decisions and Statistical Evaluation}
-\rev{To obtain structured choices without free-text parsing,} typed decision
+To obtain structured choices without free-text parsing, typed decision
 models score a finite menu of options given a state \cite{typesafeintro,typesafeapi}.
-\rev{Because financial scenarios often contain confidential strategy, open-weight
+Because financial scenarios often contain confidential strategy, open-weight
 implementations are particularly relevant: \textit{Laya} fine-tunes a
 421-million-parameter encoder to return normalized option scores on a local CPU
 \cite{layamodel}, and \textit{Kev} trains compatible open-weight variants on
 Qwen backbones \cite{kevrepo}, whereas hosted services such as \textit{Jev}
-process requests remotely \cite{typesafeapi}.} \textit{Boyun} uses local
+process requests remotely \cite{typesafeapi}. \textit{Boyun} uses local
 \textit{Laya} inference in its experiments while keeping feasibility checks and
-accounting in code. \rev{At the same time,} \textit{Laya}'s model card notes
+accounting in code. At the same time, \textit{Laya}'s model card notes
 that its training workflows exclude financial markets and that its confidence
 values are uncalibrated \cite{layamodel}, so returned option scores must never
 be read as empirical market odds.
 
-\rev{By contrast, reasoning about external event uncertainty} requires explicit
+By contrast, reasoning about external event uncertainty requires explicit
 hypotheses, priors, and likelihoods via \textit{Bayesian updating}
 \cite{pishronik2014}. Repeated sampling can explore consequences under declared
 priors, yet it cannot supply missing likelihoods or correct a biased behavioral
@@ -107,7 +110,7 @@ model. Ultimately, any probabilistic forecast claim must be evaluated against
 resolved outcomes using strictly proper scoring rules such as the
 \textit{Brier} and \textit{logarithmic scores} \cite{brier1950,gneiting2007}.
 
-\rev{Taken together,} prior work motivates combining explicit game incentives,
+Taken together, prior work motivates combining explicit game incentives,
 directed message delivery, self-hosted typed actor decisions, and ledger-based
 settlement, while maintaining a strict boundary between verified mechanics and
 unvalidated market forecasts. The next section formalizes how a world is

@@ -1,41 +1,46 @@
 \begin{figure*}[!t]
-\centering
+\centering\color{revisedred}
 \begin{tikzpicture}[
  constructionbox/.style={draw=teal!70,fill=wash,rounded corners=2pt,align=center,text width=4.7cm,minimum height=1.15cm,inner sep=5pt,font=\small},
  wide/.style={draw=teal!70,fill=white,rounded corners=2pt,align=center,text width=16.1cm,minimum height=0.8cm,inner sep=5pt,font=\small},
  connection/.style={-{Latex[length=2mm]},thick,draw=teal}]
 \node[wide] (question) at (5.7,0) {Decision question, reference world, matched branches and observation horizon $T$};
-\node[constructionbox] (actors) at (0,-1.7) {Actors and incentives\\Roles, resources, preference weights\\and feasible actions};
-\node[constructionbox] (information) at (5.7,-1.7) {Information environment\\Observation boundaries, links\\and message delivery};
+\node[constructionbox] (actors) at (0,-1.7) {\textit{Agent swarm} and incentives\\Agent roles, resources, preference\\weights and feasible actions};
+\node[constructionbox] (information) at (5.7,-1.7) {\textit{Social graph} environment\\Observation boundaries, directed links\\and swarm message delivery};
 \node[constructionbox] (rules) at (11.4,-1.7) {Rules and uncertainty\\Settlement ledgers, event timing\\and declared assumptions};
 \draw[connection] (question.south -| actors.north)--(actors.north);
 \draw[connection] (question.south)--(information.north);
 \draw[connection] (question.south -| rules.north)--(rules.north);
-\node[wide] (review) at (5.7,-3.5) {Construction review\\Evidence and rationale; resource consistency; objective and interaction checks};
+\node[wide] (review) at (5.7,-3.5) {Construction review\\Evidence and rationale; resource consistency; social-graph and interaction checks};
 \draw[connection] (actors.south)--(actors.south |- review.north);
 \draw[connection] (information.south)--(review.north);
 \draw[connection] (rules.south)--(rules.south |- review.north);
-\node[wide] (output) at (5.7,-5) {Reviewed world specification $\rightarrow$ local actor decision model (\textit{Laya}) and execution ledgers};
+\node[wide] (output) at (5.7,-5) {Reviewed world and \textit{agent swarm} $\rightarrow$ local agent decision model (\textit{Laya}) and execution ledgers};
 \draw[connection] (review.south)--node[right,font=\footnotesize]{accepted after review}(output.north);
 \draw[connection,dashed] (review.east)--++(0.55,0)|-node[pos=0.25,right,font=\footnotesize]{revise}(question.east);
 \end{tikzpicture}
-\caption{\rev{World construction in \textit{Boyun}.} A decision question determines
-three complementary specification tasks. Their outputs undergo structural
-checks and human review, with author-directed revision where needed. The process specifies
-\rev{actor preference weights and settlement rules before \textit{Laya} selects live actions locally.}}
+\caption{\rev{World and \textit{agent swarm} construction in \textit{Boyun},
+inspired by \textit{MiroFish}'s world-building workflow.} A decision question
+determines three complementary specification tasks \rev{defining the swarm of
+agents, their social graph, and the settlement rules}. Their outputs undergo
+structural checks and human review, with author-directed revision where needed.
+The process specifies \rev{agent preference weights, social-graph links, and
+settlement rules before \textit{Laya} selects live agent actions locally.}}
 \label{fig:construction}
 \end{figure*}
 
 \section{Problem Formulation and World Creation}\label{sec:world-creation}
 The preceding section identified the conceptual foundations needed to study
-strategic interactions. \rev{To turn those foundations into a reproducible
-experiment,} \textit{Boyun} constructs a \textit{world}: an explicit
-specification of \rev{actors}, resources, observations, actions, events, and
-settlement rules. Construction is performed by a user or a separate authoring
-model, followed by structural checks and human review, and finishes before the
-\rev{actor decision model} is ever called. Figure~\ref{fig:construction}
-summarizes this preparation; the execution procedure follows in
-Section~\ref{sec:method-system}.
+strategic interactions. To turn those foundations into a reproducible
+experiment, \rev{\textit{Boyun}---following \textit{MiroFish}'s world-first
+workflow---}constructs a \textit{world}: an explicit specification of \rev{an
+\textit{agent swarm} (modeled actors operating as autonomous agents)},
+resources, \rev{a \textit{social graph} governing observations and communication},
+actions, events, and settlement rules. Construction is performed by a user or a
+separate authoring model, followed by structural checks and human review, and
+finishes before the \rev{agent decision model} is ever called.
+Figure~\ref{fig:construction} summarizes this preparation; the execution
+procedure follows in Section~\ref{sec:method-system}.
 
 \subsection{Core Terminology}
 Before specifying a world, a reader must distinguish the static specification
@@ -43,12 +48,12 @@ from the record produced by executing it. Table~\ref{tab:definitions} defines
 worlds and their execution, while actor and decision terms appear in the
 subsections below. In particular, a world is a model of a decision setting,
 whereas a run is one execution of that model; two runs of the same world can
-differ whenever the \rev{selection rule} uses sampling. For an everyday
+differ whenever the selection rule uses sampling. For an everyday
 analogy, a board game's rules and starting setup define the world, whereas one
 played game is a run and its recorded move sequence is a trajectory.
 
 \begin{table}[H]
-\caption{\rev{Worlds and execution terminology.}}
+\caption{Worlds and execution terminology.}
 \label{tab:definitions}
 \centering\small
 \renewcommand{\arraystretch}{1.12}
@@ -58,15 +63,15 @@ Term & Definition \\
 \midrule
 \textit{World} & A specified decision setting: actors, resources, observations, actions, events, and settlement rules. \\
 \textit{Scenario} & An alternative setting examined through a world or matched branch; its label does not establish a probability. \\
-\textit{State} & \rev{Ledger-specific data at step $t$: balances and metrics, plus reserves, collateral, debt, or claims where modeled.} \\
+\textit{State} & Ledger-specific data at step $t$: balances and metrics, plus reserves, collateral, debt, or claims where modeled. \\
 \textit{Run / trajectory} & A run executes one world. Its trajectory records observations, actions, and settled states. \\
-\textit{Round / horizon} & \rev{Index $t$ orders rounds or decision points up to $T$; elapsed time is recorded separately. A cycle is not inherently an hour or day.} \\
+\textit{Round / horizon} & Index $t$ orders rounds or decision points up to $T$; elapsed time is recorded separately. A cycle is not inherently an hour or day. \\
 \textit{Outcome / metric} & An outcome is a simulated result. A metric $x_{k,t}$ describes shared state within bounds $[L_k,H_k]$; metric points are not money. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\rev{Once those terms are separated,} the author can state what the simulation
+Once those terms are separated, the author can state what the simulation
 is designed to compare. Consequently, world creation begins with the decision
 question rather than with narrative persona writing.
 
@@ -78,27 +83,29 @@ delayed disclosure and track partner participation alongside retained cash.
 That question dictates which actors and ledgers belong in the world; adding
 unrelated detail does not strengthen the comparison.
 
-\rev{From that focal question,} the author defines a reference world and
-isolates which inputs change in each \rev{matched branch}. Comparing disclosure
+From that focal question, the author defines a reference world and
+isolates which inputs change in each matched branch. Comparing disclosure
 policies, for instance, keeps initial balances and unrelated rules fixed
 wherever possible; if several inputs change together, the resulting difference
-reflects their joint intervention rather than a single cause. \rev{Likewise,}
+reflects their joint intervention rather than a single cause. Likewise,
 the horizon $T$ bounds only the observation window: reaching $T$ does not imply
 that the modeled protocol or market has ended.
 
-\subsection{Actors, Preference Weights, and Strategic Dependence}
-\rev{With the comparison fixed, actors enter the cast} only if they control
-relevant resources, hold distinct information, or can alter an outcome that
-another actor values. An \textit{actor} is a modeled decision-maker, while a
+\subsection{\rev{Agent Swarm}, Preference Weights, and Strategic Dependence}
+With the comparison fixed, \rev{agents enter the \textit{swarm} (the world's
+cast)} only if they control relevant resources, hold distinct information, or
+can alter an outcome that another \rev{agent} values. An \rev{\textit{actor} in
+\textit{Boyun} is an autonomous modeled \textit{agent}}, while a
 \textit{persona} describes its role and motivation. To make that persona
-executable, the world assigns explicit goals, initial balances, feasible
-actions, observation access, and numeric \rev{preference weights}, giving the
-cast a game-theoretic structure rather than a list of biographies
+executable \rev{within the \textit{swarm of agents}}, the world assigns explicit
+goals, initial balances, feasible actions, \rev{social-graph} observation
+access, and numeric preference weights, giving the \rev{agent swarm} a
+game-theoretic structure rather than a list of biographies
 \cite{polak2,nash1950}. Table~\ref{tab:actor-definitions} separates these
 elements.
 
 \begin{table}[H]
-\caption{\rev{Actors, goals, and incentives.}}
+\caption{\rev{Agent swarm, goals, and incentives.}}
 \label{tab:actor-definitions}
 \centering\small
 \renewcommand{\arraystretch}{1.12}
@@ -106,17 +113,17 @@ elements.
 \toprule
 Term & Definition \\
 \midrule
-\textit{Actor} & \rev{A modeled decision-maker indexed by $i$ (also called a player or participant in game theory); the full set of actors is the \textit{cast}.} \\
-\textit{Persona} & The actor's descriptive role and motivation, paired with explicit preference weights and actions. \\
-\textit{Goal} & The outcome the actor seeks, distinct from the analyst's research question. \\
-\textit{Incentive} & A cost, benefit, or conditional effect that makes an action more or less attractive under the actor's preference weights. \\
-\textit{Preference weights / utility} & \rev{In the strategic ledger, declared weights $w_{i,\mathrm{cash}},w_{i,k}$ map cash and metrics to utility $U_{i,t}$; utility need not equal profit.} \\
+\rev{\textit{Actor / agent}} & \rev{An autonomous modeled decision-maker indexed by $i$ (a player in game theory); the interacting collection of agents forms the \textit{agent swarm} (or \textit{cast}).} \\
+\textit{Persona} & The \rev{agent's} descriptive role and motivation, paired with explicit preference weights and actions. \\
+\textit{Goal} & The outcome the \rev{agent} seeks, distinct from the analyst's research question. \\
+\textit{Incentive} & A cost, benefit, or conditional effect that makes an action more or less attractive under the \rev{agent's} preference weights. \\
+\textit{Preference weights / utility} & In the strategic ledger, declared weights $w_{i,\mathrm{cash}},w_{i,k}$ map cash and metrics to utility $U_{i,t}$; utility need not equal profit. \\
 \textit{Resource / constraint} & An available balance (such as cash $b_{i,t}$) and an enforced limit excluding unaffordable actions. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\rev{For instance,} consider a partner deciding whether to fund a pilot. The
+For instance, consider a partner deciding whether to fund a pilot. The
 partner is an actor whose goal is preserving capital while gaining credible
 participation; its preference weights quantify that trade-off, whereas action
 costs and credibility gains create incentives. Funding and waiting are actions,
@@ -124,7 +131,7 @@ and selecting one from the actor's observation is a decision whose consequences
 the ledger settles. This example illustrates how the terms connect rather than
 claiming empirical partner behavior.
 
-\rev{Moreover, within the same cast, actors} can assign different preference
+Moreover, within the same cast, actors can assign different preference
 weights to retained cash, participation, credibility, or a declared risk
 metric. The author must state what each metric represents and why its weight
 reflects an assumed trade-off, because calling a persona ``cautious'' in prose
@@ -133,29 +140,31 @@ resembles commuters ranking routes: one commuter weights a lower fare more
 heavily, whereas another weights a shorter trip, so different choices emerge
 without assuming everyone minimizes fare.
 
-\rev{Beyond individual preference weights,} strategic dependence requires rules
+Beyond individual preference weights, strategic dependence requires rules
 that couple actors' choices. Supporting a launch may pay off only if an
 independent reviewer verifies it, or two simultaneous actions may shift a
-shared metric more than the sum of their individual effects. \rev{However,} a
+shared metric more than the sum of their individual effects. However, a
 promise or threat in persona text has no binding force unless an executable
 rule enforces it. Similarly, splitting one actor cohort into multiple accounts
 requires partitioning its balances and per-action effects rather than copying
 its full market power into each new account.
 
-\subsection{Information, Rules, and Event Timing}
-\rev{Alongside incentives,} each actor operates behind an explicit observation
-boundary. Directed edges in the \textit{information graph} determine whose
-\rev{messages} an actor receives, while the engine withholds other actors'
-private preference weights and unannounced future events. In the
-\rev{strategic ledger}, messages attached to round-$t$ actions arrive in round
-$t+1$, ensuring that query order within a round never grants an unintended
-information advantage. By analogy, an \textit{observation} is a card player's
-view of their own hand and public table cards, whereas an \textit{information
-graph} works like mailing-list subscriptions, which need neither be mutual nor
-imply trust. Table~\ref{tab:decision-definitions} summarizes these terms.
+\subsection{\rev{Social Graph}, Information, Rules, and Event Timing}
+Alongside incentives, each \rev{agent in the swarm} operates behind an explicit
+observation boundary \rev{defined by a \textit{social graph}}. Directed edges in
+the \rev{\textit{social graph} (implemented as an \textit{information graph})
+determine how agents in the swarm communicate and whose messages an agent
+receives}, while the engine withholds other \rev{agents'} private preference
+weights and unannounced future events. In the strategic ledger, messages
+attached to round-$t$ actions arrive in round $t+1$, ensuring that query order
+within a round never grants an unintended information advantage. By analogy, an
+\textit{observation} is a card player's view of their own hand and public table
+cards, whereas \rev{the swarm's \textit{social graph}} works like mailing-list
+subscriptions, which need neither be mutual nor imply trust.
+Table~\ref{tab:decision-definitions} summarizes these terms.
 
 \begin{table}[H]
-\caption{\rev{Decisions, observations, and rules.}}
+\caption{\rev{Decisions, social-graph observations, and rules.}}
 \label{tab:decision-definitions}
 \centering\small
 \renewcommand{\arraystretch}{1.12}
@@ -164,16 +173,16 @@ imply trust. Table~\ref{tab:decision-definitions} summarizes these terms.
 Term & Definition \\
 \midrule
 \textit{Action} & A permitted option $a \in \operatorname{Menu}_i$ with declared cost $c_i(a)$, effects, and optional preset message; \texttt{wait} is an action. \\
-\textit{Decision} & Selection of an affordable action $a_{i,t} \in A_{i,t}$ from actor $i$'s observation; the ledger settles consequences separately. \\
-\textit{Observation} & Information visible to one actor at $t$: its own profile and balances, public state, visible events, and delivered messages. \\
-\textit{Information graph} & Directed links specifying which actors receive another actor's messages, rather than measuring social influence. \\
+\textit{Decision} & Selection of an affordable action $a_{i,t} \in A_{i,t}$ from \rev{agent} $i$'s observation; the ledger settles consequences separately. \\
+\textit{Observation} & Information visible to one \rev{agent} at $t$: its own profile and balances, public state, visible events, and delivered \rev{social-graph} messages. \\
+\rev{\textit{Social / information graph}} & \rev{Directed communication network through which the \textit{swarm of agents} exchanges messages, specifying permitted delivery rather than measuring social influence.} \\
 \textit{Event} & An exogenous change with declared timing, audience visibility, and state effects. \\
 \textit{Rule / interaction} & A settlement law; in the strategic ledger, a joint-action rule $r$ adds effect $g_{k,r}$ when a specified action combination occurs. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\rev{To settle choices consistently,} the world also declares action costs,
+To settle choices consistently, the world also declares action costs,
 metric bounds $[L_k,H_k]$, ledger parameters, and exogenous event schedules.
 Default strategic worlds apply deterministic event schedules, whereas
 probabilistic event trees belong to a separate event-chain module. Keeping
@@ -182,7 +191,7 @@ trace whether a trajectory shift came from an external shock or from cast
 reactions.
 
 \subsection{Evidence, Assumptions, and Uncertainty}
-\rev{Because settlement rules fix the meaning of every simulated number,} each
+Because settlement rules fix the meaning of every simulated number, each
 material parameter must trace back to cited evidence or a labeled assumption.
 An \textit{assumption} is an unverified modeling input, whereas
 \textit{evidence} is a dated external record motivating part of the world. For
@@ -191,7 +200,7 @@ establishing how traders will react; world construction therefore records the
 dated source and the assumed behavioral response separately, following
 established model-documentation practice \cite{grimm2020}.
 
-\rev{On the other hand, whenever} a scenario introduces numerical probabilities,
+On the other hand, whenever a scenario introduces numerical probabilities,
 the author must distinguish a user-chosen scenario branch, a model-returned
 option score $q_{i,t}(a)$, a seeded sampling draw, and an empirical frequency.
 In particular, \textit{Bayesian} updating requires declared hypotheses, priors,
@@ -206,7 +215,7 @@ units, affordable action menus, isolated unilateral deltas, information links,
 and joint-action couplings, flagging degenerate setups such as actors with only
 one affordable option or goals unaffected by any permitted action.
 
-\rev{Consequently,} passing construction review guarantees an explicit,
+Consequently, passing construction review guarantees an explicit,
 executable specification rather than an empirically calibrated population;
 human judgment remains responsible for checking whether preference weights match
 intended roles and whether cited sources justify the parameters. With that

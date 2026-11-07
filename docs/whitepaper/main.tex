@@ -52,36 +52,41 @@ Financial and economic decisions are shaped by actors with different goals,
 resources, and information, whose actions influence one another over time.
 Understanding these decisions requires explicit models of strategic choices,
 information exchange, and uncertainty. We present \textit{Boyun}, a
-\rev{self-hosted, locally executed} multi-agent simulation framework for
-exploring such decisions in specified worlds. Its construction draws on
-\textit{game theory} to define \rev{actors, preference weights,} feasible
-actions, and consequences; \textit{directed information graphs} to represent
-who receives \rev{messages}; and \textit{probability and statistics} to examine
-declared uncertainty and evaluate probabilistic claims. \rev{Actors} receive
-restricted observations, and \rev{a local actor decision model}, \textit{Laya},
-returns structured choices and option scores \rev{on the user's own hardware}.
-An execution engine applies the specified rules \rev{across strategic, market,
-and lending ledgers} and records state transitions. The resulting record
-supports inspection of observations, choices, and numerical consequences, and
-allows execution to be replayed from saved decisions without repeating
+self-hosted, locally executed \rev{\textit{agent-swarm}} simulation framework,
+\rev{inspired by \textit{MiroFish},} for exploring such decisions in specified
+worlds \rev{where modeled actors operate as autonomous \textit{agents}
+communicating across a \textit{social graph} as a \textit{swarm of agents}}. Its
+construction draws on \textit{game theory} to define \rev{each agent's}
+preference weights, feasible actions, and consequences; \rev{\textit{social
+graphs} (implemented as \textit{directed information graphs}) to govern how the
+agent swarm communicates and} who receives messages; and \textit{probability and
+statistics} to examine declared uncertainty and evaluate probabilistic claims.
+\rev{Agents in the swarm} receive restricted observations, and a local
+\rev{agent} decision model, \textit{Laya}, returns structured choices and option
+scores on the user's own hardware. An execution engine applies the specified
+rules across strategic, market, and lending ledgers and records state
+transitions \rev{alongside social-graph message propagation}. The resulting
+record supports inspection of observations, choices, and numerical consequences,
+and allows execution to be replayed from saved decisions without repeating
 inference. A local agent interface supports caller-authored worlds and offline
 experiments, and an optional blockchain commitment supports later verification
 of artifact integrity. Six synthetic experiments reproduce hand-calculated
 game, Bayesian, scoring, and accounting results and isolate individual
-mechanisms. \rev{Running locally with \textit{Laya} at zero API fee, a
-fourteen-day, sixteen-actor token-launch case completes all 24 policy paths
-with settled trades, recorded rejections, matched branch comparisons, and exact
-replay, while} a comparison with the original \textit{MiroFish} on the same
-brief shows that the two systems are complementary: one produces richer social
-discourse, the other settled financial consequences. \rev{In addition, a
-ninety-day collateralized lending case across four worlds separates mechanical
-conclusions fixed by ledger rules from behavioral ones sensitive to uncalibrated
-actor scores.} These results do not establish human behavioral fidelity, market
-forecasting accuracy, or improved decision quality; these claims require
-further empirical and comparative evaluation.
+mechanisms. Running locally with \textit{Laya} at zero API fee, a
+fourteen-day, \rev{sixteen-agent swarm} token-launch case completes all 24
+policy paths with \rev{simulated token-price trajectories,} settled trades,
+recorded rejections, matched branch comparisons, and exact replay, while a
+comparison with the original \textit{MiroFish} on the same brief shows that the
+two systems are complementary: one produces richer social discourse, the other
+settled financial consequences. In addition, a ninety-day collateralized lending
+case across four worlds separates mechanical conclusions fixed by ledger rules
+from behavioral ones sensitive to uncalibrated \rev{agent} scores. These results
+do not establish human behavioral fidelity, market forecasting accuracy, or
+improved decision quality; these claims require further empirical and
+comparative evaluation.
 \end{abstract}
 \begin{IEEEkeywords}
-Game theory, multi-agent simulation, agent-based modeling, social graphs, probability, statistical evaluation, scenario analysis.
+Game theory, \rev{agent swarm,} multi-agent simulation, agent-based modeling, social graphs, probability, statistical evaluation, scenario analysis.
 \end{IEEEkeywords}
 \input{draft-introduction}
 \input{draft-related-work}

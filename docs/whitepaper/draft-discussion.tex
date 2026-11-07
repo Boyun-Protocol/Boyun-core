@@ -6,7 +6,6 @@ the local actor-inference boundary, relates \textit{Boyun} to
 could be made.
 
 \subsection{What the Results Show}
-\begin{revised}
 Taken together, the mechanism checks answer RQ1 and RQ2 within their stated
 scope: arithmetic, timing, accounting, and saved-decision replay agree with
 specified rules. Changing individual mechanisms changes results in controlled
@@ -15,11 +14,11 @@ numeric weights affects its policy, whereas rewriting persona prose alone does
 not. That test does not establish how a learned actor model interprets either.
 
 Extending those checks to a larger setting, local \textit{Laya} inference
-carries all 24 token-launch paths through 336 hours. This verifies the ability
-to record and settle repeated actor decisions without a per-call API fee.
+carries all 24 token-launch paths \rev{and their simulated price trajectories} through 336 hours \rev{across the sixteen-agent swarm}. This verifies the ability
+to record and settle repeated \rev{\textit{agent-swarm}} decisions without a per-call API fee.
 It does not validate the regime hypotheses or the trading behavior. Realized
 cash favors staged exit in the observed pairs, yet including inventory quotes
-changes that comparison in six pairs. The metric selected therefore affects
+\rev{derived from the terminal pool prices in Figure~\ref{fig:macron-prices}} changes that comparison in six pairs. The metric selected therefore affects
 what a reader may conclude.
 
 Apart from trading, the four local lending worlds distinguish a numerical
@@ -28,10 +27,8 @@ maximum possible loan, but reaching that cap depends on model choices. Likewise,
 zero observed bad debt is conditional on the tested prices, liquidation rules,
 liquidator resources, and depth. Reports should identify these assumptions
 rather than treating either result as an unconditional property of a launch.
-\end{revised}
 
 \subsection{Self-Hosted Actor Inference}
-\begin{revised}
 The local execution path addresses a practical privacy requirement:
 world observations can be scored on the user's hardware instead of being sent
 to a hosted actor API. This narrows a data-transfer boundary; it is not a proof
@@ -53,15 +50,14 @@ been evaluated in these case studies, and compatibility alone would not imply
 behavioral quality. Multiple seeds, measured demand, and matched evaluations
 are stronger next steps than claiming predictive value from local inference
 or from agreement between models.
-\end{revised}
 
 \subsection{Relation to \textit{MiroFish}}
-The comparison with \textit{MiroFish} suggests a division of labor rather than
-a contest. \textit{MiroFish} produces rich, persona-specific discourse but no
-financial consequences; \textit{Boyun} produces settled, replayable financial
-consequences but only pre-written messages. A natural next step is to let
-language-model actors write \textit{Boyun}'s messages while the engine keeps
-control of delivery, timing, and settlement, so that what an actor says
+\rev{Although \textit{Boyun} was inspired by \textit{MiroFish}'s \textit{agent-swarm} design, the} comparison with \textit{MiroFish} suggests a division of labor rather than
+a contest. \textit{MiroFish} produces rich, persona-specific discourse \rev{across an open-ended social feed} but no
+financial consequences; \textit{Boyun} \rev{organizes its participants as a constrained \textit{swarm of agents} communicating over an explicit \textit{social graph} and} produces settled, replayable financial
+consequences \rev{and token-price trajectories,} but only pre-written messages. A natural next step is to let
+language-model \rev{agents in the swarm} write \textit{Boyun}'s \rev{\textit{social-graph}} messages while the engine keeps
+control of delivery, timing, and settlement, so that what an \rev{agent} says
 is generated freely but what it can see and spend is still enforced. Doing so
 would raise the cost per decision and introduce new questions about how text
 should influence trading, which would need their own evaluation.
@@ -100,7 +96,6 @@ not an experiment reported in this paper.}
 \end{figure}
 
 \subsection{Limitations}
-\begin{revised}
 Several limitations apply to the full evaluation. The case results use one
 seed per plan, synthetic actor balances and preferences, and declared event or
 price schedules. They do not represent independent observations of human
@@ -122,7 +117,6 @@ a narrower social layer than open-ended discourse. The \textit{MiroFish}
 comparison matches the brief, but actor models, activation rules, and recovery
 procedures differ. It compares recorded capabilities rather than forecasting
 accuracy or general superiority.
-\end{revised}
 
 \subsection{Responsible Use}
 These limits also shape how \textit{Boyun} should and should not be used.
