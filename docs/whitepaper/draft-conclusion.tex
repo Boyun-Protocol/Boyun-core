@@ -1,23 +1,21 @@
 \section{Conclusion}\label{sec:conclusion}
-\begin{revised}
 This paper examined how an explicitly specified multi-agent world constrains
-actor observations, actions, and settlement while preserving records of the
-resulting choices and consequences. \textit{Boyun} combines game-theoretic
-specification, directed information graphs, typed local actor inference, and
+\rev{\textit{agent-swarm}} observations, actions, and settlement while preserving records of the
+resulting choices and consequences. \rev{Inspired by \textit{MiroFish},} \textit{Boyun} combines game-theoretic
+specification, \rev{a \textit{social graph} (\textit{directed information graph}) connecting a \textit{swarm of agents}}, typed local actor inference, and
 ledger-specific execution. Saved decisions support deterministic replay,
 while model scores remain distinct from calibrated event probabilities.
 
 Within this design, synthetic checks verify calculations and isolate selected
 mechanisms. A full-horizon local \textit{Laya} token-launch matrix records
-24 paths through fourteen days, while four local lending worlds cover ninety
+24 paths \rev{and their conditional token-price trajectories} through fourteen days, while four local lending worlds cover ninety
 days each. The same-brief comparison with \textit{MiroFish} illustrates the
-difference between generating social discourse and settling financial actions;
+difference between generating social discourse and settling financial actions \rev{across an \textit{agent swarm}};
 it does not establish a performance ranking. Case outcomes remain conditional
-on their policies, synthetic actors, and execution assumptions.
+on their policies, synthetic \rev{agents}, and execution assumptions.
 
 The next steps follow from these evidence boundaries: test multiple seeds and
 alternative open-weight models, measure behavior rather than assume demand,
 and evaluate dated forecasts against resolved outcomes. Self-hosted inference
 provides a useful execution option, but the quality of the resulting financial
 analysis must be established separately.
-\end{revised}
