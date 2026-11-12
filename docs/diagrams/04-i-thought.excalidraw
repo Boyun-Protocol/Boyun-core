@@ -1,0 +1,431 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://github.com/excalidraw/excalidraw",
+  "elements": [
+    {
+      "type": "cameraUpdate",
+      "width": 1600,
+      "height": 1100,
+      "x": -24,
+      "y": -12
+    },
+    {
+      "type": "rectangle",
+      "id": "banner",
+      "x": 28,
+      "y": 16,
+      "width": 1464,
+      "height": 72,
+      "strokeColor": "#f59e0b",
+      "backgroundColor": "#fff3bf",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 48,
+      "y": 34,
+      "width": 1100,
+      "height": 37,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "I thought. Then Boyun helped me see.",
+      "fontSize": 28,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "p0",
+      "x": 28,
+      "y": 112,
+      "width": 70,
+      "height": 70,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pn0",
+      "x": 50,
+      "y": 130,
+      "width": 30,
+      "height": 37,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "1",
+      "fontSize": 28,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "pt0",
+      "x": 116,
+      "y": 112,
+      "width": 1376,
+      "height": 126,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pth0",
+      "x": 140,
+      "y": 128,
+      "width": 1320,
+      "height": 29,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "I thought a token would pay suppliers.",
+      "fontSize": 22,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ph0",
+      "x": 140,
+      "y": 176,
+      "width": 1320,
+      "height": 27,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Boyun helped me use points only on money actually borrowed.",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "p1",
+      "x": 28,
+      "y": 262,
+      "width": 70,
+      "height": 70,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#d0bfff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pn1",
+      "x": 50,
+      "y": 280,
+      "width": 30,
+      "height": 37,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "2",
+      "fontSize": 28,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "pt1",
+      "x": 116,
+      "y": 262,
+      "width": 1376,
+      "height": 126,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pth1",
+      "x": 140,
+      "y": 278,
+      "width": 1320,
+      "height": 29,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "I thought $1M of friendly money was a launch.",
+      "fontSize": 22,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ph1",
+      "x": 140,
+      "y": 326,
+      "width": 1320,
+      "height": 27,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Boyun helped me label it a hypothetical deposit.",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "p2",
+      "x": 28,
+      "y": 412,
+      "width": 70,
+      "height": 70,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffd8a8",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pn2",
+      "x": 50,
+      "y": 430,
+      "width": 30,
+      "height": 37,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "3",
+      "fontSize": 28,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "pt2",
+      "x": 116,
+      "y": 412,
+      "width": 1376,
+      "height": 126,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pth2",
+      "x": 140,
+      "y": 428,
+      "width": 1320,
+      "height": 29,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "I thought lifting the cap would show demand.",
+      "fontSize": 22,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ph2",
+      "x": 140,
+      "y": 476,
+      "width": 1320,
+      "height": 27,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Boyun helped me see the next cap bind at $500K.",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "p3",
+      "x": 28,
+      "y": 562,
+      "width": 70,
+      "height": 70,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pn3",
+      "x": 50,
+      "y": 580,
+      "width": 30,
+      "height": 37,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "4",
+      "fontSize": 28,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "pt3",
+      "x": 116,
+      "y": 562,
+      "width": 1376,
+      "height": 126,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "pth3",
+      "x": 140,
+      "y": 578,
+      "width": 1320,
+      "height": 29,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "I thought a 64% drop would break the pool.",
+      "fontSize": 22,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ph3",
+      "x": 140,
+      "y": 626,
+      "width": 1320,
+      "height": 27,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Boyun helped me see the 50% LTV cut the debt. No bad debt.",
+      "fontSize": 20,
+      "textAlign": "left"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

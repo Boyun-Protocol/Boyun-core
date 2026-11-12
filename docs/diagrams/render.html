@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><title>render</title><body><pre id="out">loading</pre><script type="module">
+const name = new URLSearchParams(location.search).get('d');
+const scale = Number(new URLSearchParams(location.search).get('scale') || '2');
+try {
+  const raw = await (await fetch('./' + name + '.elements.json')).json();
+  const m = await import('https://esm.sh/@excalidraw/excalidraw@0.18.0');
+  const els = m.convertToExcalidrawElements(raw.filter(e => !['cameraUpdate','delete','restoreCheckpoint'].includes(e.type)), {regenerateIds: false});
+  const canvas = await m.exportToCanvas({
+    elements: els,
+    appState: {exportBackground: true, viewBackgroundColor: '#ffffff', exportScale: scale},
+    files: null,
+  });
+  document.getElementById('out').textContent = canvas.toDataURL('image/png');
+  document.title = 'ready ' + canvas.width + 'x' + canvas.height;
+} catch (e) {
+  document.getElementById('out').textContent = 'ERROR ' + e.stack;
+  document.title = 'error';
+}
+</script>

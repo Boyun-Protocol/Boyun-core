@@ -58,7 +58,9 @@ keeps the base engine dependency-free.
 
 ## Client configuration
 
-For a client accepting a standard `mcpServers` JSON configuration, register the
+A ready-to-use [.mcp.json](../../.mcp.json) configuration is provided in the root of the repository for clients with workspace-level MCP auto-discovery (e.g. Claude Code, Cursor, Cindy).
+
+For a client accepting a standard global `mcpServers` JSON configuration, register the
 following stdio entry. Use the full path to `uv` if that application's PATH
 does not include it. There are no secrets in this configuration.
 
@@ -85,6 +87,15 @@ client have been tested with SDK **1.30.0**, negotiating MCP **2025-11-25**.
 This is not a claim of implementing the newer 2026-07-28 protocol. A specific
 Codex/Gemini desktop connection still requires registering the server in that
 client and confirming discovery there.
+
+## Synergy with Boyun-skills
+
+Boyun MCP provides the **runtime simulation execution engine**, while [Boyun-skills](https://github.com/Boyun-Protocol/Boyun-skills) provides the **evidence and reasoning workflows** for coding agents:
+
+1. **Evidence & Discovery (`crypto-research-foundations`, `crypto-token-cohorts`)**: Agents gather public historical data, classify token cohorts, and enforce survivorship controls.
+2. **Economic Structuring (`crypto-launch-research`, `boyun-world-grounding`)**: Agents turn hypotheses into bounded game schemas with explicit actor incentives and information barriers.
+3. **Execution & Validation (Boyun MCP)**: Agents call `validate_world`, `inspect_game`, and `run_offline` to simulate step-by-step outcomes without paid API costs.
+4. **Reporting (`boyun-financial-reports`)**: Agents export verified results (`read_artifact`) and build the 5-document research report package.
 
 ## Discoverable interface
 

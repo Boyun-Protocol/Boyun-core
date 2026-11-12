@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "boyun": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "engine",
+        "--extra",
+        "mcp",
+        "decision-lab",
+        "mcp",
+        "--workspace",
+        "engine/output/mcp"
+      ]
+    }
+  }
+}

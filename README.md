@@ -65,6 +65,9 @@ Boyun integrates deeply across the NEAR protocol, wallet, and AI stack (spanning
 <img src="./docs/readme-assets/architecture.png" alt="How Boyun Works — End-to-End Architecture" width="95%"/>
 </div>
 
+The component-level Excalidraw boards, the NEAR testnet path, and the four lending-report summaries are in [docs/diagrams](docs/diagrams/README.md).
+
+
 <div align="center">
 <img src="./docs/readme-assets/execution-pipeline.png" alt="Formal Step-t Execution & Evidence Pipeline" width="95%"/>
 </div>
@@ -116,7 +119,7 @@ Boyun integrates deeply across the NEAR protocol, wallet, and AI stack (spanning
 | :--- | :--- |
 | **[Boyun-core](https://github.com/Boyun-Protocol/Boyun-core)** | Python simulation engine, Strategic/Market/Lending ledgers, `Laya`/`Jev`/`NEAR AI` adapters, CLI, API, MCP server, and NEAR commitment contract |
 | **[Boyun-interface](https://github.com/Boyun-Protocol/Boyun-interface)** | Browser workbench UI, interactive scenario & replay inspector, and Intear NEAR testnet wallet bundle |
-| **[Boyun-skills](https://github.com/Boyun-Protocol/Boyun-skills)** | First-party `boyun-world-grounding` and `boyun-financial-reports` skill packs for coding agents |
+| **[Boyun-skills](https://github.com/Boyun-Protocol/Boyun-skills)** | First-party research, cohort discovery, launch planning, world-grounding, and financial-report skill packs for coding agents |
 
 ---
 

@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><title>svg</title><body><pre id="out">loading</pre><script type="module">
+const name = new URLSearchParams(location.search).get('d');
+try {
+  const raw = await (await fetch('./' + name + '.elements.json')).json();
+  const m = await import('https://esm.sh/@excalidraw/excalidraw@0.18.0');
+  const els = m.convertToExcalidrawElements(raw.filter(e => !['cameraUpdate','delete','restoreCheckpoint'].includes(e.type)), {regenerateIds: false});
+  const svg = await m.exportToSvg({ elements: els, appState: { exportBackground: true, viewBackgroundColor: '#ffffff' }, files: null });
+  svg.setAttribute('role', 'img');
+  document.getElementById('out').textContent = new XMLSerializer().serializeToString(svg);
+  document.title = 'ready';
+} catch (e) {
+  document.getElementById('out').textContent = 'ERROR ' + e;
+  document.title = 'error';
+}
+</script>

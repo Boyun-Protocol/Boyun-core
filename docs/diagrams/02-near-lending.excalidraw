@@ -1,0 +1,750 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://github.com/excalidraw/excalidraw",
+  "elements": [
+    {
+      "type": "cameraUpdate",
+      "width": 1600,
+      "height": 1000,
+      "x": -24,
+      "y": -12
+    },
+    {
+      "type": "rectangle",
+      "id": "banner",
+      "x": 28,
+      "y": 16,
+      "width": 1464,
+      "height": 86,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "#d3f9d8",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 48,
+      "y": 26,
+      "width": 1100,
+      "height": 32,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "I thought testnet meant the pool was live.",
+      "fontSize": 24,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "sub",
+      "x": 48,
+      "y": 60,
+      "width": 1000,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Boyun helped me record the bytes, not deploy a lender.",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "st0",
+      "x": 540,
+      "y": 128,
+      "width": 340,
+      "height": 52,
+      "strokeColor": "#17352F",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "st0a",
+      "x": 560,
+      "y": 142,
+      "width": 300,
+      "height": 27,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "1  Ground hourly prices",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "arrow",
+      "id": "sa0",
+      "x": 700,
+      "y": 180,
+      "width": 2,
+      "height": 18,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "st1",
+      "x": 540,
+      "y": 206,
+      "width": 340,
+      "height": 52,
+      "strokeColor": "#17352F",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "st1a",
+      "x": 560,
+      "y": 220,
+      "width": 300,
+      "height": 27,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "2  Specify 90 days",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "arrow",
+      "id": "sa1",
+      "x": 700,
+      "y": 258,
+      "width": 2,
+      "height": 18,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "st2",
+      "x": 540,
+      "y": 284,
+      "width": 340,
+      "height": 52,
+      "strokeColor": "#17352F",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "st2a",
+      "x": 560,
+      "y": 298,
+      "width": 300,
+      "height": 27,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "3  Full Laya session",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "arrow",
+      "id": "sa2",
+      "x": 700,
+      "y": 336,
+      "width": 2,
+      "height": 18,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "st3",
+      "x": 540,
+      "y": 362,
+      "width": 340,
+      "height": 52,
+      "strokeColor": "#17352F",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "st3a",
+      "x": 560,
+      "y": 376,
+      "width": 300,
+      "height": 27,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "4  Ledger settles",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "arrow",
+      "id": "sa3",
+      "x": 700,
+      "y": 414,
+      "width": 2,
+      "height": 18,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "st4",
+      "x": 540,
+      "y": 440,
+      "width": 340,
+      "height": 52,
+      "strokeColor": "#17352F",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "st4a",
+      "x": 560,
+      "y": 454,
+      "width": 300,
+      "height": 27,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "5  Replay matches",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "arrow",
+      "id": "sa4",
+      "x": 700,
+      "y": 492,
+      "width": 2,
+      "height": 18,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "st5",
+      "x": 540,
+      "y": 518,
+      "width": 340,
+      "height": 52,
+      "strokeColor": "#17352F",
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "st5a",
+      "x": 560,
+      "y": 532,
+      "width": 300,
+      "height": 27,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "6  Salt on testnet",
+      "fontSize": 20,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "left",
+      "x": 28,
+      "y": 124,
+      "width": 460,
+      "height": 468,
+      "strokeColor": "#e03131",
+      "backgroundColor": "#ffc9c9",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 55,
+      "roundness": {
+        "type": 3
+      },
+      "strokeStyle": "dashed"
+    },
+    {
+      "type": "text",
+      "id": "leftt",
+      "x": 44,
+      "y": 136,
+      "width": 428,
+      "height": 21,
+      "strokeColor": "#e03131",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Not in these full Laya runs",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ll0",
+      "x": 52,
+      "y": 180,
+      "width": 400,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "No lending pool deployed",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ll1",
+      "x": 52,
+      "y": 250,
+      "width": 400,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "No Intents settlement",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ll2",
+      "x": 52,
+      "y": 320,
+      "width": 400,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "No TEE or Chain Signatures",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ll3",
+      "x": 52,
+      "y": 390,
+      "width": 400,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "No Jev, no half-runs",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "ll4",
+      "x": 52,
+      "y": 460,
+      "width": 400,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "No bull window",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "right",
+      "x": 1020,
+      "y": 124,
+      "width": 470,
+      "height": 468,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "#d3f9d8",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 55,
+      "roundness": {
+        "type": 3
+      },
+      "strokeStyle": "dashed"
+    },
+    {
+      "type": "text",
+      "id": "rightt",
+      "x": 1036,
+      "y": 136,
+      "width": 438,
+      "height": 21,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "What testnet actually has",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "rr0",
+      "x": 1044,
+      "y": 180,
+      "width": 420,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "csl-registry on testnet",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "rr1",
+      "x": 1044,
+      "y": 250,
+      "width": 420,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Code hash pinned",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "rr2",
+      "x": 1044,
+      "y": 320,
+      "width": 420,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Deploy reached FINAL",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "rr3",
+      "x": 1044,
+      "y": 390,
+      "width": 420,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Product result FINAL",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "rr4",
+      "x": 1044,
+      "y": 460,
+      "width": 420,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Pilot receipt FINAL",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "note",
+      "x": 28,
+      "y": 620,
+      "width": 1462,
+      "height": 88,
+      "strokeColor": "#f59e0b",
+      "backgroundColor": "#fff3bf",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "notet",
+      "x": 44,
+      "y": 634,
+      "width": 1430,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "A FINAL receipt matches the file. It does not prove the forecast, and it does not create the pool.",
+      "fontSize": 16,
+      "textAlign": "left"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

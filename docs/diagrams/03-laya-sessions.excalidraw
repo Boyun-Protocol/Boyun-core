@@ -1,0 +1,845 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://github.com/excalidraw/excalidraw",
+  "elements": [
+    {
+      "type": "cameraUpdate",
+      "width": 1600,
+      "height": 1000,
+      "x": -24,
+      "y": -12
+    },
+    {
+      "type": "rectangle",
+      "id": "banner",
+      "x": 28,
+      "y": 16,
+      "width": 1464,
+      "height": 78,
+      "strokeColor": "#1d4ed8",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 48,
+      "y": 28,
+      "width": 1200,
+      "height": 35,
+      "strokeColor": "#17352F",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Four full Laya sessions. Ninety days. Replay passed.",
+      "fontSize": 26,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "sub",
+      "x": 48,
+      "y": 64,
+      "width": 1000,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "No Jev. No interrupted attempt. Every world finished 2,160 hours.",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "h0",
+      "x": 48,
+      "y": 116,
+      "width": 200,
+      "height": 21,
+      "strokeColor": "#495057",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "World",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "h1",
+      "x": 360,
+      "y": 116,
+      "width": 200,
+      "height": 21,
+      "strokeColor": "#495057",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Path",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "h2",
+      "x": 760,
+      "y": 116,
+      "width": 200,
+      "height": 21,
+      "strokeColor": "#495057",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Borrow",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "h3",
+      "x": 1120,
+      "y": 116,
+      "width": 200,
+      "height": 21,
+      "strokeColor": "#495057",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Bad debt",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "row0",
+      "x": 36,
+      "y": 150,
+      "width": 1456,
+      "height": 68,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "c00",
+      "x": 48,
+      "y": 170,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "First Light",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c01",
+      "x": 360,
+      "y": 170,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Choppy, $50K cap",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c02",
+      "x": 760,
+      "y": 170,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$300K, then stuck",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c03",
+      "x": 1120,
+      "y": 170,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$0",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "row1",
+      "x": 36,
+      "y": 228,
+      "width": 1456,
+      "height": 68,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#d0bfff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "c10",
+      "x": 48,
+      "y": 248,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Open Gate",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c11",
+      "x": 360,
+      "y": 248,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Choppy, $100K cap",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c12",
+      "x": 760,
+      "y": 248,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$500K aggregate cap",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c13",
+      "x": 1120,
+      "y": 248,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$0",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "row2",
+      "x": 36,
+      "y": 306,
+      "width": 1456,
+      "height": 68,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffd8a8",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "c20",
+      "x": 48,
+      "y": 326,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Dear Money",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c21",
+      "x": 360,
+      "y": 326,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Choppy, steeper rate",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c22",
+      "x": 760,
+      "y": 326,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$500K, yield still thin",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c23",
+      "x": 1120,
+      "y": 326,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$0",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "row3",
+      "x": 36,
+      "y": 384,
+      "width": 1456,
+      "height": 68,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffc9c9",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "c30",
+      "x": 48,
+      "y": 404,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Long Winter",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c31",
+      "x": 360,
+      "y": 404,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Bear, same steep rules",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c32",
+      "x": 760,
+      "y": 404,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$374K peak, $132K end",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "c33",
+      "x": 1120,
+      "y": 404,
+      "width": 250,
+      "height": 24,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "$0",
+      "fontSize": 18,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "chart",
+      "x": 36,
+      "y": 470,
+      "width": 900,
+      "height": 270,
+      "strokeColor": "#ced4da",
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "ct",
+      "x": 52,
+      "y": 484,
+      "width": 820,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Borrowed, $ thousands. The cap moves. Demand is not measured.",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "b0",
+      "x": 80,
+      "y": 624,
+      "width": 72,
+      "height": 66,
+      "strokeColor": "#4a9eed",
+      "backgroundColor": "#4a9eed",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "bv0",
+      "x": 80,
+      "y": 598,
+      "width": 72,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "300",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "bl0",
+      "x": 72,
+      "y": 700,
+      "width": 90,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Light",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "b1",
+      "x": 280,
+      "y": 580,
+      "width": 72,
+      "height": 110,
+      "strokeColor": "#7048e8",
+      "backgroundColor": "#7048e8",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "bv1",
+      "x": 280,
+      "y": 554,
+      "width": 72,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "500",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "bl1",
+      "x": 272,
+      "y": 700,
+      "width": 90,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Gate",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "b2",
+      "x": 480,
+      "y": 580,
+      "width": 72,
+      "height": 110,
+      "strokeColor": "#f59e0b",
+      "backgroundColor": "#f59e0b",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "bv2",
+      "x": 480,
+      "y": 554,
+      "width": 72,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "500",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "bl2",
+      "x": 472,
+      "y": 700,
+      "width": 90,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Dear",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "b3",
+      "x": 680,
+      "y": 608,
+      "width": 72,
+      "height": 82,
+      "strokeColor": "#e03131",
+      "backgroundColor": "#e03131",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "bv3",
+      "x": 680,
+      "y": 582,
+      "width": 72,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "374",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "bl3",
+      "x": 672,
+      "y": 700,
+      "width": 90,
+      "height": 21,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "Winter",
+      "fontSize": 16,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "side",
+      "x": 960,
+      "y": 470,
+      "width": 532,
+      "height": 270,
+      "strokeColor": "#f59e0b",
+      "backgroundColor": "#fff3bf",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "sidet",
+      "x": 976,
+      "y": 484,
+      "width": 500,
+      "height": 64,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      },
+      "text": "I thought a steeper rate would approach Rhea.\nSupplier yield stayed about 0.4% to 2.4%.\nRhea supply that week was 9.88%.",
+      "fontSize": 16,
+      "textAlign": "left"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

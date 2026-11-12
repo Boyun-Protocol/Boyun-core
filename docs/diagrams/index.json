@@ -1,0 +1,44 @@
+[
+  {
+    "id": "01-architecture",
+    "title": "Boyun technical architecture",
+    "checkpoint": "cd4a8bd340a24b5290",
+    "width": 1560,
+    "height": 1100
+  },
+  {
+    "id": "02-near-lending",
+    "title": "NEAR integrations and lending evidence",
+    "checkpoint": "940ed31a313d4b0dab",
+    "width": 1568,
+    "height": 820
+  },
+  {
+    "id": "03-report-decision",
+    "title": "Report summary 1 - decision",
+    "checkpoint": "ebc313f98ebf4b4481",
+    "width": 1560,
+    "height": 720
+  },
+  {
+    "id": "04-report-choppy",
+    "title": "Report summary 2 - choppy case",
+    "checkpoint": "f3af2d55c4ea41a2bb",
+    "width": 1560,
+    "height": 790
+  },
+  {
+    "id": "05-report-bear",
+    "title": "Report summary 3 - bear case",
+    "checkpoint": "defd5cac8143437196",
+    "width": 1560,
+    "height": 610
+  },
+  {
+    "id": "06-report-trust",
+    "title": "Report summary 4 - what to trust",
+    "checkpoint": "711de48ae76c46aeac",
+    "width": 1560,
+    "height": 710
+  }
+]
